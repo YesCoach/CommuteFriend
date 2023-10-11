@@ -11,6 +11,13 @@
 		89023EA62AD6C9DB009FFCBD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EA52AD6C9DB009FFCBD /* NetworkManager.swift */; };
 		89023EA82AD6CA19009FFCBD /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EA72AD6CA19009FFCBD /* Router.swift */; };
 		89023EAE2AD6CB59009FFCBD /* SubwaySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EAD2AD6CB59009FFCBD /* SubwaySearchViewController.swift */; };
+		89023EB72AD6D109009FFCBD /* SubwayArrival.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EB22AD6D109009FFCBD /* SubwayArrival.swift */; };
+		89023EB82AD6D109009FFCBD /* UpDownDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EB32AD6D109009FFCBD /* UpDownDirection.swift */; };
+		89023EB92AD6D109009FFCBD /* SubwayArrivalCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EB42AD6D109009FFCBD /* SubwayArrivalCode.swift */; };
+		89023EBA2AD6D109009FFCBD /* SubwayStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EB52AD6D109009FFCBD /* SubwayStation.swift */; };
+		89023EBB2AD6D109009FFCBD /* SubwayLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EB62AD6D109009FFCBD /* SubwayLine.swift */; };
+		89023EBD2AD6D165009FFCBD /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EBC2AD6D165009FFCBD /* String+.swift */; };
+		89023EBF2AD6D17E009FFCBD /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EBE2AD6D17E009FFCBD /* DateFormatter+.swift */; };
 		8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664D2AD6770600C44C04 /* AppDelegate.swift */; };
 		894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664F2AD6770600C44C04 /* SceneDelegate.swift */; };
 		894266522AD6770600C44C04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266512AD6770600C44C04 /* ViewController.swift */; };
@@ -60,6 +67,13 @@
 		89023EA52AD6C9DB009FFCBD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		89023EA72AD6CA19009FFCBD /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		89023EAD2AD6CB59009FFCBD /* SubwaySearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySearchViewController.swift; sourceTree = "<group>"; };
+		89023EB22AD6D109009FFCBD /* SubwayArrival.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubwayArrival.swift; sourceTree = "<group>"; };
+		89023EB32AD6D109009FFCBD /* UpDownDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpDownDirection.swift; sourceTree = "<group>"; };
+		89023EB42AD6D109009FFCBD /* SubwayArrivalCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubwayArrivalCode.swift; sourceTree = "<group>"; };
+		89023EB52AD6D109009FFCBD /* SubwayStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubwayStation.swift; sourceTree = "<group>"; };
+		89023EB62AD6D109009FFCBD /* SubwayLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubwayLine.swift; sourceTree = "<group>"; };
+		89023EBC2AD6D165009FFCBD /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		89023EBE2AD6D17E009FFCBD /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
 		8942664A2AD6770600C44C04 /* CommuteFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommuteFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8942664D2AD6770600C44C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8942664F2AD6770600C44C04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +154,18 @@
 				89023EAD2AD6CB59009FFCBD /* SubwaySearchViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		89023EB12AD6D0D4009FFCBD /* Subway */ = {
+			isa = PBXGroup;
+			children = (
+				89023EB22AD6D109009FFCBD /* SubwayArrival.swift */,
+				89023EB42AD6D109009FFCBD /* SubwayArrivalCode.swift */,
+				89023EB62AD6D109009FFCBD /* SubwayLine.swift */,
+				89023EB52AD6D109009FFCBD /* SubwayStation.swift */,
+				89023EB32AD6D109009FFCBD /* UpDownDirection.swift */,
+			);
+			path = Subway;
 			sourceTree = "<group>";
 		};
 		894266412AD6770600C44C04 = {
@@ -279,6 +305,8 @@
 			isa = PBXGroup;
 			children = (
 				894266A82AD68C2D00C44C04 /* UIButton.Configuration+.swift */,
+				89023EBC2AD6D165009FFCBD /* String+.swift */,
+				89023EBE2AD6D17E009FFCBD /* DateFormatter+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -303,6 +331,7 @@
 		894266B72AD6BC1300C44C04 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				89023EB12AD6D0D4009FFCBD /* Subway */,
 				894266B82AD6BC2600C44C04 /* TransportationType.swift */,
 			);
 			path = Model;
@@ -450,6 +479,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89023EB72AD6D109009FFCBD /* SubwayArrival.swift in Sources */,
+				89023EB92AD6D109009FFCBD /* SubwayArrivalCode.swift in Sources */,
 				89023EA62AD6C9DB009FFCBD /* NetworkManager.swift in Sources */,
 				894266AE2AD6AAC100C44C04 /* ProgressingView.swift in Sources */,
 				894266522AD6770600C44C04 /* ViewController.swift in Sources */,
@@ -458,6 +489,9 @@
 				8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */,
 				894266982AD6803200C44C04 /* AppTabBarController.swift in Sources */,
 				89023EAE2AD6CB59009FFCBD /* SubwaySearchViewController.swift in Sources */,
+				89023EBD2AD6D165009FFCBD /* String+.swift in Sources */,
+				89023EBA2AD6D109009FFCBD /* SubwayStation.swift in Sources */,
+				89023EB82AD6D109009FFCBD /* UpDownDirection.swift in Sources */,
 				894266A62AD68B8500C44C04 /* HomeArrivalView.swift in Sources */,
 				8942668E2AD67AC600C44C04 /* ReusableProtocol.swift in Sources */,
 				894266862AD6796D00C44C04 /* APIKey.swift in Sources */,
@@ -466,8 +500,10 @@
 				89023EA82AD6CA19009FFCBD /* Router.swift in Sources */,
 				894266A02AD68AE700C44C04 /* HomeViewController.swift in Sources */,
 				894266902AD67AC600C44C04 /* BaseTableViewCell.swift in Sources */,
+				89023EBB2AD6D109009FFCBD /* SubwayLine.swift in Sources */,
 				894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */,
 				8942668F2AD67AC600C44C04 /* BaseViewController.swift in Sources */,
+				89023EBF2AD6D17E009FFCBD /* DateFormatter+.swift in Sources */,
 				894266B32AD6BAE300C44C04 /* SelectableView.swift in Sources */,
 				894266B52AD6BB1500C44C04 /* SelectableItemType.swift in Sources */,
 				894266B02AD6ABA500C44C04 /* ArrivalInformationView.swift in Sources */,
