@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89023EA42AD6C9CC009FFCBD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 89023EA32AD6C9CC009FFCBD /* Alamofire */; };
+		89023EA62AD6C9DB009FFCBD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EA52AD6C9DB009FFCBD /* NetworkManager.swift */; };
+		89023EA82AD6CA19009FFCBD /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EA72AD6CA19009FFCBD /* Router.swift */; };
 		8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664D2AD6770600C44C04 /* AppDelegate.swift */; };
 		894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664F2AD6770600C44C04 /* SceneDelegate.swift */; };
 		894266522AD6770600C44C04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266512AD6770600C44C04 /* ViewController.swift */; };
@@ -53,6 +56,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		89023EA52AD6C9DB009FFCBD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		89023EA72AD6CA19009FFCBD /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		8942664A2AD6770600C44C04 /* CommuteFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommuteFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8942664D2AD6770600C44C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8942664F2AD6770600C44C04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +95,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				894266942AD67B2900C44C04 /* SnapKit in Frameworks */,
+				89023EA42AD6C9CC009FFCBD /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				894266852AD6796D00C44C04 /* APIKey.swift */,
+				89023EA52AD6C9DB009FFCBD /* NetworkManager.swift */,
+				89023EA72AD6CA19009FFCBD /* Router.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -292,6 +300,7 @@
 			name = CommuteFriend;
 			packageProductDependencies = (
 				894266932AD67B2900C44C04 /* SnapKit */,
+				89023EA32AD6C9CC009FFCBD /* Alamofire */,
 			);
 			productName = CommuteFriend;
 			productReference = 8942664A2AD6770600C44C04 /* CommuteFriend.app */;
@@ -368,6 +377,7 @@
 			packageReferences = (
 				8942667D2AD677A200C44C04 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 				894266922AD67B2900C44C04 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				89023EA22AD6C9CC009FFCBD /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 8942664B2AD6770600C44C04 /* Products */;
 			projectDirPath = "";
@@ -413,6 +423,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89023EA62AD6C9DB009FFCBD /* NetworkManager.swift in Sources */,
 				894266AE2AD6AAC100C44C04 /* ProgressingView.swift in Sources */,
 				894266522AD6770600C44C04 /* ViewController.swift in Sources */,
 				894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */,
@@ -424,6 +435,7 @@
 				894266862AD6796D00C44C04 /* APIKey.swift in Sources */,
 				894266B92AD6BC2600C44C04 /* TransportationType.swift in Sources */,
 				894266A92AD68C2D00C44C04 /* UIButton.Configuration+.swift in Sources */,
+				89023EA82AD6CA19009FFCBD /* Router.swift in Sources */,
 				894266A02AD68AE700C44C04 /* HomeViewController.swift in Sources */,
 				894266902AD67AC600C44C04 /* BaseTableViewCell.swift in Sources */,
 				894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */,
@@ -776,6 +788,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		89023EA22AD6C9CC009FFCBD /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		8942667D2AD677A200C44C04 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/SwiftLint";
@@ -795,6 +815,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		89023EA32AD6C9CC009FFCBD /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89023EA22AD6C9CC009FFCBD /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		8942667E2AD677CD00C44C04 /* SwiftLintPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8942667D2AD677A200C44C04 /* XCRemoteSwiftPackageReference "SwiftLint" */;
