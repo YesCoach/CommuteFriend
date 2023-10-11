@@ -19,6 +19,17 @@
 		89023EBD2AD6D165009FFCBD /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EBC2AD6D165009FFCBD /* String+.swift */; };
 		89023EBF2AD6D17E009FFCBD /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EBE2AD6D17E009FFCBD /* DateFormatter+.swift */; };
 		89023EC22AD6D29D009FFCBD /* SearchHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EC12AD6D29D009FFCBD /* SearchHistoryCell.swift */; };
+		89023EC72AD6F422009FFCBD /* UserDefaultsSearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EC62AD6F422009FFCBD /* UserDefaultsSearchHistory.swift */; };
+		89023ECA2AD6F491009FFCBD /* SearchHistoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EC92AD6F491009FFCBD /* SearchHistoryType.swift */; };
+		89023ECD2AD6F4E4009FFCBD /* SearchHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023ECC2AD6F4E4009FFCBD /* SearchHistoryRepository.swift */; };
+		89023ED02AD6F622009FFCBD /* SearchHistoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023ECF2AD6F622009FFCBD /* SearchHistoryStorage.swift */; };
+		89023ED32AD6F6D8009FFCBD /* SubwaySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023ED22AD6F6D8009FFCBD /* SubwaySearchViewModel.swift */; };
+		89023ED62AD6F872009FFCBD /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 89023ED52AD6F872009FFCBD /* RxCocoa */; };
+		89023ED82AD6F872009FFCBD /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 89023ED72AD6F872009FFCBD /* RxRelay */; };
+		89023EDA2AD6F872009FFCBD /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 89023ED92AD6F872009FFCBD /* RxSwift */; };
+		89023EDD2AD6F8CA009FFCBD /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EDC2AD6F8CA009FFCBD /* DIContainer.swift */; };
+		89023EDF2AD6FDB5009FFCBD /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EDE2AD6FDB5009FFCBD /* UIViewController+.swift */; };
+		89023EE12AD70E47009FFCBD /* SearchHistoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EE02AD70E47009FFCBD /* SearchHistoryHeaderView.swift */; };
 		8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664D2AD6770600C44C04 /* AppDelegate.swift */; };
 		894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664F2AD6770600C44C04 /* SceneDelegate.swift */; };
 		894266522AD6770600C44C04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266512AD6770600C44C04 /* ViewController.swift */; };
@@ -76,6 +87,14 @@
 		89023EBC2AD6D165009FFCBD /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		89023EBE2AD6D17E009FFCBD /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
 		89023EC12AD6D29D009FFCBD /* SearchHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryCell.swift; sourceTree = "<group>"; };
+		89023EC62AD6F422009FFCBD /* UserDefaultsSearchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSearchHistory.swift; sourceTree = "<group>"; };
+		89023EC92AD6F491009FFCBD /* SearchHistoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryType.swift; sourceTree = "<group>"; };
+		89023ECC2AD6F4E4009FFCBD /* SearchHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryRepository.swift; sourceTree = "<group>"; };
+		89023ECF2AD6F622009FFCBD /* SearchHistoryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryStorage.swift; sourceTree = "<group>"; };
+		89023ED22AD6F6D8009FFCBD /* SubwaySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySearchViewModel.swift; sourceTree = "<group>"; };
+		89023EDC2AD6F8CA009FFCBD /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		89023EDE2AD6FDB5009FFCBD /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		89023EE02AD70E47009FFCBD /* SearchHistoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryHeaderView.swift; sourceTree = "<group>"; };
 		8942664A2AD6770600C44C04 /* CommuteFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommuteFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8942664D2AD6770600C44C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8942664F2AD6770600C44C04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,7 +131,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89023ED62AD6F872009FFCBD /* RxCocoa in Frameworks */,
 				894266942AD67B2900C44C04 /* SnapKit in Frameworks */,
+				89023EDA2AD6F872009FFCBD /* RxSwift in Frameworks */,
+				89023ED82AD6F872009FFCBD /* RxRelay in Frameworks */,
 				89023EA42AD6C9CC009FFCBD /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,6 +159,8 @@
 		89023EA92AD6CAF7009FFCBD /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				89023ECB2AD6F4CD009FFCBD /* Repository */,
+				89023EC32AD6F39D009FFCBD /* PersistentStorage */,
 				894266842AD6794E00C44C04 /* Network */,
 			);
 			path = Data;
@@ -146,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				89023EAC2AD6CB4B009FFCBD /* View */,
+				89023ED12AD6F6BD009FFCBD /* ViewModel */,
 				89023EC02AD6D289009FFCBD /* Cell */,
 			);
 			path = SearchScene;
@@ -175,8 +200,58 @@
 			isa = PBXGroup;
 			children = (
 				89023EC12AD6D29D009FFCBD /* SearchHistoryCell.swift */,
+				89023EE02AD70E47009FFCBD /* SearchHistoryHeaderView.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		89023EC32AD6F39D009FFCBD /* PersistentStorage */ = {
+			isa = PBXGroup;
+			children = (
+				89023ECE2AD6F609009FFCBD /* SearchHistoryStorage */,
+			);
+			path = PersistentStorage;
+			sourceTree = "<group>";
+		};
+		89023EC52AD6F3B9009FFCBD /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				89023EC62AD6F422009FFCBD /* UserDefaultsSearchHistory.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		89023EC82AD6F482009FFCBD /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				89023EC92AD6F491009FFCBD /* SearchHistoryType.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		89023ECB2AD6F4CD009FFCBD /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				89023ECC2AD6F4E4009FFCBD /* SearchHistoryRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		89023ECE2AD6F609009FFCBD /* SearchHistoryStorage */ = {
+			isa = PBXGroup;
+			children = (
+				89023ECF2AD6F622009FFCBD /* SearchHistoryStorage.swift */,
+				89023EC52AD6F3B9009FFCBD /* UserDefaults */,
+			);
+			path = SearchHistoryStorage;
+			sourceTree = "<group>";
+		};
+		89023ED12AD6F6BD009FFCBD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				89023ED22AD6F6D8009FFCBD /* SubwaySearchViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		894266412AD6770600C44C04 = {
@@ -248,6 +323,7 @@
 			children = (
 				8942664D2AD6770600C44C04 /* AppDelegate.swift */,
 				8942664F2AD6770600C44C04 /* SceneDelegate.swift */,
+				89023EDC2AD6F8CA009FFCBD /* DIContainer.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -316,6 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				894266A82AD68C2D00C44C04 /* UIButton.Configuration+.swift */,
+				89023EDE2AD6FDB5009FFCBD /* UIViewController+.swift */,
 				89023EBC2AD6D165009FFCBD /* String+.swift */,
 				89023EBE2AD6D17E009FFCBD /* DateFormatter+.swift */,
 			);
@@ -342,6 +419,7 @@
 		894266B72AD6BC1300C44C04 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				89023EC82AD6F482009FFCBD /* Search */,
 				89023EB12AD6D0D4009FFCBD /* Subway */,
 				894266B82AD6BC2600C44C04 /* TransportationType.swift */,
 			);
@@ -368,6 +446,9 @@
 			packageProductDependencies = (
 				894266932AD67B2900C44C04 /* SnapKit */,
 				89023EA32AD6C9CC009FFCBD /* Alamofire */,
+				89023ED52AD6F872009FFCBD /* RxCocoa */,
+				89023ED72AD6F872009FFCBD /* RxRelay */,
+				89023ED92AD6F872009FFCBD /* RxSwift */,
 			);
 			productName = CommuteFriend;
 			productReference = 8942664A2AD6770600C44C04 /* CommuteFriend.app */;
@@ -445,6 +526,7 @@
 				8942667D2AD677A200C44C04 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 				894266922AD67B2900C44C04 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				89023EA22AD6C9CC009FFCBD /* XCRemoteSwiftPackageReference "Alamofire" */,
+				89023ED42AD6F872009FFCBD /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 8942664B2AD6770600C44C04 /* Products */;
 			projectDirPath = "";
@@ -497,22 +579,30 @@
 				894266522AD6770600C44C04 /* ViewController.swift in Sources */,
 				894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */,
 				8942669A2AD6809500C44C04 /* TabBarItems.swift in Sources */,
+				89023EDD2AD6F8CA009FFCBD /* DIContainer.swift in Sources */,
 				8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */,
 				894266982AD6803200C44C04 /* AppTabBarController.swift in Sources */,
+				89023EC72AD6F422009FFCBD /* UserDefaultsSearchHistory.swift in Sources */,
 				89023EAE2AD6CB59009FFCBD /* SubwaySearchViewController.swift in Sources */,
 				89023EBD2AD6D165009FFCBD /* String+.swift in Sources */,
+				89023ECD2AD6F4E4009FFCBD /* SearchHistoryRepository.swift in Sources */,
 				89023EBA2AD6D109009FFCBD /* SubwayStation.swift in Sources */,
 				89023EB82AD6D109009FFCBD /* UpDownDirection.swift in Sources */,
 				894266A62AD68B8500C44C04 /* HomeArrivalView.swift in Sources */,
+				89023ED02AD6F622009FFCBD /* SearchHistoryStorage.swift in Sources */,
+				89023ED32AD6F6D8009FFCBD /* SubwaySearchViewModel.swift in Sources */,
 				8942668E2AD67AC600C44C04 /* ReusableProtocol.swift in Sources */,
 				894266862AD6796D00C44C04 /* APIKey.swift in Sources */,
 				894266B92AD6BC2600C44C04 /* TransportationType.swift in Sources */,
 				894266A92AD68C2D00C44C04 /* UIButton.Configuration+.swift in Sources */,
 				89023EA82AD6CA19009FFCBD /* Router.swift in Sources */,
 				894266A02AD68AE700C44C04 /* HomeViewController.swift in Sources */,
+				89023EDF2AD6FDB5009FFCBD /* UIViewController+.swift in Sources */,
+				89023ECA2AD6F491009FFCBD /* SearchHistoryType.swift in Sources */,
 				894266902AD67AC600C44C04 /* BaseTableViewCell.swift in Sources */,
 				89023EBB2AD6D109009FFCBD /* SubwayLine.swift in Sources */,
 				894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */,
+				89023EE12AD70E47009FFCBD /* SearchHistoryHeaderView.swift in Sources */,
 				8942668F2AD67AC600C44C04 /* BaseViewController.swift in Sources */,
 				89023EC22AD6D29D009FFCBD /* SearchHistoryCell.swift in Sources */,
 				89023EBF2AD6D17E009FFCBD /* DateFormatter+.swift in Sources */,
@@ -872,6 +962,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		89023ED42AD6F872009FFCBD /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 		8942667D2AD677A200C44C04 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/SwiftLint";
@@ -895,6 +993,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 89023EA22AD6C9CC009FFCBD /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		89023ED52AD6F872009FFCBD /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89023ED42AD6F872009FFCBD /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		89023ED72AD6F872009FFCBD /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89023ED42AD6F872009FFCBD /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		89023ED92AD6F872009FFCBD /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89023ED42AD6F872009FFCBD /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
 		};
 		8942667E2AD677CD00C44C04 /* SwiftLintPlugin */ = {
 			isa = XCSwiftPackageProductDependency;

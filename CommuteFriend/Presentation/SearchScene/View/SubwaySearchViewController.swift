@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import RxSwift
+import RxRelay
+import RxCocoa
 
 final class SubwaySearchViewController: BaseViewController {
 
     typealias DataSourceType = UITableViewDiffableDataSource<Int, String>
+    typealias SnapshotType = NSDiffableDataSourceSnapshot<Int, String>
 
     // MARK: - UI
 
@@ -32,20 +36,13 @@ final class SubwaySearchViewController: BaseViewController {
             SearchHistoryCell.self,
             forCellReuseIdentifier: SearchHistoryCell.reuseIdentifier
         )
-        dataSource = DataSourceType(
-            tableView: tableView,
-            cellProvider: { tableView, indexPath, itemIdentifier in
-                guard let cell = tableView.dequeueReusableCell(
-                    withIdentifier: SearchHistoryCell.reuseIdentifier,
-                    for: indexPath
-                ) as? SearchHistoryCell
-                else { return UITableViewCell() }
-
-                cell.configure(with: itemIdentifier)
-                return cell
-            }
+        tableView.register(
+            SearchHistoryHeaderView.self,
+            forHeaderFooterViewReuseIdentifier: SearchHistoryHeaderView.reuseIdentifier
         )
-        tableView.dataSource = dataSource
+
+        tableView.estimatedRowHeight = 40.0
+        tableView.delegate = self
         return tableView
     }()
 
@@ -58,12 +55,33 @@ final class SubwaySearchViewController: BaseViewController {
 
     // MARK: - Property
 
+    private let viewModel: SubwaySearchViewModel
+
     private var dataSource: DataSourceType?
+    private let disposeBag = DisposeBag()
+
+    // MARK: - Init
+
+    init(viewModel: SubwaySearchViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    deinit {
+        deinitPrint()
+    }
 
     // MARK: - LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureDataSource()
+        bindViewModel()
+        viewModel.viewDidLoad()
     }
 
     override func configureUI() {
@@ -96,6 +114,78 @@ final class SubwaySearchViewController: BaseViewController {
 
 }
 
+// MARK: - Private Method
+
+private extension SubwaySearchViewController {
+
+    func bindViewModel() {
+        viewModel.searchHistoryList
+            .subscribe(with: self) { owner, list in
+                owner.emptyLabel.isHidden = !list.isEmpty
+                owner.updateSearchHistorySnapShot(data: list)
+            }
+            .disposed(by: disposeBag)
+
+        viewModel.searchKeyword
+            .asDriver()
+            .drive(with: self) { owner, text in
+                owner.searchController.searchBar.text = text
+                owner.searchController.searchBar.becomeFirstResponder()
+            }
+            .disposed(by: disposeBag)
+    }
+
+    func configureDataSource() {
+        dataSource = DataSourceType(
+            tableView: searchHistoryTableView,
+            cellProvider: { tableView, indexPath, itemIdentifier in
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: SearchHistoryCell.reuseIdentifier,
+                    for: indexPath
+                ) as? SearchHistoryCell
+                else { return UITableViewCell() }
+
+                cell.configure(with: itemIdentifier)
+                return cell
+            }
+        )
+    }
+
+    func updateSearchHistorySnapShot(data: [String]) {
+        var snapshot = SnapshotType()
+
+        snapshot.appendSections([1])
+        snapshot.appendItems(data, toSection: 1)
+
+        guard let dataSource else { return }
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+// MARK: - TableViewDelegate
+
+extension SubwaySearchViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let data = dataSource?.itemIdentifier(for: indexPath) else { return }
+        viewModel.didSelectSearchHistoryItem(of: data)
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let header = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: SearchHistoryHeaderView.reuseIdentifier
+        ) as? SearchHistoryHeaderView
+        else { return UIView() }
+
+        header.deleteButtonHandler = { [weak self] in
+            guard let self else { return }
+            viewModel.clearSearchHistory()
+        }
+        return header
+    }
+
+}
+
 // MARK: - SearchController Delegate
 
 extension SubwaySearchViewController: UISearchResultsUpdating {
@@ -109,7 +199,7 @@ extension SubwaySearchViewController: UISearchResultsUpdating {
 extension SubwaySearchViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // TODO: - 검색 로직
+        viewModel.searchButtonClicked(with: searchBar.text!)
         searchBar.resignFirstResponder()
     }
 
