@@ -22,10 +22,13 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureLayout()
+        configureNavigationItem()
     }
 
     func configureUI() { }
 
     func configureLayout() { }
+
+    func configureNavigationItem() { }
 
 }

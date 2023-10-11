@@ -43,8 +43,13 @@ final class HomeViewController: BaseViewController {
     }()
 
     private lazy var subwaySelectionView: SelectableView = {
-        let view = SelectableView(selectableType: TransportationType.subway) { type in
-            print(type.description)
+        let view = SelectableView(selectableType: TransportationType.subway) { [weak self] _ in
+            guard let self else { return }
+            let subwaySearchViewController = SubwaySearchViewController()
+            let navigationController = UINavigationController(
+                rootViewController: subwaySearchViewController
+            )
+            present(navigationController, animated: true)
         }
         return view
     }()
@@ -76,13 +81,6 @@ final class HomeViewController: BaseViewController {
         button.tintColor = .label
         return button
     }()
-
-    // MARK: - LifeCycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureNavigationItem()
-    }
 
     // MARK: - Method
 
@@ -119,7 +117,12 @@ final class HomeViewController: BaseViewController {
                 $0.height.equalTo(view.snp.width)
             }
         }
+    }
 
+    override func configureNavigationItem() {
+        super.configureNavigationItem()
+        navigationItem.leftBarButtonItem = titleLeftBarButtonItem
+        navigationItem.rightBarButtonItem = settingBarButtonItem
     }
 
 }
@@ -127,11 +130,6 @@ final class HomeViewController: BaseViewController {
 // MARK: - Private method
 
 private extension HomeViewController {
-
-    func configureNavigationItem() {
-        navigationItem.leftBarButtonItem = titleLeftBarButtonItem
-        navigationItem.rightBarButtonItem = settingBarButtonItem
-    }
 
     @objc func didSettingButtonTouched(_ sender: UIBarButtonItem) {
         print(#function)

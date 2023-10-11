@@ -10,6 +10,7 @@
 		89023EA42AD6C9CC009FFCBD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 89023EA32AD6C9CC009FFCBD /* Alamofire */; };
 		89023EA62AD6C9DB009FFCBD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EA52AD6C9DB009FFCBD /* NetworkManager.swift */; };
 		89023EA82AD6CA19009FFCBD /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EA72AD6CA19009FFCBD /* Router.swift */; };
+		89023EAE2AD6CB59009FFCBD /* SubwaySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EAD2AD6CB59009FFCBD /* SubwaySearchViewController.swift */; };
 		8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664D2AD6770600C44C04 /* AppDelegate.swift */; };
 		894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664F2AD6770600C44C04 /* SceneDelegate.swift */; };
 		894266522AD6770600C44C04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266512AD6770600C44C04 /* ViewController.swift */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		89023EA52AD6C9DB009FFCBD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		89023EA72AD6CA19009FFCBD /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		89023EAD2AD6CB59009FFCBD /* SubwaySearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySearchViewController.swift; sourceTree = "<group>"; };
 		8942664A2AD6770600C44C04 /* CommuteFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommuteFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8942664D2AD6770600C44C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8942664F2AD6770600C44C04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		89023EA92AD6CAF7009FFCBD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				894266842AD6794E00C44C04 /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		89023EAB2AD6CB3C009FFCBD /* SearchScene */ = {
+			isa = PBXGroup;
+			children = (
+				89023EAC2AD6CB4B009FFCBD /* View */,
+			);
+			path = SearchScene;
+			sourceTree = "<group>";
+		};
+		89023EAC2AD6CB4B009FFCBD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				89023EAD2AD6CB59009FFCBD /* SubwaySearchViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		894266412AD6770600C44C04 = {
 			isa = PBXGroup;
 			children = (
@@ -144,7 +170,7 @@
 				894266872AD679B400C44C04 /* Application */,
 				894266B62AD6BC0900C44C04 /* Domain */,
 				894266882AD67A8600C44C04 /* Presentation */,
-				894266842AD6794E00C44C04 /* Network */,
+				89023EA92AD6CAF7009FFCBD /* Data */,
 				894266512AD6770600C44C04 /* ViewController.swift */,
 				894266562AD6770700C44C04 /* Assets.xcassets */,
 				894266582AD6770700C44C04 /* LaunchScreen.storyboard */,
@@ -196,6 +222,7 @@
 				894266892AD67A9500C44C04 /* Base */,
 				894266B12AD6BAD200C44C04 /* Common */,
 				894266952AD67D8600C44C04 /* HomeScene */,
+				89023EAB2AD6CB3C009FFCBD /* SearchScene */,
 				894266A72AD68C0700C44C04 /* Extensions */,
 			);
 			path = Presentation;
@@ -430,6 +457,7 @@
 				8942669A2AD6809500C44C04 /* TabBarItems.swift in Sources */,
 				8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */,
 				894266982AD6803200C44C04 /* AppTabBarController.swift in Sources */,
+				89023EAE2AD6CB59009FFCBD /* SubwaySearchViewController.swift in Sources */,
 				894266A62AD68B8500C44C04 /* HomeArrivalView.swift in Sources */,
 				8942668E2AD67AC600C44C04 /* ReusableProtocol.swift in Sources */,
 				894266862AD6796D00C44C04 /* APIKey.swift in Sources */,
