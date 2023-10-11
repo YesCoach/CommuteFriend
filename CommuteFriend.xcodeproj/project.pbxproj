@@ -19,6 +19,11 @@
 		894266812AD677F500C44C04 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 894266802AD677F500C44C04 /* .swiftlint.yml */; };
 		894266832AD6785500C44C04 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 894266822AD6785500C44C04 /* .gitignore */; };
 		894266862AD6796D00C44C04 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266852AD6796D00C44C04 /* APIKey.swift */; };
+		8942668E2AD67AC600C44C04 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942668A2AD67AC600C44C04 /* ReusableProtocol.swift */; };
+		8942668F2AD67AC600C44C04 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942668B2AD67AC600C44C04 /* BaseViewController.swift */; };
+		894266902AD67AC600C44C04 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942668C2AD67AC600C44C04 /* BaseTableViewCell.swift */; };
+		894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942668D2AD67AC600C44C04 /* BaseCollectionViewCell.swift */; };
+		894266942AD67B2900C44C04 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 894266932AD67B2900C44C04 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +60,10 @@
 		894266802AD677F500C44C04 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		894266822AD6785500C44C04 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		894266852AD6796D00C44C04 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		8942668A2AD67AC600C44C04 /* ReusableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
+		8942668B2AD67AC600C44C04 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		8942668C2AD67AC600C44C04 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		8942668D2AD67AC600C44C04 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				894266942AD67B2900C44C04 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +119,7 @@
 			children = (
 				894266872AD679B400C44C04 /* Application */,
 				894266842AD6794E00C44C04 /* Network */,
+				894266882AD67A8600C44C04 /* Presentation */,
 				894266512AD6770600C44C04 /* ViewController.swift */,
 				894266532AD6770600C44C04 /* Main.storyboard */,
 				894266562AD6770700C44C04 /* Assets.xcassets */,
@@ -152,6 +163,25 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		894266882AD67A8600C44C04 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				894266892AD67A9500C44C04 /* Base */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		894266892AD67A9500C44C04 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				8942668D2AD67AC600C44C04 /* BaseCollectionViewCell.swift */,
+				8942668C2AD67AC600C44C04 /* BaseTableViewCell.swift */,
+				8942668B2AD67AC600C44C04 /* BaseViewController.swift */,
+				8942668A2AD67AC600C44C04 /* ReusableProtocol.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -169,6 +199,9 @@
 				8942667F2AD677CD00C44C04 /* PBXTargetDependency */,
 			);
 			name = CommuteFriend;
+			packageProductDependencies = (
+				894266932AD67B2900C44C04 /* SnapKit */,
+			);
 			productName = CommuteFriend;
 			productReference = 8942664A2AD6770600C44C04 /* CommuteFriend.app */;
 			productType = "com.apple.product-type.application";
@@ -243,6 +276,7 @@
 			mainGroup = 894266412AD6770600C44C04;
 			packageReferences = (
 				8942667D2AD677A200C44C04 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+				894266922AD67B2900C44C04 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 8942664B2AD6770600C44C04 /* Products */;
 			projectDirPath = "";
@@ -290,9 +324,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				894266522AD6770600C44C04 /* ViewController.swift in Sources */,
+				894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */,
 				8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */,
+				8942668E2AD67AC600C44C04 /* ReusableProtocol.swift in Sources */,
 				894266862AD6796D00C44C04 /* APIKey.swift in Sources */,
+				894266902AD67AC600C44C04 /* BaseTableViewCell.swift in Sources */,
 				894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */,
+				8942668F2AD67AC600C44C04 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +696,14 @@
 				minimumVersion = 0.53.0;
 			};
 		};
+		894266922AD67B2900C44C04 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -665,6 +711,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8942667D2AD677A200C44C04 /* XCRemoteSwiftPackageReference "SwiftLint" */;
 			productName = "plugin:SwiftLintPlugin";
+		};
+		894266932AD67B2900C44C04 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 894266922AD67B2900C44C04 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
