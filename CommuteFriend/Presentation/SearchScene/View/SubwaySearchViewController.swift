@@ -9,6 +9,8 @@ import UIKit
 
 final class SubwaySearchViewController: BaseViewController {
 
+    typealias DataSourceType = UITableViewDiffableDataSource<Int, String>
+
     // MARK: - UI
 
     private lazy var searchController: UISearchController = {
@@ -24,6 +26,29 @@ final class SubwaySearchViewController: BaseViewController {
         return searchController
     }()
 
+    private lazy var searchHistoryTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.register(
+            SearchHistoryCell.self,
+            forCellReuseIdentifier: SearchHistoryCell.reuseIdentifier
+        )
+        dataSource = DataSourceType(
+            tableView: tableView,
+            cellProvider: { tableView, indexPath, itemIdentifier in
+                guard let cell = tableView.dequeueReusableCell(
+                    withIdentifier: SearchHistoryCell.reuseIdentifier,
+                    for: indexPath
+                ) as? SearchHistoryCell
+                else { return UITableViewCell() }
+
+                cell.configure(with: itemIdentifier)
+                return cell
+            }
+        )
+        tableView.dataSource = dataSource
+        return tableView
+    }()
+
     private lazy var emptyLabel: UILabel = {
         let label = UILabel()
         label.text = "검색기록이 없어요!"
@@ -31,9 +56,18 @@ final class SubwaySearchViewController: BaseViewController {
         return label
     }()
 
+    // MARK: - Property
+
+    private var dataSource: DataSourceType?
+
+    // MARK: - LifeCycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
     override func configureUI() {
         super.configureUI()
-
         view.backgroundColor = .systemBackground
     }
 
@@ -41,8 +75,12 @@ final class SubwaySearchViewController: BaseViewController {
         super.configureLayout()
 
         [
-            emptyLabel
+            searchHistoryTableView, emptyLabel
         ].forEach { view.addSubview($0) }
+
+        searchHistoryTableView.snp.makeConstraints {
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
+        }
 
         emptyLabel.snp.makeConstraints {
             $0.center.equalTo(view.safeAreaLayoutGuide)
