@@ -10,7 +10,6 @@
 		8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664D2AD6770600C44C04 /* AppDelegate.swift */; };
 		894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664F2AD6770600C44C04 /* SceneDelegate.swift */; };
 		894266522AD6770600C44C04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266512AD6770600C44C04 /* ViewController.swift */; };
-		894266552AD6770600C44C04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894266532AD6770600C44C04 /* Main.storyboard */; };
 		894266572AD6770700C44C04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 894266562AD6770700C44C04 /* Assets.xcassets */; };
 		8942665A2AD6770700C44C04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894266582AD6770700C44C04 /* LaunchScreen.storyboard */; };
 		894266652AD6770700C44C04 /* CommuteFriendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266642AD6770700C44C04 /* CommuteFriendTests.swift */; };
@@ -48,7 +47,6 @@
 		8942664D2AD6770600C44C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8942664F2AD6770600C44C04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		894266512AD6770600C44C04 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		894266542AD6770600C44C04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		894266562AD6770700C44C04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		894266592AD6770700C44C04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8942665B2AD6770700C44C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 				894266842AD6794E00C44C04 /* Network */,
 				894266882AD67A8600C44C04 /* Presentation */,
 				894266512AD6770600C44C04 /* ViewController.swift */,
-				894266532AD6770600C44C04 /* Main.storyboard */,
 				894266562AD6770700C44C04 /* Assets.xcassets */,
 				894266582AD6770700C44C04 /* LaunchScreen.storyboard */,
 				8942665B2AD6770700C44C04 /* Info.plist */,
@@ -298,7 +295,6 @@
 				894266812AD677F500C44C04 /* .swiftlint.yml in Resources */,
 				8942665A2AD6770700C44C04 /* LaunchScreen.storyboard in Resources */,
 				894266572AD6770700C44C04 /* Assets.xcassets in Resources */,
-				894266552AD6770600C44C04 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,14 +367,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		894266532AD6770600C44C04 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				894266542AD6770600C44C04 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		894266582AD6770700C44C04 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -514,10 +502,8 @@
 				DEVELOPMENT_TEAM = 67D46DJNPH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CommuteFriend/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "출근메이트";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -547,10 +533,8 @@
 				DEVELOPMENT_TEAM = 67D46DJNPH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CommuteFriend/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "출근메이트";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
