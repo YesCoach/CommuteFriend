@@ -11,6 +11,17 @@ final class HomeViewController: BaseViewController {
 
     // MARK: - View
 
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        return scrollView
+    }()
+
+    private lazy var contentStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        return stackView
+    }()
+
     private lazy var homeArrivalView: HomeArrivalView = {
         let view = HomeArrivalView()
         return view
@@ -55,13 +66,23 @@ final class HomeViewController: BaseViewController {
         super.configureLayout()
 
         [
-            homeArrivalView
+            scrollView
         ].forEach { view.addSubview($0) }
 
-        homeArrivalView.snp.makeConstraints {
-            $0.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalToSuperview().multipliedBy(0.3)
+        scrollView.snp.makeConstraints {
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
+
+        scrollView.addSubview(contentStackView)
+
+        contentStackView.snp.makeConstraints {
+            $0.edges.width.equalTo(scrollView)
+        }
+
+        [
+            homeArrivalView
+        ].forEach { contentStackView.addArrangedSubview($0) }
+
     }
 
 }
