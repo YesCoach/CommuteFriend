@@ -12,7 +12,9 @@ import RxCocoa
 
 protocol SubwaySearchViewModelInput {
     func viewDidLoad()
+    func updateSearchResults(with keyword: String)
     func searchButtonClicked(with text: String)
+    func didSelectItem(of item: SubwayStation)
     func didSelectSearchHistoryItem(of text: String)
     func addSearchHistory(text: String)
     func removeSearchHistory(text: String)
@@ -20,6 +22,7 @@ protocol SubwaySearchViewModelInput {
 }
 
 protocol SubwaySearchViewModelOutput {
+    var searchResult: BehaviorSubject<[SubwayStation]> { get }
     var searchHistoryList: BehaviorSubject<[String]> { get }
     var searchKeyword: BehaviorRelay<String> { get }
 }
@@ -29,11 +32,14 @@ protocol SubwaySearchViewModel: SubwaySearchViewModelInput, SubwaySearchViewMode
 final class DefaultSubwaySearchViewModel: SubwaySearchViewModel {
 
     private let searchHistoryRepository: SearchHistoryRepository
+    private let subwayRepository: SubwayRepository
 
     init(
-        searchHistoryRepository: SearchHistoryRepository
+        searchHistoryRepository: SearchHistoryRepository,
+        subwayRepository: SubwayRepository
     ) {
         self.searchHistoryRepository = searchHistoryRepository
+        self.subwayRepository = subwayRepository
     }
 
     deinit {
@@ -42,6 +48,7 @@ final class DefaultSubwaySearchViewModel: SubwaySearchViewModel {
 
     // MARK: - SubwaySearchViewModelOutput
 
+    let searchResult: BehaviorSubject<[SubwayStation]> = BehaviorSubject(value: [])
     let searchHistoryList: BehaviorSubject<[String]> = BehaviorSubject(value: [])
     let searchKeyword: BehaviorRelay<String> = BehaviorRelay(value: "")
 
@@ -55,8 +62,24 @@ extension DefaultSubwaySearchViewModel {
         loadSearchHistory()
     }
 
+    func updateSearchResults(with keyword: String) {
+        subwayRepository.fetchStationByName(name: keyword) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let list):
+                searchResult.onNext(list)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
+
     func searchButtonClicked(with text: String) {
         addSearchHistory(text: text)
+    }
+
+    func didSelectItem(of item: SubwayStation) {
+        addSearchHistory(text: item.name)
     }
 
     func didSelectSearchHistoryItem(of text: String) {

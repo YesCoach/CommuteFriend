@@ -13,6 +13,10 @@ final class DIContainer {
 
     private init() { }
 
+    // MARK: - Network Service
+
+    lazy var networkManager: NetworkService = NetworkManager.shared
+
     // MARK: - Persistentr Storage
 
     lazy var searchHistoryStorage: SearchHistoryStorage = UserDefaultsSearchHistory()
@@ -31,7 +35,8 @@ private extension DIContainer {
 
     private func makeSubwaySearchViewModel() -> SubwaySearchViewModel {
         return DefaultSubwaySearchViewModel(
-            searchHistoryRepository: makeSearchHistoryRepository()
+            searchHistoryRepository: makeSearchHistoryRepository(),
+            subwayRepository: makeSubwayRepository()
         )
     }
 
@@ -39,6 +44,10 @@ private extension DIContainer {
 
     private func makeSearchHistoryRepository() -> SearchHistoryRepository {
         return SearchHistoryRepository(searchHistoryStorage: searchHistoryStorage)
+    }
+
+    private func makeSubwayRepository() -> SubwayRepository {
+        return SubwayRepository(networkManager: networkManager)
     }
 
 }

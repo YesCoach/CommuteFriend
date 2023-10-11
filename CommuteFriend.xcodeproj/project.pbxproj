@@ -30,6 +30,9 @@
 		89023EDD2AD6F8CA009FFCBD /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EDC2AD6F8CA009FFCBD /* DIContainer.swift */; };
 		89023EDF2AD6FDB5009FFCBD /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EDE2AD6FDB5009FFCBD /* UIViewController+.swift */; };
 		89023EE12AD70E47009FFCBD /* SearchHistoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EE02AD70E47009FFCBD /* SearchHistoryHeaderView.swift */; };
+		89023EE72AD715B5009FFCBD /* SubwayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EE62AD715B5009FFCBD /* SubwayRepository.swift */; };
+		89023EEA2AD7162A009FFCBD /* SubwayStationResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EE92AD7162A009FFCBD /* SubwayStationResponseDTO+Mapping.swift */; };
+		89023EEC2AD7163E009FFCBD /* DTOMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EEB2AD7163E009FFCBD /* DTOMapping.swift */; };
 		8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664D2AD6770600C44C04 /* AppDelegate.swift */; };
 		894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664F2AD6770600C44C04 /* SceneDelegate.swift */; };
 		894266522AD6770600C44C04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266512AD6770600C44C04 /* ViewController.swift */; };
@@ -95,6 +98,9 @@
 		89023EDC2AD6F8CA009FFCBD /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		89023EDE2AD6FDB5009FFCBD /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		89023EE02AD70E47009FFCBD /* SearchHistoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryHeaderView.swift; sourceTree = "<group>"; };
+		89023EE62AD715B5009FFCBD /* SubwayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayRepository.swift; sourceTree = "<group>"; };
+		89023EE92AD7162A009FFCBD /* SubwayStationResponseDTO+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SubwayStationResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		89023EEB2AD7163E009FFCBD /* DTOMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOMapping.swift; sourceTree = "<group>"; };
 		8942664A2AD6770600C44C04 /* CommuteFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommuteFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8942664D2AD6770600C44C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8942664F2AD6770600C44C04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -233,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				89023ECC2AD6F4E4009FFCBD /* SearchHistoryRepository.swift */,
+				89023EE62AD715B5009FFCBD /* SubwayRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -252,6 +259,15 @@
 				89023ED22AD6F6D8009FFCBD /* SubwaySearchViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		89023EE82AD7160D009FFCBD /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				89023EEB2AD7163E009FFCBD /* DTOMapping.swift */,
+				89023EE92AD7162A009FFCBD /* SubwayStationResponseDTO+Mapping.swift */,
+			);
+			path = DataMapping;
 			sourceTree = "<group>";
 		};
 		894266412AD6770600C44C04 = {
@@ -311,6 +327,7 @@
 		894266842AD6794E00C44C04 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				89023EE82AD7160D009FFCBD /* DataMapping */,
 				894266852AD6796D00C44C04 /* APIKey.swift */,
 				89023EA52AD6C9DB009FFCBD /* NetworkManager.swift */,
 				89023EA72AD6CA19009FFCBD /* Router.swift */,
@@ -572,11 +589,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89023EE72AD715B5009FFCBD /* SubwayRepository.swift in Sources */,
 				89023EB72AD6D109009FFCBD /* SubwayArrival.swift in Sources */,
 				89023EB92AD6D109009FFCBD /* SubwayArrivalCode.swift in Sources */,
 				89023EA62AD6C9DB009FFCBD /* NetworkManager.swift in Sources */,
 				894266AE2AD6AAC100C44C04 /* ProgressingView.swift in Sources */,
 				894266522AD6770600C44C04 /* ViewController.swift in Sources */,
+				89023EEC2AD7163E009FFCBD /* DTOMapping.swift in Sources */,
 				894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */,
 				8942669A2AD6809500C44C04 /* TabBarItems.swift in Sources */,
 				89023EDD2AD6F8CA009FFCBD /* DIContainer.swift in Sources */,
@@ -596,6 +615,7 @@
 				894266B92AD6BC2600C44C04 /* TransportationType.swift in Sources */,
 				894266A92AD68C2D00C44C04 /* UIButton.Configuration+.swift in Sources */,
 				89023EA82AD6CA19009FFCBD /* Router.swift in Sources */,
+				89023EEA2AD7162A009FFCBD /* SubwayStationResponseDTO+Mapping.swift in Sources */,
 				894266A02AD68AE700C44C04 /* HomeViewController.swift in Sources */,
 				89023EDF2AD6FDB5009FFCBD /* UIViewController+.swift in Sources */,
 				89023ECA2AD6F491009FFCBD /* SearchHistoryType.swift in Sources */,
