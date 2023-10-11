@@ -28,6 +28,8 @@
 		894266A02AD68AE700C44C04 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942669F2AD68AE700C44C04 /* HomeViewController.swift */; };
 		894266A62AD68B8500C44C04 /* HomeArrivalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266A52AD68B8500C44C04 /* HomeArrivalView.swift */; };
 		894266A92AD68C2D00C44C04 /* UIButton.Configuration+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266A82AD68C2D00C44C04 /* UIButton.Configuration+.swift */; };
+		894266AE2AD6AAC100C44C04 /* ProgressingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266AD2AD6AAC100C44C04 /* ProgressingView.swift */; };
+		894266B02AD6ABA500C44C04 /* ArrivalInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266AF2AD6ABA500C44C04 /* ArrivalInformationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		8942669F2AD68AE700C44C04 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		894266A52AD68B8500C44C04 /* HomeArrivalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArrivalView.swift; sourceTree = "<group>"; };
 		894266A82AD68C2D00C44C04 /* UIButton.Configuration+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton.Configuration+.swift"; sourceTree = "<group>"; };
+		894266AD2AD6AAC100C44C04 /* ProgressingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressingView.swift; sourceTree = "<group>"; };
+		894266AF2AD6ABA500C44C04 /* ArrivalInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalInformationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +226,8 @@
 			isa = PBXGroup;
 			children = (
 				894266A52AD68B8500C44C04 /* HomeArrivalView.swift */,
+				894266AD2AD6AAC100C44C04 /* ProgressingView.swift */,
+				894266AF2AD6ABA500C44C04 /* ArrivalInformationView.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -374,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				894266AE2AD6AAC100C44C04 /* ProgressingView.swift in Sources */,
 				894266522AD6770600C44C04 /* ViewController.swift in Sources */,
 				894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */,
 				8942669A2AD6809500C44C04 /* TabBarItems.swift in Sources */,
@@ -387,6 +394,7 @@
 				894266902AD67AC600C44C04 /* BaseTableViewCell.swift in Sources */,
 				894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */,
 				8942668F2AD67AC600C44C04 /* BaseViewController.swift in Sources */,
+				894266B02AD6ABA500C44C04 /* ArrivalInformationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

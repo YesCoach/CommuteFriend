@@ -28,7 +28,8 @@ final class HomeArrivalView: UIView {
         return label
     }()
 
-    private lazy var tempView: UIView = UIView()
+    private lazy var progressingView: ProgressingView = ProgressingView()
+    private lazy var arrivalInformationView: ArrivalInformationView = ArrivalInformationView()
 
     // MARK: - Init
 
@@ -60,12 +61,12 @@ private extension HomeArrivalView {
 
     func configureUI() {
         backgroundColor = .systemBackground
-        tempView.backgroundColor = .systemBackground
     }
 
     func configureLayout() {
         [
-            routeIconButton, stationLabel, destinationLabel, tempView
+            routeIconButton, stationLabel, destinationLabel,
+            progressingView, arrivalInformationView
         ].forEach {
             addSubview($0)
         }
@@ -84,8 +85,14 @@ private extension HomeArrivalView {
             $0.bottom.equalTo(stationLabel)
         }
 
-        tempView.snp.makeConstraints {
+        progressingView.snp.makeConstraints {
             $0.top.equalTo(routeIconButton.snp.bottom).offset(10)
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(100)
+        }
+
+        arrivalInformationView.snp.makeConstraints {
+            $0.top.equalTo(progressingView.snp.bottom)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
