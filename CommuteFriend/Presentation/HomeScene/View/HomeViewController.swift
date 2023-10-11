@@ -27,6 +27,35 @@ final class HomeViewController: BaseViewController {
         return view
     }()
 
+    private lazy var searchSelectionStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 20.0
+        stackView.distribution = .fillEqually
+        stackView.layoutMargins = .init(top: 0, left: 20, bottom: 0, right: 20)
+        stackView.isLayoutMarginsRelativeArrangement = true
+
+        [
+            subwaySelectionView, busSelectionView
+        ].forEach { stackView.addArrangedSubview($0) }
+
+        return stackView
+    }()
+
+    private lazy var subwaySelectionView: SelectableView = {
+        let view = SelectableView(selectableType: TransportationType.subway) { type in
+            print(type.description)
+        }
+        return view
+    }()
+
+    private lazy var busSelectionView: SelectableView = {
+        let view = SelectableView(selectableType: TransportationType.bus) { type in
+            print(type.description)
+        }
+        return view
+    }()
+
     private lazy var titleLeftBarButtonItem: UIBarButtonItem = {
         let label = UILabel()
         label.text = "출퇴근메이트"
@@ -80,8 +109,16 @@ final class HomeViewController: BaseViewController {
         }
 
         [
-            homeArrivalView
+            homeArrivalView, searchSelectionStackView
         ].forEach { contentStackView.addArrangedSubview($0) }
+
+        [
+            subwaySelectionView, busSelectionView
+        ].forEach { view in
+            view.snp.makeConstraints {
+                $0.height.equalTo(view.snp.width)
+            }
+        }
 
     }
 
