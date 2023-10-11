@@ -23,6 +23,8 @@
 		894266902AD67AC600C44C04 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942668C2AD67AC600C44C04 /* BaseTableViewCell.swift */; };
 		894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942668D2AD67AC600C44C04 /* BaseCollectionViewCell.swift */; };
 		894266942AD67B2900C44C04 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 894266932AD67B2900C44C04 /* SnapKit */; };
+		894266982AD6803200C44C04 /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266972AD6803200C44C04 /* AppTabBarController.swift */; };
+		8942669A2AD6809500C44C04 /* TabBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266992AD6809500C44C04 /* TabBarItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		8942668B2AD67AC600C44C04 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		8942668C2AD67AC600C44C04 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		8942668D2AD67AC600C44C04 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		894266972AD6803200C44C04 /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
+		894266992AD6809500C44C04 /* TabBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				894266872AD679B400C44C04 /* Application */,
-				894266842AD6794E00C44C04 /* Network */,
 				894266882AD67A8600C44C04 /* Presentation */,
+				894266842AD6794E00C44C04 /* Network */,
 				894266512AD6770600C44C04 /* ViewController.swift */,
 				894266562AD6770700C44C04 /* Assets.xcassets */,
 				894266582AD6770700C44C04 /* LaunchScreen.storyboard */,
@@ -163,7 +167,9 @@
 		894266882AD67A8600C44C04 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				894266962AD6802000C44C04 /* TabBar */,
 				894266892AD67A9500C44C04 /* Base */,
+				894266952AD67D8600C44C04 /* HomeScene */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -177,6 +183,22 @@
 				8942668A2AD67AC600C44C04 /* ReusableProtocol.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		894266952AD67D8600C44C04 /* HomeScene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HomeScene;
+			sourceTree = "<group>";
+		};
+		894266962AD6802000C44C04 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				894266972AD6803200C44C04 /* AppTabBarController.swift */,
+				894266992AD6809500C44C04 /* TabBarItems.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,7 +343,9 @@
 			files = (
 				894266522AD6770600C44C04 /* ViewController.swift in Sources */,
 				894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */,
+				8942669A2AD6809500C44C04 /* TabBarItems.swift in Sources */,
 				8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */,
+				894266982AD6803200C44C04 /* AppTabBarController.swift in Sources */,
 				8942668E2AD67AC600C44C04 /* ReusableProtocol.swift in Sources */,
 				894266862AD6796D00C44C04 /* APIKey.swift in Sources */,
 				894266902AD67AC600C44C04 /* BaseTableViewCell.swift in Sources */,
