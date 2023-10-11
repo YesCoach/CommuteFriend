@@ -1,0 +1,17 @@
+excluded:
+- CommuteFriend/*/AppDelegate.swift
+- CommuteFriend/*/SceneDelegate.swift
+- CommuteFriend/*/APIKey.swift
+
+disabled_rules:
+- xctfail_message
+- function_parameter_count
+- legacy_constructor
+- nesting
+- todo
+- file_length
+- type_name
+- cyclomatic_complexity
+- function_body_length
+
+line_length: 99
