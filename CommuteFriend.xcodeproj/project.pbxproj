@@ -25,6 +25,14 @@
 		894266942AD67B2900C44C04 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 894266932AD67B2900C44C04 /* SnapKit */; };
 		894266982AD6803200C44C04 /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266972AD6803200C44C04 /* AppTabBarController.swift */; };
 		8942669A2AD6809500C44C04 /* TabBarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266992AD6809500C44C04 /* TabBarItems.swift */; };
+		894266A02AD68AE700C44C04 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942669F2AD68AE700C44C04 /* HomeViewController.swift */; };
+		894266A62AD68B8500C44C04 /* HomeArrivalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266A52AD68B8500C44C04 /* HomeArrivalView.swift */; };
+		894266A92AD68C2D00C44C04 /* UIButton.Configuration+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266A82AD68C2D00C44C04 /* UIButton.Configuration+.swift */; };
+		894266AE2AD6AAC100C44C04 /* ProgressingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266AD2AD6AAC100C44C04 /* ProgressingView.swift */; };
+		894266B02AD6ABA500C44C04 /* ArrivalInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266AF2AD6ABA500C44C04 /* ArrivalInformationView.swift */; };
+		894266B32AD6BAE300C44C04 /* SelectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266B22AD6BAE300C44C04 /* SelectableView.swift */; };
+		894266B52AD6BB1500C44C04 /* SelectableItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266B42AD6BB1500C44C04 /* SelectableItemType.swift */; };
+		894266B92AD6BC2600C44C04 /* TransportationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266B82AD6BC2600C44C04 /* TransportationType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +74,14 @@
 		8942668D2AD67AC600C44C04 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		894266972AD6803200C44C04 /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
 		894266992AD6809500C44C04 /* TabBarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItems.swift; sourceTree = "<group>"; };
+		8942669F2AD68AE700C44C04 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		894266A52AD68B8500C44C04 /* HomeArrivalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArrivalView.swift; sourceTree = "<group>"; };
+		894266A82AD68C2D00C44C04 /* UIButton.Configuration+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton.Configuration+.swift"; sourceTree = "<group>"; };
+		894266AD2AD6AAC100C44C04 /* ProgressingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressingView.swift; sourceTree = "<group>"; };
+		894266AF2AD6ABA500C44C04 /* ArrivalInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalInformationView.swift; sourceTree = "<group>"; };
+		894266B22AD6BAE300C44C04 /* SelectableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableView.swift; sourceTree = "<group>"; };
+		894266B42AD6BB1500C44C04 /* SelectableItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableItemType.swift; sourceTree = "<group>"; };
+		894266B82AD6BC2600C44C04 /* TransportationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				894266872AD679B400C44C04 /* Application */,
+				894266B62AD6BC0900C44C04 /* Domain */,
 				894266882AD67A8600C44C04 /* Presentation */,
 				894266842AD6794E00C44C04 /* Network */,
 				894266512AD6770600C44C04 /* ViewController.swift */,
@@ -169,7 +186,9 @@
 			children = (
 				894266962AD6802000C44C04 /* TabBar */,
 				894266892AD67A9500C44C04 /* Base */,
+				894266B12AD6BAD200C44C04 /* Common */,
 				894266952AD67D8600C44C04 /* HomeScene */,
+				894266A72AD68C0700C44C04 /* Extensions */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -188,6 +207,8 @@
 		894266952AD67D8600C44C04 /* HomeScene */ = {
 			isa = PBXGroup;
 			children = (
+				894266A12AD68B5700C44C04 /* View */,
+				894266A42AD68B6A00C44C04 /* SubView */,
 			);
 			path = HomeScene;
 			sourceTree = "<group>";
@@ -199,6 +220,57 @@
 				894266992AD6809500C44C04 /* TabBarItems.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		894266A12AD68B5700C44C04 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8942669F2AD68AE700C44C04 /* HomeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		894266A42AD68B6A00C44C04 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				894266A52AD68B8500C44C04 /* HomeArrivalView.swift */,
+				894266AD2AD6AAC100C44C04 /* ProgressingView.swift */,
+				894266AF2AD6ABA500C44C04 /* ArrivalInformationView.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		894266A72AD68C0700C44C04 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				894266A82AD68C2D00C44C04 /* UIButton.Configuration+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		894266B12AD6BAD200C44C04 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				894266B22AD6BAE300C44C04 /* SelectableView.swift */,
+				894266B42AD6BB1500C44C04 /* SelectableItemType.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		894266B62AD6BC0900C44C04 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				894266B72AD6BC1300C44C04 /* Model */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		894266B72AD6BC1300C44C04 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				894266B82AD6BC2600C44C04 /* TransportationType.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,16 +413,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				894266AE2AD6AAC100C44C04 /* ProgressingView.swift in Sources */,
 				894266522AD6770600C44C04 /* ViewController.swift in Sources */,
 				894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */,
 				8942669A2AD6809500C44C04 /* TabBarItems.swift in Sources */,
 				8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */,
 				894266982AD6803200C44C04 /* AppTabBarController.swift in Sources */,
+				894266A62AD68B8500C44C04 /* HomeArrivalView.swift in Sources */,
 				8942668E2AD67AC600C44C04 /* ReusableProtocol.swift in Sources */,
 				894266862AD6796D00C44C04 /* APIKey.swift in Sources */,
+				894266B92AD6BC2600C44C04 /* TransportationType.swift in Sources */,
+				894266A92AD68C2D00C44C04 /* UIButton.Configuration+.swift in Sources */,
+				894266A02AD68AE700C44C04 /* HomeViewController.swift in Sources */,
 				894266902AD67AC600C44C04 /* BaseTableViewCell.swift in Sources */,
 				894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */,
 				8942668F2AD67AC600C44C04 /* BaseViewController.swift in Sources */,
+				894266B32AD6BAE300C44C04 /* SelectableView.swift in Sources */,
+				894266B52AD6BB1500C44C04 /* SelectableItemType.swift in Sources */,
+				894266B02AD6ABA500C44C04 /* ArrivalInformationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

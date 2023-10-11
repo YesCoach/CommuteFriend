@@ -15,8 +15,7 @@ final class AppTabBarController: UITabBarController {
     }
 
     private func setTabBarController() {
-        let homeViewController = UIViewController()
-        homeViewController.view.backgroundColor = .systemRed
+        let homeViewController = HomeViewController()
         homeViewController.tabBarItem = TabBarItems.home.tabBarItem
 
         let favoriteViewController = UIViewController()
@@ -25,7 +24,8 @@ final class AppTabBarController: UITabBarController {
 
         tabBar.tintColor = .label
 
-        self.viewControllers = [homeViewController, favoriteViewController]
+        let navigationController = UINavigationController(rootViewController: homeViewController)
+        self.viewControllers = [navigationController, favoriteViewController]
     }
 
 }
