@@ -60,7 +60,7 @@ private extension HomeArrivalView {
 
     func configureUI() {
         backgroundColor = .systemBackground
-        tempView.backgroundColor = .systemCyan
+        tempView.backgroundColor = .systemBackground
     }
 
     func configureLayout() {
