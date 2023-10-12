@@ -36,7 +36,7 @@ private extension DIContainer {
     private func makeSubwaySearchViewModel() -> SubwaySearchViewModel {
         return DefaultSubwaySearchViewModel(
             searchHistoryRepository: makeSearchHistoryRepository(),
-            subwayRepository: makeSubwayRepository()
+            subwayRepository: makeLocalSubwayRepository()
         )
     }
 
@@ -48,6 +48,10 @@ private extension DIContainer {
 
     private func makeSubwayRepository() -> SubwayRepository {
         return SubwayRepository(networkManager: networkManager)
+    }
+
+    private func makeLocalSubwayRepository() -> LocalSubwayRepository {
+        return LocalSubwayRepository.shared
     }
 
 }

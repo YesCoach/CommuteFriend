@@ -32,11 +32,11 @@ protocol SubwaySearchViewModel: SubwaySearchViewModelInput, SubwaySearchViewMode
 final class DefaultSubwaySearchViewModel: SubwaySearchViewModel {
 
     private let searchHistoryRepository: SearchHistoryRepository
-    private let subwayRepository: SubwayRepository
+    private let subwayRepository: LocalSubwayRepository
 
     init(
         searchHistoryRepository: SearchHistoryRepository,
-        subwayRepository: SubwayRepository
+        subwayRepository: LocalSubwayRepository
     ) {
         self.searchHistoryRepository = searchHistoryRepository
         self.subwayRepository = subwayRepository
@@ -64,15 +64,9 @@ extension DefaultSubwaySearchViewModel {
 
     func updateSearchResults(with keyword: String) {
         if keyword.trimmingCharacters(in: [" "]).isEmpty { return }
-        subwayRepository.fetchStationByName(name: keyword) { [weak self] result in
-            guard let self else { return }
-            switch result {
-            case .success(let list):
-                searchResult.onNext(list)
-            case .failure(let error):
-                debugPrint(error)
-            }
-        }
+
+        guard let result = subwayRepository.fetchStationByName(name: keyword) else { return }
+        searchResult.onNext(result)
     }
 
     func searchButtonClicked(with text: String) {
