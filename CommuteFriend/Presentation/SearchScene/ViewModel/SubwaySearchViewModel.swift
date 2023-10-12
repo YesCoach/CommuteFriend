@@ -85,6 +85,7 @@ extension DefaultSubwaySearchViewModel {
     func didSelectSearchHistoryItem(of text: String) {
         searchKeyword.accept(text)
         addSearchHistory(text: text)
+        updateSearchResults(with: text)
     }
 
     /// 검색 기록을 추가합니다.

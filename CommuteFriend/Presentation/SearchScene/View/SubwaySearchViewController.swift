@@ -19,7 +19,7 @@ final class SubwaySearchViewController: BaseViewController {
 
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(
-            searchResultsController: nil
+            searchResultsController: searchResultViewController
         )
         searchController.searchResultsUpdater = self
         searchController.searchBar.delegate = self
@@ -28,6 +28,16 @@ final class SubwaySearchViewController: BaseViewController {
         searchController.searchBar.returnKeyType = .search
         searchController.hidesNavigationBarDuringPresentation = false
         return searchController
+    }()
+
+    private lazy var searchResultViewController: SubwaySearchResultViewController = {
+        let viewController = SubwaySearchResultViewController(nibName: nil, bundle: nil)
+        viewController.itemSelectHandler = { [weak self] item in
+            guard let self else { return }
+            searchController.searchBar.resignFirstResponder()
+            viewModel.didSelectItem(of: item)
+        }
+        return viewController
     }()
 
     private lazy var searchHistoryTableView: UITableView = {
@@ -69,6 +79,11 @@ final class SubwaySearchViewController: BaseViewController {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        searchController.isActive = false
     }
 
     deinit {
@@ -119,6 +134,12 @@ final class SubwaySearchViewController: BaseViewController {
 private extension SubwaySearchViewController {
 
     func bindViewModel() {
+        viewModel.searchResult
+            .subscribe(with: self) { owner, list in
+                owner.searchResultViewController.updateSnapshot(data: list)
+            }
+            .disposed(by: disposeBag)
+
         viewModel.searchHistoryList
             .subscribe(with: self) { owner, list in
                 owner.emptyLabel.isHidden = !list.isEmpty
@@ -160,6 +181,7 @@ private extension SubwaySearchViewController {
         guard let dataSource else { return }
         dataSource.apply(snapshot, animatingDifferences: true)
     }
+
 }
 
 // MARK: - TableViewDelegate
@@ -191,7 +213,7 @@ extension SubwaySearchViewController: UITableViewDelegate {
 extension SubwaySearchViewController: UISearchResultsUpdating {
 
     func updateSearchResults(for searchController: UISearchController) {
-        // TODO: - 검색 로직
+        viewModel.updateSearchResults(with: searchController.searchBar.text!)
     }
 
 }

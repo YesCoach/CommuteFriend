@@ -46,6 +46,7 @@ final class HomeViewController: BaseViewController {
         let view = SelectableView(selectableType: TransportationType.subway) { [weak self] _ in
             guard let self else { return }
             let subwaySearchViewController = DIContainer.shared.makeSubwaySearchViewController()
+
             let navigationController = UINavigationController(
                 rootViewController: subwaySearchViewController
             )

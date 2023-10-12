@@ -33,6 +33,10 @@
 		89023EE72AD715B5009FFCBD /* SubwayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EE62AD715B5009FFCBD /* SubwayRepository.swift */; };
 		89023EEA2AD7162A009FFCBD /* SubwayStationResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EE92AD7162A009FFCBD /* SubwayStationResponseDTO+Mapping.swift */; };
 		89023EEC2AD7163E009FFCBD /* DTOMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EEB2AD7163E009FFCBD /* DTOMapping.swift */; };
+		89023EEE2AD71882009FFCBD /* SubwaySearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EED2AD71882009FFCBD /* SubwaySearchResultViewController.swift */; };
+		89023EF02AD719D0009FFCBD /* SubwaySearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EEF2AD719D0009FFCBD /* SubwaySearchResultCell.swift */; };
+		89023EF22AD71C05009FFCBD /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EF12AD71C05009FFCBD /* UIColor+.swift */; };
+		89023F072AD7A063009FFCBD /* TestSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F062AD7A063009FFCBD /* TestSearchVC.swift */; };
 		8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664D2AD6770600C44C04 /* AppDelegate.swift */; };
 		894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664F2AD6770600C44C04 /* SceneDelegate.swift */; };
 		894266522AD6770600C44C04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266512AD6770600C44C04 /* ViewController.swift */; };
@@ -101,6 +105,10 @@
 		89023EE62AD715B5009FFCBD /* SubwayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayRepository.swift; sourceTree = "<group>"; };
 		89023EE92AD7162A009FFCBD /* SubwayStationResponseDTO+Mapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SubwayStationResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		89023EEB2AD7163E009FFCBD /* DTOMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOMapping.swift; sourceTree = "<group>"; };
+		89023EED2AD71882009FFCBD /* SubwaySearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySearchResultViewController.swift; sourceTree = "<group>"; };
+		89023EEF2AD719D0009FFCBD /* SubwaySearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySearchResultCell.swift; sourceTree = "<group>"; };
+		89023EF12AD71C05009FFCBD /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		89023F062AD7A063009FFCBD /* TestSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSearchVC.swift; sourceTree = "<group>"; };
 		8942664A2AD6770600C44C04 /* CommuteFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommuteFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8942664D2AD6770600C44C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8942664F2AD6770600C44C04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -185,7 +193,9 @@
 		89023EAC2AD6CB4B009FFCBD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				89023F062AD7A063009FFCBD /* TestSearchVC.swift */,
 				89023EAD2AD6CB59009FFCBD /* SubwaySearchViewController.swift */,
+				89023EED2AD71882009FFCBD /* SubwaySearchResultViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -206,6 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				89023EC12AD6D29D009FFCBD /* SearchHistoryCell.swift */,
+				89023EEF2AD719D0009FFCBD /* SubwaySearchResultCell.swift */,
+				89023EF12AD71C05009FFCBD /* UIColor+.swift */,
 				89023EE02AD70E47009FFCBD /* SearchHistoryHeaderView.swift */,
 			);
 			path = Cell;
@@ -597,6 +609,7 @@
 				894266522AD6770600C44C04 /* ViewController.swift in Sources */,
 				89023EEC2AD7163E009FFCBD /* DTOMapping.swift in Sources */,
 				894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */,
+				89023F072AD7A063009FFCBD /* TestSearchVC.swift in Sources */,
 				8942669A2AD6809500C44C04 /* TabBarItems.swift in Sources */,
 				89023EDD2AD6F8CA009FFCBD /* DIContainer.swift in Sources */,
 				8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */,
@@ -606,9 +619,11 @@
 				89023EBD2AD6D165009FFCBD /* String+.swift in Sources */,
 				89023ECD2AD6F4E4009FFCBD /* SearchHistoryRepository.swift in Sources */,
 				89023EBA2AD6D109009FFCBD /* SubwayStation.swift in Sources */,
+				89023EEE2AD71882009FFCBD /* SubwaySearchResultViewController.swift in Sources */,
 				89023EB82AD6D109009FFCBD /* UpDownDirection.swift in Sources */,
 				894266A62AD68B8500C44C04 /* HomeArrivalView.swift in Sources */,
 				89023ED02AD6F622009FFCBD /* SearchHistoryStorage.swift in Sources */,
+				89023EF02AD719D0009FFCBD /* SubwaySearchResultCell.swift in Sources */,
 				89023ED32AD6F6D8009FFCBD /* SubwaySearchViewModel.swift in Sources */,
 				8942668E2AD67AC600C44C04 /* ReusableProtocol.swift in Sources */,
 				894266862AD6796D00C44C04 /* APIKey.swift in Sources */,
@@ -624,6 +639,7 @@
 				894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */,
 				89023EE12AD70E47009FFCBD /* SearchHistoryHeaderView.swift in Sources */,
 				8942668F2AD67AC600C44C04 /* BaseViewController.swift in Sources */,
+				89023EF22AD71C05009FFCBD /* UIColor+.swift in Sources */,
 				89023EC22AD6D29D009FFCBD /* SearchHistoryCell.swift in Sources */,
 				89023EBF2AD6D17E009FFCBD /* DateFormatter+.swift in Sources */,
 				894266B32AD6BAE300C44C04 /* SelectableView.swift in Sources */,
