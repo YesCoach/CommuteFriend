@@ -206,6 +206,26 @@ extension SubwaySearchViewController: UITableViewDelegate {
         return header
     }
 
+    func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        guard let itemIdentifier = dataSource?.itemIdentifier(for: indexPath)
+        else { return nil }
+
+        let action = UIContextualAction(
+            style: .destructive,
+            title: "삭제",
+            handler: { [weak self] (_, _, completionHandler) in
+                guard let self else { return }
+                viewModel.removeSearchHistory(text: itemIdentifier)
+                completionHandler(true)
+            }
+        )
+
+        return UISwipeActionsConfiguration(actions: [action])
+    }
+
 }
 
 // MARK: - SearchController Delegate

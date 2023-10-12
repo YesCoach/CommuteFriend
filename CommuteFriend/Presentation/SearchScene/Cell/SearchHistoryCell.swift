@@ -25,6 +25,11 @@ final class SearchHistoryCell: BaseTableViewCell {
         historyLabel.text = ""
     }
 
+    override func configureUI() {
+        super.configureUI()
+        selectionStyle = .none
+    }
+
     override func configureLayout() {
         super.configureLayout()
 

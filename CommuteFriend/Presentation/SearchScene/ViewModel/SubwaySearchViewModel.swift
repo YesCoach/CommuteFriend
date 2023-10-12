@@ -63,6 +63,7 @@ extension DefaultSubwaySearchViewModel {
     }
 
     func updateSearchResults(with keyword: String) {
+        if keyword.trimmingCharacters(in: [" "]).isEmpty { return }
         subwayRepository.fetchStationByName(name: keyword) { [weak self] result in
             guard let self else { return }
             switch result {

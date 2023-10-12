@@ -15,7 +15,7 @@ final class SubwaySearchResultViewController: BaseViewController {
     // MARK: - View
 
     private lazy var searchResultTableView: UITableView = {
-        let tableView = UITableView()
+        let tableView = UITableView(frame: .zero, style: .plain)
         tableView.register(
             SubwaySearchResultCell.self,
             forCellReuseIdentifier: SubwaySearchResultCell.reuseIdentifier
@@ -58,7 +58,7 @@ final class SubwaySearchResultViewController: BaseViewController {
         snapshot.appendItems(data, toSection: 1)
 
         guard let dataSource else { return }
-        dataSource.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
 
 }

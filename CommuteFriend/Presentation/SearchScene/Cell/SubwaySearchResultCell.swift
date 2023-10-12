@@ -22,6 +22,7 @@ final class SubwaySearchResultCell: BaseTableViewCell {
     override func configureUI() {
         super.configureUI()
         contentView.backgroundColor = .systemBackground
+        selectionStyle = .none
     }
 
     override func configureLayout() {
