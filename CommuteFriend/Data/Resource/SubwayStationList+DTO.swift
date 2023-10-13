@@ -16,23 +16,29 @@ struct SubwayStationListElement: Codable, DTOMapping {
     let subwayID, statnID: Int
     let statnNm: String
     let subwayName: String
+    let statnCode: String
     let statnX, statnY: Double
+    let isSplit: String
 
     enum CodingKeys: String, CodingKey {
         case subwayID = "SUBWAY_ID"
         case statnID = "STATN_ID"
         case statnNm = "STATN_NM"
         case subwayName = "SUBWAY_NAME"
+        case statnCode = "STATN_CODE"
         case statnX = "STATN_X"
         case statnY = "STATN_Y"
+        case isSplit = "IS_SPLIT"
     }
 
     func toDomain() -> SubwayStation {
         return SubwayStation(
             name: statnNm,
             lineNumber: .init(rawValue: String(subwayID)) ?? .number1,
+            code: statnCode,
             latPos: statnY,
-            lonPos: statnX
+            lonPos: statnX,
+            isSplit: Bool(isSplit) ?? false
         )
     }
 }

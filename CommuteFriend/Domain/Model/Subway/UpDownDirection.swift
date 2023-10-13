@@ -7,14 +7,16 @@
 
 import Foundation
 
-enum UpDownDirection: String {
+enum UpDownDirection: String, SelectableType {
     case up = "상행"
     case down = "하행"
+    case split = "외선"
 
     var imageName: String {
         switch self {
-        case .up: return "arrow.up.circle"
-        case .down: return "arrow.down.circle"
+        case .up: return "arrow.left.circle"
+        case .down: return "arrow.right.circle"
+        case .split: return "arrow.down.circle"
         }
     }
 
@@ -22,6 +24,7 @@ enum UpDownDirection: String {
         switch self {
         case .up: return "상행"
         case .down: return "하행"
+        case .split: return "외선"
         }
     }
 }

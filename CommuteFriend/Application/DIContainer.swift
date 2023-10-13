@@ -57,10 +57,6 @@ private extension DIContainer {
         return SearchHistoryRepository(searchHistoryStorage: searchHistoryStorage)
     }
 
-    private func makeSubwayRepository() -> SubwayRepository {
-        return SubwayRepository(networkManager: networkManager)
-    }
-
     private func makeLocalSubwayRepository() -> LocalSubwayRepository {
         return LocalSubwayRepository.shared
     }
