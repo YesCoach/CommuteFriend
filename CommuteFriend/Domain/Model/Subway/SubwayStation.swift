@@ -11,5 +11,7 @@ struct SubwayStation: Hashable {
     private let uuid = UUID().uuidString
     let name: String
     let lineNumber: SubwayLine
+    let latPos: Double
+    let lonPos: Double
     var upDownDirection: UpDownDirection?
 }

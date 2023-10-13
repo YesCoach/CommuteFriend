@@ -17,7 +17,7 @@ final class LocalSubwayRepository {
     }
 
     private func configureJSONData() {
-        guard let path = Bundle.main.path(forResource: "stationInformation", ofType: "json"),
+        guard let path = Bundle.main.path(forResource: "SubwayStationInformation", ofType: "json"),
               let jsonString = try? String(contentsOfFile: path)
         else { return }
 
@@ -31,8 +31,8 @@ final class LocalSubwayRepository {
 
     func fetchStationByName(name: String) -> [SubwayStation]? {
         guard let stationList else { return nil }
-        let filteringList = stationList.data
-            .filter { $0.stationNm.contains(name) }
+        let filteringList = stationList
+            .filter { $0.statnNm.contains(name) }
             .map { $0.toDomain() }
             .sorted { $0.lineNumber.rawValue < $1.lineNumber.rawValue }
 

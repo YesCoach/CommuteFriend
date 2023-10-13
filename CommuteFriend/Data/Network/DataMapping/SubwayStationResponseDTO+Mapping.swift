@@ -51,6 +51,8 @@ extension SubwayStationResponseDTO {
                 lineNumber: SubwayLine(
                     rawValue: transferredLineNumber
                 ) ?? .createSubwayLine(line: lineNumber),
+                latPos: 0.0,
+                lonPos: 0.0,
                 upDownDirection: nil
             )
         }
