@@ -93,6 +93,11 @@ final class HomeViewController: BaseViewController {
         return view
     }()
 
+    private lazy var recentStationView: RecentStationView = {
+        let view = RecentStationView()
+        return view
+    }()
+
     private lazy var titleLeftBarButtonItem: UIBarButtonItem = {
         let label = UILabel()
         label.text = "출퇴근메이트"
@@ -142,7 +147,7 @@ final class HomeViewController: BaseViewController {
         }
 
         [
-            searchSelectionStackView
+            searchSelectionStackView, recentStationView
         ].forEach { bottomView.addSubview($0) }
 
         searchSelectionStackView.snp.makeConstraints {
@@ -150,17 +155,11 @@ final class HomeViewController: BaseViewController {
             $0.horizontalEdges.equalToSuperview()
         }
 
-//        [
-//            homeArrivalStackView, searchSelectionStackView
-//        ].forEach { contentStackView.addArrangedSubview($0) }
-//
-//        [
-//            subwaySelectionView, busSelectionView
-//        ].forEach { view in
-//            view.snp.makeConstraints {
-//                $0.height.equalTo(view.snp.width)
-//            }
-//        }
+        recentStationView.snp.makeConstraints {
+            $0.top.equalTo(searchSelectionStackView.snp.bottom).offset(20)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(5)
+        }
     }
 
     override func configureNavigationItem() {

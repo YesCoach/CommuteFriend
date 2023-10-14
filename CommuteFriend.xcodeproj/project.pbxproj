@@ -53,6 +53,9 @@
 		89023F382AD93CAA009FFCBD /* SubwaySearchSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F372AD93CAA009FFCBD /* SubwaySearchSelectionViewController.swift */; };
 		89023F3A2AD93D46009FFCBD /* SubwaySearchSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F392AD93D46009FFCBD /* SubwaySearchSelectionViewModel.swift */; };
 		89023F3C2ADB0DC9009FFCBD /* MenuSelectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F3B2ADB0DC9009FFCBD /* MenuSelectableView.swift */; };
+		89023F3E2ADB18EE009FFCBD /* RecentStationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F3D2ADB18EE009FFCBD /* RecentStationView.swift */; };
+		89023F402ADB199D009FFCBD /* RecentStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F3F2ADB199D009FFCBD /* RecentStationCell.swift */; };
+		89023F422ADB1AEC009FFCBD /* SubwayTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F412ADB1AEC009FFCBD /* SubwayTarget.swift */; };
 		8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664D2AD6770600C44C04 /* AppDelegate.swift */; };
 		894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664F2AD6770600C44C04 /* SceneDelegate.swift */; };
 		894266522AD6770600C44C04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266512AD6770600C44C04 /* ViewController.swift */; };
@@ -141,6 +144,9 @@
 		89023F372AD93CAA009FFCBD /* SubwaySearchSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySearchSelectionViewController.swift; sourceTree = "<group>"; };
 		89023F392AD93D46009FFCBD /* SubwaySearchSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySearchSelectionViewModel.swift; sourceTree = "<group>"; };
 		89023F3B2ADB0DC9009FFCBD /* MenuSelectableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSelectableView.swift; sourceTree = "<group>"; };
+		89023F3D2ADB18EE009FFCBD /* RecentStationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentStationView.swift; sourceTree = "<group>"; };
+		89023F3F2ADB199D009FFCBD /* RecentStationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentStationCell.swift; sourceTree = "<group>"; };
+		89023F412ADB1AEC009FFCBD /* SubwayTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayTarget.swift; sourceTree = "<group>"; };
 		8942664A2AD6770600C44C04 /* CommuteFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommuteFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8942664D2AD6770600C44C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8942664F2AD6770600C44C04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -237,10 +243,11 @@
 		89023EB12AD6D0D4009FFCBD /* Subway */ = {
 			isa = PBXGroup;
 			children = (
+				89023EB52AD6D109009FFCBD /* SubwayStation.swift */,
 				89023EB22AD6D109009FFCBD /* SubwayArrival.swift */,
 				89023EB42AD6D109009FFCBD /* SubwayArrivalCode.swift */,
+				89023F412ADB1AEC009FFCBD /* SubwayTarget.swift */,
 				89023EB62AD6D109009FFCBD /* SubwayLine.swift */,
-				89023EB52AD6D109009FFCBD /* SubwayStation.swift */,
 				89023EB32AD6D109009FFCBD /* UpDownDirection.swift */,
 			);
 			path = Subway;
@@ -530,6 +537,8 @@
 				894266A52AD68B8500C44C04 /* HomeArrivalView.swift */,
 				894266AD2AD6AAC100C44C04 /* ProgressingView.swift */,
 				894266AF2AD6ABA500C44C04 /* ArrivalInformationView.swift */,
+				89023F3D2ADB18EE009FFCBD /* RecentStationView.swift */,
+				89023F3F2ADB199D009FFCBD /* RecentStationCell.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -738,6 +747,7 @@
 				89023EDD2AD6F8CA009FFCBD /* DIContainer.swift in Sources */,
 				8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */,
 				894266982AD6803200C44C04 /* AppTabBarController.swift in Sources */,
+				89023F3E2ADB18EE009FFCBD /* RecentStationView.swift in Sources */,
 				89023EC72AD6F422009FFCBD /* UserDefaultsSearchHistory.swift in Sources */,
 				89023EAE2AD6CB59009FFCBD /* SubwaySearchViewController.swift in Sources */,
 				89023EBD2AD6D165009FFCBD /* String+.swift in Sources */,
@@ -771,9 +781,11 @@
 				894266902AD67AC600C44C04 /* BaseTableViewCell.swift in Sources */,
 				89023EBB2AD6D109009FFCBD /* SubwayLine.swift in Sources */,
 				89023F152AD7EB9F009FFCBD /* BusStationList+DTO.swift in Sources */,
+				89023F402ADB199D009FFCBD /* RecentStationCell.swift in Sources */,
 				894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */,
 				89023EE12AD70E47009FFCBD /* SearchHistoryHeaderView.swift in Sources */,
 				8942668F2AD67AC600C44C04 /* BaseViewController.swift in Sources */,
+				89023F422ADB1AEC009FFCBD /* SubwayTarget.swift in Sources */,
 				89023EF22AD71C05009FFCBD /* UIColor+.swift in Sources */,
 				89023EC22AD6D29D009FFCBD /* SearchHistoryCell.swift in Sources */,
 				89023F0F2AD7D3A9009FFCBD /* SubwayStationList+DTO.swift in Sources */,
