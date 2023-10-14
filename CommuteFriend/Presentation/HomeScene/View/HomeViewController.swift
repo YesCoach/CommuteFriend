@@ -13,17 +13,38 @@ final class HomeViewController: BaseViewController {
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.contentInset = .init(top: 10.0, left: 0, bottom: 0, right: 0)
         return scrollView
     }()
 
     private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.spacing = 20.0
+        return stackView
+    }()
+
+    private lazy var homeArrivalStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.layoutMargins = .init(top: 0, left: 20, bottom: 0, right: 20)
+        stackView.isLayoutMarginsRelativeArrangement = true
+
+        stackView.addArrangedSubview(homeArrivalView)
         return stackView
     }()
 
     private lazy var homeArrivalView: HomeArrivalView = {
         let view = HomeArrivalView()
+        return view
+    }()
+
+    private lazy var bottomView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 30.0
+        view.layer.cornerCurve = .continuous
+        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        view.layer.masksToBounds = true
         return view
     }()
 
@@ -36,20 +57,18 @@ final class HomeViewController: BaseViewController {
         stackView.isLayoutMarginsRelativeArrangement = true
 
         [
-            subwaySelectionView, busSelectionView
+            subwaySelectionView, favoriteSelectionView
         ].forEach { stackView.addArrangedSubview($0) }
 
         return stackView
     }()
 
-    private lazy var subwaySelectionView: SelectableView = {
-        let view = SelectableView(
-            selectableType: TransportationType.subway,
-            description: TransportationType.subway.description
+    private lazy var subwaySelectionView: MenuSelectableView = {
+        let view = MenuSelectableView(
+            menuType: .subway
         ) { [weak self] _ in
             guard let self else { return }
             let subwaySearchViewController = DIContainer.shared.makeSubwaySearchViewController()
-
 //            let subwaySearchViewController = TestSearchVC()
             let navigationController = UINavigationController(
                 rootViewController: subwaySearchViewController
@@ -59,10 +78,9 @@ final class HomeViewController: BaseViewController {
         return view
     }()
 
-    private lazy var busSelectionView: SelectableView = {
-        let view = SelectableView(
-            selectableType: TransportationType.bus,
-            description: TransportationType.bus.description
+    private lazy var favoriteSelectionView: MenuSelectableView = {
+        let view = MenuSelectableView(
+            menuType: .favorite
         ) { [weak self] _ in
             guard let self else { return }
             let busSearchViewController = DIContainer.shared.makeBusSearchViewController()
@@ -85,58 +103,70 @@ final class HomeViewController: BaseViewController {
         return barButtonItem
     }()
 
-    private lazy var settingBarButtonItem: UIBarButtonItem = {
-        let button = UIBarButtonItem(
-            title: "설정",
-            style: .plain,
-            target: self,
-            action: #selector(didSettingButtonTouched)
+    private lazy var alarmBarButtonItem: UIBarButtonItem = {
+        let button = UIButton()
+        button.setImage(.init(systemName: "bell.fill"), for: .normal)
+        button.setImage(.init(systemName: "bell.slash.fill"), for: .selected)
+        button.addTarget(
+            self,
+            action: #selector(didAlarmButtonTouched(_:)),
+            for: .touchUpInside
         )
-        button.tintColor = .label
-        return button
+        let buttonItem = UIBarButtonItem(customView: button)
+        return buttonItem
     }()
 
     // MARK: - Method
 
     override func configureUI() {
         super.configureUI()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .mainBackgroundColor
     }
 
     override func configureLayout() {
         super.configureLayout()
 
         [
-            scrollView
+            homeArrivalView, bottomView
         ].forEach { view.addSubview($0) }
 
-        scrollView.snp.makeConstraints {
-            $0.edges.equalTo(view.safeAreaLayoutGuide)
+        homeArrivalView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(20)
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
         }
 
-        scrollView.addSubview(contentStackView)
-
-        contentStackView.snp.makeConstraints {
-            $0.edges.width.equalTo(scrollView)
+        bottomView.snp.makeConstraints {
+            $0.top.equalTo(homeArrivalView.snp.bottom).offset(30)
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
 
         [
-            homeArrivalView, searchSelectionStackView
-        ].forEach { contentStackView.addArrangedSubview($0) }
+            searchSelectionStackView
+        ].forEach { bottomView.addSubview($0) }
 
-        [
-            subwaySelectionView, busSelectionView
-        ].forEach { view in
-            view.snp.makeConstraints {
-                $0.height.equalTo(view.snp.width)
-            }
+        searchSelectionStackView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(30.0)
+            $0.horizontalEdges.equalToSuperview()
         }
+
+//        [
+//            homeArrivalStackView, searchSelectionStackView
+//        ].forEach { contentStackView.addArrangedSubview($0) }
+//
+//        [
+//            subwaySelectionView, busSelectionView
+//        ].forEach { view in
+//            view.snp.makeConstraints {
+//                $0.height.equalTo(view.snp.width)
+//            }
+//        }
     }
 
     override func configureNavigationItem() {
         super.configureNavigationItem()
         navigationItem.leftBarButtonItem = titleLeftBarButtonItem
-        navigationItem.rightBarButtonItem = settingBarButtonItem
+        navigationItem.rightBarButtonItem = alarmBarButtonItem
     }
 
 }
@@ -145,7 +175,9 @@ final class HomeViewController: BaseViewController {
 
 private extension HomeViewController {
 
-    @objc func didSettingButtonTouched(_ sender: UIBarButtonItem) {
+    @objc func didAlarmButtonTouched(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        // TODO: - User Notification 기능 구현
         print(#function)
     }
 

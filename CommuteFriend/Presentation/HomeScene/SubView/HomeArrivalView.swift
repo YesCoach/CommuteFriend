@@ -61,6 +61,10 @@ private extension HomeArrivalView {
 
     func configureUI() {
         backgroundColor = .systemBackground
+
+        self.layer.cornerRadius = 30.0
+        self.layer.cornerCurve = .continuous
+        self.layer.masksToBounds = true
     }
 
     func configureLayout() {
@@ -72,7 +76,8 @@ private extension HomeArrivalView {
         }
 
         routeIconButton.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().offset(10.0)
+            $0.top.equalToSuperview().offset(10.0)
+            $0.leading.equalToSuperview().offset(20.0)
         }
 
         stationLabel.snp.makeConstraints {
@@ -88,7 +93,7 @@ private extension HomeArrivalView {
         progressingView.snp.makeConstraints {
             $0.top.equalTo(routeIconButton.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(100)
+            $0.height.equalTo(70)
         }
 
         arrivalInformationView.snp.makeConstraints {

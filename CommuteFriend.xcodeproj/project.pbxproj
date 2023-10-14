@@ -52,6 +52,7 @@
 		89023F362AD80F62009FFCBD /* LocalBusRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F352AD80F62009FFCBD /* LocalBusRepository.swift */; };
 		89023F382AD93CAA009FFCBD /* SubwaySearchSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F372AD93CAA009FFCBD /* SubwaySearchSelectionViewController.swift */; };
 		89023F3A2AD93D46009FFCBD /* SubwaySearchSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F392AD93D46009FFCBD /* SubwaySearchSelectionViewModel.swift */; };
+		89023F3C2ADB0DC9009FFCBD /* MenuSelectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F3B2ADB0DC9009FFCBD /* MenuSelectableView.swift */; };
 		8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664D2AD6770600C44C04 /* AppDelegate.swift */; };
 		894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664F2AD6770600C44C04 /* SceneDelegate.swift */; };
 		894266522AD6770600C44C04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266512AD6770600C44C04 /* ViewController.swift */; };
@@ -139,6 +140,7 @@
 		89023F352AD80F62009FFCBD /* LocalBusRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalBusRepository.swift; sourceTree = "<group>"; };
 		89023F372AD93CAA009FFCBD /* SubwaySearchSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySearchSelectionViewController.swift; sourceTree = "<group>"; };
 		89023F392AD93D46009FFCBD /* SubwaySearchSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySearchSelectionViewModel.swift; sourceTree = "<group>"; };
+		89023F3B2ADB0DC9009FFCBD /* MenuSelectableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSelectableView.swift; sourceTree = "<group>"; };
 		8942664A2AD6770600C44C04 /* CommuteFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommuteFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8942664D2AD6770600C44C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8942664F2AD6770600C44C04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -547,6 +549,7 @@
 		894266B12AD6BAD200C44C04 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				89023F3B2ADB0DC9009FFCBD /* MenuSelectableView.swift */,
 				894266B22AD6BAE300C44C04 /* SelectableView.swift */,
 				894266B42AD6BB1500C44C04 /* SelectableItemType.swift */,
 			);
@@ -727,6 +730,7 @@
 				894266522AD6770600C44C04 /* ViewController.swift in Sources */,
 				89023F362AD80F62009FFCBD /* LocalBusRepository.swift in Sources */,
 				89023F1F2AD7EC82009FFCBD /* BusArrival.swift in Sources */,
+				89023F3C2ADB0DC9009FFCBD /* MenuSelectableView.swift in Sources */,
 				89023EEC2AD7163E009FFCBD /* DTOMapping.swift in Sources */,
 				894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */,
 				89023F072AD7A063009FFCBD /* TestSearchVC.swift in Sources */,

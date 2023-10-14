@@ -13,4 +13,8 @@ extension UIColor {
         return UIColor(named: "\(line.rawValue)") ?? .cyan
     }
 
+    static var mainBackgroundColor: UIColor {
+        return UIColor(named: "BackgroundColor") ?? .systemBackground
+    }
+
 }
