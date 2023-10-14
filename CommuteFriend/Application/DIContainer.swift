@@ -31,6 +31,16 @@ final class DIContainer {
         return BusSearchViewController(viewModel: makeBusSearchViewModel())
     }
 
+    func makeSubwaySearchSelectionViewController(
+        station: SubwayStation
+    ) -> SubwaySearchSelectionViewController {
+        return SubwaySearchSelectionViewController(
+            viewModel: makeSubwaySearchSelectionViewModel(
+                station: station
+            )
+        )
+    }
+
 }
 
 private extension DIContainer {
@@ -41,6 +51,15 @@ private extension DIContainer {
         return DefaultSubwaySearchViewModel(
             searchHistoryRepository: makeSearchHistoryRepository(),
             subwayRepository: makeLocalSubwayRepository()
+        )
+    }
+
+    private func makeSubwaySearchSelectionViewModel(
+        station: SubwayStation
+    ) -> SubwaySearchSelectionViewModel {
+        return DefaultSubwaySearchSelectionViewModel(
+            station: station,
+            localSubwayRepository: makeLocalSubwayRepository()
         )
     }
 

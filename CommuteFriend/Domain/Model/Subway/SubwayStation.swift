@@ -15,4 +15,7 @@ struct SubwayStation: Hashable {
     let latPos: Double
     let lonPos: Double
     let isSplit: Bool
+    let upStation: String?
+    let downStation: String?
+    let splitStation: String?
 }

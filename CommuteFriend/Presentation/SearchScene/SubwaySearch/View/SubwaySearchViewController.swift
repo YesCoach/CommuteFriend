@@ -36,11 +36,11 @@ final class SubwaySearchViewController: BaseViewController {
             guard let self else { return }
             searchController.searchBar.resignFirstResponder()
             viewModel.didSelectItem(of: item)
-            let selectionVC = SubwaySearchDirectionSelectViewController(
-                viewModel: DefaultSubwaySearchDirectionSelectViewModel(station: item)
-            )
+            let selectionViewController = DIContainer
+                .shared
+                .makeSubwaySearchSelectionViewController(station: item)
 
-            if let sheet = selectionVC.sheetPresentationController {
+            if let sheet = selectionViewController.sheetPresentationController {
                 sheet.detents = [
                     .custom(
                         identifier: UISheetPresentationController.Detent.Identifier("oneHeigth")
@@ -55,7 +55,7 @@ final class SubwaySearchViewController: BaseViewController {
                 sheet.prefersScrollingExpandsWhenScrolledToEdge = false
                 sheet.prefersEdgeAttachedInCompactHeight = true
                 sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
-                present(selectionVC, animated: true)
+                present(selectionViewController, animated: true)
             }
         }
         return viewController

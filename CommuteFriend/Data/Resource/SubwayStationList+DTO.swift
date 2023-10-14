@@ -20,6 +20,10 @@ struct SubwayStationListElement: Codable, DTOMapping {
     let statnX, statnY: Double
     let isSplit: String
 
+    let statnUpCode: String
+    let statnDownCode: String
+    let statnSplitCode: String?
+
     enum CodingKeys: String, CodingKey {
         case subwayID = "SUBWAY_ID"
         case statnID = "STATN_ID"
@@ -29,6 +33,9 @@ struct SubwayStationListElement: Codable, DTOMapping {
         case statnX = "STATN_X"
         case statnY = "STATN_Y"
         case isSplit = "IS_SPLIT"
+        case statnUpCode = "UP_CODE"
+        case statnDownCode = "DOWN_CODE"
+        case statnSplitCode = "SPLIT_CODE"
     }
 
     func toDomain() -> SubwayStation {
@@ -38,7 +45,10 @@ struct SubwayStationListElement: Codable, DTOMapping {
             code: statnCode,
             latPos: statnY,
             lonPos: statnX,
-            isSplit: Bool(isSplit) ?? false
+            isSplit: Bool(isSplit) ?? false,
+            upStation: statnUpCode,
+            downStation: statnDownCode,
+            splitStation: statnSplitCode
         )
     }
 }

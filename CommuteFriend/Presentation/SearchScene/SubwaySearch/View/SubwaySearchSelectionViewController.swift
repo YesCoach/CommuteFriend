@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import RxSwift
 
-final class SubwaySearchDirectionSelectViewController: BaseViewController {
+final class SubwaySearchSelectionViewController: BaseViewController {
 
     // MARK: - UI Components
 
@@ -20,7 +21,8 @@ final class SubwaySearchDirectionSelectViewController: BaseViewController {
 
     private lazy var upDirectionView: SelectableView = {
         let view = SelectableView(
-            selectableType: UpDownDirection.up
+            selectableType: UpDownDirection.up,
+            description: ""
         ) { [weak self] selectableType in
             guard let self,
                   let direction = selectableType as? UpDownDirection
@@ -32,7 +34,8 @@ final class SubwaySearchDirectionSelectViewController: BaseViewController {
 
     private lazy var downDirectionView: SelectableView = {
         let view = SelectableView(
-            selectableType: UpDownDirection.down
+            selectableType: UpDownDirection.down,
+            description: ""
         ) { [weak self] selectableType in
             guard let self,
                   let direction = selectableType as? UpDownDirection
@@ -44,7 +47,8 @@ final class SubwaySearchDirectionSelectViewController: BaseViewController {
 
     private lazy var splitDirectionView: SelectableView = {
         let view = SelectableView(
-            selectableType: UpDownDirection.split
+            selectableType: UpDownDirection.split,
+            description: ""
         ) { [weak self] selectableType in
             guard let self,
                   let direction = selectableType as? UpDownDirection
@@ -76,11 +80,12 @@ final class SubwaySearchDirectionSelectViewController: BaseViewController {
         return stackView
     }()
 
-    private let viewModel: SubwaySearchDirectionSelectViewModel
+    private let viewModel: SubwaySearchSelectionViewModel
+    private let disposeBag = DisposeBag()
 
     // MARK: - Initializer
 
-    init(viewModel: SubwaySearchDirectionSelectViewModel) {
+    init(viewModel: SubwaySearchSelectionViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -94,6 +99,12 @@ final class SubwaySearchDirectionSelectViewController: BaseViewController {
     }
 
     // MARK: - Methods
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.viewDidLoad()
+        bindViewModel()
+    }
 
     override func configureUI() {
         super.configureUI()
@@ -128,4 +139,36 @@ final class SubwaySearchDirectionSelectViewController: BaseViewController {
 //        splitDirectionView.isHidden = true
     }
 
+}
+
+private extension SubwaySearchSelectionViewController {
+
+    func bindViewModel() {
+        viewModel.upStation.bind(with: self) { owner, upStation in
+            if let upStation {
+                owner.upDirectionView.isHidden = false
+                owner.upDirectionView.configure(with: upStation.name)
+            } else {
+                owner.upDirectionView.isHidden = true
+            }
+        }.disposed(by: disposeBag)
+
+        viewModel.downStation.bind(with: self) { owner, downStation in
+            if let downStation {
+                owner.downDirectionView.isHidden = false
+                owner.downDirectionView.configure(with: downStation.name)
+            } else {
+                owner.downDirectionView.isHidden = true
+            }
+        }.disposed(by: disposeBag)
+
+        viewModel.splitStation.bind(with: self) { owner, splitStation in
+            if let splitStation {
+                owner.splitDirectionView.isHidden = false
+                owner.splitDirectionView.configure(with: splitStation.name)
+            } else {
+                owner.splitDirectionView.isHidden = true
+            }
+        }
+    }
 }

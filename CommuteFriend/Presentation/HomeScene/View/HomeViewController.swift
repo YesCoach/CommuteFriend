@@ -43,7 +43,10 @@ final class HomeViewController: BaseViewController {
     }()
 
     private lazy var subwaySelectionView: SelectableView = {
-        let view = SelectableView(selectableType: TransportationType.subway) { [weak self] _ in
+        let view = SelectableView(
+            selectableType: TransportationType.subway,
+            description: TransportationType.subway.description
+        ) { [weak self] _ in
             guard let self else { return }
             let subwaySearchViewController = DIContainer.shared.makeSubwaySearchViewController()
 
@@ -57,7 +60,10 @@ final class HomeViewController: BaseViewController {
     }()
 
     private lazy var busSelectionView: SelectableView = {
-        let view = SelectableView(selectableType: TransportationType.bus) { [weak self] _ in
+        let view = SelectableView(
+            selectableType: TransportationType.bus,
+            description: TransportationType.bus.description
+        ) { [weak self] _ in
             guard let self else { return }
             let busSearchViewController = DIContainer.shared.makeBusSearchViewController()
 

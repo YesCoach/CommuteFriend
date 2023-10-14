@@ -6,38 +6,70 @@
 //
 
 import Foundation
+import RxSwift
+import RxRelay
 
-protocol SubwaySearchDirectionSelectViewModelInput {
+protocol SubwaySearchSelectionViewModelInput {
     func didSelectDirection(direction: UpDownDirection)
+    func viewDidLoad()
 }
 
-protocol SubwaySearchDirectionSelectViewModelOutput { }
+protocol SubwaySearchSelectionViewModelOutput {
+    var station: SubwayStation { get }
+    var upStation: BehaviorRelay<SubwayStation?> { get }
+    var downStation: BehaviorRelay<SubwayStation?> { get }
+    var splitStation: BehaviorRelay<SubwayStation?> { get }
+}
 
-protocol SubwaySearchDirectionSelectViewModel: SubwaySearchDirectionSelectViewModelInput,
-                                               SubwaySearchDirectionSelectViewModelOutput { }
+protocol SubwaySearchSelectionViewModel: SubwaySearchSelectionViewModelInput,
+                                               SubwaySearchSelectionViewModelOutput { }
 
-final class DefaultSubwaySearchDirectionSelectViewModel: SubwaySearchDirectionSelectViewModel {
+final class DefaultSubwaySearchSelectionViewModel: SubwaySearchSelectionViewModel {
 
-    private let station: SubwayStation
+    let station: SubwayStation
+    private let localSubwayRepository: LocalSubwayRepository
 
     init(
-        station: SubwayStation
+        station: SubwayStation,
+        localSubwayRepository: LocalSubwayRepository
     ) {
         self.station = station
+        self.localSubwayRepository = localSubwayRepository
     }
 
     deinit {
         print("🗑️ - \(String(describing: type(of: self)))")
     }
 
+    var upStation: BehaviorRelay<SubwayStation?> = BehaviorRelay(value: nil)
+    var downStation: BehaviorRelay<SubwayStation?> = BehaviorRelay(value: nil)
+    var splitStation: BehaviorRelay<SubwayStation?> = BehaviorRelay(value: nil)
+
 }
 
 // MARK: - SubwaySearchDirectionSelectViewModelInput
 
-extension DefaultSubwaySearchDirectionSelectViewModel {
+extension DefaultSubwaySearchSelectionViewModel {
 
     func didSelectDirection(direction: UpDownDirection) {
 
+    }
+
+    func viewDidLoad() {
+        if let upStationCode = station.upStation,
+           let upStation = localSubwayRepository.stationDictionary[upStationCode] {
+            self.upStation.accept(upStation)
+        }
+
+        if let downStationCode = station.downStation,
+            let downStation = localSubwayRepository.stationDictionary[downStationCode] {
+            self.downStation.accept(downStation)
+        }
+
+        if let splitStation = station.splitStation,
+           let splitStation = localSubwayRepository.stationDictionary[splitStation] {
+            self.splitStation.accept(splitStation)
+        }
     }
 
 }

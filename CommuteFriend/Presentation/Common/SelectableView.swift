@@ -22,7 +22,6 @@ final class SelectableView: UIView {
     private lazy var label: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14, weight: .bold)
-        label.text = selectableType.description
         return label
     }()
 
@@ -41,11 +40,15 @@ final class SelectableView: UIView {
 
     // MARK: - Init
 
-    init(selectableType: SelectableType, completion: @escaping ((SelectableType) -> Void)) {
+    init(
+        selectableType: SelectableType,
+        description: String?,
+        completion: @escaping ((SelectableType) -> Void)
+    ) {
         self.selectableType = selectableType
         self.completion = completion
         super.init(frame: .zero)
-
+        label.text = description
         configureUI()
         configureLayout()
     }
@@ -56,6 +59,10 @@ final class SelectableView: UIView {
 
     @objc func viewDidSelected(_ sender: UITapGestureRecognizer) {
         completion(selectableType)
+    }
+
+    func configure(with description: String) {
+        self.label.text = description
     }
 
 }
