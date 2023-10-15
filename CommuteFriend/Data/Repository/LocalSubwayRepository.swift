@@ -9,12 +9,18 @@ import Foundation
 
 final class LocalSubwayRepository {
 
-    static let shared = LocalSubwayRepository()
+    private let realmStorage: RealmStorage
+    private let subwayStationStorage: SubwayStationStorage
 
     private var stationList: [SubwayStation]?
     var stationDictionary: [String: SubwayStation] = [:]
 
-    init() {
+    init(
+        realmStorage: RealmStorage,
+        subwayStationStorage: SubwayStationStorage
+    ) {
+        self.realmStorage = realmStorage
+        self.subwayStationStorage = subwayStationStorage
         configureJSONData()
         configureDictionaryData()
     }
@@ -26,6 +32,11 @@ final class LocalSubwayRepository {
             .sorted { $0.lineNumber.rawValue < $1.lineNumber.rawValue }
 
         return Set(filteringList).count != 0 ? filteringList : nil
+    }
+
+    func enrollStation(subwayTarget: SubwayTarget) {
+        let subwayEntity = SubwayEntity(target: subwayTarget)
+        subwayStationStorage.enrollStation(station: subwayEntity)
     }
 
 }

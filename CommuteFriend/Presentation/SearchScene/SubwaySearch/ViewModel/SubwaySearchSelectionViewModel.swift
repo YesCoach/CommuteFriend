@@ -10,7 +10,7 @@ import RxSwift
 import RxRelay
 
 protocol SubwaySearchSelectionViewModelInput {
-    func didSelectDirection(direction: UpDownDirection)
+    func didSelectDirection(direction: UpDownDirection, stationName: String)
     func viewDidLoad()
 }
 
@@ -51,8 +51,14 @@ final class DefaultSubwaySearchSelectionViewModel: SubwaySearchSelectionViewMode
 
 extension DefaultSubwaySearchSelectionViewModel {
 
-    func didSelectDirection(direction: UpDownDirection) {
-
+    func didSelectDirection(direction: UpDownDirection, stationName: String) {
+        let subwayTarget = SubwayTarget(
+            name: station.name,
+            lineNumber: station.lineNumber,
+            destinationName: stationName,
+            upDownDirection: direction
+        )
+        localSubwayRepository.enrollStation(subwayTarget: subwayTarget)
     }
 
     func viewDidLoad() {

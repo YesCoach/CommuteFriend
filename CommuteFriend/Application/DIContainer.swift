@@ -20,6 +20,8 @@ final class DIContainer {
     // MARK: - Persistentr Storage
 
     lazy var searchHistoryStorage: SearchHistoryStorage = UserDefaultsSearchHistory()
+    lazy var subwayStationStorage: SubwayStationStorage = RealmSubwayStationStorage(realmStorage: .shared)
+    lazy var userStorage: UserStorage = UserStorage(realmStorage: .shared)
 
     // MARK: - ViewController
 
@@ -77,7 +79,10 @@ private extension DIContainer {
     }
 
     private func makeLocalSubwayRepository() -> LocalSubwayRepository {
-        return LocalSubwayRepository.shared
+        return LocalSubwayRepository(
+            realmStorage: .shared,
+            subwayStationStorage: subwayStationStorage
+        )
     }
 
     private func makeLocalBusRepository() -> LocalBusRepository {

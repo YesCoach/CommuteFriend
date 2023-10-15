@@ -23,11 +23,13 @@ final class SubwaySearchSelectionViewController: BaseViewController {
         let view = SelectableView(
             selectableType: UpDownDirection.up,
             description: ""
-        ) { [weak self] selectableType in
+        ) { [weak self] selectableType, stationName in
             guard let self,
-                  let direction = selectableType as? UpDownDirection
+                  let direction = selectableType as? UpDownDirection,
+                  let stationName
             else { return }
-            viewModel.didSelectDirection(direction: direction)
+            viewModel.didSelectDirection(direction: direction, stationName: stationName)
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         }
         return view
     }()
@@ -36,11 +38,13 @@ final class SubwaySearchSelectionViewController: BaseViewController {
         let view = SelectableView(
             selectableType: UpDownDirection.down,
             description: ""
-        ) { [weak self] selectableType in
+        ) { [weak self] selectableType, stationName in
             guard let self,
-                  let direction = selectableType as? UpDownDirection
+                  let direction = selectableType as? UpDownDirection,
+                  let stationName
             else { return }
-            viewModel.didSelectDirection(direction: direction)
+            viewModel.didSelectDirection(direction: direction, stationName: stationName)
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         }
         return view
     }()
@@ -49,11 +53,13 @@ final class SubwaySearchSelectionViewController: BaseViewController {
         let view = SelectableView(
             selectableType: UpDownDirection.split,
             description: ""
-        ) { [weak self] selectableType in
+        ) { [weak self] selectableType, stationName in
             guard let self,
-                  let direction = selectableType as? UpDownDirection
+                  let direction = selectableType as? UpDownDirection,
+                  let stationName
             else { return }
-            viewModel.didSelectDirection(direction: direction)
+            viewModel.didSelectDirection(direction: direction, stationName: stationName)
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         }
         return view
     }()
@@ -126,17 +132,9 @@ final class SubwaySearchSelectionViewController: BaseViewController {
             $0.leading.trailing.equalToSuperview().inset(16)
             $0.bottom.equalTo(view.safeAreaLayoutGuide)
         }
-//        upDirectionView.snp.makeConstraints {
-//            $0.height.equalTo(120)
-//        }
-//        downDirectionView.snp.makeConstraints {
-//            $0.height.equalTo(120)
-//        }
         splitDirectionView.snp.makeConstraints {
             $0.width.equalTo(verticalStackView)
         }
-
-//        splitDirectionView.isHidden = true
     }
 
 }
@@ -169,6 +167,7 @@ private extension SubwaySearchSelectionViewController {
             } else {
                 owner.splitDirectionView.isHidden = true
             }
-        }
+        }.disposed(by: disposeBag)
     }
+
 }

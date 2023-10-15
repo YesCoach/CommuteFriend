@@ -36,14 +36,15 @@ final class SelectableView: UIView {
     // MARK: - Property
 
     private let selectableType: SelectableType
-    private let completion: ((SelectableType) -> Void)
+    private var selectableText: String?
+    private let completion: ((SelectableType, String?) -> Void)
 
     // MARK: - Init
 
     init(
         selectableType: SelectableType,
         description: String?,
-        completion: @escaping ((SelectableType) -> Void)
+        completion: @escaping ((SelectableType, String?) -> Void)
     ) {
         self.selectableType = selectableType
         self.completion = completion
@@ -58,10 +59,11 @@ final class SelectableView: UIView {
     }
 
     @objc func viewDidSelected(_ sender: UITapGestureRecognizer) {
-        completion(selectableType)
+        completion(selectableType, selectableText)
     }
 
     func configure(with description: String) {
+        self.selectableText = description
         self.label.text = description
     }
 

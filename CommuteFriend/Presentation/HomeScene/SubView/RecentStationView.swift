@@ -19,6 +19,13 @@ final class RecentStationView: UIView {
         return tableView
     }()
 
+    private lazy var emptyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "최근 기록이 없어요"
+        label.textColor = .gray
+        return label
+    }()
+
     lazy var dataSource: UITableViewDiffableDataSource<Int, SubwayTarget> = {
         let dataSource = UITableViewDiffableDataSource<Int, SubwayTarget>(
             tableView: tableView
@@ -71,11 +78,14 @@ private extension RecentStationView {
 
     func configureLayout() {
         [
-            tableView
+            tableView, emptyLabel
         ].forEach { addSubview($0) }
 
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        emptyLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
 
