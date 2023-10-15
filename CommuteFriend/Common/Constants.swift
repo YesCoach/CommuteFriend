@@ -9,6 +9,15 @@ import UIKit
 
 enum Constants {
 
+    enum NotificationName {
+
+        // NotificationName
+
+        static let homeUpdateNotification: String = "homeUpdateNotification"
+        static let addStationArrivalTarget: String = "addStationArrivalTarget"
+
+    }
+
     enum Policy {
 
         static let maximumStation: Int = 8

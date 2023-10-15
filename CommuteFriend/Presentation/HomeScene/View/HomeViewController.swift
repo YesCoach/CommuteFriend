@@ -142,6 +142,7 @@ final class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()
+        enrollNotification()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -202,12 +203,6 @@ final class HomeViewController: BaseViewController {
 
 private extension HomeViewController {
 
-    @objc func didAlarmButtonTouched(_ sender: UIButton) {
-        sender.isSelected.toggle()
-        // TODO: - User Notification 기능 구현
-        print(#function)
-    }
-
     func bindViewModel() {
         viewModel
             .recentSubwayStationList
@@ -215,6 +210,25 @@ private extension HomeViewController {
                 owner.recentStationView.updateSnapShot(data: stationList)
             }
             .disposed(by: disposeBag)
+    }
+
+    func enrollNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateCurrentStationArrival),
+            name: .homeUpdateNotification,
+            object: nil
+        )
+    }
+
+    @objc func updateCurrentStationArrival() {
+        viewModel.viewWillAppear()
+    }
+
+    @objc func didAlarmButtonTouched(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        // TODO: - User Notification 기능 구현
+        print(#function)
     }
 
 }

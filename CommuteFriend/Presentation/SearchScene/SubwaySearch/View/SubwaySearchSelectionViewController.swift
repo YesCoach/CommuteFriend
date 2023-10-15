@@ -24,12 +24,8 @@ final class SubwaySearchSelectionViewController: BaseViewController {
             selectableType: UpDownDirection.up,
             description: ""
         ) { [weak self] selectableType, stationName in
-            guard let self,
-                  let direction = selectableType as? UpDownDirection,
-                  let stationName
-            else { return }
-            viewModel.didSelectDirection(direction: direction, stationName: stationName)
-            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            guard let self else { return }
+            didSelectableViewTouched(selectableType: selectableType, stationName: stationName)
         }
         return view
     }()
@@ -39,12 +35,8 @@ final class SubwaySearchSelectionViewController: BaseViewController {
             selectableType: UpDownDirection.down,
             description: ""
         ) { [weak self] selectableType, stationName in
-            guard let self,
-                  let direction = selectableType as? UpDownDirection,
-                  let stationName
-            else { return }
-            viewModel.didSelectDirection(direction: direction, stationName: stationName)
-            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            guard let self else { return }
+            didSelectableViewTouched(selectableType: selectableType, stationName: stationName)
         }
         return view
     }()
@@ -54,12 +46,8 @@ final class SubwaySearchSelectionViewController: BaseViewController {
             selectableType: UpDownDirection.split,
             description: ""
         ) { [weak self] selectableType, stationName in
-            guard let self,
-                  let direction = selectableType as? UpDownDirection,
-                  let stationName
-            else { return }
-            viewModel.didSelectDirection(direction: direction, stationName: stationName)
-            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            guard let self else { return }
+            didSelectableViewTouched(selectableType: selectableType, stationName: stationName)
         }
         return view
     }()
@@ -168,6 +156,15 @@ private extension SubwaySearchSelectionViewController {
                 owner.splitDirectionView.isHidden = true
             }
         }.disposed(by: disposeBag)
+    }
+
+    func didSelectableViewTouched(selectableType: SelectableType, stationName: String?) {
+        guard let direction = selectableType as? UpDownDirection,
+              let stationName
+        else { return }
+        viewModel.didSelectDirection(direction: direction, stationName: stationName)
+        NotificationCenter.default.post(name: .homeUpdateNotification, object: nil)
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
 
 }

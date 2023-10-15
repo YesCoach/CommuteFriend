@@ -45,19 +45,17 @@ final class DefaultHomeViewModel: HomeViewModel {
 extension DefaultHomeViewModel {
 
     func viewWillAppear() {
-        let targetList = localSubwayRepository.fetchEnrolledStationList()
-        recentSubwayStationList.onNext(targetList)
+        recentSubwayStationList.onNext(localSubwayRepository.fetchEnrolledStationList())
     }
 
     func removeRecentSearchItem(with subwayTarget: SubwayTarget) {
         localSubwayRepository.removeStation(station: subwayTarget)
+        recentSubwayStationList.onNext(localSubwayRepository.fetchEnrolledStationList())
     }
 
     func didSelectRowAt(subwayTarget: SubwayTarget) {
         localSubwayRepository.enrollStation(subwayTarget: subwayTarget)
-
-        let targetList = localSubwayRepository.fetchEnrolledStationList()
-        recentSubwayStationList.onNext(targetList)
+        recentSubwayStationList.onNext(localSubwayRepository.fetchEnrolledStationList())
     }
 
 }
