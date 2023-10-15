@@ -9,13 +9,15 @@ import UIKit
 
 final class RecentStationView: UIView {
 
-    private lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(
             RecentStationCell.self,
             forCellReuseIdentifier: RecentStationCell.reuseIdentifier
         )
         tableView.backgroundColor = .systemGray6
+        tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = 44.0
         return tableView
     }()
 
@@ -60,6 +62,8 @@ final class RecentStationView: UIView {
 
         snapshot.appendSections([1])
         snapshot.appendItems(data, toSection: 1)
+
+        emptyLabel.isHidden = !data.isEmpty
 
         dataSource.apply(snapshot, animatingDifferences: true)
     }

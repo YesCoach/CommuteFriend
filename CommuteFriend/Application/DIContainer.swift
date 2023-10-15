@@ -25,6 +25,10 @@ final class DIContainer {
 
     // MARK: - ViewController
 
+    func makeHomeViewController() -> HomeViewController {
+        return HomeViewController(viewModel: makeHomeViewModel())
+    }
+
     func makeSubwaySearchViewController() -> SubwaySearchViewController {
         return SubwaySearchViewController(viewModel: makeSubwaySearchViewModel())
     }
@@ -48,6 +52,10 @@ final class DIContainer {
 private extension DIContainer {
 
     // MARK: - ViewModel
+
+    private func makeHomeViewModel() -> HomeViewModel {
+        return DefaultHomeViewModel(localSubwayRepository: makeLocalSubwayRepository())
+    }
 
     private func makeSubwaySearchViewModel() -> SubwaySearchViewModel {
         return DefaultSubwaySearchViewModel(
@@ -80,7 +88,6 @@ private extension DIContainer {
 
     private func makeLocalSubwayRepository() -> LocalSubwayRepository {
         return LocalSubwayRepository(
-            realmStorage: .shared,
             subwayStationStorage: subwayStationStorage
         )
     }

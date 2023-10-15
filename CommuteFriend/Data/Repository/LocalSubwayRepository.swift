@@ -9,22 +9,28 @@ import Foundation
 
 final class LocalSubwayRepository {
 
-    private let realmStorage: RealmStorage
+    // MARK: - Dependency
+
     private let subwayStationStorage: SubwayStationStorage
 
     private var stationList: [SubwayStation]?
     var stationDictionary: [String: SubwayStation] = [:]
 
+    // MARK: - DI
+
     init(
-        realmStorage: RealmStorage,
         subwayStationStorage: SubwayStationStorage
     ) {
-        self.realmStorage = realmStorage
         self.subwayStationStorage = subwayStationStorage
         configureJSONData()
         configureDictionaryData()
     }
 
+    // MARK: - Methods
+
+    /// 로컬 JSON으로 부터 지하철 역을 검색합니다.
+    /// - Parameter name: 검색할 지하철 이름
+    /// - Returns: 검색 결과에 해당하는 지하철 역 타입 배열
     func fetchStationByName(name: String) -> [SubwayStation]? {
         guard let stationList else { return nil }
         let filteringList = stationList
@@ -34,12 +40,29 @@ final class LocalSubwayRepository {
         return Set(filteringList).count != 0 ? filteringList : nil
     }
 
+    /// 지하철 타깃 정보를 렘에 저장합니다.
+    /// - Parameter subwayTarget: 실시간 도착 정보를 요청할 수 있는 SubwayTarget 타입
     func enrollStation(subwayTarget: SubwayTarget) {
         let subwayEntity = SubwayEntity(target: subwayTarget)
         subwayStationStorage.enrollStation(station: subwayEntity)
     }
 
+    /// 저장되어 있는 지하철 타깃 정보 배열을 반환합니다.
+    /// - Returns: 실시간 도착 정보를 요청할 수 있는 SubwayTarget 타입 배열
+    func fetchEnrolledStationList() -> [SubwayTarget] {
+        return subwayStationStorage.readStationList().map { $0.toDomain() }
+    }
+
+    /// 저장되어 있는 지하철 타깃을 삭제합니다.
+    /// - Parameter station: 삭제할 지하철 타깃 타입
+    func removeStation(station: SubwayTarget) {
+        let subwayEntity = SubwayEntity(target: station)
+        subwayStationStorage.deleteStation(station: subwayEntity)
+    }
+
 }
+
+// MARK: - Private methods
 
 private extension LocalSubwayRepository {
 

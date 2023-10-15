@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 final class HomeViewController: BaseViewController {
 
@@ -95,6 +96,7 @@ final class HomeViewController: BaseViewController {
 
     private lazy var recentStationView: RecentStationView = {
         let view = RecentStationView()
+        view.tableView.delegate = self
         return view
     }()
 
@@ -120,6 +122,32 @@ final class HomeViewController: BaseViewController {
         let buttonItem = UIBarButtonItem(customView: button)
         return buttonItem
     }()
+
+    // MARK: - Property
+
+    private let viewModel: HomeViewModel
+    private let disposeBag = DisposeBag()
+
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - LifeCycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        bindViewModel()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.viewWillAppear()
+    }
 
     // MARK: - Method
 
@@ -178,6 +206,47 @@ private extension HomeViewController {
         sender.isSelected.toggle()
         // TODO: - User Notification 기능 구현
         print(#function)
+    }
+
+    func bindViewModel() {
+        viewModel
+            .recentSubwayStationList
+            .subscribe(with: self) { owner, stationList in
+                owner.recentStationView.updateSnapShot(data: stationList)
+            }
+            .disposed(by: disposeBag)
+    }
+
+}
+
+// MARK: - RecentStationView TableViewDelegate
+
+extension HomeViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let item = recentStationView.dataSource.itemIdentifier(for: indexPath)
+        else { return }
+
+        viewModel.didSelectRowAt(subwayTarget: item)
+    }
+
+    func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        guard let item = recentStationView.dataSource.itemIdentifier(for: indexPath)
+        else { return nil }
+
+        let action = UIContextualAction(
+            style: .destructive,
+            title: "삭제",
+            handler: { [weak self] (_, _, completionHandler) in
+                guard let self else { return }
+                viewModel.removeRecentSearchItem(with: item)
+                completionHandler(true)
+            }
+        )
+        return UISwipeActionsConfiguration(actions: [action])
     }
 
 }

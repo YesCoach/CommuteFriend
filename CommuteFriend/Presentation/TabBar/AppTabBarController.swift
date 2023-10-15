@@ -15,7 +15,7 @@ final class AppTabBarController: UITabBarController {
     }
 
     private func setTabBarController() {
-        let homeViewController = HomeViewController()
+        let homeViewController = DIContainer.shared.makeHomeViewController()
         homeViewController.tabBarItem = TabBarItems.home.tabBarItem
 
         let favoriteViewController = UIViewController()

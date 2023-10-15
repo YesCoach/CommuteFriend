@@ -16,24 +16,26 @@ final class RecentStationCell: BaseTableViewCell {
 
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 15.0, weight: .bold)
         return label
     }()
 
     private lazy var directionLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 13.0, weight: .bold)
         return label
     }()
 
     override func configureUI() {
         super.configureUI()
-        contentView.backgroundColor = .systemBackground
         selectionStyle = .none
+        backgroundColor = .systemGray6
     }
 
     override func configureLayout() {
         super.configureLayout()
         [
-            lineIconButton, nameLabel
+            lineIconButton, nameLabel, directionLabel
         ].forEach { addSubview($0) }
         lineIconButton.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(10)
@@ -41,10 +43,10 @@ final class RecentStationCell: BaseTableViewCell {
         }
         nameLabel.snp.makeConstraints {
             $0.leading.equalTo(lineIconButton.snp.trailing).offset(10)
-            $0.bottom.equalTo(lineIconButton)
+            $0.centerY.equalTo(lineIconButton)
         }
         directionLabel.snp.makeConstraints {
-            $0.leading.equalTo(nameLabel.snp.trailing).offset(10)
+            $0.leading.equalTo(nameLabel.snp.trailing).offset(5)
             $0.bottom.equalTo(nameLabel)
             $0.trailing.lessThanOrEqualTo(contentView).inset(10)
         }
@@ -57,6 +59,6 @@ final class RecentStationCell: BaseTableViewCell {
         )
         lineIconButton.configuration?.title = stationTarget.lineNumber.lineNum
         nameLabel.text = stationTarget.name
-        directionLabel.text = stationTarget.name
+        directionLabel.text = stationTarget.destinationName + " 방면"
     }
 }
