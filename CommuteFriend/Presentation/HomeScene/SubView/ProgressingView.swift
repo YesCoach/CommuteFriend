@@ -16,6 +16,8 @@ final class ProgressingView: UIView {
         return imageView
     }()
 
+    private var arrivalResponse: StationArrivalResponse?
+
     // MARK: - Init
 
     override init(frame: CGRect) {
@@ -40,6 +42,10 @@ final class ProgressingView: UIView {
 
         path.lineWidth = 3
         path.stroke()
+    }
+
+    func configure(with: StationArrivalResponse) {
+        print(with)
     }
 }
 

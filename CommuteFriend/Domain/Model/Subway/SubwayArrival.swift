@@ -12,30 +12,35 @@ struct SubwayArrival: Hashable {
     let arrivalMessage: String // 도착까지 남은 시간 or 전역 출발
     let remainTimeForSecond: String // 남은 시간(초)
     let currentStation: String // 현재 위치
+    let nextStation: String // 다음역
     let subwayLine: SubwayLine? // 호선 정보
     let creationDate: String // 데이터 생성 시각
     let arrivalCode: SubwayArrivalCode?
     let upDownLine: UpDownDirection
+    let ordkey: String
 
     init(
         direction: String,
         arrivalMessage: String,
         remainTimeForSecond: String,
         currentStation: String,
+        nextStation: String,
         subwayLine: String,
         creationDate: String,
         arrivalCode: String,
-        upDownLine: String
+        upDownLine: String,
+        ordkey: String
     ) {
         self.destination = direction
         self.arrivalMessage = arrivalMessage
         self.remainTimeForSecond = remainTimeForSecond
         self.currentStation = currentStation
+        self.nextStation = nextStation
         self.subwayLine = SubwayLine(rawValue: subwayLine)
         self.creationDate = creationDate
         self.arrivalCode = SubwayArrivalCode(rawValue: arrivalCode)
         self.upDownLine = UpDownDirection(rawValue: upDownLine) ?? .up
-
+        self.ordkey = ordkey
     }
 }
 

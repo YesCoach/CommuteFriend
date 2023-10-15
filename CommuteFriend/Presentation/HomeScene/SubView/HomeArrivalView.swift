@@ -31,26 +31,35 @@ final class HomeArrivalView: UIView {
     private lazy var progressingView: ProgressingView = ProgressingView()
     private lazy var arrivalInformationView: ArrivalInformationView = ArrivalInformationView()
 
+    private var subwayStationArrival: StationArrivalResponse?
+
     // MARK: - Init
 
     init() {
         super.init(frame: .zero)
         configureUI()
         configureLayout()
-        configureData()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configureData() {
+    func configure(with arrivalResponse: StationArrivalResponse) {
+        self.subwayStationArrival = arrivalResponse
+
+        let stationTarget = arrivalResponse.stationArrivalTarget
+
         routeIconButton.configuration = .filledCapsuleConfiguration(
-            foregroundColor: .white, backgroundColor: .systemGreen
+            foregroundColor: .white,
+            backgroundColor: .subwayLineColor(stationTarget.lineNumber)
         )
-        routeIconButton.configuration?.title = "2"
-        stationLabel.text = "시청"
-        destinationLabel.text = "다음역: 문래"
+        routeIconButton.configuration?.title = stationTarget.lineNumber.lineNum
+        stationLabel.text = stationTarget.name
+        destinationLabel.text = "다음역: \(stationTarget.destinationName)"
+
+        arrivalInformationView.configure(wtih: arrivalResponse)
+        progressingView.configure(with: arrivalResponse)
     }
 
 }

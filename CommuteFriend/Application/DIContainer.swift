@@ -54,7 +54,10 @@ private extension DIContainer {
     // MARK: - ViewModel
 
     private func makeHomeViewModel() -> HomeViewModel {
-        return DefaultHomeViewModel(localSubwayRepository: makeLocalSubwayRepository())
+        return DefaultHomeViewModel(
+            localSubwayRepository: makeLocalSubwayRepository(),
+            subwayStationArrivalRepository: makeSubwayStationArrivalRepository()
+        )
     }
 
     private func makeSubwaySearchViewModel() -> SubwaySearchViewModel {
@@ -94,6 +97,10 @@ private extension DIContainer {
 
     private func makeLocalBusRepository() -> LocalBusRepository {
         return LocalBusRepository.shared
+    }
+
+    private func makeSubwayStationArrivalRepository() -> SubwayStationArrivalRepository {
+        return SubwayStationArrivalRepository(networkManager: networkManager)
     }
 
 }
