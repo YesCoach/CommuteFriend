@@ -84,12 +84,9 @@ final class HomeViewController: BaseViewController {
             menuType: .favorite
         ) { [weak self] _ in
             guard let self else { return }
-            let busSearchViewController = DIContainer.shared.makeBusSearchViewController()
-
-            let navigationController = UINavigationController(
-                rootViewController: busSearchViewController
-            )
-            present(navigationController, animated: true)
+            let favoriteViewController = FavoriteViewController<SubwayTarget>()
+            favoriteViewController.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(favoriteViewController, animated: true)
         }
         return view
     }()
@@ -104,7 +101,7 @@ final class HomeViewController: BaseViewController {
         let label = UILabel()
         label.text = "출퇴근메이트"
         label.font = .systemFont(ofSize: 24, weight: .bold)
-        label.textColor = .label
+        label.textColor = .white
 
         let barButtonItem = UIBarButtonItem(customView: label)
         return barButtonItem
@@ -141,6 +138,7 @@ final class HomeViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavigationBar()
         bindViewModel()
         enrollNotification()
     }
@@ -195,6 +193,12 @@ final class HomeViewController: BaseViewController {
         super.configureNavigationItem()
         navigationItem.leftBarButtonItem = titleLeftBarButtonItem
         navigationItem.rightBarButtonItem = alarmBarButtonItem
+        navigationItem.backButtonTitle = ""
+    }
+
+    private func configureNavigationBar() {
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
 
 }

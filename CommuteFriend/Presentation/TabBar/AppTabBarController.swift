@@ -25,6 +25,7 @@ final class AppTabBarController: UITabBarController {
         tabBar.tintColor = .label
 
         let navigationController = UINavigationController(rootViewController: homeViewController)
+
         self.viewControllers = [navigationController, favoriteViewController]
     }
 

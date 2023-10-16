@@ -22,4 +22,16 @@ extension UIButton.Configuration {
         return configuration
     }
 
+    static func enrollButtonConfiguration(
+        foregroundColor: UIColor,
+        backgroundColor: UIColor
+    ) -> UIButton.Configuration {
+        var configuration = UIButton.Configuration.filled()
+        configuration.baseForegroundColor = .white
+        configuration.baseBackgroundColor = backgroundColor
+        configuration.cornerStyle = .large
+
+        return configuration
+    }
+
 }

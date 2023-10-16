@@ -72,6 +72,10 @@
 		89023F662ADBF0ED009FFCBD /* SubwayStationArrivalResponse+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F652ADBF0ED009FFCBD /* SubwayStationArrivalResponse+Mapping.swift */; };
 		89023F682ADBF648009FFCBD /* SubwayArrivalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F672ADBF648009FFCBD /* SubwayArrivalResponse.swift */; };
 		89023F6A2ADBFD7D009FFCBD /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F692ADBFD7D009FFCBD /* Collection+.swift */; };
+		89023F6E2ADC477E009FFCBD /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F6D2ADC477E009FFCBD /* FavoriteViewController.swift */; };
+		89023FAC2ADD0655009FFCBD /* FavoriteStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023FAB2ADD0655009FFCBD /* FavoriteStationCell.swift */; };
+		89023FAE2ADD0884009FFCBD /* StationTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023FAD2ADD0884009FFCBD /* StationTarget.swift */; };
+		89023FB12ADD097C009FFCBD /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023FB02ADD097C009FFCBD /* FavoriteItem.swift */; };
 		8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664D2AD6770600C44C04 /* AppDelegate.swift */; };
 		894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664F2AD6770600C44C04 /* SceneDelegate.swift */; };
 		894266522AD6770600C44C04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266512AD6770600C44C04 /* ViewController.swift */; };
@@ -177,6 +181,10 @@
 		89023F652ADBF0ED009FFCBD /* SubwayStationArrivalResponse+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubwayStationArrivalResponse+Mapping.swift"; sourceTree = "<group>"; };
 		89023F672ADBF648009FFCBD /* SubwayArrivalResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayArrivalResponse.swift; sourceTree = "<group>"; };
 		89023F692ADBFD7D009FFCBD /* Collection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
+		89023F6D2ADC477E009FFCBD /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		89023FAB2ADD0655009FFCBD /* FavoriteStationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStationCell.swift; sourceTree = "<group>"; };
+		89023FAD2ADD0884009FFCBD /* StationTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTarget.swift; sourceTree = "<group>"; };
+		89023FB02ADD097C009FFCBD /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
 		8942664A2AD6770600C44C04 /* CommuteFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommuteFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8942664D2AD6770600C44C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8942664F2AD6770600C44C04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -487,6 +495,31 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		89023F6B2ADC4751009FFCBD /* FavoriteScene */ = {
+			isa = PBXGroup;
+			children = (
+				89023F6C2ADC4769009FFCBD /* View */,
+			);
+			path = FavoriteScene;
+			sourceTree = "<group>";
+		};
+		89023F6C2ADC4769009FFCBD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				89023F6D2ADC477E009FFCBD /* FavoriteViewController.swift */,
+				89023FAB2ADD0655009FFCBD /* FavoriteStationCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		89023FAF2ADD0967009FFCBD /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				89023FB02ADD097C009FFCBD /* FavoriteItem.swift */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
 		894266412AD6770600C44C04 = {
 			isa = PBXGroup;
 			children = (
@@ -572,6 +605,7 @@
 				894266B12AD6BAD200C44C04 /* Common */,
 				894266952AD67D8600C44C04 /* HomeScene */,
 				89023EAB2AD6CB3C009FFCBD /* SearchScene */,
+				89023F6B2ADC4751009FFCBD /* FavoriteScene */,
 				894266A72AD68C0700C44C04 /* Extensions */,
 			);
 			path = Presentation;
@@ -663,9 +697,11 @@
 			isa = PBXGroup;
 			children = (
 				894266B82AD6BC2600C44C04 /* TransportationType.swift */,
+				89023FAD2ADD0884009FFCBD /* StationTarget.swift */,
 				89023EC82AD6F482009FFCBD /* Search */,
 				89023EB12AD6D0D4009FFCBD /* Subway */,
 				89023F162AD7EC82009FFCBD /* Bus */,
+				89023FAF2ADD0967009FFCBD /* Favorite */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -835,9 +871,12 @@
 				89023F6A2ADBFD7D009FFCBD /* Collection+.swift in Sources */,
 				89023F682ADBF648009FFCBD /* SubwayArrivalResponse.swift in Sources */,
 				89023F072AD7A063009FFCBD /* TestSearchVC.swift in Sources */,
+				89023F6E2ADC477E009FFCBD /* FavoriteViewController.swift in Sources */,
 				8942669A2AD6809500C44C04 /* TabBarItems.swift in Sources */,
+				89023FAC2ADD0655009FFCBD /* FavoriteStationCell.swift in Sources */,
 				89023EDD2AD6F8CA009FFCBD /* DIContainer.swift in Sources */,
 				8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */,
+				89023FAE2ADD0884009FFCBD /* StationTarget.swift in Sources */,
 				894266982AD6803200C44C04 /* AppTabBarController.swift in Sources */,
 				89023F3E2ADB18EE009FFCBD /* RecentStationView.swift in Sources */,
 				89023EC72AD6F422009FFCBD /* UserDefaultsSearchHistory.swift in Sources */,
@@ -863,6 +902,7 @@
 				89023F5A2ADB2813009FFCBD /* Constants.swift in Sources */,
 				8942668E2AD67AC600C44C04 /* ReusableProtocol.swift in Sources */,
 				894266862AD6796D00C44C04 /* APIKey.swift in Sources */,
+				89023FB12ADD097C009FFCBD /* FavoriteItem.swift in Sources */,
 				894266B92AD6BC2600C44C04 /* TransportationType.swift in Sources */,
 				89023F1D2AD7EC82009FFCBD /* BusStation.swift in Sources */,
 				89023F5D2ADBA8E4009FFCBD /* RealmSubwayStationStorage.swift in Sources */,
