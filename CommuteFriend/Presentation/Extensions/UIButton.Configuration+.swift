@@ -17,7 +17,19 @@ extension UIButton.Configuration {
         configuration.baseForegroundColor = .white
         configuration.baseBackgroundColor = backgroundColor
         configuration.cornerStyle = .capsule
-        configuration.contentInsets = .init(top: 5, leading: 10, bottom: 5, trailing: 10)
+//        configuration.contentInsets = .init(top: 5, leading: 10, bottom: 5, trailing: 10)
+
+        return configuration
+    }
+
+    static func enrollButtonConfiguration(
+        foregroundColor: UIColor,
+        backgroundColor: UIColor
+    ) -> UIButton.Configuration {
+        var configuration = UIButton.Configuration.filled()
+        configuration.baseForegroundColor = .white
+        configuration.baseBackgroundColor = backgroundColor
+        configuration.cornerStyle = .large
 
         return configuration
     }

@@ -7,6 +7,75 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89023EA42AD6C9CC009FFCBD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 89023EA32AD6C9CC009FFCBD /* Alamofire */; };
+		89023EA62AD6C9DB009FFCBD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EA52AD6C9DB009FFCBD /* NetworkManager.swift */; };
+		89023EA82AD6CA19009FFCBD /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EA72AD6CA19009FFCBD /* Router.swift */; };
+		89023EAE2AD6CB59009FFCBD /* SubwaySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EAD2AD6CB59009FFCBD /* SubwaySearchViewController.swift */; };
+		89023EB72AD6D109009FFCBD /* SubwayArrival.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EB22AD6D109009FFCBD /* SubwayArrival.swift */; };
+		89023EB82AD6D109009FFCBD /* UpDownDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EB32AD6D109009FFCBD /* UpDownDirection.swift */; };
+		89023EB92AD6D109009FFCBD /* SubwayArrivalCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EB42AD6D109009FFCBD /* SubwayArrivalCode.swift */; };
+		89023EBA2AD6D109009FFCBD /* SubwayStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EB52AD6D109009FFCBD /* SubwayStation.swift */; };
+		89023EBB2AD6D109009FFCBD /* SubwayLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EB62AD6D109009FFCBD /* SubwayLine.swift */; };
+		89023EBD2AD6D165009FFCBD /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EBC2AD6D165009FFCBD /* String+.swift */; };
+		89023EBF2AD6D17E009FFCBD /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EBE2AD6D17E009FFCBD /* DateFormatter+.swift */; };
+		89023EC22AD6D29D009FFCBD /* SearchHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EC12AD6D29D009FFCBD /* SearchHistoryCell.swift */; };
+		89023EC72AD6F422009FFCBD /* UserDefaultsSearchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EC62AD6F422009FFCBD /* UserDefaultsSearchHistory.swift */; };
+		89023ECA2AD6F491009FFCBD /* SearchHistoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EC92AD6F491009FFCBD /* SearchHistoryType.swift */; };
+		89023ECD2AD6F4E4009FFCBD /* SearchHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023ECC2AD6F4E4009FFCBD /* SearchHistoryRepository.swift */; };
+		89023ED02AD6F622009FFCBD /* SearchHistoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023ECF2AD6F622009FFCBD /* SearchHistoryStorage.swift */; };
+		89023ED32AD6F6D8009FFCBD /* SubwaySearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023ED22AD6F6D8009FFCBD /* SubwaySearchViewModel.swift */; };
+		89023ED62AD6F872009FFCBD /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 89023ED52AD6F872009FFCBD /* RxCocoa */; };
+		89023ED82AD6F872009FFCBD /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 89023ED72AD6F872009FFCBD /* RxRelay */; };
+		89023EDA2AD6F872009FFCBD /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 89023ED92AD6F872009FFCBD /* RxSwift */; };
+		89023EDD2AD6F8CA009FFCBD /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EDC2AD6F8CA009FFCBD /* DIContainer.swift */; };
+		89023EDF2AD6FDB5009FFCBD /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EDE2AD6FDB5009FFCBD /* UIViewController+.swift */; };
+		89023EE12AD70E47009FFCBD /* SearchHistoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EE02AD70E47009FFCBD /* SearchHistoryHeaderView.swift */; };
+		89023EEC2AD7163E009FFCBD /* DTOMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EEB2AD7163E009FFCBD /* DTOMapping.swift */; };
+		89023EEE2AD71882009FFCBD /* SubwaySearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EED2AD71882009FFCBD /* SubwaySearchResultViewController.swift */; };
+		89023EF02AD719D0009FFCBD /* SubwaySearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EEF2AD719D0009FFCBD /* SubwaySearchResultCell.swift */; };
+		89023EF22AD71C05009FFCBD /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EF12AD71C05009FFCBD /* UIColor+.swift */; };
+		89023F072AD7A063009FFCBD /* TestSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F062AD7A063009FFCBD /* TestSearchVC.swift */; };
+		89023F092AD7CB28009FFCBD /* SubwayStationInformation.json in Resources */ = {isa = PBXBuildFile; fileRef = 89023F082AD7CB28009FFCBD /* SubwayStationInformation.json */; };
+		89023F0F2AD7D3A9009FFCBD /* SubwayStationList+DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F0E2AD7D3A9009FFCBD /* SubwayStationList+DTO.swift */; };
+		89023F112AD7D5CA009FFCBD /* LocalSubwayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F102AD7D5CA009FFCBD /* LocalSubwayRepository.swift */; };
+		89023F132AD7EB5C009FFCBD /* BusStationInformation.json in Resources */ = {isa = PBXBuildFile; fileRef = 89023F122AD7EB5C009FFCBD /* BusStationInformation.json */; };
+		89023F152AD7EB9F009FFCBD /* BusStationList+DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F142AD7EB9F009FFCBD /* BusStationList+DTO.swift */; };
+		89023F1C2AD7EC82009FFCBD /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F172AD7EC82009FFCBD /* Bus.swift */; };
+		89023F1D2AD7EC82009FFCBD /* BusStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F182AD7EC82009FFCBD /* BusStation.swift */; };
+		89023F1E2AD7EC82009FFCBD /* BusSearchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F192AD7EC82009FFCBD /* BusSearchable.swift */; };
+		89023F1F2AD7EC82009FFCBD /* BusArrival.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F1A2AD7EC82009FFCBD /* BusArrival.swift */; };
+		89023F202AD7EC82009FFCBD /* BusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F1B2AD7EC82009FFCBD /* BusType.swift */; };
+		89023F262AD804D5009FFCBD /* BusSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F252AD804D5009FFCBD /* BusSearchViewController.swift */; };
+		89023F2D2AD80945009FFCBD /* BusStationSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F2C2AD80944009FFCBD /* BusStationSearchResultCell.swift */; };
+		89023F322AD80DD2009FFCBD /* BusSearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F312AD80DD2009FFCBD /* BusSearchResultViewController.swift */; };
+		89023F342AD80EDC009FFCBD /* BusSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F332AD80EDC009FFCBD /* BusSearchViewModel.swift */; };
+		89023F362AD80F62009FFCBD /* LocalBusRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F352AD80F62009FFCBD /* LocalBusRepository.swift */; };
+		89023F382AD93CAA009FFCBD /* SubwaySearchSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F372AD93CAA009FFCBD /* SubwaySearchSelectionViewController.swift */; };
+		89023F3A2AD93D46009FFCBD /* SubwaySearchSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F392AD93D46009FFCBD /* SubwaySearchSelectionViewModel.swift */; };
+		89023F3C2ADB0DC9009FFCBD /* MenuSelectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F3B2ADB0DC9009FFCBD /* MenuSelectableView.swift */; };
+		89023F3E2ADB18EE009FFCBD /* RecentStationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F3D2ADB18EE009FFCBD /* RecentStationView.swift */; };
+		89023F402ADB199D009FFCBD /* RecentStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F3F2ADB199D009FFCBD /* RecentStationCell.swift */; };
+		89023F422ADB1AEC009FFCBD /* SubwayTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F412ADB1AEC009FFCBD /* SubwayTarget.swift */; };
+		89023F452ADB2222009FFCBD /* SubwayStationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F442ADB2222009FFCBD /* SubwayStationStorage.swift */; };
+		89023F482ADB2267009FFCBD /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F472ADB2267009FFCBD /* UserStorage.swift */; };
+		89023F4B2ADB2302009FFCBD /* RealmStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F4A2ADB2302009FFCBD /* RealmStorage.swift */; };
+		89023F4E2ADB2344009FFCBD /* RealmMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F4D2ADB2344009FFCBD /* RealmMapping.swift */; };
+		89023F502ADB234F009FFCBD /* User+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F4F2ADB234F009FFCBD /* User+Mapping.swift */; };
+		89023F522ADB2362009FFCBD /* Subway+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F512ADB2362009FFCBD /* Subway+Mapping.swift */; };
+		89023F552ADB2459009FFCBD /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 89023F542ADB2459009FFCBD /* Realm */; };
+		89023F572ADB2459009FFCBD /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 89023F562ADB2459009FFCBD /* RealmSwift */; };
+		89023F5A2ADB2813009FFCBD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F592ADB2813009FFCBD /* Constants.swift */; };
+		89023F5D2ADBA8E4009FFCBD /* RealmSubwayStationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F5C2ADBA8E4009FFCBD /* RealmSubwayStationStorage.swift */; };
+		89023F602ADBC7CF009FFCBD /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F5F2ADBC7CF009FFCBD /* HomeViewModel.swift */; };
+		89023F622ADBD540009FFCBD /* NSNotification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F612ADBD540009FFCBD /* NSNotification+.swift */; };
+		89023F642ADBF091009FFCBD /* SubwayStationArrivalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F632ADBF091009FFCBD /* SubwayStationArrivalRepository.swift */; };
+		89023F662ADBF0ED009FFCBD /* SubwayStationArrivalResponse+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F652ADBF0ED009FFCBD /* SubwayStationArrivalResponse+Mapping.swift */; };
+		89023F682ADBF648009FFCBD /* SubwayArrivalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F672ADBF648009FFCBD /* SubwayArrivalResponse.swift */; };
+		89023F6A2ADBFD7D009FFCBD /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F692ADBFD7D009FFCBD /* Collection+.swift */; };
+		89023F6E2ADC477E009FFCBD /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023F6D2ADC477E009FFCBD /* FavoriteViewController.swift */; };
+		89023FAC2ADD0655009FFCBD /* FavoriteStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023FAB2ADD0655009FFCBD /* FavoriteStationCell.swift */; };
+		89023FAE2ADD0884009FFCBD /* StationTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023FAD2ADD0884009FFCBD /* StationTarget.swift */; };
+		89023FB12ADD097C009FFCBD /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023FB02ADD097C009FFCBD /* FavoriteItem.swift */; };
 		8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664D2AD6770600C44C04 /* AppDelegate.swift */; };
 		894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664F2AD6770600C44C04 /* SceneDelegate.swift */; };
 		894266522AD6770600C44C04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266512AD6770600C44C04 /* ViewController.swift */; };
@@ -33,6 +102,9 @@
 		894266B32AD6BAE300C44C04 /* SelectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266B22AD6BAE300C44C04 /* SelectableView.swift */; };
 		894266B52AD6BB1500C44C04 /* SelectableItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266B42AD6BB1500C44C04 /* SelectableItemType.swift */; };
 		894266B92AD6BC2600C44C04 /* TransportationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266B82AD6BC2600C44C04 /* TransportationType.swift */; };
+		89EE858C2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */; };
+		89EE858E2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */; };
+		89EE85922ADD2E370095198D /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE85912ADD2E370095198D /* FavoriteViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +125,69 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		89023EA52AD6C9DB009FFCBD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		89023EA72AD6CA19009FFCBD /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		89023EAD2AD6CB59009FFCBD /* SubwaySearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySearchViewController.swift; sourceTree = "<group>"; };
+		89023EB22AD6D109009FFCBD /* SubwayArrival.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubwayArrival.swift; sourceTree = "<group>"; };
+		89023EB32AD6D109009FFCBD /* UpDownDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpDownDirection.swift; sourceTree = "<group>"; };
+		89023EB42AD6D109009FFCBD /* SubwayArrivalCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubwayArrivalCode.swift; sourceTree = "<group>"; };
+		89023EB52AD6D109009FFCBD /* SubwayStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubwayStation.swift; sourceTree = "<group>"; };
+		89023EB62AD6D109009FFCBD /* SubwayLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubwayLine.swift; sourceTree = "<group>"; };
+		89023EBC2AD6D165009FFCBD /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		89023EBE2AD6D17E009FFCBD /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
+		89023EC12AD6D29D009FFCBD /* SearchHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryCell.swift; sourceTree = "<group>"; };
+		89023EC62AD6F422009FFCBD /* UserDefaultsSearchHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsSearchHistory.swift; sourceTree = "<group>"; };
+		89023EC92AD6F491009FFCBD /* SearchHistoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryType.swift; sourceTree = "<group>"; };
+		89023ECC2AD6F4E4009FFCBD /* SearchHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryRepository.swift; sourceTree = "<group>"; };
+		89023ECF2AD6F622009FFCBD /* SearchHistoryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryStorage.swift; sourceTree = "<group>"; };
+		89023ED22AD6F6D8009FFCBD /* SubwaySearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySearchViewModel.swift; sourceTree = "<group>"; };
+		89023EDC2AD6F8CA009FFCBD /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		89023EDE2AD6FDB5009FFCBD /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		89023EE02AD70E47009FFCBD /* SearchHistoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryHeaderView.swift; sourceTree = "<group>"; };
+		89023EEB2AD7163E009FFCBD /* DTOMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DTOMapping.swift; sourceTree = "<group>"; };
+		89023EED2AD71882009FFCBD /* SubwaySearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySearchResultViewController.swift; sourceTree = "<group>"; };
+		89023EEF2AD719D0009FFCBD /* SubwaySearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySearchResultCell.swift; sourceTree = "<group>"; };
+		89023EF12AD71C05009FFCBD /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		89023F062AD7A063009FFCBD /* TestSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSearchVC.swift; sourceTree = "<group>"; };
+		89023F082AD7CB28009FFCBD /* SubwayStationInformation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SubwayStationInformation.json; sourceTree = "<group>"; };
+		89023F0E2AD7D3A9009FFCBD /* SubwayStationList+DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubwayStationList+DTO.swift"; sourceTree = "<group>"; };
+		89023F102AD7D5CA009FFCBD /* LocalSubwayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalSubwayRepository.swift; sourceTree = "<group>"; };
+		89023F122AD7EB5C009FFCBD /* BusStationInformation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BusStationInformation.json; sourceTree = "<group>"; };
+		89023F142AD7EB9F009FFCBD /* BusStationList+DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BusStationList+DTO.swift"; sourceTree = "<group>"; };
+		89023F172AD7EC82009FFCBD /* Bus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
+		89023F182AD7EC82009FFCBD /* BusStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusStation.swift; sourceTree = "<group>"; };
+		89023F192AD7EC82009FFCBD /* BusSearchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusSearchable.swift; sourceTree = "<group>"; };
+		89023F1A2AD7EC82009FFCBD /* BusArrival.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusArrival.swift; sourceTree = "<group>"; };
+		89023F1B2AD7EC82009FFCBD /* BusType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusType.swift; sourceTree = "<group>"; };
+		89023F252AD804D5009FFCBD /* BusSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusSearchViewController.swift; sourceTree = "<group>"; };
+		89023F2C2AD80944009FFCBD /* BusStationSearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStationSearchResultCell.swift; sourceTree = "<group>"; };
+		89023F312AD80DD2009FFCBD /* BusSearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusSearchResultViewController.swift; sourceTree = "<group>"; };
+		89023F332AD80EDC009FFCBD /* BusSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusSearchViewModel.swift; sourceTree = "<group>"; };
+		89023F352AD80F62009FFCBD /* LocalBusRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalBusRepository.swift; sourceTree = "<group>"; };
+		89023F372AD93CAA009FFCBD /* SubwaySearchSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySearchSelectionViewController.swift; sourceTree = "<group>"; };
+		89023F392AD93D46009FFCBD /* SubwaySearchSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwaySearchSelectionViewModel.swift; sourceTree = "<group>"; };
+		89023F3B2ADB0DC9009FFCBD /* MenuSelectableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSelectableView.swift; sourceTree = "<group>"; };
+		89023F3D2ADB18EE009FFCBD /* RecentStationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentStationView.swift; sourceTree = "<group>"; };
+		89023F3F2ADB199D009FFCBD /* RecentStationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentStationCell.swift; sourceTree = "<group>"; };
+		89023F412ADB1AEC009FFCBD /* SubwayTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayTarget.swift; sourceTree = "<group>"; };
+		89023F442ADB2222009FFCBD /* SubwayStationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayStationStorage.swift; sourceTree = "<group>"; };
+		89023F472ADB2267009FFCBD /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
+		89023F4A2ADB2302009FFCBD /* RealmStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmStorage.swift; sourceTree = "<group>"; };
+		89023F4D2ADB2344009FFCBD /* RealmMapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMapping.swift; sourceTree = "<group>"; };
+		89023F4F2ADB234F009FFCBD /* User+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Mapping.swift"; sourceTree = "<group>"; };
+		89023F512ADB2362009FFCBD /* Subway+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subway+Mapping.swift"; sourceTree = "<group>"; };
+		89023F592ADB2813009FFCBD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		89023F5C2ADBA8E4009FFCBD /* RealmSubwayStationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmSubwayStationStorage.swift; sourceTree = "<group>"; };
+		89023F5F2ADBC7CF009FFCBD /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		89023F612ADBD540009FFCBD /* NSNotification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotification+.swift"; sourceTree = "<group>"; };
+		89023F632ADBF091009FFCBD /* SubwayStationArrivalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayStationArrivalRepository.swift; sourceTree = "<group>"; };
+		89023F652ADBF0ED009FFCBD /* SubwayStationArrivalResponse+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SubwayStationArrivalResponse+Mapping.swift"; sourceTree = "<group>"; };
+		89023F672ADBF648009FFCBD /* SubwayArrivalResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubwayArrivalResponse.swift; sourceTree = "<group>"; };
+		89023F692ADBFD7D009FFCBD /* Collection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
+		89023F6D2ADC477E009FFCBD /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		89023FAB2ADD0655009FFCBD /* FavoriteStationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStationCell.swift; sourceTree = "<group>"; };
+		89023FAD2ADD0884009FFCBD /* StationTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTarget.swift; sourceTree = "<group>"; };
+		89023FB02ADD097C009FFCBD /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
 		8942664A2AD6770600C44C04 /* CommuteFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommuteFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8942664D2AD6770600C44C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8942664F2AD6770600C44C04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +217,9 @@
 		894266B22AD6BAE300C44C04 /* SelectableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableView.swift; sourceTree = "<group>"; };
 		894266B42AD6BB1500C44C04 /* SelectableItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableItemType.swift; sourceTree = "<group>"; };
 		894266B82AD6BC2600C44C04 /* TransportationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationType.swift; sourceTree = "<group>"; };
+		89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSubwaySearchSelectionViewModel.swift; sourceTree = "<group>"; };
+		89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteSubwayDTO+Mapping.swift"; sourceTree = "<group>"; };
+		89EE85912ADD2E370095198D /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +227,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89023F552ADB2459009FFCBD /* Realm in Frameworks */,
+				89023ED62AD6F872009FFCBD /* RxCocoa in Frameworks */,
+				89023F572ADB2459009FFCBD /* RealmSwift in Frameworks */,
 				894266942AD67B2900C44C04 /* SnapKit in Frameworks */,
+				89023EDA2AD6F872009FFCBD /* RxSwift in Frameworks */,
+				89023ED82AD6F872009FFCBD /* RxRelay in Frameworks */,
+				89023EA42AD6C9CC009FFCBD /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +254,281 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		89023EA92AD6CAF7009FFCBD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				89023ECB2AD6F4CD009FFCBD /* Repository */,
+				89023F0D2AD7D38C009FFCBD /* Resource */,
+				89023EC32AD6F39D009FFCBD /* PersistentStorage */,
+				894266842AD6794E00C44C04 /* Network */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		89023EAB2AD6CB3C009FFCBD /* SearchScene */ = {
+			isa = PBXGroup;
+			children = (
+				89023F242AD80492009FFCBD /* Common */,
+				89023F212AD80420009FFCBD /* SubwaySearch */,
+				89023F222AD80459009FFCBD /* BusSearch */,
+			);
+			path = SearchScene;
+			sourceTree = "<group>";
+		};
+		89023EAC2AD6CB4B009FFCBD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				89023F062AD7A063009FFCBD /* TestSearchVC.swift */,
+				89023EAD2AD6CB59009FFCBD /* SubwaySearchViewController.swift */,
+				89023EED2AD71882009FFCBD /* SubwaySearchResultViewController.swift */,
+				89023F372AD93CAA009FFCBD /* SubwaySearchSelectionViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		89023EB12AD6D0D4009FFCBD /* Subway */ = {
+			isa = PBXGroup;
+			children = (
+				89023EB52AD6D109009FFCBD /* SubwayStation.swift */,
+				89023F672ADBF648009FFCBD /* SubwayArrivalResponse.swift */,
+				89023EB22AD6D109009FFCBD /* SubwayArrival.swift */,
+				89023EB42AD6D109009FFCBD /* SubwayArrivalCode.swift */,
+				89023F412ADB1AEC009FFCBD /* SubwayTarget.swift */,
+				89023EB62AD6D109009FFCBD /* SubwayLine.swift */,
+				89023EB32AD6D109009FFCBD /* UpDownDirection.swift */,
+			);
+			path = Subway;
+			sourceTree = "<group>";
+		};
+		89023EC02AD6D289009FFCBD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				89023EEF2AD719D0009FFCBD /* SubwaySearchResultCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		89023EC32AD6F39D009FFCBD /* PersistentStorage */ = {
+			isa = PBXGroup;
+			children = (
+				89023F492ADB22F0009FFCBD /* RealmStorage */,
+				89023F462ADB2256009FFCBD /* UserStorage */,
+				89023F432ADB21E3009FFCBD /* SubwayStationStorage */,
+				89023ECE2AD6F609009FFCBD /* SearchHistoryStorage */,
+			);
+			path = PersistentStorage;
+			sourceTree = "<group>";
+		};
+		89023EC82AD6F482009FFCBD /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				89023EC92AD6F491009FFCBD /* SearchHistoryType.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		89023ECB2AD6F4CD009FFCBD /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				89023ECC2AD6F4E4009FFCBD /* SearchHistoryRepository.swift */,
+				89023F102AD7D5CA009FFCBD /* LocalSubwayRepository.swift */,
+				89023F632ADBF091009FFCBD /* SubwayStationArrivalRepository.swift */,
+				89023F352AD80F62009FFCBD /* LocalBusRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		89023ECE2AD6F609009FFCBD /* SearchHistoryStorage */ = {
+			isa = PBXGroup;
+			children = (
+				89023ECF2AD6F622009FFCBD /* SearchHistoryStorage.swift */,
+				89023EC62AD6F422009FFCBD /* UserDefaultsSearchHistory.swift */,
+			);
+			path = SearchHistoryStorage;
+			sourceTree = "<group>";
+		};
+		89023ED12AD6F6BD009FFCBD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				89023ED22AD6F6D8009FFCBD /* SubwaySearchViewModel.swift */,
+				89023F392AD93D46009FFCBD /* SubwaySearchSelectionViewModel.swift */,
+				89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		89023EE82AD7160D009FFCBD /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				89023EEB2AD7163E009FFCBD /* DTOMapping.swift */,
+				89023F652ADBF0ED009FFCBD /* SubwayStationArrivalResponse+Mapping.swift */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		89023F0A2AD7D308009FFCBD /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				89023F122AD7EB5C009FFCBD /* BusStationInformation.json */,
+				89023F082AD7CB28009FFCBD /* SubwayStationInformation.json */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		89023F0D2AD7D38C009FFCBD /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				89023F0E2AD7D3A9009FFCBD /* SubwayStationList+DTO.swift */,
+				89023F142AD7EB9F009FFCBD /* BusStationList+DTO.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		89023F162AD7EC82009FFCBD /* Bus */ = {
+			isa = PBXGroup;
+			children = (
+				89023F172AD7EC82009FFCBD /* Bus.swift */,
+				89023F182AD7EC82009FFCBD /* BusStation.swift */,
+				89023F192AD7EC82009FFCBD /* BusSearchable.swift */,
+				89023F1A2AD7EC82009FFCBD /* BusArrival.swift */,
+				89023F1B2AD7EC82009FFCBD /* BusType.swift */,
+			);
+			path = Bus;
+			sourceTree = "<group>";
+		};
+		89023F212AD80420009FFCBD /* SubwaySearch */ = {
+			isa = PBXGroup;
+			children = (
+				89023EAC2AD6CB4B009FFCBD /* View */,
+				89023EC02AD6D289009FFCBD /* Cell */,
+				89023ED12AD6F6BD009FFCBD /* ViewModel */,
+			);
+			path = SubwaySearch;
+			sourceTree = "<group>";
+		};
+		89023F222AD80459009FFCBD /* BusSearch */ = {
+			isa = PBXGroup;
+			children = (
+				89023F232AD80464009FFCBD /* View */,
+				89023F2B2AD8061E009FFCBD /* Cell */,
+				89023F2E2AD80BFB009FFCBD /* ViewModel */,
+			);
+			path = BusSearch;
+			sourceTree = "<group>";
+		};
+		89023F232AD80464009FFCBD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				89023F252AD804D5009FFCBD /* BusSearchViewController.swift */,
+				89023F312AD80DD2009FFCBD /* BusSearchResultViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		89023F242AD80492009FFCBD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				89023EC12AD6D29D009FFCBD /* SearchHistoryCell.swift */,
+				89023EE02AD70E47009FFCBD /* SearchHistoryHeaderView.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		89023F2B2AD8061E009FFCBD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				89023F2C2AD80944009FFCBD /* BusStationSearchResultCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		89023F2E2AD80BFB009FFCBD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				89023F332AD80EDC009FFCBD /* BusSearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		89023F432ADB21E3009FFCBD /* SubwayStationStorage */ = {
+			isa = PBXGroup;
+			children = (
+				89023F442ADB2222009FFCBD /* SubwayStationStorage.swift */,
+				89023F5C2ADBA8E4009FFCBD /* RealmSubwayStationStorage.swift */,
+			);
+			path = SubwayStationStorage;
+			sourceTree = "<group>";
+		};
+		89023F462ADB2256009FFCBD /* UserStorage */ = {
+			isa = PBXGroup;
+			children = (
+				89023F472ADB2267009FFCBD /* UserStorage.swift */,
+			);
+			path = UserStorage;
+			sourceTree = "<group>";
+		};
+		89023F492ADB22F0009FFCBD /* RealmStorage */ = {
+			isa = PBXGroup;
+			children = (
+				89023F4A2ADB2302009FFCBD /* RealmStorage.swift */,
+				89023F4C2ADB2328009FFCBD /* Entity+Mapping */,
+			);
+			path = RealmStorage;
+			sourceTree = "<group>";
+		};
+		89023F4C2ADB2328009FFCBD /* Entity+Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				89023F4D2ADB2344009FFCBD /* RealmMapping.swift */,
+				89023F4F2ADB234F009FFCBD /* User+Mapping.swift */,
+				89023F512ADB2362009FFCBD /* Subway+Mapping.swift */,
+				89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */,
+			);
+			path = "Entity+Mapping";
+			sourceTree = "<group>";
+		};
+		89023F582ADB2801009FFCBD /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				89023F592ADB2813009FFCBD /* Constants.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		89023F5E2ADBC7AE009FFCBD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				89023F5F2ADBC7CF009FFCBD /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		89023F6B2ADC4751009FFCBD /* FavoriteScene */ = {
+			isa = PBXGroup;
+			children = (
+				89023F6C2ADC4769009FFCBD /* View */,
+				89EE85902ADD2E250095198D /* Cell */,
+				89EE858F2ADD2E190095198D /* ViewModel */,
+			);
+			path = FavoriteScene;
+			sourceTree = "<group>";
+		};
+		89023F6C2ADC4769009FFCBD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				89023F6D2ADC477E009FFCBD /* FavoriteViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		89023FAF2ADD0967009FFCBD /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				89023FB02ADD097C009FFCBD /* FavoriteItem.swift */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
 		894266412AD6770600C44C04 = {
 			isa = PBXGroup;
 			children = (
@@ -135,10 +554,12 @@
 		8942664C2AD6770600C44C04 /* CommuteFriend */ = {
 			isa = PBXGroup;
 			children = (
+				89023F582ADB2801009FFCBD /* Common */,
 				894266872AD679B400C44C04 /* Application */,
 				894266B62AD6BC0900C44C04 /* Domain */,
 				894266882AD67A8600C44C04 /* Presentation */,
-				894266842AD6794E00C44C04 /* Network */,
+				89023EA92AD6CAF7009FFCBD /* Data */,
+				89023F0A2AD7D308009FFCBD /* Resource */,
 				894266512AD6770600C44C04 /* ViewController.swift */,
 				894266562AD6770700C44C04 /* Assets.xcassets */,
 				894266582AD6770700C44C04 /* LaunchScreen.storyboard */,
@@ -167,7 +588,10 @@
 		894266842AD6794E00C44C04 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				89023EE82AD7160D009FFCBD /* DataMapping */,
 				894266852AD6796D00C44C04 /* APIKey.swift */,
+				89023EA52AD6C9DB009FFCBD /* NetworkManager.swift */,
+				89023EA72AD6CA19009FFCBD /* Router.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -177,6 +601,7 @@
 			children = (
 				8942664D2AD6770600C44C04 /* AppDelegate.swift */,
 				8942664F2AD6770600C44C04 /* SceneDelegate.swift */,
+				89023EDC2AD6F8CA009FFCBD /* DIContainer.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -188,6 +613,8 @@
 				894266892AD67A9500C44C04 /* Base */,
 				894266B12AD6BAD200C44C04 /* Common */,
 				894266952AD67D8600C44C04 /* HomeScene */,
+				89023EAB2AD6CB3C009FFCBD /* SearchScene */,
+				89023F6B2ADC4751009FFCBD /* FavoriteScene */,
 				894266A72AD68C0700C44C04 /* Extensions */,
 			);
 			path = Presentation;
@@ -209,6 +636,7 @@
 			children = (
 				894266A12AD68B5700C44C04 /* View */,
 				894266A42AD68B6A00C44C04 /* SubView */,
+				89023F5E2ADBC7AE009FFCBD /* ViewModel */,
 			);
 			path = HomeScene;
 			sourceTree = "<group>";
@@ -236,6 +664,8 @@
 				894266A52AD68B8500C44C04 /* HomeArrivalView.swift */,
 				894266AD2AD6AAC100C44C04 /* ProgressingView.swift */,
 				894266AF2AD6ABA500C44C04 /* ArrivalInformationView.swift */,
+				89023F3D2ADB18EE009FFCBD /* RecentStationView.swift */,
+				89023F3F2ADB199D009FFCBD /* RecentStationCell.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -244,6 +674,12 @@
 			isa = PBXGroup;
 			children = (
 				894266A82AD68C2D00C44C04 /* UIButton.Configuration+.swift */,
+				89023EDE2AD6FDB5009FFCBD /* UIViewController+.swift */,
+				89023EF12AD71C05009FFCBD /* UIColor+.swift */,
+				89023EBC2AD6D165009FFCBD /* String+.swift */,
+				89023F612ADBD540009FFCBD /* NSNotification+.swift */,
+				89023EBE2AD6D17E009FFCBD /* DateFormatter+.swift */,
+				89023F692ADBFD7D009FFCBD /* Collection+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -251,6 +687,7 @@
 		894266B12AD6BAD200C44C04 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				89023F3B2ADB0DC9009FFCBD /* MenuSelectableView.swift */,
 				894266B22AD6BAE300C44C04 /* SelectableView.swift */,
 				894266B42AD6BB1500C44C04 /* SelectableItemType.swift */,
 			);
@@ -269,8 +706,29 @@
 			isa = PBXGroup;
 			children = (
 				894266B82AD6BC2600C44C04 /* TransportationType.swift */,
+				89023FAD2ADD0884009FFCBD /* StationTarget.swift */,
+				89023EC82AD6F482009FFCBD /* Search */,
+				89023EB12AD6D0D4009FFCBD /* Subway */,
+				89023F162AD7EC82009FFCBD /* Bus */,
+				89023FAF2ADD0967009FFCBD /* Favorite */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		89EE858F2ADD2E190095198D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				89EE85912ADD2E370095198D /* FavoriteViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		89EE85902ADD2E250095198D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				89023FAB2ADD0655009FFCBD /* FavoriteStationCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +750,12 @@
 			name = CommuteFriend;
 			packageProductDependencies = (
 				894266932AD67B2900C44C04 /* SnapKit */,
+				89023EA32AD6C9CC009FFCBD /* Alamofire */,
+				89023ED52AD6F872009FFCBD /* RxCocoa */,
+				89023ED72AD6F872009FFCBD /* RxRelay */,
+				89023ED92AD6F872009FFCBD /* RxSwift */,
+				89023F542ADB2459009FFCBD /* Realm */,
+				89023F562ADB2459009FFCBD /* RealmSwift */,
 			);
 			productName = CommuteFriend;
 			productReference = 8942664A2AD6770600C44C04 /* CommuteFriend.app */;
@@ -368,6 +832,9 @@
 			packageReferences = (
 				8942667D2AD677A200C44C04 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 				894266922AD67B2900C44C04 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				89023EA22AD6C9CC009FFCBD /* XCRemoteSwiftPackageReference "Alamofire" */,
+				89023ED42AD6F872009FFCBD /* XCRemoteSwiftPackageReference "RxSwift" */,
+				89023F532ADB2459009FFCBD /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 8942664B2AD6770600C44C04 /* Products */;
 			projectDirPath = "";
@@ -389,6 +856,8 @@
 				894266812AD677F500C44C04 /* .swiftlint.yml in Resources */,
 				8942665A2AD6770700C44C04 /* LaunchScreen.storyboard in Resources */,
 				894266572AD6770700C44C04 /* Assets.xcassets in Resources */,
+				89023F132AD7EB5C009FFCBD /* BusStationInformation.json in Resources */,
+				89023F092AD7CB28009FFCBD /* SubwayStationInformation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,23 +882,87 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89023EB72AD6D109009FFCBD /* SubwayArrival.swift in Sources */,
+				89023EB92AD6D109009FFCBD /* SubwayArrivalCode.swift in Sources */,
+				89023F452ADB2222009FFCBD /* SubwayStationStorage.swift in Sources */,
+				89023EA62AD6C9DB009FFCBD /* NetworkManager.swift in Sources */,
 				894266AE2AD6AAC100C44C04 /* ProgressingView.swift in Sources */,
 				894266522AD6770600C44C04 /* ViewController.swift in Sources */,
+				89023F362AD80F62009FFCBD /* LocalBusRepository.swift in Sources */,
+				89EE858E2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift in Sources */,
+				89023F1F2AD7EC82009FFCBD /* BusArrival.swift in Sources */,
+				89023F3C2ADB0DC9009FFCBD /* MenuSelectableView.swift in Sources */,
+				89023EEC2AD7163E009FFCBD /* DTOMapping.swift in Sources */,
+				89EE858C2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift in Sources */,
 				894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */,
+				89023F6A2ADBFD7D009FFCBD /* Collection+.swift in Sources */,
+				89023F682ADBF648009FFCBD /* SubwayArrivalResponse.swift in Sources */,
+				89023F072AD7A063009FFCBD /* TestSearchVC.swift in Sources */,
+				89023F6E2ADC477E009FFCBD /* FavoriteViewController.swift in Sources */,
 				8942669A2AD6809500C44C04 /* TabBarItems.swift in Sources */,
+				89EE85922ADD2E370095198D /* FavoriteViewModel.swift in Sources */,
+				89023FAC2ADD0655009FFCBD /* FavoriteStationCell.swift in Sources */,
+				89023EDD2AD6F8CA009FFCBD /* DIContainer.swift in Sources */,
 				8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */,
+				89023FAE2ADD0884009FFCBD /* StationTarget.swift in Sources */,
 				894266982AD6803200C44C04 /* AppTabBarController.swift in Sources */,
+				89023F3E2ADB18EE009FFCBD /* RecentStationView.swift in Sources */,
+				89023EC72AD6F422009FFCBD /* UserDefaultsSearchHistory.swift in Sources */,
+				89023F522ADB2362009FFCBD /* Subway+Mapping.swift in Sources */,
+				89023EAE2AD6CB59009FFCBD /* SubwaySearchViewController.swift in Sources */,
+				89023EBD2AD6D165009FFCBD /* String+.swift in Sources */,
+				89023F3A2AD93D46009FFCBD /* SubwaySearchSelectionViewModel.swift in Sources */,
+				89023F502ADB234F009FFCBD /* User+Mapping.swift in Sources */,
+				89023F602ADBC7CF009FFCBD /* HomeViewModel.swift in Sources */,
+				89023F322AD80DD2009FFCBD /* BusSearchResultViewController.swift in Sources */,
+				89023F622ADBD540009FFCBD /* NSNotification+.swift in Sources */,
+				89023ECD2AD6F4E4009FFCBD /* SearchHistoryRepository.swift in Sources */,
+				89023EBA2AD6D109009FFCBD /* SubwayStation.swift in Sources */,
+				89023EEE2AD71882009FFCBD /* SubwaySearchResultViewController.swift in Sources */,
+				89023EB82AD6D109009FFCBD /* UpDownDirection.swift in Sources */,
+				89023F112AD7D5CA009FFCBD /* LocalSubwayRepository.swift in Sources */,
 				894266A62AD68B8500C44C04 /* HomeArrivalView.swift in Sources */,
+				89023ED02AD6F622009FFCBD /* SearchHistoryStorage.swift in Sources */,
+				89023EF02AD719D0009FFCBD /* SubwaySearchResultCell.swift in Sources */,
+				89023F1E2AD7EC82009FFCBD /* BusSearchable.swift in Sources */,
+				89023ED32AD6F6D8009FFCBD /* SubwaySearchViewModel.swift in Sources */,
+				89023F482ADB2267009FFCBD /* UserStorage.swift in Sources */,
+				89023F5A2ADB2813009FFCBD /* Constants.swift in Sources */,
 				8942668E2AD67AC600C44C04 /* ReusableProtocol.swift in Sources */,
 				894266862AD6796D00C44C04 /* APIKey.swift in Sources */,
+				89023FB12ADD097C009FFCBD /* FavoriteItem.swift in Sources */,
 				894266B92AD6BC2600C44C04 /* TransportationType.swift in Sources */,
+				89023F1D2AD7EC82009FFCBD /* BusStation.swift in Sources */,
+				89023F5D2ADBA8E4009FFCBD /* RealmSubwayStationStorage.swift in Sources */,
 				894266A92AD68C2D00C44C04 /* UIButton.Configuration+.swift in Sources */,
+				89023F262AD804D5009FFCBD /* BusSearchViewController.swift in Sources */,
+				89023F382AD93CAA009FFCBD /* SubwaySearchSelectionViewController.swift in Sources */,
+				89023F202AD7EC82009FFCBD /* BusType.swift in Sources */,
+				89023EA82AD6CA19009FFCBD /* Router.swift in Sources */,
+				89023F1C2AD7EC82009FFCBD /* Bus.swift in Sources */,
 				894266A02AD68AE700C44C04 /* HomeViewController.swift in Sources */,
+				89023F342AD80EDC009FFCBD /* BusSearchViewModel.swift in Sources */,
+				89023EDF2AD6FDB5009FFCBD /* UIViewController+.swift in Sources */,
+				89023F662ADBF0ED009FFCBD /* SubwayStationArrivalResponse+Mapping.swift in Sources */,
+				89023ECA2AD6F491009FFCBD /* SearchHistoryType.swift in Sources */,
+				89023F2D2AD80945009FFCBD /* BusStationSearchResultCell.swift in Sources */,
 				894266902AD67AC600C44C04 /* BaseTableViewCell.swift in Sources */,
+				89023EBB2AD6D109009FFCBD /* SubwayLine.swift in Sources */,
+				89023F152AD7EB9F009FFCBD /* BusStationList+DTO.swift in Sources */,
+				89023F4B2ADB2302009FFCBD /* RealmStorage.swift in Sources */,
+				89023F402ADB199D009FFCBD /* RecentStationCell.swift in Sources */,
 				894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */,
+				89023EE12AD70E47009FFCBD /* SearchHistoryHeaderView.swift in Sources */,
 				8942668F2AD67AC600C44C04 /* BaseViewController.swift in Sources */,
+				89023F422ADB1AEC009FFCBD /* SubwayTarget.swift in Sources */,
+				89023EF22AD71C05009FFCBD /* UIColor+.swift in Sources */,
+				89023EC22AD6D29D009FFCBD /* SearchHistoryCell.swift in Sources */,
+				89023F0F2AD7D3A9009FFCBD /* SubwayStationList+DTO.swift in Sources */,
+				89023EBF2AD6D17E009FFCBD /* DateFormatter+.swift in Sources */,
 				894266B32AD6BAE300C44C04 /* SelectableView.swift in Sources */,
 				894266B52AD6BB1500C44C04 /* SelectableItemType.swift in Sources */,
+				89023F642ADBF091009FFCBD /* SubwayStationArrivalRepository.swift in Sources */,
+				89023F4E2ADB2344009FFCBD /* RealmMapping.swift in Sources */,
 				894266B02AD6ABA500C44C04 /* ArrivalInformationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -776,6 +1309,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		89023EA22AD6C9CC009FFCBD /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		89023ED42AD6F872009FFCBD /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		89023F532ADB2459009FFCBD /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.43.0;
+			};
+		};
 		8942667D2AD677A200C44C04 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/SwiftLint";
@@ -795,6 +1352,36 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		89023EA32AD6C9CC009FFCBD /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89023EA22AD6C9CC009FFCBD /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		89023ED52AD6F872009FFCBD /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89023ED42AD6F872009FFCBD /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		89023ED72AD6F872009FFCBD /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89023ED42AD6F872009FFCBD /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		89023ED92AD6F872009FFCBD /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89023ED42AD6F872009FFCBD /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		89023F542ADB2459009FFCBD /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89023F532ADB2459009FFCBD /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		89023F562ADB2459009FFCBD /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89023F532ADB2459009FFCBD /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		8942667E2AD677CD00C44C04 /* SwiftLintPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8942667D2AD677A200C44C04 /* XCRemoteSwiftPackageReference "SwiftLint" */;

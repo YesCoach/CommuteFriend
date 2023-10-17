@@ -11,15 +11,14 @@ final class ArrivalInformationView: UIView {
 
     private lazy var currentDestinationLabel: UILabel = {
         let label = UILabel()
-        label.text = "의정부행"
         label.font = .systemFont(ofSize: 20.0, weight: .bold)
         return label
     }()
 
     private lazy var currentTimeLabel: UILabel = {
         let label = UILabel()
-        label.text = "2분 10초"
-        label.font = .systemFont(ofSize: 24.0, weight: .bold)
+        label.font = .systemFont(ofSize: 22.0, weight: .bold)
+//        label.adjustsFontSizeToFitWidth = true
         label.textColor = .systemRed
         return label
     }()
@@ -32,13 +31,11 @@ final class ArrivalInformationView: UIView {
 
     private lazy var nextDestinationLabel: UILabel = {
         let label = UILabel()
-        label.text = "의정부행"
         return label
     }()
 
     private lazy var nextTimeLabel: UILabel = {
         let label = UILabel()
-        label.text = "20분"
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.textColor = .systemRed
         return label
@@ -49,6 +46,7 @@ final class ArrivalInformationView: UIView {
         stackView.axis = .horizontal
         stackView.spacing = 4.0
         stackView.alignment = .center
+        stackView.distribution = .fill
         return stackView
     }()
 
@@ -60,6 +58,8 @@ final class ArrivalInformationView: UIView {
         return stackView
     }()
 
+    private var arrivalResponse: StationArrivalResponse?
+
     init() {
         super.init(frame: .zero)
         configureUI()
@@ -68,6 +68,34 @@ final class ArrivalInformationView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func configure(wtih arrivalResponse: StationArrivalResponse) {
+        self.arrivalResponse = arrivalResponse
+        guard let subwayArrivalList = arrivalResponse.subwayArrival else { return }
+
+        currentDestinationLabel.text = subwayArrivalList[safe: 0]?.destination ?? "도착정보 없음"
+
+        // 만약 남은시간이 0일 경우 -> 실시간 도착 시간 미제공 구간!
+
+        if subwayArrivalList[safe: 0]?.remainTimeForSecond == "0" {
+            if let arrivalMessage = subwayArrivalList[safe: 0]?.arrivalMessage {
+                currentTimeLabel.text = arrivalMessage
+            }
+        } else {
+            currentTimeLabel.text = subwayArrivalList[safe: 0]?.conveniencedRemainTimeSecond ?? ""
+        }
+
+        nextDestinationLabel.text = subwayArrivalList[safe: 1]?.destination ?? "도착정보 없음"
+
+        // 만약 남은시간이 0일 경우 -> 실시간 도착 시간 미제공 구간!
+        if subwayArrivalList[safe: 1]?.remainTimeForSecond == "0" {
+            if let arrivalMessage = subwayArrivalList[safe: 1]?.arrivalMessage {
+                nextTimeLabel.text = arrivalMessage
+            }
+        } else {
+            nextTimeLabel.text = subwayArrivalList[safe: 1]?.conveniencedRemainTimeSecond ?? ""
+        }
     }
 
 }

@@ -31,26 +31,35 @@ final class HomeArrivalView: UIView {
     private lazy var progressingView: ProgressingView = ProgressingView()
     private lazy var arrivalInformationView: ArrivalInformationView = ArrivalInformationView()
 
+    private var subwayStationArrival: StationArrivalResponse?
+
     // MARK: - Init
 
     init() {
         super.init(frame: .zero)
         configureUI()
         configureLayout()
-        configureData()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configureData() {
+    func configure(with arrivalResponse: StationArrivalResponse) {
+        self.subwayStationArrival = arrivalResponse
+
+        let stationTarget = arrivalResponse.stationArrivalTarget
+
         routeIconButton.configuration = .filledCapsuleConfiguration(
-            foregroundColor: .white, backgroundColor: .systemGreen
+            foregroundColor: .white,
+            backgroundColor: .subwayLineColor(stationTarget.lineNumber)
         )
-        routeIconButton.configuration?.title = "2"
-        stationLabel.text = "시청"
-        destinationLabel.text = "다음역: 문래"
+        routeIconButton.configuration?.title = stationTarget.lineNumber.lineNum
+        stationLabel.text = stationTarget.name
+        destinationLabel.text = "다음역: \(stationTarget.destinationName)"
+
+        arrivalInformationView.configure(wtih: arrivalResponse)
+        progressingView.configure(with: arrivalResponse)
     }
 
 }
@@ -61,6 +70,10 @@ private extension HomeArrivalView {
 
     func configureUI() {
         backgroundColor = .systemBackground
+
+        self.layer.cornerRadius = 30.0
+        self.layer.cornerCurve = .continuous
+        self.layer.masksToBounds = true
     }
 
     func configureLayout() {
@@ -72,7 +85,8 @@ private extension HomeArrivalView {
         }
 
         routeIconButton.snp.makeConstraints {
-            $0.top.leading.equalToSuperview().offset(10.0)
+            $0.top.equalToSuperview().offset(10.0)
+            $0.leading.equalToSuperview().offset(20.0)
         }
 
         stationLabel.snp.makeConstraints {
@@ -88,7 +102,7 @@ private extension HomeArrivalView {
         progressingView.snp.makeConstraints {
             $0.top.equalTo(routeIconButton.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(100)
+            $0.height.equalTo(70)
         }
 
         arrivalInformationView.snp.makeConstraints {
