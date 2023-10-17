@@ -1,14 +1,15 @@
 //
-//  HomeViewController.swift
+//  BusHomeViewController.swift
 //  CommuteFriend
 //
-//  Created by 박태현 on 2023/10/11.
+//  Created by 박태현 on 2023/10/17.
 //
 
+import Foundation
 import UIKit
 import RxSwift
 
-final class HomeViewController: BaseViewController {
+final class BusHomeViewController: BaseViewController {
 
     // MARK: - View
 
@@ -66,7 +67,7 @@ final class HomeViewController: BaseViewController {
 
     private lazy var subwaySelectionView: MenuSelectableView = {
         let view = MenuSelectableView(
-            menuType: .subway
+            menuType: .bus
         ) { [weak self] _ in
             guard let self else { return }
             let subwaySearchViewController = DIContainer
@@ -94,14 +95,14 @@ final class HomeViewController: BaseViewController {
     }()
 
     private lazy var recentStationView: RecentStationView = {
-        let view = RecentStationView<SubwayTarget>()
+        let view = RecentStationView<BusTarget>()
         view.tableView.delegate = self
         return view
     }()
 
     private lazy var titleLeftBarButtonItem: UIBarButtonItem = {
         let label = UILabel()
-        label.text = "지하철메이트"
+        label.text = "버스메이트"
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.textColor = .white
 
@@ -124,10 +125,10 @@ final class HomeViewController: BaseViewController {
 
     // MARK: - Property
 
-    private let viewModel: HomeViewModel
+    private let viewModel: BusHomeViewModel
     private let disposeBag = DisposeBag()
 
-    init(viewModel: HomeViewModel) {
+    init(viewModel: BusHomeViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -207,17 +208,17 @@ final class HomeViewController: BaseViewController {
 
 // MARK: - Private method
 
-private extension HomeViewController {
+private extension BusHomeViewController {
 
     func bindViewModel() {
         viewModel
-            .recentSubwayStationList
+            .recentBusStationList
             .subscribe(with: self) { owner, stationList in
-                owner.recentStationView.updateSnapShot(data: stationList)
+//                owner.recentStationView.updateSnapShot(data: stationList)
             }
             .disposed(by: disposeBag)
         viewModel
-            .currentSubwayStationArrival
+            .currentBusStationArrival
             .bind(with: self) { owner, stationArrivalResponse in
                 owner.homeArrivalView.configure(with: stationArrivalResponse)
             }
@@ -247,13 +248,13 @@ private extension HomeViewController {
 
 // MARK: - RecentStationView TableViewDelegate
 
-extension HomeViewController: UITableViewDelegate {
+extension BusHomeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let item = recentStationView.dataSource.itemIdentifier(for: indexPath)
         else { return }
 
-        viewModel.didSelectRowAt(subwayTarget: item)
+        viewModel.didSelectRowAt(busTarget: item)
     }
 
     func tableView(

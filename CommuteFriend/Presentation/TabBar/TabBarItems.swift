@@ -9,14 +9,17 @@ import UIKit
 
 enum TabBarItems {
     case home
+    case bus
     case favorite
 
     var tabBarItem: UITabBarItem {
         switch self {
         case .home:
-            return UITabBarItem(title: "홈", image: .init(systemName: "house.fill"), tag: 0)
+            return UITabBarItem(title: "지하철", image: .init(systemName: "tram.fill"), tag: 0)
+        case .bus:
+            return UITabBarItem(title: "버스", image: .init(systemName: "bus.fill"), tag: 1)
         case .favorite:
-            return UITabBarItem(title: "즐겨찾기", image: .init(systemName: "star.fill"), tag: 1)
+            return UITabBarItem(title: "즐겨찾기", image: .init(systemName: "star.fill"), tag: 2)
         }
     }
 }

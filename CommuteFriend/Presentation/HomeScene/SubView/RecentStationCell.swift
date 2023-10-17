@@ -16,7 +16,7 @@ final class RecentStationCell: BaseTableViewCell {
 
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15.0, weight: .bold)
+        label.font = .systemFont(ofSize: 14.0, weight: .bold)
         return label
     }()
 
@@ -52,13 +52,15 @@ final class RecentStationCell: BaseTableViewCell {
         }
     }
 
-    func configure(with stationTarget: SubwayTarget) {
-        lineIconButton.configuration = .filledCapsuleConfiguration(
-            foregroundColor: .white,
-            backgroundColor: .subwayLineColor(stationTarget.lineNumber)
-        )
-        lineIconButton.configuration?.title = stationTarget.lineNumber.lineNum
-        nameLabel.text = stationTarget.name
-        directionLabel.text = stationTarget.destinationName + " 방면"
+    func configure<T: StationTarget>(with stationTarget: T) {
+        if let target = stationTarget as? SubwayTarget {
+            lineIconButton.configuration = .filledCapsuleConfiguration(
+                foregroundColor: .white,
+                backgroundColor: .subwayLineColor(target.lineNumber)
+            )
+            lineIconButton.configuration?.title = target.lineNumber.lineNum
+            nameLabel.text = target.name
+            directionLabel.text = target.destinationName + " 방면"
+        }
     }
 }

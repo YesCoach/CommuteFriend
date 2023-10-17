@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class RecentStationView: UIView {
+final class RecentStationView<T: StationTarget>: UIView {
 
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -28,8 +28,8 @@ final class RecentStationView: UIView {
         return label
     }()
 
-    lazy var dataSource: UITableViewDiffableDataSource<Int, SubwayTarget> = {
-        let dataSource = UITableViewDiffableDataSource<Int, SubwayTarget>(
+    lazy var dataSource: UITableViewDiffableDataSource<Int, T> = {
+        let dataSource = UITableViewDiffableDataSource<Int, T>(
             tableView: tableView
         ) { tableView, indexPath, itemIdentifier in
             guard let cell = tableView.dequeueReusableCell(
@@ -57,8 +57,8 @@ final class RecentStationView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func updateSnapShot(data: [SubwayTarget]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, SubwayTarget>()
+    func updateSnapShot(data: [T]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, T>()
 
         snapshot.appendSections([1])
         snapshot.appendItems(data, toSection: 1)

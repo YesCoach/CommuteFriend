@@ -66,6 +66,12 @@ final class DIContainer {
         return FavoriteViewController(viewModel: makeSubwayFavoriteViewModel())
     }
 
+    // MARK: Bus
+
+    func makeBusHomeViewController() -> BusHomeViewController {
+        return BusHomeViewController(viewModel: makeBusHomeViewModel())
+    }
+
 }
 
 private extension DIContainer {
@@ -114,6 +120,15 @@ private extension DIContainer {
         return DefaultBusSearchViewModel(
             searchHistoryRepository: makeSearchHistoryRepository(),
             busRepository: makeLocalBusRepository()
+        )
+    }
+
+    // MARK: Bus
+
+    private func makeBusHomeViewModel() -> BusHomeViewModel {
+        return DefaultBusHomeViewModel(
+            localSubwayRepository: makeLocalSubwayRepository(),
+            subwayStationArrivalRepository: makeSubwayStationArrivalRepository()
         )
     }
 

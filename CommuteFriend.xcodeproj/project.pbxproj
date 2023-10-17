@@ -105,6 +105,9 @@
 		89EE858C2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */; };
 		89EE858E2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */; };
 		89EE85922ADD2E370095198D /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE85912ADD2E370095198D /* FavoriteViewModel.swift */; };
+		89EE85962ADE66AA0095198D /* BusHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE85952ADE66AA0095198D /* BusHomeViewController.swift */; };
+		89EE85992ADE67290095198D /* BusHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE85982ADE67280095198D /* BusHomeViewModel.swift */; };
+		89EE859B2ADE707C0095198D /* BusTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE859A2ADE707C0095198D /* BusTarget.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,6 +223,9 @@
 		89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSubwaySearchSelectionViewModel.swift; sourceTree = "<group>"; };
 		89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteSubwayDTO+Mapping.swift"; sourceTree = "<group>"; };
 		89EE85912ADD2E370095198D /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		89EE85952ADE66AA0095198D /* BusHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusHomeViewController.swift; sourceTree = "<group>"; };
+		89EE85982ADE67280095198D /* BusHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusHomeViewModel.swift; sourceTree = "<group>"; };
+		89EE859A2ADE707C0095198D /* BusTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusTarget.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -390,6 +396,7 @@
 				89023F172AD7EC82009FFCBD /* Bus.swift */,
 				89023F182AD7EC82009FFCBD /* BusStation.swift */,
 				89023F192AD7EC82009FFCBD /* BusSearchable.swift */,
+				89EE859A2ADE707C0095198D /* BusTarget.swift */,
 				89023F1A2AD7EC82009FFCBD /* BusArrival.swift */,
 				89023F1B2AD7EC82009FFCBD /* BusType.swift */,
 			);
@@ -613,6 +620,7 @@
 				894266892AD67A9500C44C04 /* Base */,
 				894266B12AD6BAD200C44C04 /* Common */,
 				894266952AD67D8600C44C04 /* HomeScene */,
+				89EE85932ADE66860095198D /* BusScene */,
 				89023EAB2AD6CB3C009FFCBD /* SearchScene */,
 				89023F6B2ADC4751009FFCBD /* FavoriteScene */,
 				894266A72AD68C0700C44C04 /* Extensions */,
@@ -729,6 +737,31 @@
 				89023FAB2ADD0655009FFCBD /* FavoriteStationCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		89EE85932ADE66860095198D /* BusScene */ = {
+			isa = PBXGroup;
+			children = (
+				89EE85942ADE66960095198D /* View */,
+				89EE85972ADE66F90095198D /* ViewModel */,
+			);
+			path = BusScene;
+			sourceTree = "<group>";
+		};
+		89EE85942ADE66960095198D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				89EE85952ADE66AA0095198D /* BusHomeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		89EE85972ADE66F90095198D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				89EE85982ADE67280095198D /* BusHomeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -917,10 +950,12 @@
 				89023F322AD80DD2009FFCBD /* BusSearchResultViewController.swift in Sources */,
 				89023F622ADBD540009FFCBD /* NSNotification+.swift in Sources */,
 				89023ECD2AD6F4E4009FFCBD /* SearchHistoryRepository.swift in Sources */,
+				89EE85962ADE66AA0095198D /* BusHomeViewController.swift in Sources */,
 				89023EBA2AD6D109009FFCBD /* SubwayStation.swift in Sources */,
 				89023EEE2AD71882009FFCBD /* SubwaySearchResultViewController.swift in Sources */,
 				89023EB82AD6D109009FFCBD /* UpDownDirection.swift in Sources */,
 				89023F112AD7D5CA009FFCBD /* LocalSubwayRepository.swift in Sources */,
+				89EE859B2ADE707C0095198D /* BusTarget.swift in Sources */,
 				894266A62AD68B8500C44C04 /* HomeArrivalView.swift in Sources */,
 				89023ED02AD6F622009FFCBD /* SearchHistoryStorage.swift in Sources */,
 				89023EF02AD719D0009FFCBD /* SubwaySearchResultCell.swift in Sources */,
@@ -949,6 +984,7 @@
 				894266902AD67AC600C44C04 /* BaseTableViewCell.swift in Sources */,
 				89023EBB2AD6D109009FFCBD /* SubwayLine.swift in Sources */,
 				89023F152AD7EB9F009FFCBD /* BusStationList+DTO.swift in Sources */,
+				89EE85992ADE67290095198D /* BusHomeViewModel.swift in Sources */,
 				89023F4B2ADB2302009FFCBD /* RealmStorage.swift in Sources */,
 				89023F402ADB199D009FFCBD /* RecentStationCell.swift in Sources */,
 				894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */,
