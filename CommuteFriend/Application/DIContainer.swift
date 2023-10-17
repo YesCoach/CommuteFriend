@@ -133,7 +133,8 @@ extension DIContainer {
     private func makeBusSearchViewModel() -> BusSearchViewModel {
         return DefaultBusSearchViewModel(
             searchHistoryRepository: makeSearchHistoryRepository(),
-            busRepository: makeLocalBusRepository()
+            localBusRepository: makeLocalBusRepository(),
+            busRepository: makeBusRepository()
         )
     }
 
@@ -176,6 +177,10 @@ extension DIContainer {
 
     private func makeBusStationArrivalRepository() -> BusStationArrivalRepsitory {
         return BusStationArrivalRepsitory(networkManager: networkManager)
+    }
+
+    private func makeBusRepository() -> BusRepository {
+        return BusRepository(networkManager: networkManager)
     }
 
 }

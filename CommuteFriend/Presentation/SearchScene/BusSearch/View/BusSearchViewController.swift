@@ -147,6 +147,12 @@ private extension BusSearchViewController {
             }
             .disposed(by: disposeBag)
 
+        viewModel.searchBusResult
+            .subscribe(with: self) { owner, list in
+                owner.searchResultViewController.updateSnapshot(data: list)
+            }
+            .disposed(by: disposeBag)
+
         viewModel.searchHistoryList
             .subscribe(with: self) { owner, list in
                 owner.emptyLabel.isHidden = !list.isEmpty

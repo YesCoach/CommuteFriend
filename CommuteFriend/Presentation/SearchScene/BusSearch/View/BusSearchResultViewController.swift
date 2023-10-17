@@ -22,6 +22,10 @@ final class BusSearchResultViewController: BaseViewController {
             BusStationSearchResultCell.self,
             forCellReuseIdentifier: BusStationSearchResultCell.reuseIdentifier
         )
+        tableView.register(
+            BusSearchResultCell.self,
+            forCellReuseIdentifier: BusSearchResultCell.reuseIdentifier
+        )
         tableView.estimatedRowHeight = 40.0
         tableView.keyboardDismissMode = .onDrag
         tableView.delegate = self
@@ -92,12 +96,13 @@ private extension BusSearchResultViewController {
                     cell.configure(with: item)
                     return cell
 
-                case let _ as Bus:
+                case let item as Bus:
                     guard let cell = tableView.dequeueReusableCell(
-                        withIdentifier: BusStationSearchResultCell.reuseIdentifier
-                    ) as? BusStationSearchResultCell
+                        withIdentifier: BusSearchResultCell.reuseIdentifier
+                    ) as? BusSearchResultCell
                     else { return UITableViewCell() }
 
+                    cell.configure(with: item)
                     return cell
                 default: return UITableViewCell()
                 }
