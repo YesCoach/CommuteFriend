@@ -214,7 +214,7 @@ private extension BusHomeViewController {
         viewModel
             .recentBusStationList
             .subscribe(with: self) { owner, stationList in
-//                owner.recentStationView.updateSnapShot(data: stationList)
+                owner.recentStationView.updateSnapShot(data: stationList)
             }
             .disposed(by: disposeBag)
         viewModel

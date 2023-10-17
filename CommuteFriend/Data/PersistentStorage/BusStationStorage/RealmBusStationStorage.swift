@@ -31,7 +31,7 @@ extension RealmBusStationStorage: BusStationStorage {
                 busDTO.busRouteName == station.busRouteName &&
                 busDTO.stationID == station.stationID
             }) {
-                let record = user.recentSubwayList[index]
+                let record = user.recentBusList[index]
                 user.recentBusList.remove(at: index)
                 realm.delete(record)
             }

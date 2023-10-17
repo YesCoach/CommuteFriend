@@ -43,6 +43,13 @@ final class BusSearchViewController: BaseViewController {
                     .makeBusStationSearchDetailViewController(busStation: item)
                 navigationController?.pushViewController(detailViewController, animated: true)
             }
+            if let item = item as? Bus {
+                viewModel.didSelectItem(of: item)
+                let detailViewControllr = DIContainer
+                    .shared
+                    .makeBusRouteSearchDetailViewController(bus: item)
+                navigationController?.pushViewController(detailViewControllr, animated: true)
+            }
         }
         return viewController
     }()

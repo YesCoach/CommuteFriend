@@ -114,6 +114,9 @@
 		898A58102ADEE8BF000F040F /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A580F2ADEE8BF000F040F /* UIView+.swift */; };
 		898A58122ADEEA82000F040F /* BusStationSearchDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58112ADEEA82000F040F /* BusStationSearchDetailViewModel.swift */; };
 		898A58162ADEF752000F040F /* BusSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58152ADEF752000F040F /* BusSearchResultCell.swift */; };
+		898A58182ADEFB66000F040F /* BusRouteSearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58172ADEFB66000F040F /* BusRouteSearchDetailViewController.swift */; };
+		898A581A2ADEFBAA000F040F /* BusRouteSearchDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58192ADEFBAA000F040F /* BusRouteSearchDetailCell.swift */; };
+		898A581C2ADEFCC4000F040F /* BusRouteSearchDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A581B2ADEFCC4000F040F /* BusRouteSearchDetailViewModel.swift */; };
 		89EE858C2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */; };
 		89EE858E2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */; };
 		89EE85922ADD2E370095198D /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE85912ADD2E370095198D /* FavoriteViewModel.swift */; };
@@ -248,6 +251,9 @@
 		898A580F2ADEE8BF000F040F /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		898A58112ADEEA82000F040F /* BusStationSearchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStationSearchDetailViewModel.swift; sourceTree = "<group>"; };
 		898A58152ADEF752000F040F /* BusSearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusSearchResultCell.swift; sourceTree = "<group>"; };
+		898A58172ADEFB66000F040F /* BusRouteSearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRouteSearchDetailViewController.swift; sourceTree = "<group>"; };
+		898A58192ADEFBAA000F040F /* BusRouteSearchDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRouteSearchDetailCell.swift; sourceTree = "<group>"; };
+		898A581B2ADEFCC4000F040F /* BusRouteSearchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRouteSearchDetailViewModel.swift; sourceTree = "<group>"; };
 		89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSubwaySearchSelectionViewModel.swift; sourceTree = "<group>"; };
 		89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteSubwayDTO+Mapping.swift"; sourceTree = "<group>"; };
 		89EE85912ADD2E370095198D /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
@@ -469,7 +475,7 @@
 				89023F252AD804D5009FFCBD /* BusSearchViewController.swift */,
 				89023F312AD80DD2009FFCBD /* BusSearchResultViewController.swift */,
 				898A580B2ADEE5D6000F040F /* BusStationSearchDetailViewController.swift */,
-				898A580D2ADEE64B000F040F /* BusStationSearchDetailCell.swift */,
+				898A58172ADEFB66000F040F /* BusRouteSearchDetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -488,6 +494,8 @@
 			children = (
 				89023F2C2AD80944009FFCBD /* BusStationSearchResultCell.swift */,
 				898A58152ADEF752000F040F /* BusSearchResultCell.swift */,
+				898A580D2ADEE64B000F040F /* BusStationSearchDetailCell.swift */,
+				898A58192ADEFBAA000F040F /* BusRouteSearchDetailCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -497,6 +505,7 @@
 			children = (
 				89023F332AD80EDC009FFCBD /* BusSearchViewModel.swift */,
 				898A58112ADEEA82000F040F /* BusStationSearchDetailViewModel.swift */,
+				898A581B2ADEFCC4000F040F /* BusRouteSearchDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -972,6 +981,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				898A580E2ADEE64B000F040F /* BusStationSearchDetailCell.swift in Sources */,
+				898A581A2ADEFBAA000F040F /* BusRouteSearchDetailCell.swift in Sources */,
 				89023EB72AD6D109009FFCBD /* SubwayArrival.swift in Sources */,
 				89023EB92AD6D109009FFCBD /* SubwayArrivalCode.swift in Sources */,
 				89023F452ADB2222009FFCBD /* SubwayStationStorage.swift in Sources */,
@@ -989,6 +999,7 @@
 				894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */,
 				89023F6A2ADBFD7D009FFCBD /* Collection+.swift in Sources */,
 				89023F682ADBF648009FFCBD /* SubwayArrivalResponse.swift in Sources */,
+				898A58182ADEFB66000F040F /* BusRouteSearchDetailViewController.swift in Sources */,
 				89023F072AD7A063009FFCBD /* TestSearchVC.swift in Sources */,
 				89023F6E2ADC477E009FFCBD /* FavoriteViewController.swift in Sources */,
 				898A580A2ADEC67F000F040F /* BusStationArrivalRepsitory.swift in Sources */,
@@ -1053,6 +1064,7 @@
 				89023F152AD7EB9F009FFCBD /* BusStationList+DTO.swift in Sources */,
 				89EE85992ADE67290095198D /* BusHomeViewModel.swift in Sources */,
 				89023F4B2ADB2302009FFCBD /* RealmStorage.swift in Sources */,
+				898A581C2ADEFCC4000F040F /* BusRouteSearchDetailViewModel.swift in Sources */,
 				89EE85A22ADEAAC60095198D /* FavoriteBusDTO+Mapping.swift in Sources */,
 				89023F402ADB199D009FFCBD /* RecentStationCell.swift in Sources */,
 				894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */,

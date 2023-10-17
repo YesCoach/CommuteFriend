@@ -62,5 +62,15 @@ final class RecentStationCell: BaseTableViewCell {
             nameLabel.text = target.name
             directionLabel.text = target.destinationName + " 방면"
         }
+        if let target = stationTarget as? BusTarget {
+            // TODO: Bus 상징색 적용
+            lineIconButton.configuration = .filledCapsuleConfiguration(
+                foregroundColor: .white,
+                backgroundColor: .systemMint
+            )
+            lineIconButton.configuration?.title = target.busRouteName
+            nameLabel.text = target.stationName
+            directionLabel.text = target.direction + " 방면"
+        }
     }
 }

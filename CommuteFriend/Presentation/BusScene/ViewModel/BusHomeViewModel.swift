@@ -26,15 +26,15 @@ protocol BusHomeViewModel: BusHomeViewModelInput, BusHomeViewModelOutput { }
 final class DefaultBusHomeViewModel: BusHomeViewModel {
 
     private let localBusRepository: LocalBusRepository
-    private let subwayStationArrivalRepository: SubwayStationArrivalRepository
+    private let busStationArrivalRepository: BusStationArrivalRepsitory
     private let disposeBag = DisposeBag()
 
     init(
         localBusRepository: LocalBusRepository,
-        subwayStationArrivalRepository: SubwayStationArrivalRepository
+        busStationArrivalRepository: BusStationArrivalRepsitory
     ) {
         self.localBusRepository = localBusRepository
-        self.subwayStationArrivalRepository = subwayStationArrivalRepository
+        self.busStationArrivalRepository = busStationArrivalRepository
     }
 
     // MARK: - HomeViewModelOutput
@@ -72,23 +72,25 @@ private extension DefaultBusHomeViewModel {
         recentBusStationList.onNext(stationList)
         if let firstItem = stationList.first {
             currentBusStationTarget.onNext(firstItem)
-//            fetchStationArrivalData(with: firstItem)
+            fetchStationArrivalData(with: firstItem)
         }
     }
 
     func fetchStationArrivalData(with busTarget: BusTarget) {
-//        subwayStationArrivalRepository.fetchSubwayStationArrival(with: subwayTarget) { result in
-//            switch result {
-//            case .success(let list):
-//                let arrivalData = StationArrivalResponse(
-//                    stationArrivalTarget: subwayTarget,
-//                    subwayArrival: list
-//                )
-//                self.currentBusStationArrival.onNext(arrivalData)
-//            case .failure(let error):
-//                debugPrint(error)
-//            }
-//        }
+        busStationArrivalRepository
+            .fetchBusStationArrivalData(station: busTarget) { [weak self] result in
+                guard let self else { return }
+                switch result {
+                case .success(let list):
+                    let arrivalData = StationArrivalResponse(
+                        stationArrivalTarget: .bus(target: busTarget),
+                        stationArrival: .bus(arrival: list)
+                    )
+                    currentBusStationArrival.onNext(arrivalData)
+                case .failure(let error):
+                    debugPrint(error)
+                }
+            }
     }
 
 }

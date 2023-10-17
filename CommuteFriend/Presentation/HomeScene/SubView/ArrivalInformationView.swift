@@ -24,7 +24,7 @@ final class ArrivalInformationView: UIView {
 
     private lazy var nextLabel: UILabel = {
         let label = UILabel()
-        label.text = "다음열차"
+        label.text = "다음편"
         return label
     }()
 
@@ -136,7 +136,9 @@ private extension ArrivalInformationView {
                 nextTimeLabel.text = arrival[safe: 1]?.conveniencedRemainTimeSecond ?? ""
             }
         case .bus(let arrival):
-            return
+            currentDestinationLabel.isHidden = true
+            currentTimeLabel.text = arrival[safe: 0]?.firstArrivalTime
+            nextTimeLabel.text = arrival[safe: 0]?.secondArrivalTime
         }
     }
 

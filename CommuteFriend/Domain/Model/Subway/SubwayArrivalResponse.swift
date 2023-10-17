@@ -16,11 +16,9 @@ struct StationArrivalResponse: Hashable {
 
     enum Arrival: Hashable {
         case subway(arrival: [SubwayArrival])
-        case bus(arrival: BusArrival)
+        case bus(arrival: [BusArrival])
     }
 
     let stationArrivalTarget: ArrivalTarget
     let stationArrival: Arrival
-
-//    let subwayArrival: [SubwayArrival]?
 }
