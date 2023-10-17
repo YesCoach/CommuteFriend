@@ -59,22 +59,22 @@ final class BusHomeViewController: BaseViewController {
         stackView.isLayoutMarginsRelativeArrangement = true
 
         [
-            subwaySelectionView, favoriteSelectionView
+            busSelectionView, favoriteSelectionView
         ].forEach { stackView.addArrangedSubview($0) }
 
         return stackView
     }()
 
-    private lazy var subwaySelectionView: MenuSelectableView = {
+    private lazy var busSelectionView: MenuSelectableView = {
         let view = MenuSelectableView(
             menuType: .bus
         ) { [weak self] _ in
             guard let self else { return }
-            let subwaySearchViewController = DIContainer
+            let busSearchViewController = DIContainer
                 .shared
-                .makeSubwaySearchViewController(beginningFrom: .home)
+                .makeBusSearchViewController()
             let navigationController = UINavigationController(
-                rootViewController: subwaySearchViewController
+                rootViewController: busSearchViewController
             )
             present(navigationController, animated: true)
         }

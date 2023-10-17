@@ -74,7 +74,7 @@ final class DIContainer {
 
 }
 
-private extension DIContainer {
+extension DIContainer {
 
     // MARK: - ViewModel
 

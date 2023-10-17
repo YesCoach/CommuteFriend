@@ -76,23 +76,22 @@ final class FavoriteViewController<T: StationTarget>: BaseViewController, UITabl
 
             cell.configure(with: itemIdentifier)
             // TODO: - 1. 셀 터치시
-//            cell.didAlarmButtonSelected = { [weak self] _ in
-//                guard let self else { return }
-//                viewModel.didAlarmButtonTouched(item: itemIdentifier)
-//            }
+            cell.didAlarmButtonSelected = { [weak self] _ in
+                guard let self else { return }
+                viewModel.didAlarmButtonTouched(item: itemIdentifier)
+            }
 
             return cell
         }
         return dataSource
     }()
 
-    private let viewModel: any FavoriteViewModel
+    private var viewModel: any FavoriteViewModel
     private let disposeBag = DisposeBag()
 
     init(viewModel: any FavoriteViewModel) {
-
-        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewModel = viewModel
     }
 
     required init?(coder: NSCoder) {
