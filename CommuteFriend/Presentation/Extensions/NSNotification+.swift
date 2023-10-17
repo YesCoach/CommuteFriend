@@ -17,4 +17,8 @@ extension NSNotification.Name {
         Constants.NotificationName.addStationArrivalTarget
     )
 
+    static let favoriteUpdateNotification: Self = NSNotification.Name(
+        Constants.NotificationName.favoriteUpdateNotification
+    )
+
 }

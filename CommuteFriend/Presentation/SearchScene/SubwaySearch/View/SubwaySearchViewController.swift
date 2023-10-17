@@ -15,6 +15,11 @@ final class SubwaySearchViewController: BaseViewController {
     typealias DataSourceType = UITableViewDiffableDataSource<Int, String>
     typealias SnapshotType = NSDiffableDataSourceSnapshot<Int, String>
 
+    enum BeginningFrom {
+        case home
+        case favorite
+    }
+
     // MARK: - UI
 
     private lazy var searchController: UISearchController = {
@@ -36,9 +41,21 @@ final class SubwaySearchViewController: BaseViewController {
             guard let self else { return }
             searchController.searchBar.resignFirstResponder()
             viewModel.didSelectItem(of: item)
-            let selectionViewController = DIContainer
-                .shared
-                .makeSubwaySearchSelectionViewController(station: item)
+
+            let selectionViewController: SubwaySearchSelectionViewController
+            switch beginningFrom {
+            case .home:
+                selectionViewController = DIContainer
+                    .shared
+                    .makeSubwaySearchSelectionViewController(station: item, beginningFrom: .home)
+            case .favorite:
+                selectionViewController = DIContainer
+                    .shared
+                    .makeSubwaySearchSelectionViewController(
+                        station: item,
+                        beginningFrom: .favorite
+                    )
+            }
 
             if let sheet = selectionViewController.sheetPresentationController {
                 sheet.detents = [
@@ -50,7 +67,7 @@ final class SubwaySearchViewController: BaseViewController {
                         resolver: {
                             $0.maximumDetentValue * 0.6
                         }
-                   )
+                    )
                 ]
                 sheet.prefersScrollingExpandsWhenScrolledToEdge = false
                 sheet.prefersEdgeAttachedInCompactHeight = true
@@ -91,10 +108,13 @@ final class SubwaySearchViewController: BaseViewController {
     private var dataSource: DataSourceType?
     private let disposeBag = DisposeBag()
 
+    private let beginningFrom: BeginningFrom
+
     // MARK: - Init
 
-    init(viewModel: SubwaySearchViewModel) {
+    init(viewModel: SubwaySearchViewModel, beginningFrom: BeginningFrom) {
         self.viewModel = viewModel
+        self.beginningFrom = beginningFrom
         super.init(nibName: nil, bundle: nil)
     }
 

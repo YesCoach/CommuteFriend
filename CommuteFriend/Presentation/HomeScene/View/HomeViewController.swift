@@ -69,8 +69,9 @@ final class HomeViewController: BaseViewController {
             menuType: .subway
         ) { [weak self] _ in
             guard let self else { return }
-            let subwaySearchViewController = DIContainer.shared.makeSubwaySearchViewController()
-//            let subwaySearchViewController = TestSearchVC()
+            let subwaySearchViewController = DIContainer
+                .shared
+                .makeSubwaySearchViewController(beginningFrom: .home)
             let navigationController = UINavigationController(
                 rootViewController: subwaySearchViewController
             )
@@ -84,7 +85,8 @@ final class HomeViewController: BaseViewController {
             menuType: .favorite
         ) { [weak self] _ in
             guard let self else { return }
-            let favoriteViewController = FavoriteViewController<SubwayTarget>()
+            let favoriteViewController = DIContainer.shared.makeSubwayFavoriteViewController()
+
             favoriteViewController.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(favoriteViewController, animated: true)
         }

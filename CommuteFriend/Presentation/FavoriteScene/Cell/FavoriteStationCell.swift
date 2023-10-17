@@ -38,6 +38,8 @@ final class FavoriteStationCell: BaseTableViewCell {
         return button
     }()
 
+    var didAlarmButtonSelected: ((Bool) -> Void)?
+
     override func configureUI() {
         super.configureUI()
         selectionStyle = .none
@@ -84,6 +86,7 @@ final class FavoriteStationCell: BaseTableViewCell {
 
     @objc func didAlarmButtonTouched(_ sender: UIButton) {
         sender.isSelected.toggle()
+        didAlarmButtonSelected?(sender.isSelected)
     }
 
 }

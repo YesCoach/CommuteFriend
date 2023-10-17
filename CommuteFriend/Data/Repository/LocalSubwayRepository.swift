@@ -9,6 +9,8 @@ import Foundation
 
 final class LocalSubwayRepository {
 
+    typealias FavoriteItemType = FavoriteItem<SubwayTarget>
+
     // MARK: - Dependency
 
     private let subwayStationStorage: SubwayStationStorage
@@ -27,6 +29,8 @@ final class LocalSubwayRepository {
     }
 
     // MARK: - Methods
+
+    // MARK: - Search
 
     /// 로컬 JSON으로 부터 지하철 역을 검색합니다.
     /// - Parameter name: 검색할 지하철 이름
@@ -58,6 +62,27 @@ final class LocalSubwayRepository {
     func removeStation(station: SubwayTarget) {
         let subwayEntity = SubwayEntity(target: station)
         subwayStationStorage.deleteStation(station: subwayEntity)
+    }
+
+    // MARK: - Favorite
+
+    func enrollFavoriteStation(item: FavoriteItemType) throws {
+        let favoriteItemDTO = FavoriteSubwayDTO(favoriteItem: item)
+        try subwayStationStorage.enrollFavoriteSubway(favorite: favoriteItemDTO)
+    }
+
+    func readFavoriteStationList() -> [FavoriteItemType] {
+        subwayStationStorage.readFavoriteSubway().map { $0.toDomain() }
+    }
+
+    func deleteFavoriteStation(item: FavoriteItemType) {
+        let favoriteItemDTO = FavoriteSubwayDTO(favoriteItem: item)
+        subwayStationStorage.deleteFavoriteSubway(favorite: favoriteItemDTO)
+    }
+
+    func updateFavoriteStationList(item: FavoriteItemType) {
+        let favoriteItemDTO = FavoriteSubwayDTO(favoriteItem: item)
+        subwayStationStorage.updateFavoriteSubway(favorite: favoriteItemDTO)
     }
 
 }

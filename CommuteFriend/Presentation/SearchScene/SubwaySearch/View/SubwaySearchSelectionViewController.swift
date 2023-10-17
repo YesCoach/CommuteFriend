@@ -163,7 +163,6 @@ private extension SubwaySearchSelectionViewController {
               let stationName
         else { return }
         viewModel.didSelectDirection(direction: direction, stationName: stationName)
-        NotificationCenter.default.post(name: .homeUpdateNotification, object: nil)
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
 

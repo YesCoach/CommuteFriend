@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol StationTarget: Hashable { }
-
-extension SubwayTarget: StationTarget { }
+protocol StationTarget: Hashable {
+    var id: String { get }
+}

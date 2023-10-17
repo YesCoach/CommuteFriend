@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SubwayTarget: Hashable {
+struct SubwayTarget: StationTarget {
     let id: String
     let name: String
     let lineNumber: SubwayLine

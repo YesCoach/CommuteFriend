@@ -12,4 +12,10 @@ protocol SubwayStationStorage {
     func readStation() -> SubwayEntity?
     func readStationList() -> [SubwayEntity]
     func deleteStation(station: SubwayEntity)
+
+    // MARK: - Favorite
+    func enrollFavoriteSubway(favorite: FavoriteSubwayDTO) throws
+    func readFavoriteSubway() -> [FavoriteSubwayDTO]
+    func deleteFavoriteSubway(favorite: FavoriteSubwayDTO)
+    func updateFavoriteSubway(favorite: FavoriteSubwayDTO)
 }

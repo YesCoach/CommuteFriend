@@ -102,6 +102,9 @@
 		894266B32AD6BAE300C44C04 /* SelectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266B22AD6BAE300C44C04 /* SelectableView.swift */; };
 		894266B52AD6BB1500C44C04 /* SelectableItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266B42AD6BB1500C44C04 /* SelectableItemType.swift */; };
 		894266B92AD6BC2600C44C04 /* TransportationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266B82AD6BC2600C44C04 /* TransportationType.swift */; };
+		89EE858C2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */; };
+		89EE858E2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */; };
+		89EE85922ADD2E370095198D /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE85912ADD2E370095198D /* FavoriteViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -214,6 +217,9 @@
 		894266B22AD6BAE300C44C04 /* SelectableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableView.swift; sourceTree = "<group>"; };
 		894266B42AD6BB1500C44C04 /* SelectableItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableItemType.swift; sourceTree = "<group>"; };
 		894266B82AD6BC2600C44C04 /* TransportationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationType.swift; sourceTree = "<group>"; };
+		89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSubwaySearchSelectionViewModel.swift; sourceTree = "<group>"; };
+		89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteSubwayDTO+Mapping.swift"; sourceTree = "<group>"; };
+		89EE85912ADD2E370095198D /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,6 +352,7 @@
 			children = (
 				89023ED22AD6F6D8009FFCBD /* SubwaySearchViewModel.swift */,
 				89023F392AD93D46009FFCBD /* SubwaySearchSelectionViewModel.swift */,
+				89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -475,6 +482,7 @@
 				89023F4D2ADB2344009FFCBD /* RealmMapping.swift */,
 				89023F4F2ADB234F009FFCBD /* User+Mapping.swift */,
 				89023F512ADB2362009FFCBD /* Subway+Mapping.swift */,
+				89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */,
 			);
 			path = "Entity+Mapping";
 			sourceTree = "<group>";
@@ -499,6 +507,8 @@
 			isa = PBXGroup;
 			children = (
 				89023F6C2ADC4769009FFCBD /* View */,
+				89EE85902ADD2E250095198D /* Cell */,
+				89EE858F2ADD2E190095198D /* ViewModel */,
 			);
 			path = FavoriteScene;
 			sourceTree = "<group>";
@@ -507,7 +517,6 @@
 			isa = PBXGroup;
 			children = (
 				89023F6D2ADC477E009FFCBD /* FavoriteViewController.swift */,
-				89023FAB2ADD0655009FFCBD /* FavoriteStationCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -706,6 +715,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		89EE858F2ADD2E190095198D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				89EE85912ADD2E370095198D /* FavoriteViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		89EE85902ADD2E250095198D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				89023FAB2ADD0655009FFCBD /* FavoriteStationCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -864,15 +889,18 @@
 				894266AE2AD6AAC100C44C04 /* ProgressingView.swift in Sources */,
 				894266522AD6770600C44C04 /* ViewController.swift in Sources */,
 				89023F362AD80F62009FFCBD /* LocalBusRepository.swift in Sources */,
+				89EE858E2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift in Sources */,
 				89023F1F2AD7EC82009FFCBD /* BusArrival.swift in Sources */,
 				89023F3C2ADB0DC9009FFCBD /* MenuSelectableView.swift in Sources */,
 				89023EEC2AD7163E009FFCBD /* DTOMapping.swift in Sources */,
+				89EE858C2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift in Sources */,
 				894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */,
 				89023F6A2ADBFD7D009FFCBD /* Collection+.swift in Sources */,
 				89023F682ADBF648009FFCBD /* SubwayArrivalResponse.swift in Sources */,
 				89023F072AD7A063009FFCBD /* TestSearchVC.swift in Sources */,
 				89023F6E2ADC477E009FFCBD /* FavoriteViewController.swift in Sources */,
 				8942669A2AD6809500C44C04 /* TabBarItems.swift in Sources */,
+				89EE85922ADD2E370095198D /* FavoriteViewModel.swift in Sources */,
 				89023FAC2ADD0655009FFCBD /* FavoriteStationCell.swift in Sources */,
 				89023EDD2AD6F8CA009FFCBD /* DIContainer.swift in Sources */,
 				8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */,

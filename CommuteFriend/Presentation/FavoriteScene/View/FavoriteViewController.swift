@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import RxSwift
 
-final class FavoriteViewController<T: StationTarget>: BaseViewController {
+final class FavoriteViewController<T: StationTarget>: BaseViewController, UITableViewDelegate {
 
     typealias FavoriteItemType = FavoriteItem<T>
+    typealias DataSourceType = UITableViewDiffableDataSource<Int, FavoriteItemType>
 
     private lazy var bottomView: UIView = {
         let view = UIView()
@@ -54,14 +56,16 @@ final class FavoriteViewController<T: StationTarget>: BaseViewController {
             )
 
         configuration.title = "추가하기"
+
         let button = UIButton()
         button.configuration = configuration
+        button.addTarget(self, action: #selector(didEnrollButtonTouched(_:)), for: .touchUpInside)
 
         return button
     }()
 
-    private lazy var dataSource: UITableViewDiffableDataSource<Int, FavoriteItemType> = {
-        let dataSource = UITableViewDiffableDataSource<Int, FavoriteItemType>(
+    private lazy var dataSource: DataSourceType = {
+        let dataSource = DataSourceType(
             tableView: tableView
         ) { tableView, indexPath, itemIdentifier in
             guard let cell = tableView.dequeueReusableCell(
@@ -71,11 +75,53 @@ final class FavoriteViewController<T: StationTarget>: BaseViewController {
             else { return UITableViewCell() }
 
             cell.configure(with: itemIdentifier)
+            // TODO: - 1. 셀 터치시
+//            cell.didAlarmButtonSelected = { [weak self] _ in
+//                guard let self else { return }
+//                viewModel.didAlarmButtonTouched(item: itemIdentifier)
+//            }
 
             return cell
         }
         return dataSource
     }()
+
+    private let viewModel: any FavoriteViewModel
+    private let disposeBag = DisposeBag()
+
+    init(viewModel: any FavoriteViewModel) {
+
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        bindViewModel(viewModel: viewModel)
+        enrollNotification()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.viewWillAppear()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(
+            self,
+            name: .favoriteUpdateNotification,
+            object: nil
+        )
+    }
+
+    deinit {
+        deinitPrint()
+    }
 
     override func configureUI() {
         super.configureUI()
@@ -115,9 +161,55 @@ final class FavoriteViewController<T: StationTarget>: BaseViewController {
         navigationItem.titleView = titleView
     }
 
+    @objc func didEnrollButtonTouched(_ sender: UIButton) {
+        if T.self is SubwayTarget.Type {
+            let searchViewController = DIContainer
+                .shared
+                .makeSubwaySearchViewController(beginningFrom: .favorite)
+            let navigationController = UINavigationController(
+                rootViewController: searchViewController
+            )
+            present(navigationController, animated: true)
+        }
+    }
+
+    @objc func updateFavoriteItemList(_ sender: NSNotification) {
+        viewModel.viewWillAppear()
+    }
+
+    // TODO: 2. 셀 스와이프시 삭제
+//    func tableView(
+//        _ tableView: UITableView,
+//        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+//    ) -> UISwipeActionsConfiguration? {
+//        guard let dataSource = tableView.dataSource as? DataSourceType,
+//              let item = dataSource.itemIdentifier(for: indexPath)
+//        else { return nil }
+//
+//        let action = UIContextualAction(
+//            style: .destructive,
+//            title: "삭제",
+//            handler: { [weak self] (_, _, completionHandler) in
+//                guard let self else { return }
+//                viewModel.deleteFavoriteItem(item: item)
+//                completionHandler(true)
+//            }
+//        )
+//        return UISwipeActionsConfiguration(actions: [action])
+//    }
 }
 
 private extension FavoriteViewController {
+
+    func bindViewModel(viewModel: some FavoriteViewModel) {
+        viewModel.favoriteStationItems
+            .bind(with: self) { owner, list in
+                if let castedList = list as? [FavoriteItemType] {
+                    owner.updateSnapShot(data: castedList)
+                }
+            }
+            .disposed(by: disposeBag)
+    }
 
     func updateSnapShot(data: [FavoriteItemType]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int, FavoriteItemType>()
@@ -128,6 +220,15 @@ private extension FavoriteViewController {
         emptyLabel.isHidden = !data.isEmpty
 
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+
+    func enrollNotification() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateFavoriteItemList),
+            name: .favoriteUpdateNotification,
+            object: nil
+        )
     }
 
 }

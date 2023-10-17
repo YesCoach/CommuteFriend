@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum RealmCRUDError: Error {
+    case createLimitError
+}
+
 final class RealmSubwayStationStorage {
 
     private let realmStorage: RealmStorage
@@ -80,6 +84,80 @@ extension RealmSubwayStationStorage: SubwayStationStorage {
             }
         }
         realmStorage.deleteData(data: station)
+    }
+
+    // MARK: - Favorite
+
+    func enrollFavoriteSubway(favorite: FavoriteSubwayDTO) throws {
+        guard let user = try? realmStorage.readData(UserEntity.self).first
+        else {
+            debugPrint("User Entity is missing!")
+            return
+        }
+
+        // 최대 갯수 초과시 에러 throw
+        if user.recentSubwayList.count >= Constants.Policy.maximumStation {
+            throw RealmCRUDError.createLimitError
+        }
+
+        realmStorage.updateData(data: favorite) { realm, favorite in
+            // 중복체크
+            if let index = user.favoriteSubwayList.firstIndex(where: { favoriteSubway in
+                favoriteSubway.subwayName == favorite.subwayName &&
+                favoriteSubway.subwayLineNumber == favorite.subwayLineNumber &&
+                favoriteSubway.subwayDestinationName == favorite.subwayDestinationName
+            }) {
+                let item = user.favoriteSubwayList[index]
+                user.favoriteSubwayList.remove(at: index)
+                realm.delete(item)
+            }
+
+            user.favoriteSubwayList.append(favorite)
+        }
+    }
+
+    func readFavoriteSubway() -> [FavoriteSubwayDTO] {
+        do {
+            let user = try realmStorage.readData(UserEntity.self).first
+            return user?.favoriteSubwayList.map { $0 }.reversed() ?? []
+        } catch {
+            print("🙅‍♂️", error)
+            return []
+        }
+    }
+
+    func deleteFavoriteSubway(favorite: FavoriteSubwayDTO) {
+        guard let user = try? realmStorage.readData(UserEntity.self).first,
+              let favoriteItem = try? realmStorage.readData(
+                FavoriteSubwayDTO.self,
+                primaryKey: favorite.id
+              )
+        else {
+            debugPrint("User Entity is missing!")
+            return
+        }
+
+        realmStorage.updateData(data: favoriteItem) { favorite in
+            if let index = user.favoriteSubwayList.firstIndex(where: { $0.id == favorite.id }) {
+                user.favoriteSubwayList.remove(at: index)
+            }
+        }
+        realmStorage.deleteData(data: favoriteItem)
+    }
+
+    func updateFavoriteSubway(favorite: FavoriteSubwayDTO) {
+        guard let favoriteItem = try? realmStorage.readData(
+                FavoriteSubwayDTO.self,
+                primaryKey: favorite.id
+              )
+        else {
+            debugPrint("User Entity is missing!")
+            return
+        }
+
+        realmStorage.updateData(data: favoriteItem) { favoriteItem in
+            favoriteItem.isAlarm = favorite.isAlarm
+        }
     }
 
 }

@@ -1,30 +1,15 @@
 //
-//  SubwaySearchSelectionViewModel.swift
+//  FavoriteSubwaySearchSelectionViewModel.swift
 //  CommuteFriend
 //
-//  Created by 박태현 on 2023/10/13.
+//  Created by 박태현 on 2023/10/16.
 //
 
 import Foundation
 import RxSwift
 import RxRelay
 
-protocol SubwaySearchSelectionViewModelInput {
-    func didSelectDirection(direction: UpDownDirection, stationName: String)
-    func viewDidLoad()
-}
-
-protocol SubwaySearchSelectionViewModelOutput {
-    var station: SubwayStation { get }
-    var upStation: BehaviorRelay<SubwayStation?> { get }
-    var downStation: BehaviorRelay<SubwayStation?> { get }
-    var splitStation: BehaviorRelay<SubwayStation?> { get }
-}
-
-protocol SubwaySearchSelectionViewModel: SubwaySearchSelectionViewModelInput,
-                                               SubwaySearchSelectionViewModelOutput { }
-
-final class DefaultSubwaySearchSelectionViewModel: SubwaySearchSelectionViewModel {
+final class FavoriteSubwaySearchSelectionViewModel: SubwaySearchSelectionViewModel {
 
     let station: SubwayStation
     private let localSubwayRepository: LocalSubwayRepository
@@ -49,7 +34,7 @@ final class DefaultSubwaySearchSelectionViewModel: SubwaySearchSelectionViewMode
 
 // MARK: - SubwaySearchDirectionSelectViewModelInput
 
-extension DefaultSubwaySearchSelectionViewModel {
+extension FavoriteSubwaySearchSelectionViewModel {
 
     func didSelectDirection(direction: UpDownDirection, stationName: String) {
         let subwayTarget = SubwayTarget(
@@ -58,8 +43,14 @@ extension DefaultSubwaySearchSelectionViewModel {
             destinationName: stationName,
             upDownDirection: direction
         )
-        localSubwayRepository.enrollStation(subwayTarget: subwayTarget)
-        NotificationCenter.default.post(name: .homeUpdateNotification, object: nil)
+        do {
+            try localSubwayRepository.enrollFavoriteStation(
+                item: .init(stationTarget: subwayTarget, isAlarm: true)
+            )
+        } catch {
+            debugPrint(error)
+        }
+        NotificationCenter.default.post(name: .favoriteUpdateNotification, object: nil)
     }
 
     func viewDidLoad() {

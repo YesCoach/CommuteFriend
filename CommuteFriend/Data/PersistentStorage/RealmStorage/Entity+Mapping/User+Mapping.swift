@@ -15,10 +15,15 @@ class UserEntity: Object {
     @Persisted(primaryKey: true) var id: String
 
     @Persisted var recentSubwayList: List<SubwayEntity>
+    @Persisted var favoriteSubwayList: List<FavoriteSubwayDTO>
 
-    convenience init(recentSubwayList: [SubwayEntity]) {
+    convenience init(
+        recentSubwayList: [SubwayEntity],
+        favoriteSubwayList: [FavoriteSubwayDTO]
+    ) {
         self.init()
         self.id = UserEntity.id
         self.recentSubwayList.append(objectsIn: recentSubwayList)
+        self.favoriteSubwayList.append(objectsIn: favoriteSubwayList)
     }
 }
