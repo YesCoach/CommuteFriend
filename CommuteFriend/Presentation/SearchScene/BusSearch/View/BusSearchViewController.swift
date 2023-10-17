@@ -36,7 +36,13 @@ final class BusSearchViewController: BaseViewController {
         let viewController = BusSearchResultViewController(nibName: nil, bundle: nil)
         viewController.itemSelectHandler = { [weak self] item in
             guard let self else { return }
-//            viewModel.didSelectItem(of: item)
+            if let item = item as? BusStation {
+                viewModel.didSelectItem(of: item)
+                let detailViewController = DIContainer
+                    .shared
+                    .makeBusStationSearchDetailViewController(busStation: item)
+                navigationController?.pushViewController(detailViewController, animated: true)
+            }
         }
         return viewController
     }()
@@ -70,7 +76,6 @@ final class BusSearchViewController: BaseViewController {
 
     private var dataSource: DataSourceType?
     private let disposeBag = DisposeBag()
-
 
     // MARK: - Init
 

@@ -9,6 +9,8 @@ import UIKit
 
 final class BusSearchResultViewController: BaseViewController {
 
+    // TODO: - AnyHashable 개선하기
+
     typealias DataSourceType = UITableViewDiffableDataSource<Int, AnyHashable>
     typealias SnapshotType = NSDiffableDataSourceSnapshot<Int, AnyHashable>
 

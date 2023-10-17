@@ -21,4 +21,8 @@ extension NSNotification.Name {
         Constants.NotificationName.favoriteUpdateNotification
     )
 
+    static let busHomeUpdateNotification: Self = NSNotification.Name(
+        Constants.NotificationName.busHomeUpdateNotification
+    )
+
 }

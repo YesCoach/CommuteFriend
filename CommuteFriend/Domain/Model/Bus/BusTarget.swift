@@ -12,16 +12,16 @@ struct BusTarget: StationTarget {
     let stationID: String // arsID: 정류소 번호
     let stationName: String
     let direction: String // @@방면
-    let busRouteID: String
-    let busRouteName: String
+    let busRouteID: String?
+    let busRouteName: String?
 
     init(
         id: String = UUID().uuidString,
         stationID: String,
         stationName: String,
         direction: String,
-        busRouteID: String,
-        busRouteName: String
+        busRouteID: String?,
+        busRouteName: String?
     ) {
         self.id = id
         self.stationID = stationID

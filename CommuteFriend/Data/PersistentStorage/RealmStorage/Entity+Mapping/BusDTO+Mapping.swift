@@ -25,8 +25,8 @@ class BusDTO: Object, RealmMapping {
         self.stationID = target.stationID
         self.stationName = target.stationName
         self.busDirection = target.direction
-        self.busRouteID = target.busRouteID
-        self.busRouteName = target.busRouteName
+        self.busRouteID = target.busRouteID ?? ""
+        self.busRouteName = target.busRouteName ?? ""
     }
 
     func toDomain() -> DomainType {

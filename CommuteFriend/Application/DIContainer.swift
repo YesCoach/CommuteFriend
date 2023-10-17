@@ -76,6 +76,14 @@ final class DIContainer {
         return BusHomeViewController(viewModel: makeBusHomeViewModel())
     }
 
+    func makeBusStationSearchDetailViewController(
+        busStation: BusStation
+    ) -> BusStationSearchDetailViewController {
+        return BusStationSearchDetailViewController(
+            viewModel: makeBusStationSearchDetailViewModel(busStation: busStation)
+        )
+    }
+
 }
 
 extension DIContainer {
@@ -120,6 +128,8 @@ extension DIContainer {
         return SubwayFavoriteViewModel(localSubwayRepository: makeLocalSubwayRepository())
     }
 
+    // MARK: Bus
+
     private func makeBusSearchViewModel() -> BusSearchViewModel {
         return DefaultBusSearchViewModel(
             searchHistoryRepository: makeSearchHistoryRepository(),
@@ -127,12 +137,20 @@ extension DIContainer {
         )
     }
 
-    // MARK: Bus
-
     private func makeBusHomeViewModel() -> BusHomeViewModel {
         return DefaultBusHomeViewModel(
             localBusRepository: makeLocalBusRepository(),
             subwayStationArrivalRepository: makeSubwayStationArrivalRepository()
+        )
+    }
+
+    private func makeBusStationSearchDetailViewModel(
+        busStation: BusStation
+    ) -> BusStationSearchDetailViewModel {
+        return DefaultBusStationSearchDetailViewModel(
+            busStation: busStation,
+            busStationArrivalRepository: makeBusStationArrivalRepository(),
+            localBusRepository: makeLocalBusRepository()
         )
     }
 
@@ -154,6 +172,10 @@ extension DIContainer {
 
     private func makeSubwayStationArrivalRepository() -> SubwayStationArrivalRepository {
         return SubwayStationArrivalRepository(networkManager: networkManager)
+    }
+
+    private func makeBusStationArrivalRepository() -> BusStationArrivalRepsitory {
+        return BusStationArrivalRepsitory(networkManager: networkManager)
     }
 
 }
