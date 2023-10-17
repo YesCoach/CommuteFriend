@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 class FavoriteSubwayDTO: Object, RealmMapping {
-    typealias DomainType = FavoriteItem<SubwayTarget>
+    typealias DomainType = FavoriteItem
 
     @Persisted(primaryKey: true) var id: String
 
@@ -22,21 +22,30 @@ class FavoriteSubwayDTO: Object, RealmMapping {
     convenience init(favoriteItem: DomainType) {
         self.init()
         self.id = favoriteItem.id
-        self.subwayName = favoriteItem.stationTarget.name
-        self.subwayLineNumber = favoriteItem.stationTarget.lineNumber.rawValue
-        self.subwayUpDownDirection = favoriteItem.stationTarget.upDownDirection.rawValue
-        self.subwayDestinationName = favoriteItem.stationTarget.destinationName
+
+        switch favoriteItem.stationTarget {
+        case .subway(let target):
+            self.subwayName = target.name
+            self.subwayLineNumber = target.lineNumber.rawValue
+            self.subwayUpDownDirection = target.upDownDirection.rawValue
+            self.subwayDestinationName = target.destinationName
+        default:
+            return
+        }
+
         self.isAlarm = favoriteItem.isAlarm
     }
 
     func toDomain() -> DomainType {
         return DomainType(
             id: id,
-            stationTarget: .init(
-                name: subwayName,
-                lineNumber: SubwayLine(rawValue: subwayLineNumber) ?? .number1,
-                destinationName: subwayDestinationName,
-                upDownDirection: UpDownDirection(rawValue: subwayUpDownDirection) ?? .up
+            stationTarget: .subway(
+                target: .init(
+                    name: subwayName,
+                    lineNumber: SubwayLine(rawValue: subwayLineNumber) ?? .number1,
+                    destinationName: subwayDestinationName,
+                    upDownDirection: UpDownDirection(rawValue: subwayUpDownDirection) ?? .up
+                )
             ),
             isAlarm: isAlarm
         )

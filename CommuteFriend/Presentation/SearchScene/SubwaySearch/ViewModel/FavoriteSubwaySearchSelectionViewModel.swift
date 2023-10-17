@@ -45,7 +45,7 @@ extension FavoriteSubwaySearchSelectionViewModel {
         )
         do {
             try localSubwayRepository.enrollFavoriteStation(
-                item: .init(stationTarget: subwayTarget, isAlarm: true)
+                item: .init(stationTarget: .subway(target: subwayTarget), isAlarm: true)
             )
         } catch {
             debugPrint(error)

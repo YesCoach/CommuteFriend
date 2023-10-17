@@ -62,8 +62,11 @@ final class DIContainer {
         }
     }
 
-    func makeSubwayFavoriteViewController() -> FavoriteViewController<SubwayTarget> {
-        return FavoriteViewController(viewModel: makeSubwayFavoriteViewModel())
+    func makeSubwayFavoriteViewController() -> FavoriteViewController {
+        return FavoriteViewController(
+            viewModel: makeSubwayFavoriteViewModel(),
+            beginningFrom: .subway
+        )
     }
 
     // MARK: Bus
@@ -112,7 +115,7 @@ extension DIContainer {
         )
     }
 
-    private func makeSubwayFavoriteViewModel() -> any FavoriteViewModel {
+    private func makeSubwayFavoriteViewModel() -> FavoriteViewModel {
         return SubwayFavoriteViewModel(localSubwayRepository: makeLocalSubwayRepository())
     }
 

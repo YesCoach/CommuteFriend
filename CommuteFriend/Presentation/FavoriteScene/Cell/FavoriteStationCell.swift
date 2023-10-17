@@ -70,17 +70,27 @@ final class FavoriteStationCell: BaseTableViewCell {
         }
     }
 
-    func configure<T: StationTarget>(with favoriteItem: FavoriteItem<T>) {
+    func configure(with favoriteItem: FavoriteItem) {
         alarmButton.isSelected = !favoriteItem.isAlarm
 
-        if let stationTarget = favoriteItem.stationTarget as? SubwayTarget {
+        switch favoriteItem.stationTarget {
+        case .subway(let target):
             lineIconButton.configuration = .filledCapsuleConfiguration(
                 foregroundColor: .white,
-                backgroundColor: .subwayLineColor(stationTarget.lineNumber)
+                backgroundColor: .subwayLineColor(target.lineNumber)
             )
-            lineIconButton.configuration?.title = stationTarget.lineNumber.lineNum
-            nameLabel.text = stationTarget.name
-            directionLabel.text = stationTarget.destinationName + " 방면"
+            lineIconButton.configuration?.title = target.lineNumber.lineNum
+            nameLabel.text = target.name
+            directionLabel.text = target.destinationName + " 방면"
+        case .bus(let target):
+            // TODO: - 버스 상징색 추가하기
+            lineIconButton.configuration = .filledCapsuleConfiguration(
+                foregroundColor: .white,
+                backgroundColor: .systemMint
+            )
+            lineIconButton.configuration?.title = target.busRouteName
+            nameLabel.text = target.stationName
+            directionLabel.text = target.direction + " 방면"
         }
     }
 

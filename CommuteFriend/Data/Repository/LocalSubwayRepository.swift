@@ -9,7 +9,7 @@ import Foundation
 
 final class LocalSubwayRepository {
 
-    typealias FavoriteItemType = FavoriteItem<SubwayTarget>
+    typealias FavoriteItemType = FavoriteItem
 
     // MARK: - Dependency
 
