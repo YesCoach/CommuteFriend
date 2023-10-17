@@ -31,7 +31,7 @@ final class HomeArrivalView: UIView {
     private lazy var progressingView: ProgressingView = ProgressingView()
     private lazy var arrivalInformationView: ArrivalInformationView = ArrivalInformationView()
 
-    private var subwayStationArrival: StationArrivalResponse?
+    private var stationArrivalResponse: StationArrivalResponse?
 
     // MARK: - Init
 
@@ -46,17 +46,27 @@ final class HomeArrivalView: UIView {
     }
 
     func configure(with arrivalResponse: StationArrivalResponse) {
-        self.subwayStationArrival = arrivalResponse
+        self.stationArrivalResponse = arrivalResponse
 
-        let stationTarget = arrivalResponse.stationArrivalTarget
-
-        routeIconButton.configuration = .filledCapsuleConfiguration(
-            foregroundColor: .white,
-            backgroundColor: .subwayLineColor(stationTarget.lineNumber)
-        )
-        routeIconButton.configuration?.title = stationTarget.lineNumber.lineNum
-        stationLabel.text = stationTarget.name
-        destinationLabel.text = "다음역: \(stationTarget.destinationName)"
+        switch arrivalResponse.stationArrivalTarget {
+        case .subway(let target):
+            routeIconButton.configuration = .filledCapsuleConfiguration(
+                foregroundColor: .white,
+                backgroundColor: .subwayLineColor(target.lineNumber)
+            )
+            routeIconButton.configuration?.title = target.lineNumber.lineNum
+            stationLabel.text = target.name
+            destinationLabel.text = "다음역: \(target.destinationName)"
+        case .bus(let target):
+            // TODO: - Bus 상징색 적용하기
+            routeIconButton.configuration = .filledCapsuleConfiguration(
+                foregroundColor: .white,
+                backgroundColor: .systemMint
+            )
+            routeIconButton.configuration?.title = target.busRouteName
+            stationLabel.text = target.stationName
+            destinationLabel.text = "\(target.direction) 방면"
+        }
 
         arrivalInformationView.configure(wtih: arrivalResponse)
         progressingView.configure(with: arrivalResponse)

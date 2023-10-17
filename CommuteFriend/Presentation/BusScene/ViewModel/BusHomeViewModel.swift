@@ -25,15 +25,15 @@ protocol BusHomeViewModel: BusHomeViewModelInput, BusHomeViewModelOutput { }
 
 final class DefaultBusHomeViewModel: BusHomeViewModel {
 
-    private let localSubwayRepository: LocalSubwayRepository
+    private let localBusRepository: LocalBusRepository
     private let subwayStationArrivalRepository: SubwayStationArrivalRepository
     private let disposeBag = DisposeBag()
 
     init(
-        localSubwayRepository: LocalSubwayRepository,
+        localBusRepository: LocalBusRepository,
         subwayStationArrivalRepository: SubwayStationArrivalRepository
     ) {
-        self.localSubwayRepository = localSubwayRepository
+        self.localBusRepository = localBusRepository
         self.subwayStationArrivalRepository = subwayStationArrivalRepository
     }
 
@@ -50,46 +50,45 @@ final class DefaultBusHomeViewModel: BusHomeViewModel {
 extension DefaultBusHomeViewModel {
 
     func viewWillAppear() {
-        fetchSubwayStationList()
+        fetchBusStationList()
     }
 
     func removeRecentSearchItem(with busTarget: BusTarget) {
-//        localSubwayRepository.removeStation(station: subwayTarget)
-        fetchSubwayStationList()
+        localBusRepository.removeStation(station: busTarget)
+        fetchBusStationList()
     }
 
     func didSelectRowAt(busTarget: BusTarget) {
-//        localSubwayRepository.enrollStation(subwayTarget: subwayTarget)
-        fetchSubwayStationList()
+        localBusRepository.enrollStation(busTarget: busTarget)
+        fetchBusStationList()
     }
 
 }
 
 private extension DefaultBusHomeViewModel {
 
-    private func fetchSubwayStationList() {
-//        let stationList = localSubwayRepository.fetchEnrolledStationList()
-//        recentSubwayStationList.onNext(stationList)
-//        if let firstItem = stationList.first {
-//            currentSubwayStationTarget.onNext(firstItem)
+    private func fetchBusStationList() {
+        let stationList = localBusRepository.fetchEnrolledStationList()
+        recentBusStationList.onNext(stationList)
+        if let firstItem = stationList.first {
+            currentBusStationTarget.onNext(firstItem)
 //            fetchStationArrivalData(with: firstItem)
-//        }
-    }
-
-    func fetchStationArrivalData(with subwayTarget: SubwayTarget) {
-        subwayStationArrivalRepository.fetchSubwayStationArrival(with: subwayTarget) { result in
-            switch result {
-            case .success(let list):
-                let arrivalData = StationArrivalResponse(
-                    stationArrivalTarget: subwayTarget,
-                    subwayArrival: list
-                )
-//                self.currentBusStationArrival.onNext(arrivalData)
-            case .failure(let error):
-                debugPrint(error)
-            }
         }
     }
 
-}
+    func fetchStationArrivalData(with busTarget: BusTarget) {
+//        subwayStationArrivalRepository.fetchSubwayStationArrival(with: subwayTarget) { result in
+//            switch result {
+//            case .success(let list):
+//                let arrivalData = StationArrivalResponse(
+//                    stationArrivalTarget: subwayTarget,
+//                    subwayArrival: list
+//                )
+//                self.currentBusStationArrival.onNext(arrivalData)
+//            case .failure(let error):
+//                debugPrint(error)
+//            }
+//        }
+    }
 
+}

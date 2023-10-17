@@ -8,7 +8,19 @@
 import Foundation
 
 struct StationArrivalResponse: Hashable {
-    let stationArrivalTarget: SubwayTarget
 
-    let subwayArrival: [SubwayArrival]?
+    enum ArrivalTarget: Hashable {
+        case subway(target: SubwayTarget)
+        case bus(target: BusTarget)
+    }
+
+    enum Arrival: Hashable {
+        case subway(arrival: [SubwayArrival])
+        case bus(arrival: BusArrival)
+    }
+
+    let stationArrivalTarget: ArrivalTarget
+    let stationArrival: Arrival
+
+//    let subwayArrival: [SubwayArrival]?
 }

@@ -21,6 +21,7 @@ final class DIContainer {
 
     lazy var searchHistoryStorage: SearchHistoryStorage = UserDefaultsSearchHistory()
     lazy var subwayStationStorage: SubwayStationStorage = RealmSubwayStationStorage(realmStorage: .shared)
+    lazy var busStationStorage: BusStationStorage = RealmBusStationStorage(realmStorage: .shared)
     lazy var userStorage: UserStorage = UserStorage(realmStorage: .shared)
 
     // MARK: - ViewController
@@ -130,7 +131,7 @@ extension DIContainer {
 
     private func makeBusHomeViewModel() -> BusHomeViewModel {
         return DefaultBusHomeViewModel(
-            localSubwayRepository: makeLocalSubwayRepository(),
+            localBusRepository: makeLocalBusRepository(),
             subwayStationArrivalRepository: makeSubwayStationArrivalRepository()
         )
     }
@@ -148,7 +149,7 @@ extension DIContainer {
     }
 
     private func makeLocalBusRepository() -> LocalBusRepository {
-        return LocalBusRepository.shared
+        return LocalBusRepository(busStationStorage: busStationStorage)
     }
 
     private func makeSubwayStationArrivalRepository() -> SubwayStationArrivalRepository {

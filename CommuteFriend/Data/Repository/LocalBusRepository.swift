@@ -9,26 +9,22 @@ import Foundation
 
 final class LocalBusRepository {
 
-    static let shared = LocalBusRepository()
+    // MARK: - Dependency
+
+    private let busStationStorage: BusStationStorage
 
     var busStationList: BusStationList?
 
-    init() {
+    // MARK: - DI
+
+    init(
+        busStationStorage: BusStationStorage
+    ) {
+        self.busStationStorage = busStationStorage
         configureJSONData()
     }
 
-    private func configureJSONData() {
-        guard let path = Bundle.main.path(forResource: "BusStationInformation", ofType: "json"),
-              let jsonString = try? String(contentsOfFile: path)
-        else { return }
-
-        let decoder = JSONDecoder()
-        let data = jsonString.data(using: .utf8)
-        if let data = data,
-           let busStationList = try? decoder.decode(BusStationList.self, from: data) {
-            self.busStationList = busStationList
-        }
-    }
+    // TODO: - Document 주석 추가하기
 
     func fetchStationByName(name: String) -> [BusStation]? {
         guard let busStationList else { return nil }
@@ -40,4 +36,55 @@ final class LocalBusRepository {
         return Set(filteringList).count != 0 ? filteringList : nil
     }
 
+    func enrollStation(busTarget: BusTarget) {
+        let busDTO = BusDTO(target: busTarget)
+        busStationStorage.enrollStation(station: busDTO)
+    }
+
+    func fetchEnrolledStationList() -> [BusTarget] {
+        return busStationStorage.readStationList().map { $0.toDomain() }
+    }
+
+    func removeStation(station: BusTarget) {
+        let busDTO = BusDTO(target: station)
+        busStationStorage.deleteStation(station: busDTO)
+    }
+
+    // MARK: - Favortie
+
+    func enrollFavoriteStation(item: FavoriteItem) throws {
+        let favoriteItemDTO = FavoriteBusDTO(favoriteItem: item)
+        try busStationStorage.enrollFavoriteBus(favorite: favoriteItemDTO)
+    }
+
+    func readFavoriteStationList() -> [FavoriteItem] {
+        busStationStorage.readFavoriteBus().map { $0.toDomain() }
+    }
+
+    func deleteFavoriteStation(item: FavoriteItem) {
+        let favoriteItemDTO = FavoriteBusDTO(favoriteItem: item)
+        busStationStorage.deleteFavoriteBus(favorite: favoriteItemDTO)
+    }
+
+    func updateFavoriteStationList(item: FavoriteItem) {
+        let favoriteItemDTO = FavoriteBusDTO(favoriteItem: item)
+        busStationStorage.updateFavoriteBus(favorite: favoriteItemDTO)
+    }
+
+}
+
+private extension LocalBusRepository {
+
+    func configureJSONData() {
+        guard let path = Bundle.main.path(forResource: "BusStationInformation", ofType: "json"),
+              let jsonString = try? String(contentsOfFile: path)
+        else { return }
+
+        let decoder = JSONDecoder()
+        let data = jsonString.data(using: .utf8)
+        if let data = data,
+           let busStationList = try? decoder.decode(BusStationList.self, from: data) {
+            self.busStationList = busStationList
+        }
+    }
 }

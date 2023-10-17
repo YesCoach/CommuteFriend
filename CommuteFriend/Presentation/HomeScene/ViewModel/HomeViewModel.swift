@@ -81,8 +81,8 @@ private extension DefaultHomeViewModel {
             switch result {
             case .success(let list):
                 let arrivalData = StationArrivalResponse(
-                    stationArrivalTarget: subwayTarget,
-                    subwayArrival: list
+                    stationArrivalTarget: .subway(target: subwayTarget),
+                    stationArrival: .subway(arrival: list)
                 )
                 self.currentSubwayStationArrival.onNext(arrivalData)
             case .failure(let error):

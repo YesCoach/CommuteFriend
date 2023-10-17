@@ -108,6 +108,10 @@
 		89EE85962ADE66AA0095198D /* BusHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE85952ADE66AA0095198D /* BusHomeViewController.swift */; };
 		89EE85992ADE67290095198D /* BusHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE85982ADE67280095198D /* BusHomeViewModel.swift */; };
 		89EE859B2ADE707C0095198D /* BusTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE859A2ADE707C0095198D /* BusTarget.swift */; };
+		89EE859D2ADEA9230095198D /* BusDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE859C2ADEA9230095198D /* BusDTO+Mapping.swift */; };
+		89EE85A02ADEAA4F0095198D /* BusStationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE859F2ADEAA4F0095198D /* BusStationStorage.swift */; };
+		89EE85A22ADEAAC60095198D /* FavoriteBusDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE85A12ADEAAC60095198D /* FavoriteBusDTO+Mapping.swift */; };
+		89EE85A42ADEAC5C0095198D /* RealmBusStationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE85A32ADEAC5C0095198D /* RealmBusStationStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,6 +230,10 @@
 		89EE85952ADE66AA0095198D /* BusHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusHomeViewController.swift; sourceTree = "<group>"; };
 		89EE85982ADE67280095198D /* BusHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusHomeViewModel.swift; sourceTree = "<group>"; };
 		89EE859A2ADE707C0095198D /* BusTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusTarget.swift; sourceTree = "<group>"; };
+		89EE859C2ADEA9230095198D /* BusDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BusDTO+Mapping.swift"; sourceTree = "<group>"; };
+		89EE859F2ADEAA4F0095198D /* BusStationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStationStorage.swift; sourceTree = "<group>"; };
+		89EE85A12ADEAAC60095198D /* FavoriteBusDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteBusDTO+Mapping.swift"; sourceTree = "<group>"; };
+		89EE85A32ADEAC5C0095198D /* RealmBusStationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmBusStationStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,6 +328,7 @@
 				89023F492ADB22F0009FFCBD /* RealmStorage */,
 				89023F462ADB2256009FFCBD /* UserStorage */,
 				89023F432ADB21E3009FFCBD /* SubwayStationStorage */,
+				89EE859E2ADEAA3A0095198D /* BusStationStorage */,
 				89023ECE2AD6F609009FFCBD /* SearchHistoryStorage */,
 			);
 			path = PersistentStorage;
@@ -338,8 +347,8 @@
 			children = (
 				89023ECC2AD6F4E4009FFCBD /* SearchHistoryRepository.swift */,
 				89023F102AD7D5CA009FFCBD /* LocalSubwayRepository.swift */,
-				89023F632ADBF091009FFCBD /* SubwayStationArrivalRepository.swift */,
 				89023F352AD80F62009FFCBD /* LocalBusRepository.swift */,
+				89023F632ADBF091009FFCBD /* SubwayStationArrivalRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -489,7 +498,9 @@
 				89023F4D2ADB2344009FFCBD /* RealmMapping.swift */,
 				89023F4F2ADB234F009FFCBD /* User+Mapping.swift */,
 				89023F512ADB2362009FFCBD /* Subway+Mapping.swift */,
+				89EE859C2ADEA9230095198D /* BusDTO+Mapping.swift */,
 				89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */,
+				89EE85A12ADEAAC60095198D /* FavoriteBusDTO+Mapping.swift */,
 			);
 			path = "Entity+Mapping";
 			sourceTree = "<group>";
@@ -764,6 +775,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		89EE859E2ADEAA3A0095198D /* BusStationStorage */ = {
+			isa = PBXGroup;
+			children = (
+				89EE859F2ADEAA4F0095198D /* BusStationStorage.swift */,
+				89EE85A32ADEAC5C0095198D /* RealmBusStationStorage.swift */,
+			);
+			path = BusStationStorage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -939,6 +959,7 @@
 				8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */,
 				89023FAE2ADD0884009FFCBD /* StationTarget.swift in Sources */,
 				894266982AD6803200C44C04 /* AppTabBarController.swift in Sources */,
+				89EE85A02ADEAA4F0095198D /* BusStationStorage.swift in Sources */,
 				89023F3E2ADB18EE009FFCBD /* RecentStationView.swift in Sources */,
 				89023EC72AD6F422009FFCBD /* UserDefaultsSearchHistory.swift in Sources */,
 				89023F522ADB2362009FFCBD /* Subway+Mapping.swift in Sources */,
@@ -986,6 +1007,7 @@
 				89023F152AD7EB9F009FFCBD /* BusStationList+DTO.swift in Sources */,
 				89EE85992ADE67290095198D /* BusHomeViewModel.swift in Sources */,
 				89023F4B2ADB2302009FFCBD /* RealmStorage.swift in Sources */,
+				89EE85A22ADEAAC60095198D /* FavoriteBusDTO+Mapping.swift in Sources */,
 				89023F402ADB199D009FFCBD /* RecentStationCell.swift in Sources */,
 				894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */,
 				89023EE12AD70E47009FFCBD /* SearchHistoryHeaderView.swift in Sources */,
@@ -998,8 +1020,10 @@
 				894266B32AD6BAE300C44C04 /* SelectableView.swift in Sources */,
 				894266B52AD6BB1500C44C04 /* SelectableItemType.swift in Sources */,
 				89023F642ADBF091009FFCBD /* SubwayStationArrivalRepository.swift in Sources */,
+				89EE85A42ADEAC5C0095198D /* RealmBusStationStorage.swift in Sources */,
 				89023F4E2ADB2344009FFCBD /* RealmMapping.swift in Sources */,
 				894266B02AD6ABA500C44C04 /* ArrivalInformationView.swift in Sources */,
+				89EE859D2ADEA9230095198D /* BusDTO+Mapping.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

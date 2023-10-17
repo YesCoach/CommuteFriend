@@ -18,7 +18,6 @@ final class ArrivalInformationView: UIView {
     private lazy var currentTimeLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 22.0, weight: .bold)
-//        label.adjustsFontSizeToFitWidth = true
         label.textColor = .systemRed
         return label
     }()
@@ -72,30 +71,7 @@ final class ArrivalInformationView: UIView {
 
     func configure(wtih arrivalResponse: StationArrivalResponse) {
         self.arrivalResponse = arrivalResponse
-        guard let subwayArrivalList = arrivalResponse.subwayArrival else { return }
-
-        currentDestinationLabel.text = subwayArrivalList[safe: 0]?.destination ?? "도착정보 없음"
-
-        // 만약 남은시간이 0일 경우 -> 실시간 도착 시간 미제공 구간!
-
-        if subwayArrivalList[safe: 0]?.remainTimeForSecond == "0" {
-            if let arrivalMessage = subwayArrivalList[safe: 0]?.arrivalMessage {
-                currentTimeLabel.text = arrivalMessage
-            }
-        } else {
-            currentTimeLabel.text = subwayArrivalList[safe: 0]?.conveniencedRemainTimeSecond ?? ""
-        }
-
-        nextDestinationLabel.text = subwayArrivalList[safe: 1]?.destination ?? "도착정보 없음"
-
-        // 만약 남은시간이 0일 경우 -> 실시간 도착 시간 미제공 구간!
-        if subwayArrivalList[safe: 1]?.remainTimeForSecond == "0" {
-            if let arrivalMessage = subwayArrivalList[safe: 1]?.arrivalMessage {
-                nextTimeLabel.text = arrivalMessage
-            }
-        } else {
-            nextTimeLabel.text = subwayArrivalList[safe: 1]?.conveniencedRemainTimeSecond ?? ""
-        }
+        configure(with: arrivalResponse.stationArrival)
     }
 
 }
@@ -131,6 +107,36 @@ private extension ArrivalInformationView {
             $0.top.equalTo(currentStackView.snp.bottom)
             $0.bottom.centerX.equalToSuperview()
             $0.horizontalEdges.greaterThanOrEqualTo(10).priority(.low)
+        }
+    }
+
+    func configure(with arrival: StationArrivalResponse.Arrival) {
+        switch arrival {
+        case .subway(let arrival):
+            currentDestinationLabel.text = arrival[safe: 0]?.destination ?? "도착정보 없음"
+
+            // 만약 남은시간이 0일 경우 -> 실시간 도착 시간 미제공 구간!
+
+            if arrival[safe: 0]?.remainTimeForSecond == "0" {
+                if let arrivalMessage = arrival[safe: 0]?.arrivalMessage {
+                    currentTimeLabel.text = arrivalMessage
+                }
+            } else {
+                currentTimeLabel.text = arrival[safe: 0]?.conveniencedRemainTimeSecond ?? ""
+            }
+
+            nextDestinationLabel.text = arrival[safe: 1]?.destination ?? "도착정보 없음"
+
+            // 만약 남은시간이 0일 경우 -> 실시간 도착 시간 미제공 구간!
+            if arrival[safe: 1]?.remainTimeForSecond == "0" {
+                if let arrivalMessage = arrival[safe: 1]?.arrivalMessage {
+                    nextTimeLabel.text = arrivalMessage
+                }
+            } else {
+                nextTimeLabel.text = arrival[safe: 1]?.conveniencedRemainTimeSecond ?? ""
+            }
+        case .bus(let arrival):
+            return
         }
     }
 
