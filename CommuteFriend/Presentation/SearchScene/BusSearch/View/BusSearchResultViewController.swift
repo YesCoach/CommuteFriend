@@ -9,6 +9,8 @@ import UIKit
 
 final class BusSearchResultViewController: BaseViewController {
 
+    // TODO: - AnyHashable 개선하기
+
     typealias DataSourceType = UITableViewDiffableDataSource<Int, AnyHashable>
     typealias SnapshotType = NSDiffableDataSourceSnapshot<Int, AnyHashable>
 
@@ -19,6 +21,10 @@ final class BusSearchResultViewController: BaseViewController {
         tableView.register(
             BusStationSearchResultCell.self,
             forCellReuseIdentifier: BusStationSearchResultCell.reuseIdentifier
+        )
+        tableView.register(
+            BusSearchResultCell.self,
+            forCellReuseIdentifier: BusSearchResultCell.reuseIdentifier
         )
         tableView.estimatedRowHeight = 40.0
         tableView.keyboardDismissMode = .onDrag
@@ -90,12 +96,13 @@ private extension BusSearchResultViewController {
                     cell.configure(with: item)
                     return cell
 
-                case let _ as Bus:
+                case let item as Bus:
                     guard let cell = tableView.dequeueReusableCell(
-                        withIdentifier: BusStationSearchResultCell.reuseIdentifier
-                    ) as? BusStationSearchResultCell
+                        withIdentifier: BusSearchResultCell.reuseIdentifier
+                    ) as? BusSearchResultCell
                     else { return UITableViewCell() }
 
+                    cell.configure(with: item)
                     return cell
                 default: return UITableViewCell()
                 }

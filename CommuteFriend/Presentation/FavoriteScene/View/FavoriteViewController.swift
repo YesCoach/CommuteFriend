@@ -8,10 +8,14 @@
 import UIKit
 import RxSwift
 
-final class FavoriteViewController<T: StationTarget>: BaseViewController, UITableViewDelegate {
+final class FavoriteViewController: BaseViewController {
 
-    typealias FavoriteItemType = FavoriteItem<T>
-    typealias DataSourceType = UITableViewDiffableDataSource<Int, FavoriteItemType>
+    typealias DataSourceType = UITableViewDiffableDataSource<Int, FavoriteItem>
+
+    enum BeginningFrom {
+        case subway
+        case bus
+    }
 
     private lazy var bottomView: UIView = {
         let view = UIView()
@@ -31,14 +35,16 @@ final class FavoriteViewController<T: StationTarget>: BaseViewController, UITabl
         return label
     }()
 
-    private lazy var tableView: UITableView = {
-        let view = UITableView()
-        view.estimatedRowHeight = 40.0
-        view.register(
+    private lazy var favoriteTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.estimatedRowHeight = 40.0
+        tableView.delegate = self
+        tableView.register(
             FavoriteStationCell.self,
             forCellReuseIdentifier: FavoriteStationCell.reuseIdentifier
         )
-        return view
+        tableView.separatorStyle = .none
+        return tableView
     }()
 
     private lazy var emptyLabel: UILabel = {
@@ -66,7 +72,7 @@ final class FavoriteViewController<T: StationTarget>: BaseViewController, UITabl
 
     private lazy var dataSource: DataSourceType = {
         let dataSource = DataSourceType(
-            tableView: tableView
+            tableView: favoriteTableView
         ) { tableView, indexPath, itemIdentifier in
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: FavoriteStationCell.reuseIdentifier,
@@ -75,23 +81,23 @@ final class FavoriteViewController<T: StationTarget>: BaseViewController, UITabl
             else { return UITableViewCell() }
 
             cell.configure(with: itemIdentifier)
-            // TODO: - 1. 셀 터치시
-//            cell.didAlarmButtonSelected = { [weak self] _ in
-//                guard let self else { return }
-//                viewModel.didAlarmButtonTouched(item: itemIdentifier)
-//            }
+            cell.didAlarmButtonSelected = { [weak self] _ in
+                guard let self else { return }
+                viewModel.didAlarmButtonTouched(item: itemIdentifier)
+            }
 
             return cell
         }
         return dataSource
     }()
 
-    private let viewModel: any FavoriteViewModel
+    private var viewModel: FavoriteViewModel
     private let disposeBag = DisposeBag()
+    private let beginningFrom: BeginningFrom
 
-    init(viewModel: any FavoriteViewModel) {
-
+    init(viewModel: FavoriteViewModel, beginningFrom: BeginningFrom) {
         self.viewModel = viewModel
+        self.beginningFrom = beginningFrom
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -101,7 +107,7 @@ final class FavoriteViewController<T: StationTarget>: BaseViewController, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModel(viewModel: viewModel)
+        bindViewModel()
         enrollNotification()
     }
 
@@ -131,7 +137,7 @@ final class FavoriteViewController<T: StationTarget>: BaseViewController, UITabl
     override func configureLayout() {
         super.configureLayout()
         [
-            bottomView, tableView, enrollButton, emptyLabel
+            bottomView, favoriteTableView, enrollButton, emptyLabel
         ].forEach { view.addSubview($0) }
 
         bottomView.snp.makeConstraints {
@@ -140,7 +146,7 @@ final class FavoriteViewController<T: StationTarget>: BaseViewController, UITabl
             $0.bottom.equalToSuperview()
         }
 
-        tableView.snp.makeConstraints {
+        favoriteTableView.snp.makeConstraints {
             $0.top.equalTo(bottomView.snp.top).inset(30.0)
             $0.horizontalEdges.equalTo(bottomView)
             $0.bottom.equalTo(enrollButton.snp.top)
@@ -152,7 +158,7 @@ final class FavoriteViewController<T: StationTarget>: BaseViewController, UITabl
         }
 
         emptyLabel.snp.makeConstraints {
-            $0.center.equalTo(tableView)
+            $0.center.equalTo(favoriteTableView)
         }
     }
 
@@ -162,10 +168,19 @@ final class FavoriteViewController<T: StationTarget>: BaseViewController, UITabl
     }
 
     @objc func didEnrollButtonTouched(_ sender: UIButton) {
-        if T.self is SubwayTarget.Type {
+        switch beginningFrom {
+        case .subway:
             let searchViewController = DIContainer
                 .shared
                 .makeSubwaySearchViewController(beginningFrom: .favorite)
+            let navigationController = UINavigationController(
+                rootViewController: searchViewController
+            )
+            present(navigationController, animated: true)
+        case .bus:
+            let searchViewController = DIContainer
+                .shared
+                .makeBusSearchViewController(beginningFrom: .favorite)
             let navigationController = UINavigationController(
                 rootViewController: searchViewController
             )
@@ -176,50 +191,27 @@ final class FavoriteViewController<T: StationTarget>: BaseViewController, UITabl
     @objc func updateFavoriteItemList(_ sender: NSNotification) {
         viewModel.viewWillAppear()
     }
-
-    // TODO: 2. 셀 스와이프시 삭제
-//    func tableView(
-//        _ tableView: UITableView,
-//        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
-//    ) -> UISwipeActionsConfiguration? {
-//        guard let dataSource = tableView.dataSource as? DataSourceType,
-//              let item = dataSource.itemIdentifier(for: indexPath)
-//        else { return nil }
-//
-//        let action = UIContextualAction(
-//            style: .destructive,
-//            title: "삭제",
-//            handler: { [weak self] (_, _, completionHandler) in
-//                guard let self else { return }
-//                viewModel.deleteFavoriteItem(item: item)
-//                completionHandler(true)
-//            }
-//        )
-//        return UISwipeActionsConfiguration(actions: [action])
-//    }
 }
 
 private extension FavoriteViewController {
 
-    func bindViewModel(viewModel: some FavoriteViewModel) {
+    func bindViewModel() {
         viewModel.favoriteStationItems
             .bind(with: self) { owner, list in
-                if let castedList = list as? [FavoriteItemType] {
-                    owner.updateSnapShot(data: castedList)
-                }
+                owner.updateSnapShot(data: list)
             }
             .disposed(by: disposeBag)
     }
 
-    func updateSnapShot(data: [FavoriteItemType]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, FavoriteItemType>()
+    func updateSnapShot(data: [FavoriteItem]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, FavoriteItem>()
 
         snapshot.appendSections([1])
         snapshot.appendItems(data, toSection: 1)
 
         emptyLabel.isHidden = !data.isEmpty
 
-        dataSource.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
 
     func enrollNotification() {
@@ -231,4 +223,27 @@ private extension FavoriteViewController {
         )
     }
 
+}
+
+extension FavoriteViewController: UITableViewDelegate {
+
+    func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
+    ) -> UISwipeActionsConfiguration? {
+        guard let dataSource = tableView.dataSource as? DataSourceType,
+              let item = dataSource.itemIdentifier(for: indexPath)
+        else { return nil }
+
+        let action = UIContextualAction(
+            style: .destructive,
+            title: "삭제",
+            handler: { [weak self] (_, _, completionHandler) in
+                guard let self else { return }
+                viewModel.deleteFavoriteItem(item: item)
+                completionHandler(true)
+            }
+        )
+        return UISwipeActionsConfiguration(actions: [action])
+    }
 }

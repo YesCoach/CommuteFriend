@@ -34,7 +34,8 @@ protocol BusSearchViewModel: BusSearchViewModelInput, BusSearchViewModelOutput {
 final class DefaultBusSearchViewModel: BusSearchViewModel {
 
     private let searchHistoryRepository: SearchHistoryRepository
-    private let busRepository: LocalBusRepository
+    private let localBusRepository: LocalBusRepository
+    private let busRepository: BusRepository
 
     private var segmentIndex: Int = 0
     private var searchHistoryType: SearchHistoryType {
@@ -43,9 +44,11 @@ final class DefaultBusSearchViewModel: BusSearchViewModel {
 
     init(
         searchHistoryRepository: SearchHistoryRepository,
-        busRepository: LocalBusRepository
+        localBusRepository: LocalBusRepository,
+        busRepository: BusRepository
     ) {
         self.searchHistoryRepository = searchHistoryRepository
+        self.localBusRepository = localBusRepository
         self.busRepository = busRepository
     }
 
@@ -69,22 +72,20 @@ extension DefaultBusSearchViewModel {
 
     func updateSearchResults(with keyword: String) {
         if segmentIndex == 0 {
-            // 버스 노선 검색
-//            searchBusUseCase.searchBusList(
-//                keyword: keyword
-//            ) { [weak self] result in
-//                guard let self else { return }
-//
-//                switch result {
-//                case .success(let list):
-//                    searchBusResult.onNext(list)
-//                case .failure(let error):
-//                    debugPrint(error)
-//                }
-//            }
+            busRepository.fetch(
+                keyword: keyword
+            ) { [weak self] result in
+                guard let self else { return }
+                switch result {
+                case .success(let list):
+                    searchBusResult.onNext(list)
+                case .failure(let error):
+                    debugPrint(error)
+                }
+            }
         }
         if segmentIndex == 1 {
-            guard let data = busRepository.fetchStationByName(name: keyword)
+            guard let data = localBusRepository.fetchStationByName(name: keyword)
             else { return }
 
             searchBusStationResult.onNext(data)
@@ -101,6 +102,8 @@ extension DefaultBusSearchViewModel {
 
     func didSegmentControlValueChanged(index: Int) {
         self.segmentIndex = index
+        searchBusResult.onNext([])
+        searchBusStationResult.onNext([])
         loadSearchHistory()
     }
 

@@ -18,15 +18,20 @@ final class AppTabBarController: UITabBarController {
         let homeViewController = DIContainer.shared.makeHomeViewController()
         homeViewController.tabBarItem = TabBarItems.home.tabBarItem
 
+        let busHomeViewController = DIContainer.shared.makeBusHomeViewController()
+        busHomeViewController.tabBarItem = TabBarItems.bus.tabBarItem
+
         let favoriteViewController = UIViewController()
         favoriteViewController.view.backgroundColor = .systemOrange
         favoriteViewController.tabBarItem = TabBarItems.favorite.tabBarItem
 
         tabBar.tintColor = .label
 
-        let navigationController = UINavigationController(rootViewController: homeViewController)
-
-        self.viewControllers = [navigationController, favoriteViewController]
+        self.viewControllers = [
+            UINavigationController(rootViewController: homeViewController),
+            UINavigationController(rootViewController: busHomeViewController),
+            favoriteViewController
+        ]
     }
 
 }

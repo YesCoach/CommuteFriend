@@ -7,14 +7,21 @@
 
 import Foundation
 
-struct FavoriteItem<T: StationTarget>: Hashable {
+struct FavoriteItem: Hashable {
+
+    enum itemType: Hashable {
+        case subway(target: SubwayTarget)
+        case bus(target: BusTarget)
+    }
+
     let id: String
-    let stationTarget: T
+    let stationTarget: itemType
     var isAlarm: Bool
 
-    init(id: String = UUID().uuidString, stationTarget: T, isAlarm: Bool) {
+    init(id: String = UUID().uuidString, stationTarget: itemType, isAlarm: Bool) {
         self.id = id
         self.stationTarget = stationTarget
         self.isAlarm = isAlarm
     }
+
 }

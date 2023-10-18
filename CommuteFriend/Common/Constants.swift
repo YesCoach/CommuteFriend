@@ -17,6 +17,8 @@ enum Constants {
         static let addStationArrivalTarget: String = "addStationArrivalTarget"
         static let favoriteUpdateNotification: String = "favoriteUpdateNotification"
 
+        static let busHomeUpdateNotification: String = "busHomeUpdateNotification"
+
     }
 
     enum Policy {

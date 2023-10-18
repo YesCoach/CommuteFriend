@@ -15,6 +15,11 @@ final class BusSearchViewController: BaseViewController {
     typealias DataSourceType = UITableViewDiffableDataSource<Int, String>
     typealias SnapshotType = NSDiffableDataSourceSnapshot<Int, String>
 
+    enum BeginningFrom {
+        case home
+        case favorite
+    }
+
     // MARK: - UI
 
     private lazy var searchController: UISearchController = {
@@ -36,7 +41,26 @@ final class BusSearchViewController: BaseViewController {
         let viewController = BusSearchResultViewController(nibName: nil, bundle: nil)
         viewController.itemSelectHandler = { [weak self] item in
             guard let self else { return }
-//            viewModel.didSelectItem(of: item)
+            if let item = item as? BusStation {
+                viewModel.didSelectItem(of: item)
+                let detailViewController = DIContainer
+                    .shared
+                    .makeBusStationSearchDetailViewController(
+                        busStation: item,
+                        beginningFrom: beginningFrom
+                    )
+                navigationController?.pushViewController(detailViewController, animated: true)
+            }
+            if let item = item as? Bus {
+                viewModel.didSelectItem(of: item)
+                let detailViewControllr = DIContainer
+                    .shared
+                    .makeBusRouteSearchDetailViewController(
+                        bus: item,
+                        beginningFrom: beginningFrom
+                    )
+                navigationController?.pushViewController(detailViewControllr, animated: true)
+            }
         }
         return viewController
     }()
@@ -67,14 +91,16 @@ final class BusSearchViewController: BaseViewController {
     // MARK: - Property
 
     private let viewModel: BusSearchViewModel
-
     private var dataSource: DataSourceType?
     private let disposeBag = DisposeBag()
 
+    private let beginningFrom: BeginningFrom
+
     // MARK: - Init
 
-    init(viewModel: BusSearchViewModel) {
+    init(viewModel: BusSearchViewModel, beginningFrom: BeginningFrom) {
         self.viewModel = viewModel
+        self.beginningFrom = beginningFrom
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -136,6 +162,12 @@ private extension BusSearchViewController {
 
     func bindViewModel() {
         viewModel.searchBusStationResult
+            .subscribe(with: self) { owner, list in
+                owner.searchResultViewController.updateSnapshot(data: list)
+            }
+            .disposed(by: disposeBag)
+
+        viewModel.searchBusResult
             .subscribe(with: self) { owner, list in
                 owner.searchResultViewController.updateSnapshot(data: list)
             }
