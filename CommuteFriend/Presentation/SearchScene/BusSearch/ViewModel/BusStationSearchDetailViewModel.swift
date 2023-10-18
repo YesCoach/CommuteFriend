@@ -27,13 +27,16 @@ class DefaultBusStationSearchDetailViewModel: BusStationSearchDetailViewModel {
     private let busStationArrivalRepository: BusStationArrivalRepsitory
     private let localBusRepository: LocalBusRepository
     let busStation: BusStation
+    let beginningFrom: BusSearchViewController.BeginningFrom
 
     init(
         busStation: BusStation,
+        beginningFrom: BusSearchViewController.BeginningFrom,
         busStationArrivalRepository: BusStationArrivalRepsitory,
         localBusRepository: LocalBusRepository
     ) {
         self.busStation = busStation
+        self.beginningFrom = beginningFrom
         self.busStationArrivalRepository = busStationArrivalRepository
         self.localBusRepository = localBusRepository
     }
@@ -53,8 +56,21 @@ class DefaultBusStationSearchDetailViewModel: BusStationSearchDetailViewModel {
             busRouteName: item.busRouteName
         )
 
-        localBusRepository.enrollStation(busTarget: target)
-        NotificationCenter.default.post(name: .busHomeUpdateNotification, object: nil)
+        switch beginningFrom {
+        case .home:
+            localBusRepository.enrollStation(busTarget: target)
+            NotificationCenter.default.post(name: .busHomeUpdateNotification, object: nil)
+        case .favorite:
+            do {
+                try localBusRepository.enrollFavoriteStation(
+                    item: .init(stationTarget: .bus(target: target), isAlarm: true)
+                )
+            } catch {
+                debugPrint(error)
+            }
+            NotificationCenter.default.post(name: .favoriteUpdateNotification, object: nil)
+        }
+
     }
 
 }

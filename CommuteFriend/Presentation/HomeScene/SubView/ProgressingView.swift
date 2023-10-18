@@ -24,7 +24,6 @@ final class ProgressingView: UIView {
         super.init(frame: frame)
         configureUI()
         configureLayout()
-        backgroundColor = .secondarySystemBackground
     }
 
     required init?(coder: NSCoder) {
@@ -53,7 +52,9 @@ final class ProgressingView: UIView {
 
 private extension ProgressingView {
 
-    func configureUI() { }
+    func configureUI() {
+        backgroundColor = .white
+    }
 
     func configureLayout() {
         [

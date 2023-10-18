@@ -43,6 +43,7 @@ final class FavoriteViewController: BaseViewController {
             FavoriteStationCell.self,
             forCellReuseIdentifier: FavoriteStationCell.reuseIdentifier
         )
+        tableView.separatorStyle = .none
         return tableView
     }()
 
@@ -80,7 +81,6 @@ final class FavoriteViewController: BaseViewController {
             else { return UITableViewCell() }
 
             cell.configure(with: itemIdentifier)
-            // TODO: - 1. 셀 터치시
             cell.didAlarmButtonSelected = { [weak self] _ in
                 guard let self else { return }
                 viewModel.didAlarmButtonTouched(item: itemIdentifier)
@@ -177,7 +177,14 @@ final class FavoriteViewController: BaseViewController {
                 rootViewController: searchViewController
             )
             present(navigationController, animated: true)
-        case .bus: return
+        case .bus:
+            let searchViewController = DIContainer
+                .shared
+                .makeBusSearchViewController(beginningFrom: .favorite)
+            let navigationController = UINavigationController(
+                rootViewController: searchViewController
+            )
+            present(navigationController, animated: true)
         }
     }
 

@@ -72,7 +72,7 @@ final class BusHomeViewController: BaseViewController {
             guard let self else { return }
             let busSearchViewController = DIContainer
                 .shared
-                .makeBusSearchViewController()
+                .makeBusSearchViewController(beginningFrom: .home)
             let navigationController = UINavigationController(
                 rootViewController: busSearchViewController
             )
@@ -86,7 +86,7 @@ final class BusHomeViewController: BaseViewController {
             menuType: .favorite
         ) { [weak self] _ in
             guard let self else { return }
-            let favoriteViewController = DIContainer.shared.makeSubwayFavoriteViewController()
+            let favoriteViewController = DIContainer.shared.makeBusFavoriteViewController()
 
             favoriteViewController.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(favoriteViewController, animated: true)
@@ -229,7 +229,7 @@ private extension BusHomeViewController {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(updateCurrentStationArrival),
-            name: .homeUpdateNotification,
+            name: .busHomeUpdateNotification,
             object: nil
         )
     }

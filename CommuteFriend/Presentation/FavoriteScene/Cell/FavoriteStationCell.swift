@@ -43,14 +43,13 @@ final class FavoriteStationCell: BaseTableViewCell {
     override func configureUI() {
         super.configureUI()
         selectionStyle = .none
-        backgroundColor = .systemGray6
     }
 
     override func configureLayout() {
         super.configureLayout()
         [
             lineIconButton, nameLabel, directionLabel, alarmButton
-        ].forEach { addSubview($0) }
+        ].forEach { contentView.addSubview($0) }
         lineIconButton.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(10)
             $0.top.bottom.equalToSuperview().inset(10)
@@ -66,7 +65,7 @@ final class FavoriteStationCell: BaseTableViewCell {
         }
         alarmButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(10)
-            $0.centerY.equalToSuperview()
+            $0.verticalEdges.equalToSuperview()
         }
     }
 

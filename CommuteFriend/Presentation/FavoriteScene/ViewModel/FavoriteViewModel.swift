@@ -57,3 +57,40 @@ extension SubwayFavoriteViewModel {
     }
 
 }
+
+final class BusFavoriteViewModel: FavoriteViewModel {
+
+    let localBusRepository: LocalBusRepository
+
+    init(localBusRepository: LocalBusRepository) {
+        self.localBusRepository = localBusRepository
+    }
+
+    var favoriteStationItems: BehaviorSubject<[FavoriteItem]> = BehaviorSubject(value: [])
+}
+
+// MARK: - FavoriteViewModelInput
+
+extension BusFavoriteViewModel {
+
+    func viewWillAppear() {
+        let favoriteStationList = localBusRepository.readFavoriteStationList()
+        favoriteStationItems.onNext(favoriteStationList)
+    }
+
+    func deleteFavoriteItem(item: FavoriteItem) {
+        localBusRepository.deleteFavoriteStation(item: item)
+        let favoriteStationList = localBusRepository.readFavoriteStationList()
+        favoriteStationItems.onNext(favoriteStationList)
+    }
+
+    func didAlarmButtonTouched(item: FavoriteItem) {
+        let newItem = FavoriteItem(
+            id: item.id,
+            stationTarget: item.stationTarget,
+            isAlarm: !item.isAlarm
+        )
+        localBusRepository.updateFavoriteStationList(item: newItem)
+    }
+
+}

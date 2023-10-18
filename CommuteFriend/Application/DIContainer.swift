@@ -39,8 +39,13 @@ final class DIContainer {
         )
     }
 
-    func makeBusSearchViewController() -> BusSearchViewController {
-        return BusSearchViewController(viewModel: makeBusSearchViewModel())
+    func makeBusSearchViewController(
+        beginningFrom: BusSearchViewController.BeginningFrom
+    ) -> BusSearchViewController {
+        return BusSearchViewController(
+            viewModel: makeBusSearchViewModel(),
+            beginningFrom: beginningFrom
+        )
     }
 
     func makeSubwaySearchSelectionViewController(
@@ -77,18 +82,33 @@ final class DIContainer {
     }
 
     func makeBusStationSearchDetailViewController(
-        busStation: BusStation
+        busStation: BusStation,
+        beginningFrom: BusSearchViewController.BeginningFrom
     ) -> BusStationSearchDetailViewController {
         return BusStationSearchDetailViewController(
-            viewModel: makeBusStationSearchDetailViewModel(busStation: busStation)
+            viewModel: makeBusStationSearchDetailViewModel(
+                busStation: busStation,
+                beginningFrom: beginningFrom
+            )
         )
     }
 
     func makeBusRouteSearchDetailViewController(
-        bus: Bus
+        bus: Bus,
+        beginningFrom: BusSearchViewController.BeginningFrom
     ) -> BusRouteSearchDetailViewController {
         return BusRouteSearchDetailViewController(
-            viewModel: makeBusRouteSearchDetailViewModel(bus: bus)
+            viewModel: makeBusRouteSearchDetailViewModel(
+                bus: bus,
+                beginningFrom: beginningFrom
+            )
+        )
+    }
+
+    func makeBusFavoriteViewController() -> FavoriteViewController {
+        return FavoriteViewController(
+            viewModel: makeBusFavoriteViewModel(),
+            beginningFrom: .bus
         )
     }
 
@@ -154,23 +174,30 @@ extension DIContainer {
     }
 
     private func makeBusStationSearchDetailViewModel(
-        busStation: BusStation
+        busStation: BusStation,
+        beginningFrom: BusSearchViewController.BeginningFrom
     ) -> BusStationSearchDetailViewModel {
         return DefaultBusStationSearchDetailViewModel(
-            busStation: busStation,
+            busStation: busStation, beginningFrom: beginningFrom,
             busStationArrivalRepository: makeBusStationArrivalRepository(),
             localBusRepository: makeLocalBusRepository()
         )
     }
 
     private func makeBusRouteSearchDetailViewModel(
-        bus: Bus
+        bus: Bus,
+        beginningFrom: BusSearchViewController.BeginningFrom
     ) -> BusRouteSearchDetailViewModel {
         return DefaultBusRouteSearchDetailViewModel(
             busStationRepository: makeBusStationRepository(),
             localBusRepository: makeLocalBusRepository(),
-            bus: bus
+            bus: bus,
+            beginningFrom: beginningFrom
         )
+    }
+
+    private func makeBusFavoriteViewModel() -> FavoriteViewModel {
+        return BusFavoriteViewModel(localBusRepository: makeLocalBusRepository())
     }
 
     // MARK: - Repository
