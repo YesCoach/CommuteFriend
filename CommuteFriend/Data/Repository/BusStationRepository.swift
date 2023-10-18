@@ -28,7 +28,9 @@ extension BusStationRepository {
             api: .busStationByRoute(query: routeID)
         ) { result in
             let mappedResult = result.map {
-                return $0.msgBody.itemList?.map { $0.toDomain() } ?? []
+                $0.msgBody.itemList?
+                    .filter { $0.descriptionID != "0" && $0.descriptionID != " " }
+                    .map { $0.toDomain() } ?? []
             }
             completion(mappedResult)
         }

@@ -98,14 +98,17 @@ private extension HomeArrivalView {
             $0.top.equalToSuperview().offset(10.0)
             $0.leading.equalToSuperview().offset(20.0)
         }
+        routeIconButton.setContentHuggingPriority(.defaultHigh, for: .horizontal)
 
         stationLabel.snp.makeConstraints {
             $0.centerY.equalTo(routeIconButton)
             $0.leading.equalTo(routeIconButton.snp.trailing).offset(5.0)
         }
+        stationLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         destinationLabel.snp.makeConstraints {
             $0.leading.equalTo(stationLabel.snp.trailing).offset(5.0)
+            $0.trailing.equalToSuperview().inset(20.0)
             $0.bottom.equalTo(stationLabel)
         }
 

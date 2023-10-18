@@ -82,9 +82,10 @@ private extension DefaultBusHomeViewModel {
                 guard let self else { return }
                 switch result {
                 case .success(let list):
+                    let speceficList = list.filter { $0.busRouteName == busTarget.busRouteName }
                     let arrivalData = StationArrivalResponse(
                         stationArrivalTarget: .bus(target: busTarget),
-                        stationArrival: .bus(arrival: list)
+                        stationArrival: .bus(arrival: speceficList)
                     )
                     currentBusStationArrival.onNext(arrivalData)
                 case .failure(let error):
