@@ -117,6 +117,7 @@
 		898A58182ADEFB66000F040F /* BusRouteSearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58172ADEFB66000F040F /* BusRouteSearchDetailViewController.swift */; };
 		898A581A2ADEFBAA000F040F /* BusRouteSearchDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58192ADEFBAA000F040F /* BusRouteSearchDetailCell.swift */; };
 		898A581C2ADEFCC4000F040F /* BusRouteSearchDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A581B2ADEFCC4000F040F /* BusRouteSearchDetailViewModel.swift */; };
+		898A58212ADFC4CA000F040F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58202ADFC4CA000F040F /* LocationManager.swift */; };
 		89EE858C2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */; };
 		89EE858E2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */; };
 		89EE85922ADD2E370095198D /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE85912ADD2E370095198D /* FavoriteViewModel.swift */; };
@@ -254,6 +255,7 @@
 		898A58172ADEFB66000F040F /* BusRouteSearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRouteSearchDetailViewController.swift; sourceTree = "<group>"; };
 		898A58192ADEFBAA000F040F /* BusRouteSearchDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRouteSearchDetailCell.swift; sourceTree = "<group>"; };
 		898A581B2ADEFCC4000F040F /* BusRouteSearchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRouteSearchDetailViewModel.swift; sourceTree = "<group>"; };
+		898A58202ADFC4CA000F040F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSubwaySearchSelectionViewModel.swift; sourceTree = "<group>"; };
 		89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteSubwayDTO+Mapping.swift"; sourceTree = "<group>"; };
 		89EE85912ADD2E370095198D /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 		89023EA92AD6CAF7009FFCBD /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				898A581F2ADFC4B7000F040F /* Location */,
 				89023ECB2AD6F4CD009FFCBD /* Repository */,
 				89023F0D2AD7D38C009FFCBD /* Resource */,
 				89023EC32AD6F39D009FFCBD /* PersistentStorage */,
@@ -779,6 +782,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		898A581F2ADFC4B7000F040F /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				898A58202ADFC4CA000F040F /* LocationManager.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		89EE858F2ADD2E190095198D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -997,6 +1008,7 @@
 				898A58162ADEF752000F040F /* BusSearchResultCell.swift in Sources */,
 				89EE858C2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift in Sources */,
 				894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */,
+				898A58212ADFC4CA000F040F /* LocationManager.swift in Sources */,
 				89023F6A2ADBFD7D009FFCBD /* Collection+.swift in Sources */,
 				89023F682ADBF648009FFCBD /* SubwayArrivalResponse.swift in Sources */,
 				898A58182ADEFB66000F040F /* BusRouteSearchDetailViewController.swift in Sources */,

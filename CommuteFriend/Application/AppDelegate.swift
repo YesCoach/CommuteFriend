@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         RealmStorage.shared.checkSchemaVersion()
 
+        // MARK: - Location 관련 로직
+        LocationManager.shared.requestAuthorization()
+
         return true
     }
 
