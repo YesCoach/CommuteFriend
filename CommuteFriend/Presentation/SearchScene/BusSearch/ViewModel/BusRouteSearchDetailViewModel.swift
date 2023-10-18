@@ -54,7 +54,9 @@ class DefaultBusRouteSearchDetailViewModel: BusRouteSearchDetailViewModel {
             // TODO: - 버스 방향 넣기?
             direction: item.direction,
             busRouteID: bus.id,
-            busRouteName: bus.name
+            busRouteName: bus.name,
+            latPos: item.latPos,
+            lonPos: item.lonPos
         )
 
         switch beginningFrom {

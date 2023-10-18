@@ -56,7 +56,9 @@ extension DefaultSubwaySearchSelectionViewModel {
             name: station.name,
             lineNumber: station.lineNumber,
             destinationName: stationName,
-            upDownDirection: direction
+            upDownDirection: direction,
+            latPos: station.latPos,
+            lonPos: station.lonPos
         )
         localSubwayRepository.enrollStation(subwayTarget: subwayTarget)
         NotificationCenter.default.post(name: .homeUpdateNotification, object: nil)

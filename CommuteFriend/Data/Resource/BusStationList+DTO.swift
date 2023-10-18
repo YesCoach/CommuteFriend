@@ -55,7 +55,9 @@ extension BusStationList {
                 id: String(sttnID),
                 name: sttnNm,
                 arsID: sttnNo,
-                direction: ""
+                direction: "",
+                latPos: crdntY,
+                lonPos: crdntX
             )
         }
     }

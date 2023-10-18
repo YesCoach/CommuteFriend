@@ -78,7 +78,6 @@
 		89023FB12ADD097C009FFCBD /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023FB02ADD097C009FFCBD /* FavoriteItem.swift */; };
 		8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664D2AD6770600C44C04 /* AppDelegate.swift */; };
 		894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664F2AD6770600C44C04 /* SceneDelegate.swift */; };
-		894266522AD6770600C44C04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266512AD6770600C44C04 /* ViewController.swift */; };
 		894266572AD6770700C44C04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 894266562AD6770700C44C04 /* Assets.xcassets */; };
 		8942665A2AD6770700C44C04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894266582AD6770700C44C04 /* LaunchScreen.storyboard */; };
 		894266652AD6770700C44C04 /* CommuteFriendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266642AD6770700C44C04 /* CommuteFriendTests.swift */; };
@@ -214,7 +213,6 @@
 		8942664A2AD6770600C44C04 /* CommuteFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommuteFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8942664D2AD6770600C44C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8942664F2AD6770600C44C04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		894266512AD6770600C44C04 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		894266562AD6770700C44C04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		894266592AD6770700C44C04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8942665B2AD6770700C44C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -625,7 +623,6 @@
 				894266882AD67A8600C44C04 /* Presentation */,
 				89023EA92AD6CAF7009FFCBD /* Data */,
 				89023F0A2AD7D308009FFCBD /* Resource */,
-				894266512AD6770600C44C04 /* ViewController.swift */,
 				894266562AD6770700C44C04 /* Assets.xcassets */,
 				894266582AD6770700C44C04 /* LaunchScreen.storyboard */,
 				8942665B2AD6770700C44C04 /* Info.plist */,
@@ -999,7 +996,6 @@
 				89023EA62AD6C9DB009FFCBD /* NetworkManager.swift in Sources */,
 				898A57FE2ADEC4C3000F040F /* BusResponseDTO+Mapping.swift in Sources */,
 				894266AE2AD6AAC100C44C04 /* ProgressingView.swift in Sources */,
-				894266522AD6770600C44C04 /* ViewController.swift in Sources */,
 				89023F362AD80F62009FFCBD /* LocalBusRepository.swift in Sources */,
 				89EE858E2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift in Sources */,
 				89023F1F2AD7EC82009FFCBD /* BusArrival.swift in Sources */,

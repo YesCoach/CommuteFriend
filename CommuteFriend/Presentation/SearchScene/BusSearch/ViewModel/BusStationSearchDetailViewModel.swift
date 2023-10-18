@@ -53,7 +53,9 @@ class DefaultBusStationSearchDetailViewModel: BusStationSearchDetailViewModel {
             stationName: item.stationName,
             direction: item.nextStationName,
             busRouteID: item.busRouteID,
-            busRouteName: item.busRouteName
+            busRouteName: item.busRouteName,
+            latPos: item.latPos,
+            lonPos: item.lonPos
         )
 
         switch beginningFrom {
@@ -93,7 +95,9 @@ private extension DefaultBusStationSearchDetailViewModel {
             stationName: busStation.name,
             direction: busStation.direction,
             busRouteID: nil,
-            busRouteName: nil
+            busRouteName: nil,
+            latPos: busStation.latPos,
+            lonPos: busStation.lonPos
         )
 
         busStationArrivalRepository.fetchBusStationArrivalData(

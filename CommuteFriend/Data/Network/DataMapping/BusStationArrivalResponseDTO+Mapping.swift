@@ -37,6 +37,8 @@ extension BusStationArrivalResponseDTO {
         let secondArrivalMessage: String
         let direction: String
         let nextStationName: String
+        let stationLat: String
+        let stationLon: String
 
         enum CodingKeys: String, CodingKey {
             case id = "stId"
@@ -51,6 +53,8 @@ extension BusStationArrivalResponseDTO {
             case secondArrivalMessage = "arrmsg2"
             case direction = "adirection"
             case nextStationName = "nxtStn"
+            case stationLat = "gpsY"
+            case stationLon = "gpsX"
         }
 
         func toDomain() -> BusArrival {
@@ -64,7 +68,9 @@ extension BusStationArrivalResponseDTO {
                 direction: direction,
                 nextStationName: nextStationName,
                 firstArrivalMessage: firstArrivalMessage,
-                secondArrivalMessage: secondArrivalMessage
+                secondArrivalMessage: secondArrivalMessage,
+                latPos: Double(stationLat) ?? 0,
+                lonPos: Double(stationLon) ?? 0
             )
         }
     }

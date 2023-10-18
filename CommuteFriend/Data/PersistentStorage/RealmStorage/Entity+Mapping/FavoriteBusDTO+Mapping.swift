@@ -18,6 +18,9 @@ class FavoriteBusDTO: Object, RealmMapping {
     @Persisted var busDirection: String
     @Persisted var busRouteID: String
     @Persisted var busRouteName: String
+    @Persisted var stationLat: Double
+    @Persisted var stationLon: Double
+
     @Persisted var isAlarm: Bool
 
     convenience init(favoriteItem: DomainType) {
@@ -31,6 +34,8 @@ class FavoriteBusDTO: Object, RealmMapping {
             self.busDirection = target.direction
             self.busRouteID = target.busRouteID ?? ""
             self.busRouteName = target.busRouteName ?? ""
+            self.stationLat = target.latPos
+            self.stationLon = target.lonPos
         default:
             return
         }
@@ -47,7 +52,9 @@ class FavoriteBusDTO: Object, RealmMapping {
                     stationName: stationName,
                     direction: busDirection,
                     busRouteID: busRouteID,
-                    busRouteName: busRouteName
+                    busRouteName: busRouteName,
+                    latPos: stationLat,
+                    lonPos: stationLon
                 )
             ),
             isAlarm: isAlarm

@@ -9,15 +9,6 @@ import CoreLocation
 
 enum LocationManagerError: Error {
     case invalidLocation
-    case emptyPlacemark
-    case emptyPlacemarkLocality
-    case emptyPlacemarkSubLocality
-    case emptyLocationValue
-}
-
-protocol LocationManagerDelegate: AnyObject {
-    func didUpdateLocation()
-    func didUpdateAuthorization()
 }
 
 final class LocationManager: NSObject {
@@ -26,8 +17,6 @@ final class LocationManager: NSObject {
 
     private let locationManager = CLLocationManager()
     private var currentLocation: CLLocation?
-
-    weak var delegate: LocationManagerDelegate?
 
     private override init() {
         super.init()
@@ -63,6 +52,45 @@ final class LocationManager: NSObject {
             .authorizedWhenInUse
         ].contains(locationManager.authorizationStatus)
     }
+
+}
+
+// MARK: - CLRegion
+
+extension LocationManager {
+
+    func registLocation(target: StationTargetType) {
+
+        let location: CLLocationCoordinate2D
+        let region: CLCircularRegion
+
+        switch target {
+        case .subway(let target):
+            location = CLLocationCoordinate2D(latitude: target.latPos, longitude: target.lonPos)
+            region = CLCircularRegion(
+                center: location,
+                radius: 200.0,
+                identifier: target.id
+            )
+        case .bus(let target):
+            location = CLLocationCoordinate2D(latitude: target.latPos, longitude: target.lonPos)
+            region = CLCircularRegion(
+                center: location,
+                radius: 100.0,
+                identifier: target.id
+            )
+        }
+
+        region.notifyOnEntry = true
+        region.notifyOnExit = true
+
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
+
+        locationManager.startUpdatingLocation()
+        locationManager.startMonitoring(for: region)
+        print("region regist: \(region)")
+    }
 }
 
 extension LocationManager: CLLocationManagerDelegate {
@@ -70,7 +98,6 @@ extension LocationManager: CLLocationManagerDelegate {
         _ manager: CLLocationManager,
         didChangeAuthorization status: CLAuthorizationStatus
     ) {
-        delegate?.didUpdateAuthorization()
         switch status {
         case .notDetermined:
             manager.requestWhenInUseAuthorization()
@@ -94,10 +121,28 @@ extension LocationManager: CLLocationManagerDelegate {
         }
         currentLocation = location
         manager.stopUpdatingLocation()
-        delegate?.didUpdateLocation()
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         manager.stopUpdatingLocation()
+    }
+
+    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+        print("didStartMonitoringFor")
+    }
+
+    func locationManager(
+        _ manager: CLLocationManager,
+        didDetermineState state: CLRegionState,
+        for region: CLRegion
+    ) {
+        switch state {
+        case .inside:
+            print("region inside")
+        case .outside:
+            print("region outside")
+        case .unknown: break
+            // do not something
+        }
     }
 }

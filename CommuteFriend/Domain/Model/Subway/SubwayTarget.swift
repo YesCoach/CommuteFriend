@@ -13,18 +13,24 @@ struct SubwayTarget: StationTarget {
     let lineNumber: SubwayLine
     let destinationName: String
     var upDownDirection: UpDownDirection
+    let latPos: Double
+    let lonPos: Double
 
     init(
         id: String = UUID().uuidString,
         name: String,
         lineNumber: SubwayLine,
         destinationName: String,
-        upDownDirection: UpDownDirection
+        upDownDirection: UpDownDirection,
+        latPos: Double,
+        lonPos: Double
     ) {
         self.id = id
         self.name = name
         self.lineNumber = lineNumber
         self.destinationName = destinationName
         self.upDownDirection = upDownDirection
+        self.latPos = latPos
+        self.lonPos = lonPos
     }
 }

@@ -14,6 +14,8 @@ struct BusTarget: StationTarget {
     let direction: String // @@방면
     let busRouteID: String?
     let busRouteName: String?
+    let latPos: Double
+    let lonPos: Double
 
     init(
         id: String = UUID().uuidString,
@@ -21,7 +23,9 @@ struct BusTarget: StationTarget {
         stationName: String,
         direction: String,
         busRouteID: String?,
-        busRouteName: String?
+        busRouteName: String?,
+        latPos: Double,
+        lonPos: Double
     ) {
         self.id = id
         self.stationID = stationID
@@ -29,5 +33,7 @@ struct BusTarget: StationTarget {
         self.direction = direction
         self.busRouteID = busRouteID
         self.busRouteName = busRouteName
+        self.latPos = latPos
+        self.lonPos = lonPos
     }
 }

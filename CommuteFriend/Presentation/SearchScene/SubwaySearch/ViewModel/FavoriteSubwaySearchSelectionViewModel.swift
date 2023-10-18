@@ -41,7 +41,9 @@ extension FavoriteSubwaySearchSelectionViewModel {
             name: station.name,
             lineNumber: station.lineNumber,
             destinationName: stationName,
-            upDownDirection: direction
+            upDownDirection: direction,
+            latPos: station.latPos,
+            lonPos: station.lonPos
         )
         do {
             try localSubwayRepository.enrollFavoriteStation(

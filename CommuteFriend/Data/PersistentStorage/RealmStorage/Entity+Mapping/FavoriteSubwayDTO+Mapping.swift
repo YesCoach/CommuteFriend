@@ -17,6 +17,8 @@ class FavoriteSubwayDTO: Object, RealmMapping {
     @Persisted var subwayLineNumber: String
     @Persisted var subwayUpDownDirection: String
     @Persisted var subwayDestinationName: String
+    @Persisted var subwayLatitude: Double
+    @Persisted var subwayLongitude: Double
     @Persisted var isAlarm: Bool
 
     convenience init(favoriteItem: DomainType) {
@@ -29,6 +31,8 @@ class FavoriteSubwayDTO: Object, RealmMapping {
             self.subwayLineNumber = target.lineNumber.rawValue
             self.subwayUpDownDirection = target.upDownDirection.rawValue
             self.subwayDestinationName = target.destinationName
+            self.subwayLatitude = target.latPos
+            self.subwayLongitude = target.lonPos
         default:
             return
         }
@@ -44,7 +48,9 @@ class FavoriteSubwayDTO: Object, RealmMapping {
                     name: subwayName,
                     lineNumber: SubwayLine(rawValue: subwayLineNumber) ?? .number1,
                     destinationName: subwayDestinationName,
-                    upDownDirection: UpDownDirection(rawValue: subwayUpDownDirection) ?? .up
+                    upDownDirection: UpDownDirection(rawValue: subwayUpDownDirection) ?? .up,
+                    latPos: subwayLatitude,
+                    lonPos: subwayLongitude
                 )
             ),
             isAlarm: isAlarm

@@ -24,12 +24,16 @@ extension BusStationByRouteResponseDTO {
         let name: String
         let descriptionID: String
         let direction: String
+        let stationLat: String
+        let stationLon: String
 
         enum CodingKeys: String, CodingKey {
             case id = "station"
             case name = "stationNm"
             case descriptionID = "arsId"
             case direction
+            case stationLat = "gpsY"
+            case stationLon = "gpsX"
         }
 
         func toDomain() -> BusStation {
@@ -37,7 +41,9 @@ extension BusStationByRouteResponseDTO {
                 id: id,
                 name: name,
                 arsID: descriptionID,
-                direction: direction
+                direction: direction,
+                latPos: Double(stationLat) ?? 0,
+                lonPos: Double(stationLon) ?? 0
             )
         }
     }

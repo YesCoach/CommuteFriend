@@ -18,6 +18,8 @@ struct BusArrival: Hashable {
     let nextStationName: String
     let firstArrivalMessage: String
     let secondArrivalMessage: String
+    let latPos: Double
+    let lonPos: Double
 }
 
 extension BusArrival {
