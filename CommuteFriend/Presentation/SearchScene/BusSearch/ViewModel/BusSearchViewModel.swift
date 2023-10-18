@@ -102,6 +102,8 @@ extension DefaultBusSearchViewModel {
 
     func didSegmentControlValueChanged(index: Int) {
         self.segmentIndex = index
+        searchBusResult.onNext([])
+        searchBusStationResult.onNext([])
         loadSearchHistory()
     }
 

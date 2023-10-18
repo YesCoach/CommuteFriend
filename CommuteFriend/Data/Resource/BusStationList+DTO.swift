@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - BusStationList
-struct BusStationList: Codable {
+struct BusStationList: Decodable {
     let description: Description
     let data: [BusStationData]
 
@@ -22,13 +22,24 @@ extension BusStationList {
 
     // MARK: - BusStation
 
-    struct BusStationData: Codable, DTOMapping {
+    struct BusStationData: Decodable, DTOMapping {
+
+        enum StationType: String, Decodable {
+            case ghost = "가상정류장"
+            case maeul = "마을버스"
+            case normal = "일반차로"
+            case centeral = "중앙차로"
+            case roadsideHour = "가로변시간"
+            case roadsideDay = "가로변전일"
+        }
+
         typealias DomainType = BusStation
 
         let sttnNo: String
         let sttnNm: String
         let sttnID: Int
         let crdntX, crdntY: Double
+        let sttnType: StationType?
 
         enum CodingKeys: String, CodingKey {
             case sttnNo = "sttn_no"
@@ -36,6 +47,7 @@ extension BusStationList {
             case sttnID = "sttn_id"
             case crdntX = "crdnt_x"
             case crdntY = "crdnt_y"
+            case sttnType = "sttn_type"
         }
 
         func toDomain() -> BusStation {
@@ -49,7 +61,7 @@ extension BusStationList {
     }
 
     // MARK: - Description
-    struct Description: Codable {
+    struct Description: Decodable {
         let crdntY, businfoFcltInstlYn, crdntX, sttnType: String
         let sttnNo, sttnNm, sttnID: String
 

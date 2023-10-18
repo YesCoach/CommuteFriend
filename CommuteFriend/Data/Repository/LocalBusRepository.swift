@@ -29,7 +29,7 @@ final class LocalBusRepository {
     func fetchStationByName(name: String) -> [BusStation]? {
         guard let busStationList else { return nil }
         let filteringList = busStationList.data
-            .filter { $0.sttnNm.contains(name) }
+            .filter { $0.sttnNm.contains(name) && $0.sttnType != .ghost }
             .map { $0.toDomain() }
             .sorted { $0.name < $1.name }
 
@@ -81,10 +81,16 @@ private extension LocalBusRepository {
         else { return }
 
         let decoder = JSONDecoder()
-        let data = jsonString.data(using: .utf8)
-        if let data = data,
-           let busStationList = try? decoder.decode(BusStationList.self, from: data) {
+        guard let data = jsonString.data(using: .utf8) else {
+            print("create data is failed")
+            return
+        }
+
+        do {
+            let busStationList = try decoder.decode(BusStationList.self, from: data)
             self.busStationList = busStationList
+        } catch {
+            debugPrint(error)
         }
     }
 }
