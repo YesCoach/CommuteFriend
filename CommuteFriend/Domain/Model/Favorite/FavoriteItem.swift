@@ -9,16 +9,11 @@ import Foundation
 
 struct FavoriteItem: Hashable {
 
-    enum itemType: Hashable {
-        case subway(target: SubwayTarget)
-        case bus(target: BusTarget)
-    }
-
     let id: String
-    let stationTarget: itemType
+    let stationTarget: StationTargetType
     var isAlarm: Bool
 
-    init(id: String = UUID().uuidString, stationTarget: itemType, isAlarm: Bool) {
+    init(id: String = UUID().uuidString, stationTarget: StationTargetType, isAlarm: Bool) {
         self.id = id
         self.stationTarget = stationTarget
         self.isAlarm = isAlarm

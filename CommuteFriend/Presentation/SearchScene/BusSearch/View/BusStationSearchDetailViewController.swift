@@ -66,7 +66,7 @@ final class BusStationSearchDetailViewController: BaseViewController {
     // MARK: - LifeCycle
 
     deinit {
-        print("🗑️ - \(String(describing: type(of: self)))")
+        deinitPrint()
     }
 
     override func viewDidLoad() {

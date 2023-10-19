@@ -57,8 +57,6 @@ struct SubwayStationArrivalDTO: DTOMapping {
             .components(separatedBy: "(").first?
             .trimmingCharacters(in: .whitespaces)
 
-        print("\(arrivalMessageFixed) <- \(arrivalMessage)")
-
         return DomainType(
             direction: trimmedline ?? line,
             arrivalMessage: arrivalMessageFixed ?? arrivalMessage,

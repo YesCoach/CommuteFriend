@@ -32,6 +32,7 @@ final class HomeArrivalView: UIView {
     private lazy var arrivalInformationView: ArrivalInformationView = ArrivalInformationView()
 
     private var stationArrivalResponse: StationArrivalResponse?
+    private var timer: Timer?
 
     // MARK: - Init
 
@@ -70,6 +71,8 @@ final class HomeArrivalView: UIView {
 
         arrivalInformationView.configure(wtih: arrivalResponse)
         progressingView.configure(with: arrivalResponse)
+        removeTimer()
+        attachTimer()
     }
 
 }
@@ -122,6 +125,33 @@ private extension HomeArrivalView {
             $0.top.equalTo(progressingView.snp.bottom)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview()
+        }
+    }
+}
+
+// MARK: - Timer
+
+private extension HomeArrivalView {
+
+    func attachTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            guard let self else { return }
+            updateStatoinArrivalData()
+        }
+        timer?.fire()
+        print(#function)
+    }
+
+    func removeTimer() {
+        print(#function)
+        timer?.invalidate()
+        timer = nil
+    }
+
+    func updateStatoinArrivalData( ) {
+        if let stationArrivalResponse {
+            progressingView.configure(with: stationArrivalResponse)
+            arrivalInformationView.configure(wtih: stationArrivalResponse)
         }
     }
 }

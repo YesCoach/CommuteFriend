@@ -122,7 +122,7 @@ private extension ArrivalInformationView {
                     currentTimeLabel.text = arrivalMessage
                 }
             } else {
-                currentTimeLabel.text = arrival[safe: 0]?.conveniencedRemainTimeSecond ?? ""
+                currentTimeLabel.text = arrival[safe: 0]?.arrivalTimeDescription ?? ""
             }
 
             nextDestinationLabel.text = arrival[safe: 1]?.destination ?? "도착정보 없음"
@@ -133,12 +133,12 @@ private extension ArrivalInformationView {
                     nextTimeLabel.text = arrivalMessage
                 }
             } else {
-                nextTimeLabel.text = arrival[safe: 1]?.conveniencedRemainTimeSecond ?? ""
+                nextTimeLabel.text = arrival[safe: 1]?.arrivalTimeDescription ?? ""
             }
         case .bus(let arrival):
             currentDestinationLabel.isHidden = true
-            currentTimeLabel.text = arrival[safe: 0]?.firstArrivalTime
-            nextTimeLabel.text = arrival[safe: 0]?.secondArrivalTime
+            currentTimeLabel.text = arrival[safe: 0]?.firstArrivalTimeDescription
+            nextTimeLabel.text = arrival[safe: 0]?.secondArrivalTimeDescription
         }
     }
 

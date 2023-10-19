@@ -46,6 +46,15 @@ struct SubwayArrival: Hashable {
 
 extension SubwayArrival {
 
+    var arrivalTimeDescription: String {
+
+        guard remainSecond > 0 else {
+            return "도착"
+        }
+
+        return String(remainSecond).toArrivalTimeFormString()
+    }
+
     /// 지하철 도착까지 남은 시간을 초 단위로 반환합니다.
     var remainSecond: Int {
         // API 데이터 생성 시간

@@ -13,7 +13,7 @@ protocol StationTarget: Hashable {
     var lonPos: Double { get }
 }
 
-enum StationTargetType {
+enum StationTargetType: Hashable {
     case subway(target: SubwayTarget)
     case bus(target: BusTarget)
 }

@@ -55,7 +55,7 @@ final class BusRouteSearchDetailViewController: BaseViewController {
     }
 
     deinit {
-        print("🗑️ - \(String(describing: type(of: self)))")
+        deinitPrint()
     }
 
     // MARK: - LifeCycle

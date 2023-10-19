@@ -43,9 +43,7 @@ final class ProgressingView: UIView {
         path.stroke()
     }
 
-    func configure(with: StationArrivalResponse) {
-        print(with)
-    }
+    func configure(with: StationArrivalResponse) { }
 }
 
 // MARK: - Private Method

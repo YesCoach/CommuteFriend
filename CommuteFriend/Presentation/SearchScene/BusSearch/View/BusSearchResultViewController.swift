@@ -37,7 +37,7 @@ final class BusSearchResultViewController: BaseViewController {
     private var dataSource: DataSourceType?
 
     deinit {
-        print("🗑️ - \(String(describing: type(of: self)))")
+        deinitPrint()
     }
 
     // MARK: - LifeCycle

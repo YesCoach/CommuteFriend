@@ -54,6 +54,9 @@ extension SubwayFavoriteViewModel {
             isAlarm: !item.isAlarm
         )
         localSubwayRepository.updateFavoriteStationList(item: newItem)
+        if newItem.isAlarm {
+            LocationManager.shared.registLocation(target: newItem.stationTarget)
+        }
     }
 
 }

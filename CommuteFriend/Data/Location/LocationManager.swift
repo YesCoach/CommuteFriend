@@ -6,6 +6,7 @@
 //
 
 import CoreLocation
+import UserNotifications
 
 enum LocationManagerError: Error {
     case invalidLocation
@@ -63,15 +64,22 @@ extension LocationManager {
 
         let location: CLLocationCoordinate2D
         let region: CLCircularRegion
+        let id: String
+        let notiTitle: String
+        let notyBody: String
 
         switch target {
         case .subway(let target):
             location = CLLocationCoordinate2D(latitude: target.latPos, longitude: target.lonPos)
             region = CLCircularRegion(
                 center: location,
-                radius: 200.0,
+                radius: 1000.0,
                 identifier: target.id
             )
+            id = target.id
+            notiTitle = "🚊\(target.name)역 등장!"
+            notyBody = "\(target.destinationName)방면으로 가는 \(target.lineNumber.description)의 도착정보를 확인하세요 (__)"
+
         case .bus(let target):
             location = CLLocationCoordinate2D(latitude: target.latPos, longitude: target.lonPos)
             region = CLCircularRegion(
@@ -79,15 +87,32 @@ extension LocationManager {
                 radius: 100.0,
                 identifier: target.id
             )
+            id = target.id
+            notiTitle = "🚌'\(target.stationName)'정류장 등장!"
+            notyBody = "\(target.direction)방면으로 가는 \(target.busRouteName)버스 도착정보를 확인하세요 (__)"
         }
 
         region.notifyOnEntry = true
-        region.notifyOnExit = true
+        region.notifyOnExit = false
 
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.pausesLocationUpdatesAutomatically = false
 
-        locationManager.startUpdatingLocation()
+        let content = UNMutableNotificationContent()
+        content.title = notiTitle
+        content.body = notyBody
+        content.sound = UNNotificationSound.default
+
+        let trigger = UNLocationNotificationTrigger(region: region, repeats: false)
+        let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
+
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
+            if let error {
+                print("RequestLocationNotification ERROR: " + error.localizedDescription)
+            } else {
+                print("RequestLocationNotification: " + request.identifier)
+            }
+        })
         locationManager.startMonitoring(for: region)
         print("region regist: \(region)")
     }
@@ -100,8 +125,7 @@ extension LocationManager: CLLocationManagerDelegate {
     ) {
         switch status {
         case .notDetermined:
-            manager.requestWhenInUseAuthorization()
-            manager.stopUpdatingLocation()
+            manager.requestAlwaysAuthorization()
         case .authorizedWhenInUse, .authorizedAlways:
             manager.startUpdatingLocation()
         case .denied, .restricted:

@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import UserNotifications
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
-
+    let notificationCenter = UNUserNotificationCenter.current()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -23,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // MARK: - Location 관련 로직
         LocationManager.shared.requestAuthorization()
+
+        // MARK: - Notification 관련 로직
+        setupUserNotificationCenter()
 
         return true
     }
@@ -44,3 +48,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+// MARK: - UNUserNotificationCenterDelegate
+
+extension AppDelegate {
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+
+        return completionHandler(UNNotificationPresentationOptions.banner)
+    }
+
+    func setupUserNotificationCenter() {
+
+        notificationCenter.delegate = self
+
+        notificationCenter.requestAuthorization(options: [.alert]) { granted, error in
+            if (error != nil) {
+                print("Notification Authorization Error: " + error!.localizedDescription)
+            }else{
+                print("Notification Authorization Granted: " + granted.description)
+            }
+        }
+    }
+}
