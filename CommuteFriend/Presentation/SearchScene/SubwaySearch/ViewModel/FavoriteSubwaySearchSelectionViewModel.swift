@@ -49,6 +49,7 @@ extension FavoriteSubwaySearchSelectionViewModel {
             try localSubwayRepository.enrollFavoriteStation(
                 item: .init(stationTarget: .subway(target: subwayTarget), isAlarm: true)
             )
+            LocationManager.shared.registLocation(target: .subway(target: subwayTarget))
         } catch {
             debugPrint(error)
         }

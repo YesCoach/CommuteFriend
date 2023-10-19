@@ -68,6 +68,7 @@ class DefaultBusRouteSearchDetailViewModel: BusRouteSearchDetailViewModel {
                 try localBusRepository.enrollFavoriteStation(
                     item: .init(stationTarget: .bus(target: target), isAlarm: true)
                 )
+                LocationManager.shared.registLocation(target: .bus(target: target))
             } catch {
                 debugPrint(error)
             }

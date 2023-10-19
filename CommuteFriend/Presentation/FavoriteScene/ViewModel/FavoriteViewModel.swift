@@ -54,8 +54,11 @@ extension SubwayFavoriteViewModel {
             isAlarm: !item.isAlarm
         )
         localSubwayRepository.updateFavoriteStationList(item: newItem)
+        viewWillAppear()
         if newItem.isAlarm {
             LocationManager.shared.registLocation(target: newItem.stationTarget)
+        } else {
+            LocationManager.shared.removeLocation(target: newItem.stationTarget)
         }
     }
 
@@ -94,6 +97,12 @@ extension BusFavoriteViewModel {
             isAlarm: !item.isAlarm
         )
         localBusRepository.updateFavoriteStationList(item: newItem)
+        viewWillAppear()
+        if newItem.isAlarm {
+            LocationManager.shared.registLocation(target: newItem.stationTarget)
+        } else {
+            LocationManager.shared.removeLocation(target: newItem.stationTarget)
+        }
     }
 
 }

@@ -28,6 +28,7 @@ final class LocationManager: NSObject {
         locationManager.allowsBackgroundLocationUpdates = true
         // 백그라운드에서 위치 서비스를 사용중임을 나타내기 위한 설정
         locationManager.showsBackgroundLocationIndicator = true
+        locationManager.pausesLocationUpdatesAutomatically = false
 
         // TODO: - Turn off background updates when your app isn’t using them to save power.
         // 즐겨찾기에 등록된 정류장이 없으면 꺼주고, 하나라도 있으면 켜주기
@@ -61,25 +62,19 @@ final class LocationManager: NSObject {
 extension LocationManager {
 
     func registLocation(target: StationTargetType) {
-
+        let id: String
         let location: CLLocationCoordinate2D
         let region: CLCircularRegion
-        let id: String
-        let notiTitle: String
-        let notyBody: String
 
         switch target {
         case .subway(let target):
             location = CLLocationCoordinate2D(latitude: target.latPos, longitude: target.lonPos)
             region = CLCircularRegion(
                 center: location,
-                radius: 1000.0,
+                radius: 500.0,
                 identifier: target.id
             )
             id = target.id
-            notiTitle = "🚊\(target.name)역 등장!"
-            notyBody = "\(target.destinationName)방면으로 가는 \(target.lineNumber.description)의 도착정보를 확인하세요 (__)"
-
         case .bus(let target):
             location = CLLocationCoordinate2D(latitude: target.latPos, longitude: target.lonPos)
             region = CLCircularRegion(
@@ -88,22 +83,13 @@ extension LocationManager {
                 identifier: target.id
             )
             id = target.id
-            notiTitle = "🚌'\(target.stationName)'정류장 등장!"
-            notyBody = "\(target.direction)방면으로 가는 \(target.busRouteName)버스 도착정보를 확인하세요 (__)"
         }
 
         region.notifyOnEntry = true
         region.notifyOnExit = false
 
-        locationManager.allowsBackgroundLocationUpdates = true
-        locationManager.pausesLocationUpdatesAutomatically = false
-
-        let content = UNMutableNotificationContent()
-        content.title = notiTitle
-        content.body = notyBody
-        content.sound = UNNotificationSound.default
-
-        let trigger = UNLocationNotificationTrigger(region: region, repeats: false)
+        let content = configureNotificationContent(target: target)
+        let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
@@ -114,8 +100,43 @@ extension LocationManager {
             }
         })
         locationManager.startMonitoring(for: region)
+
+        print("====================")
+        print("")
+        debugPrint(trigger)
+        debugPrint(request)
         print("region regist: \(region)")
+        print("")
+        print("====================")
     }
+
+    func removeLocation(target: StationTargetType) {
+        UNUserNotificationCenter
+            .current()
+            .removePendingNotificationRequests(withIdentifiers: [target.id])
+    }
+
+    private func configureNotificationContent(target: StationTargetType) -> UNMutableNotificationContent {
+        let notiTitle: String
+        let notyBody: String
+
+        switch target {
+        case .subway(let target):
+            notiTitle = "🚊\(target.name)역 등장!"
+            notyBody = "\(target.destinationName)방면으로 가는 \(target.lineNumber.description)의 도착정보를 확인하세요 (__)"
+        case .bus(let target):
+            notiTitle = "🚌 \(target.stationName)정류장 등장!"
+            notyBody = "\(target.direction) 방면으로 가는 \(target.busRouteName)버스 도착정보를 확인하세요 (__)"
+        }
+
+        let content = UNMutableNotificationContent()
+        content.title = notiTitle
+        content.body = notyBody
+        content.sound = UNNotificationSound.default
+
+        return content
+    }
+
 }
 
 extension LocationManager: CLLocationManagerDelegate {
@@ -167,6 +188,13 @@ extension LocationManager: CLLocationManagerDelegate {
             print("region outside")
         case .unknown: break
             // do not something
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        if let region = region as? CLCircularRegion {
+            let identifier = region.identifier
+            // TODO: 렘 업데이트??
         }
     }
 }
