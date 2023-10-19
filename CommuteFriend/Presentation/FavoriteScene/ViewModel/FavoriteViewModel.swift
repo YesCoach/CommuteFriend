@@ -86,6 +86,7 @@ extension BusFavoriteViewModel {
 
     func deleteFavoriteItem(item: FavoriteItem) {
         localBusRepository.deleteFavoriteStation(item: item)
+        LocationManager.shared.removeLocation(target: item.stationTarget)
         let favoriteStationList = localBusRepository.readFavoriteStationList()
         favoriteStationItems.onNext(favoriteStationList)
     }

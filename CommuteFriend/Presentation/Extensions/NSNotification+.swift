@@ -25,4 +25,8 @@ extension NSNotification.Name {
         Constants.NotificationName.busHomeUpdateNotification
     )
 
+    static let userNotificationTriggerNotification: Self = NSNotification.Name(
+        Constants.NotificationName.userNotificationTriggerNotification
+    )
+
 }

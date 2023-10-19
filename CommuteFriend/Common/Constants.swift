@@ -19,6 +19,7 @@ enum Constants {
 
         static let busHomeUpdateNotification: String = "busHomeUpdateNotification"
 
+        static let userNotificationTriggerNotification: String = "userNotificationTrigger"
     }
 
     enum Policy {

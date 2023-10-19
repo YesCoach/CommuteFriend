@@ -276,3 +276,11 @@ extension HomeViewController: UITableViewDelegate {
     }
 
 }
+
+extension HomeViewController: NotificationTriggerDelegate {
+
+    func updatePriorityStationTarget(stationTargetID: String) {
+        // 뷰모델 로직 추가
+    }
+
+}

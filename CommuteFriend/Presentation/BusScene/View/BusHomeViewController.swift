@@ -277,3 +277,11 @@ extension BusHomeViewController: UITableViewDelegate {
     }
 
 }
+
+extension BusHomeViewController: NotificationTriggerDelegate {
+
+    func updatePriorityStationTarget(stationTargetID: String) {
+        // viewmodel 로직 추가
+    }
+
+}
