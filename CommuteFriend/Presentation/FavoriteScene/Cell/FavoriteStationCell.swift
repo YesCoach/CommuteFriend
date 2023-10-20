@@ -40,6 +40,11 @@ final class FavoriteStationCell: BaseTableViewCell {
 
     var didAlarmButtonSelected: ((Bool) -> Void)?
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        didAlarmButtonSelected = nil
+    }
+
     override func configureUI() {
         super.configureUI()
         selectionStyle = .none

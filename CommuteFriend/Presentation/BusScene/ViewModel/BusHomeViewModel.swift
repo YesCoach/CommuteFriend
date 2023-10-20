@@ -13,6 +13,7 @@ protocol BusHomeViewModelInput {
     func viewWillAppear()
     func removeRecentSearchItem(with busTarget: BusTarget)
     func didSelectRowAt(busTarget: BusTarget)
+    func updatePriorityStationTarget(with busTargetID: String)
 }
 
 protocol BusHomeViewModelOutput {
@@ -61,6 +62,13 @@ extension DefaultBusHomeViewModel {
     func didSelectRowAt(busTarget: BusTarget) {
         localBusRepository.enrollStation(busTarget: busTarget)
         fetchBusStationList()
+    }
+
+    func updatePriorityStationTarget(with busTargetID: String) {
+        if let item = localBusRepository.readFavoriteStationTarget(with: busTargetID) {
+            localBusRepository.enrollStation(busTarget: item)
+            fetchBusStationList()
+        }
     }
 
 }

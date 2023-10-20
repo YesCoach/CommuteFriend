@@ -168,7 +168,6 @@ extension LocationManager: CLLocationManagerDelegate {
             return
         }
         currentLocation = location
-        manager.stopUpdatingLocation()
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

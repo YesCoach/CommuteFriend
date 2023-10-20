@@ -30,15 +30,9 @@ final class BusStationSearchDetailViewController: BaseViewController {
     }()
 
     private lazy var dataSource: DataSourceType = {
-        let cellRegistration = createCellRegistration()
         let dataSource = DataSourceType(
             collectionView: collectionView
         ) { collectionView, indexPath, itemIdentifier in
-            let cell = collectionView.dequeueConfiguredReusableCell(
-                using: cellRegistration,
-                for: indexPath,
-                item: itemIdentifier
-            )
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: BusStationSearchDetailCell.reuseIdentifier,
                 for: indexPath
@@ -134,14 +128,6 @@ private extension BusStationSearchDetailViewController {
         let layout = UICollectionViewCompositionalLayout(section: section)
 
         return layout
-    }
-
-    func createCellRegistration() -> CellRegistrationType {
-        let cellRegistration = CellRegistrationType { cell, _, itemIdentifier in
-            cell.configure(with: itemIdentifier)
-        }
-
-        return cellRegistration
     }
 
     func updateSnapshot(data: [BusArrival]) {

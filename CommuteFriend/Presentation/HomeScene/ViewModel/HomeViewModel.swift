@@ -13,6 +13,7 @@ protocol HomeViewModelInput {
     func viewWillAppear()
     func removeRecentSearchItem(with subwayTarget: SubwayTarget)
     func didSelectRowAt(subwayTarget: SubwayTarget)
+    func updatePriorityStationTarget(with subwaTargetID: String)
 }
 
 protocol HomeViewModelOutput {
@@ -61,6 +62,13 @@ extension DefaultHomeViewModel {
     func didSelectRowAt(subwayTarget: SubwayTarget) {
         localSubwayRepository.enrollStation(subwayTarget: subwayTarget)
         fetchSubwayStationList()
+    }
+
+    func updatePriorityStationTarget(with subwaTargetID: String) {
+        if let item = localSubwayRepository.readFavoriteStationTarget(with: subwaTargetID) {
+            localSubwayRepository.enrollStation(subwayTarget: item)
+            fetchSubwayStationList()
+        }
     }
 
 }

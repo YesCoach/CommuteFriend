@@ -72,7 +72,22 @@ final class LocalSubwayRepository {
     }
 
     func readFavoriteStationList() -> [FavoriteItemType] {
-        subwayStationStorage.readFavoriteSubway().map { $0.toDomain() }
+        subwayStationStorage.readFavoriteSubwayList().map { $0.toDomain() }
+    }
+
+    func readFavoriteStationTarget(with identifier: String) -> SubwayTarget? {
+        if let item = subwayStationStorage.readFavoriteSubway(identifier: identifier) {
+            return .init(
+                id: item.id,
+                name: item.subwayName,
+                lineNumber: SubwayLine(rawValue: item.subwayLineNumber) ?? .number1,
+                destinationName: item.subwayDestinationName,
+                upDownDirection: UpDownDirection(rawValue: item.subwayUpDownDirection) ?? .up,
+                latPos: item.subwayLatitude,
+                lonPos: item.subwayLongitude
+            )
+        }
+        return nil
     }
 
     func deleteFavoriteStation(item: FavoriteItemType) {

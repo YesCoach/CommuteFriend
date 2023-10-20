@@ -14,7 +14,8 @@ protocol BusStationStorage {
 
     // MARK: - Favorite
     func enrollFavoriteBus(favorite: FavoriteBusDTO) throws
-    func readFavoriteBus() -> [FavoriteBusDTO]
+    func readFavoriteBus(identifier: String) -> FavoriteBusDTO?
+    func readFavoriteBusList() -> [FavoriteBusDTO]
     func deleteFavoriteBus(favorite: FavoriteBusDTO)
     func updateFavoriteBus(favorite: FavoriteBusDTO)
 }

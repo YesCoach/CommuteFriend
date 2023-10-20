@@ -35,7 +35,7 @@ final class AppTabBarController: UITabBarController {
         favoriteViewController.view.backgroundColor = .systemOrange
         favoriteViewController.tabBarItem = TabBarItems.favorite.tabBarItem
 
-        tabBar.tintColor = .label
+        tabBar.tintColor = .black
 
         self.viewControllers = [
             UINavigationController(rootViewController: homeViewController),
