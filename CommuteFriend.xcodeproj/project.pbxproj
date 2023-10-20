@@ -117,6 +117,8 @@
 		898A581A2ADEFBAA000F040F /* BusRouteSearchDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58192ADEFBAA000F040F /* BusRouteSearchDetailCell.swift */; };
 		898A581C2ADEFCC4000F040F /* BusRouteSearchDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A581B2ADEFCC4000F040F /* BusRouteSearchDetailViewModel.swift */; };
 		898A58212ADFC4CA000F040F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58202ADFC4CA000F040F /* LocationManager.swift */; };
+		898A58242AE25122000F040F /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58232AE25122000F040F /* UserDefaultsManager.swift */; };
+		898A58262AE2514A000F040F /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58252AE2514A000F040F /* UserDefaultsWrapper.swift */; };
 		89EE858C2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */; };
 		89EE858E2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */; };
 		89EE85922ADD2E370095198D /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE85912ADD2E370095198D /* FavoriteViewModel.swift */; };
@@ -254,6 +256,8 @@
 		898A58192ADEFBAA000F040F /* BusRouteSearchDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRouteSearchDetailCell.swift; sourceTree = "<group>"; };
 		898A581B2ADEFCC4000F040F /* BusRouteSearchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRouteSearchDetailViewModel.swift; sourceTree = "<group>"; };
 		898A58202ADFC4CA000F040F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		898A58232AE25122000F040F /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		898A58252AE2514A000F040F /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSubwaySearchSelectionViewModel.swift; sourceTree = "<group>"; };
 		89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteSubwayDTO+Mapping.swift"; sourceTree = "<group>"; };
 		89EE85912ADD2E370095198D /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
@@ -301,6 +305,7 @@
 		89023EA92AD6CAF7009FFCBD /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				898A58222AE2510F000F040F /* UserDefaults */,
 				898A581F2ADFC4B7000F040F /* Location */,
 				89023ECB2AD6F4CD009FFCBD /* Repository */,
 				89023F0D2AD7D38C009FFCBD /* Resource */,
@@ -787,6 +792,15 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		898A58222AE2510F000F040F /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				898A58232AE25122000F040F /* UserDefaultsManager.swift */,
+				898A58252AE2514A000F040F /* UserDefaultsWrapper.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
 		89EE858F2ADD2E190095198D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1082,6 +1096,7 @@
 				898A58062ADEC5FC000F040F /* BusRepository.swift in Sources */,
 				89023EF22AD71C05009FFCBD /* UIColor+.swift in Sources */,
 				89023EC22AD6D29D009FFCBD /* SearchHistoryCell.swift in Sources */,
+				898A58262AE2514A000F040F /* UserDefaultsWrapper.swift in Sources */,
 				89023F0F2AD7D3A9009FFCBD /* SubwayStationList+DTO.swift in Sources */,
 				89023EBF2AD6D17E009FFCBD /* DateFormatter+.swift in Sources */,
 				894266B32AD6BAE300C44C04 /* SelectableView.swift in Sources */,
@@ -1089,6 +1104,7 @@
 				89023F642ADBF091009FFCBD /* SubwayStationArrivalRepository.swift in Sources */,
 				89EE85A42ADEAC5C0095198D /* RealmBusStationStorage.swift in Sources */,
 				89023F4E2ADB2344009FFCBD /* RealmMapping.swift in Sources */,
+				898A58242AE25122000F040F /* UserDefaultsManager.swift in Sources */,
 				898A58102ADEE8BF000F040F /* UIView+.swift in Sources */,
 				894266B02AD6ABA500C44C04 /* ArrivalInformationView.swift in Sources */,
 				89EE859D2ADEA9230095198D /* BusDTO+Mapping.swift in Sources */,

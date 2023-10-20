@@ -45,9 +45,9 @@ class FavoriteBusDTO: Object, RealmMapping {
 
     func toDomain() -> DomainType {
         return DomainType(
-            id: id,
             stationTarget: .bus(
                 target: .init(
+                    id: id,
                     stationID: stationID,
                     stationName: stationName,
                     direction: busDirection,

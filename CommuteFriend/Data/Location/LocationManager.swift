@@ -89,7 +89,8 @@ extension LocationManager {
         region.notifyOnExit = false
 
         let content = configureNotificationContent(target: target)
-        let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
+//        let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
@@ -125,12 +126,12 @@ extension LocationManager {
         switch target {
         case .subway(let target):
             notiTitle = "🚊\(target.name)역 등장!"
-            notyBody = "\(target.destinationName)방면으로 가는 \(target.lineNumber.description)의 도착정보를 확인하세요 (__)"
-            content.userInfo = ["type": "subway"]
+            notyBody = "\(target.destinationName)방면으로 가는 \(target.lineNumber.description)의 도착정보를 확인하세요"
+            content.userInfo = ["itemType": "subway"]
         case .bus(let target):
             notiTitle = "🚌 \(target.stationName)정류장 등장!"
-            notyBody = "\(target.direction) 방면으로 가는 \(target.busRouteName)버스 도착정보를 확인하세요 (__)"
-            content.userInfo = ["type": "bus"]
+            notyBody = "\(target.direction)방면으로 가는 \(target.busRouteName)번의 도착정보를 확인하세요"
+            content.userInfo = ["itemType": "bus"]
         }
 
         content.title = notiTitle

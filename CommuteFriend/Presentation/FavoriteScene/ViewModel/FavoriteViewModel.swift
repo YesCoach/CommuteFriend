@@ -49,7 +49,6 @@ extension SubwayFavoriteViewModel {
 
     func didAlarmButtonTouched(item: FavoriteItem) {
         let newItem = FavoriteItem(
-            id: item.id,
             stationTarget: item.stationTarget,
             isAlarm: !item.isAlarm
         )
@@ -93,7 +92,6 @@ extension BusFavoriteViewModel {
 
     func didAlarmButtonTouched(item: FavoriteItem) {
         let newItem = FavoriteItem(
-            id: item.id,
             stationTarget: item.stationTarget,
             isAlarm: !item.isAlarm
         )

@@ -38,6 +38,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // 사용자에게 이미 전달된 노티
         UNUserNotificationCenter.current().removeAllDeliveredNotifications()
+
+        // 즐겨찾기 노티를 눌러서 진입한 경우
+        // UserDefaults 값을 읽어서 notification post하고
+        // UserDefaults의 해당 값을 지워준다.
+        if let itemType = UserDefaultsManager.notificationItemType,
+           let itemIdentifier = UserDefaultsManager.notificationItemIdentifier {
+            NotificationCenter.default.post(
+                name: .userNotificationTriggerNotification,
+                object: nil,
+                userInfo: ["itemType": itemType, "identifier": itemIdentifier]
+            )
+
+            UserDefaultsManager.removeAllValue()
+        }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {

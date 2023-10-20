@@ -16,6 +16,9 @@ final class AppTabBarController: UITabBarController {
     weak var subwayDelegate: NotificationTriggerDelegate?
     weak var busDelegate: NotificationTriggerDelegate?
 
+    var homeViewController = DIContainer.shared.makeHomeViewController()
+    var busHomeViewController = DIContainer.shared.makeBusHomeViewController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setTabBarController()
@@ -23,11 +26,9 @@ final class AppTabBarController: UITabBarController {
     }
 
     private func setTabBarController() {
-        let homeViewController = DIContainer.shared.makeHomeViewController()
         homeViewController.tabBarItem = TabBarItems.home.tabBarItem
         subwayDelegate = homeViewController
 
-        let busHomeViewController = DIContainer.shared.makeBusHomeViewController()
         busHomeViewController.tabBarItem = TabBarItems.bus.tabBarItem
         busDelegate = busHomeViewController
 
@@ -55,14 +56,25 @@ final class AppTabBarController: UITabBarController {
     }
 
     @objc func userNotificationTriggered(notification: Notification) {
-        guard let index = notification.userInfo?["index"] as? Int,
+        guard let itemType = notification.userInfo?["itemType"] as? String,
               let identifier = notification.userInfo?["identifier"] as? String
         else { return }
-        selectedIndex = index
-        if index == 0 {
+
+        if itemType == "subway" {
+            selectedIndex = 0
+            homeViewController.dismiss(animated: true)
+            if let vc = selectedViewController as? UINavigationController {
+                vc.popToRootViewController(animated: true)
+            }
             subwayDelegate?.updatePriorityStationTarget(stationTargetID: identifier)
         } else {
+            selectedIndex = 1
+            busHomeViewController.dismiss(animated: true)
+            if let vc = selectedViewController as? UINavigationController {
+                vc.popToRootViewController(animated: true)
+            }
             busDelegate?.updatePriorityStationTarget(stationTargetID: identifier)
         }
+
     }
 }

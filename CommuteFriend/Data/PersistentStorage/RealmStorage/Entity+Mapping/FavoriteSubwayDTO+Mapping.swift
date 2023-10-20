@@ -42,9 +42,9 @@ class FavoriteSubwayDTO: Object, RealmMapping {
 
     func toDomain() -> DomainType {
         return DomainType(
-            id: id,
             stationTarget: .subway(
                 target: .init(
+                    id: id,
                     name: subwayName,
                     lineNumber: SubwayLine(rawValue: subwayLineNumber) ?? .number1,
                     destinationName: subwayDestinationName,

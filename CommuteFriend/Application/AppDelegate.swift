@@ -57,7 +57,7 @@ extension AppDelegate {
         willPresent notification: UNNotification,
         withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
     ) {
-        return completionHandler(UNNotificationPresentationOptions.banner)
+        return completionHandler([.banner, .sound])
     }
 
     func userNotificationCenter(
@@ -72,37 +72,19 @@ extension AppDelegate {
         // 2. 탭바에서 노티피케이션을 옵저빙 -> 지하철, 버스에 맞게 탭 이동
         // 3. 이동했을때 해당 노티피케이션의 타깃 아이템을 홈 화면에 보여줘야함
 
-        if let value = notificationUserInfo["itemType"] as? String,
-           value == "subway"
-        {
-            NotificationCenter.default.post(
-                name: .userNotificationTriggerNotification,
-                object: nil,
-                userInfo: ["index": 0, "identifier": notificationIdentifier]
-            )
-            completionHandler()
-            return
-        }
-        if let value = notificationUserInfo["itemType"] as? String,
-           value == "bus"
-        {
-            NotificationCenter.default.post(
-                name: .userNotificationTriggerNotification,
-                object: nil,
-                userInfo: ["index": 1, "identifier": notificationIdentifier]
-            )
-            completionHandler()
-            return
+        UserDefaultsManager.notificationItemIdentifier = notificationIdentifier
+        if let value = notificationUserInfo["itemType"] as? String {
+            UserDefaultsManager.notificationItemType = value
         }
 
     }
 
     func setupUserNotificationCenter() {
         notificationCenter.delegate = self
-        notificationCenter.requestAuthorization(options: [.alert]) { granted, error in
+        notificationCenter.requestAuthorization(options: [.alert, .sound]) { granted, error in
             if (error != nil) {
                 print("Notification Authorization Error: " + error!.localizedDescription)
-            }else{
+            } else {
                 print("Notification Authorization Granted: " + granted.description)
             }
         }

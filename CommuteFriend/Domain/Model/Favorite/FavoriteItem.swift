@@ -13,8 +13,8 @@ struct FavoriteItem: Hashable {
     let stationTarget: StationTargetType
     var isAlarm: Bool
 
-    init(id: String = UUID().uuidString, stationTarget: StationTargetType, isAlarm: Bool) {
-        self.id = id
+    init(stationTarget: StationTargetType, isAlarm: Bool) {
+        self.id = stationTarget.id
         self.stationTarget = stationTarget
         self.isAlarm = isAlarm
     }
