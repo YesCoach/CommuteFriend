@@ -18,11 +18,11 @@ protocol BusHomeViewModelInput {
 
 protocol BusHomeViewModelOutput {
     var recentBusStationList: BehaviorSubject<[BusTarget]> { get set }
-    var currentBusStationTarget: PublishSubject<BusTarget> { get set }
+    var currentBusStationTarget: BehaviorSubject<BusTarget?> { get set }
     var currentBusStationArrival: PublishSubject<StationArrivalResponse> { get set }
 }
 
-protocol BusHomeViewModel: BusHomeViewModelInput, BusHomeViewModelOutput { }
+protocol BusHomeViewModel: BusHomeViewModelInput, BusHomeViewModelOutput, HomeArrivalViewModel { }
 
 final class DefaultBusHomeViewModel: BusHomeViewModel {
 
@@ -41,7 +41,7 @@ final class DefaultBusHomeViewModel: BusHomeViewModel {
     // MARK: - HomeViewModelOutput
 
     var recentBusStationList: BehaviorSubject<[BusTarget]> = BehaviorSubject(value: [])
-    var currentBusStationTarget: PublishSubject<BusTarget> = PublishSubject()
+    var currentBusStationTarget: BehaviorSubject<BusTarget?> = BehaviorSubject(value: nil)
     var currentBusStationArrival: PublishSubject<StationArrivalResponse> = PublishSubject()
 
 }
@@ -68,6 +68,12 @@ extension DefaultBusHomeViewModel {
         if let item = localBusRepository.readFavoriteStationTarget(with: busTargetID) {
             localBusRepository.enrollStation(busTarget: item)
             fetchBusStationList()
+        }
+    }
+
+    func refreshCurrentStationTarget() {
+        if let busTarget = try? currentBusStationTarget.value() {
+            fetchStationArrivalData(with: busTarget)
         }
     }
 

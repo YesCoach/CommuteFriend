@@ -27,6 +27,20 @@ struct BusArrival: Hashable {
 
 extension BusArrival {
 
+    var firstCaculatedeTime: Int {
+        let time = self.firstArrivalSec
+        let term = Int(Date.now.timeIntervalSince(dataCreationTime))
+        let calculatedTime = time - term
+        return calculatedTime
+    }
+
+    var secondCaculatedeTime: Int {
+        let time = self.secondArrivalSec
+        let term = Int(Date.now.timeIntervalSince(dataCreationTime))
+        let calculatedTime = time - term
+        return calculatedTime
+    }
+
     /// 첫번째 버스 도착 예정 메시지를 포맷합니다.
     ///
     /// - Returns:
@@ -37,16 +51,16 @@ extension BusArrival {
         guard firstArrivalSec != 0 else {
             return firstArrivalMessage
         }
-        let time = self.firstArrivalSec
-        let term = Int(Date.now.timeIntervalSince(dataCreationTime))
-        let calculatedTime = time - term
 
-        if calculatedTime < 30 {
+        if firstCaculatedeTime < 30 {
             return "곧 도착"
         }
 
-        return String(calculatedTime).toArrivalTimeFormString()
+        if firstCaculatedeTime <= 0 {
+            return "도착"
+        }
 
+        return String(firstCaculatedeTime).toArrivalTimeFormString()
     }
 
     /// 두번째 버스 도착 예정 메시지를 포맷합니다.
@@ -59,16 +73,16 @@ extension BusArrival {
         guard secondArrivalSec != 0 else {
             return secondArrivalMessage
         }
-        let time = self.secondArrivalSec
-        let term = Int(Date.now.timeIntervalSince(dataCreationTime))
-        let calculatedTime = time - term
 
-        if calculatedTime < 30 {
+        if secondCaculatedeTime < 30 {
             return "곧 도착"
         }
 
-        return String(calculatedTime).toArrivalTimeFormString()
+        if secondCaculatedeTime <= 0 {
+            return "도착"
+        }
 
+        return String(secondCaculatedeTime).toArrivalTimeFormString()
     }
 
 }
