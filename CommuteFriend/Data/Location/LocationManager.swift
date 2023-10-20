@@ -71,7 +71,7 @@ extension LocationManager {
             location = CLLocationCoordinate2D(latitude: target.latPos, longitude: target.lonPos)
             region = CLCircularRegion(
                 center: location,
-                radius: 500.0,
+                radius: 300.0,
                 identifier: target.id
             )
             id = target.id
