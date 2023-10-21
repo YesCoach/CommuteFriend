@@ -40,6 +40,11 @@ final class FavoriteStationCell: BaseTableViewCell {
 
     var didAlarmButtonSelected: ((Bool) -> Void)?
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        didAlarmButtonSelected = nil
+    }
+
     override func configureUI() {
         super.configureUI()
         selectionStyle = .none
@@ -61,12 +66,15 @@ final class FavoriteStationCell: BaseTableViewCell {
         directionLabel.snp.makeConstraints {
             $0.leading.equalTo(nameLabel.snp.trailing).offset(5)
             $0.bottom.equalTo(nameLabel)
-            $0.trailing.lessThanOrEqualTo(contentView).inset(10)
+            $0.trailing.lessThanOrEqualTo(alarmButton.snp.leading).offset(-5)
         }
         alarmButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(10)
             $0.verticalEdges.equalToSuperview()
         }
+
+        lineIconButton.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        nameLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
 
     func configure(with favoriteItem: FavoriteItem) {
@@ -82,10 +90,9 @@ final class FavoriteStationCell: BaseTableViewCell {
             nameLabel.text = target.name
             directionLabel.text = target.destinationName + " 방면"
         case .bus(let target):
-            // TODO: - 버스 상징색 추가하기
             lineIconButton.configuration = .filledCapsuleConfiguration(
                 foregroundColor: .white,
-                backgroundColor: .systemMint
+                backgroundColor: .busTypeColor(target.busType)
             )
             lineIconButton.configuration?.title = target.busRouteName
             nameLabel.text = target.stationName

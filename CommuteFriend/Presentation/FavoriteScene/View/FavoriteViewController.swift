@@ -73,7 +73,7 @@ final class FavoriteViewController: BaseViewController {
     private lazy var dataSource: DataSourceType = {
         let dataSource = DataSourceType(
             tableView: favoriteTableView
-        ) { tableView, indexPath, itemIdentifier in
+        ) { [weak self] tableView, indexPath, itemIdentifier in
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: FavoriteStationCell.reuseIdentifier,
                 for: indexPath
@@ -81,9 +81,8 @@ final class FavoriteViewController: BaseViewController {
             else { return UITableViewCell() }
 
             cell.configure(with: itemIdentifier)
-            cell.didAlarmButtonSelected = { [weak self] _ in
-                guard let self else { return }
-                viewModel.didAlarmButtonTouched(item: itemIdentifier)
+            cell.didAlarmButtonSelected = { _ in
+                self?.viewModel.didAlarmButtonTouched(item: itemIdentifier)
             }
 
             return cell

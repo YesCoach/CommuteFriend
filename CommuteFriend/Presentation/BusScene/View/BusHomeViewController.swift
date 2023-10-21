@@ -36,7 +36,7 @@ final class BusHomeViewController: BaseViewController {
     }()
 
     private lazy var homeArrivalView: HomeArrivalView = {
-        let view = HomeArrivalView()
+        let view = HomeArrivalView(viewModel: viewModel)
         return view
     }()
 
@@ -274,6 +274,15 @@ extension BusHomeViewController: UITableViewDelegate {
             }
         )
         return UISwipeActionsConfiguration(actions: [action])
+    }
+
+}
+
+extension BusHomeViewController: NotificationTriggerDelegate {
+
+    func updatePriorityStationTarget(stationTargetID: String) {
+        // viewmodel 로직 추가
+        viewModel.updatePriorityStationTarget(with: stationTargetID)
     }
 
 }

@@ -60,21 +60,35 @@ enum SubwayLine: String {
         }
     }
 
-    static func createSubwayLine(line: String) -> SubwayLine {
-        if let subwayLine = SubwayLine(rawValue: line) {
-            return subwayLine
-        }
-        switch line {
-        case "중앙선": return .central
-        case "경의선": return .gyeonguiCentral
-        case "공항철도": return .airport
-        case "경춘선": return .gyeongchun
-        case "수인분당선": return .suinBundang
-        case "신분당선": return .shinBundang
-        case "경강선": return .gyeongGang
-        case "우이신설경전철": return .uiSinseol
-        case "서해선": return .seohae
-        default: return .number3
+    var description: String {
+        switch self {
+        case .number1: return "1호선"
+        case .number2: return "2호선"
+        case .number3: return "3호선"
+        case .number4: return "4호선"
+        case .number5: return "5호선"
+        case .number6: return "6호선"
+        case .number7: return "7호선"
+        case .number8: return "8호선"
+        case .number9: return "9호선"
+        case .central:
+            return "중앙선"
+        case .gyeonguiCentral:
+            return "경의선"
+        case .airport:
+            return "공항철도"
+        case .gyeongchun:
+            return "경춘선"
+        case .suinBundang:
+            return "수인분당선"
+        case .shinBundang:
+            return "신분당선"
+        case .gyeongGang:
+            return "경강선"
+        case .uiSinseol:
+            return "우이신설경전철"
+        case .seohae:
+            return "서해선"
         }
     }
 }

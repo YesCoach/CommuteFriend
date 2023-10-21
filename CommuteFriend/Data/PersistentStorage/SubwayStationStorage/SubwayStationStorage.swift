@@ -15,7 +15,8 @@ protocol SubwayStationStorage {
 
     // MARK: - Favorite
     func enrollFavoriteSubway(favorite: FavoriteSubwayDTO) throws
-    func readFavoriteSubway() -> [FavoriteSubwayDTO]
+    func readFavoriteSubway(identifier: String) -> FavoriteSubwayDTO?
+    func readFavoriteSubwayList() -> [FavoriteSubwayDTO]
     func deleteFavoriteSubway(favorite: FavoriteSubwayDTO)
     func updateFavoriteSubway(favorite: FavoriteSubwayDTO)
 }

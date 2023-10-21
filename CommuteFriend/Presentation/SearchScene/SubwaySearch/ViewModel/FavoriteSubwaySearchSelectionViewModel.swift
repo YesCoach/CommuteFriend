@@ -41,12 +41,15 @@ extension FavoriteSubwaySearchSelectionViewModel {
             name: station.name,
             lineNumber: station.lineNumber,
             destinationName: stationName,
-            upDownDirection: direction
+            upDownDirection: direction,
+            latPos: station.latPos,
+            lonPos: station.lonPos
         )
         do {
             try localSubwayRepository.enrollFavoriteStation(
                 item: .init(stationTarget: .subway(target: subwayTarget), isAlarm: true)
             )
+            LocationManager.shared.registLocation(target: .subway(target: subwayTarget))
         } catch {
             debugPrint(error)
         }

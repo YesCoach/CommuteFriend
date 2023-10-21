@@ -54,7 +54,10 @@ class DefaultBusRouteSearchDetailViewModel: BusRouteSearchDetailViewModel {
             // TODO: - 버스 방향 넣기?
             direction: item.direction,
             busRouteID: bus.id,
-            busRouteName: bus.name
+            busRouteName: bus.name,
+            busType: bus.kind,
+            latPos: item.latPos,
+            lonPos: item.lonPos
         )
 
         switch beginningFrom {
@@ -66,6 +69,7 @@ class DefaultBusRouteSearchDetailViewModel: BusRouteSearchDetailViewModel {
                 try localBusRepository.enrollFavoriteStation(
                     item: .init(stationTarget: .bus(target: target), isAlarm: true)
                 )
+                LocationManager.shared.registLocation(target: .bus(target: target))
             } catch {
                 debugPrint(error)
             }

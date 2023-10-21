@@ -66,7 +66,7 @@ final class RecentStationCell: BaseTableViewCell {
             // TODO: Bus 상징색 적용
             lineIconButton.configuration = .filledCapsuleConfiguration(
                 foregroundColor: .white,
-                backgroundColor: .systemMint
+                backgroundColor: .busTypeColor(target.busType)
             )
             lineIconButton.configuration?.title = target.busRouteName
             nameLabel.text = target.stationName

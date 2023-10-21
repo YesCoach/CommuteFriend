@@ -49,11 +49,16 @@ extension SubwayFavoriteViewModel {
 
     func didAlarmButtonTouched(item: FavoriteItem) {
         let newItem = FavoriteItem(
-            id: item.id,
             stationTarget: item.stationTarget,
             isAlarm: !item.isAlarm
         )
         localSubwayRepository.updateFavoriteStationList(item: newItem)
+        viewWillAppear()
+        if newItem.isAlarm {
+            LocationManager.shared.registLocation(target: newItem.stationTarget)
+        } else {
+            LocationManager.shared.removeLocation(target: newItem.stationTarget)
+        }
     }
 
 }
@@ -80,17 +85,23 @@ extension BusFavoriteViewModel {
 
     func deleteFavoriteItem(item: FavoriteItem) {
         localBusRepository.deleteFavoriteStation(item: item)
+        LocationManager.shared.removeLocation(target: item.stationTarget)
         let favoriteStationList = localBusRepository.readFavoriteStationList()
         favoriteStationItems.onNext(favoriteStationList)
     }
 
     func didAlarmButtonTouched(item: FavoriteItem) {
         let newItem = FavoriteItem(
-            id: item.id,
             stationTarget: item.stationTarget,
             isAlarm: !item.isAlarm
         )
         localBusRepository.updateFavoriteStationList(item: newItem)
+        viewWillAppear()
+        if newItem.isAlarm {
+            LocationManager.shared.registLocation(target: newItem.stationTarget)
+        } else {
+            LocationManager.shared.removeLocation(target: newItem.stationTarget)
+        }
     }
 
 }

@@ -100,7 +100,17 @@ extension RealmBusStationStorage: BusStationStorage {
         }
     }
 
-    func readFavoriteBus() -> [FavoriteBusDTO] {
+    func readFavoriteBus(identifier: String) -> FavoriteBusDTO? {
+        do {
+            let item = try realmStorage.readData(FavoriteBusDTO.self, primaryKey: identifier)
+            return item
+        } catch {
+            print("🙅‍♂️", error)
+            return nil
+        }
+    }
+
+    func readFavoriteBusList() -> [FavoriteBusDTO] {
         do {
             let user = try realmStorage.readData(UserEntity.self).first
             return user?.favoriteBusList.map { $0 }.reversed() ?? []

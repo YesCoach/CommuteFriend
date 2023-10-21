@@ -17,6 +17,8 @@ class SubwayEntity: Object, RealmMapping {
     @Persisted var subwayLineNumber: String
     @Persisted var subwayUpDownDirection: String
     @Persisted var subwayDestinationName: String
+    @Persisted var subwayLatitude: Double
+    @Persisted var subwayLongitude: Double
 
     convenience init(target: SubwayTarget) {
         self.init()
@@ -25,6 +27,8 @@ class SubwayEntity: Object, RealmMapping {
         self.subwayLineNumber = target.lineNumber.rawValue
         self.subwayUpDownDirection = target.upDownDirection.rawValue
         self.subwayDestinationName = target.destinationName
+        self.subwayLatitude = target.latPos
+        self.subwayLongitude = target.lonPos
     }
 
     func toDomain() -> DomainType {
@@ -33,7 +37,9 @@ class SubwayEntity: Object, RealmMapping {
             name: subwayName,
             lineNumber: SubwayLine(rawValue: subwayLineNumber) ?? .number1,
             destinationName: subwayDestinationName,
-            upDownDirection: UpDownDirection(rawValue: subwayUpDownDirection) ?? .up
+            upDownDirection: UpDownDirection(rawValue: subwayUpDownDirection) ?? .up,
+            latPos: subwayLatitude,
+            lonPos: subwayLongitude
         )
     }
 }

@@ -78,7 +78,6 @@
 		89023FB12ADD097C009FFCBD /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023FB02ADD097C009FFCBD /* FavoriteItem.swift */; };
 		8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664D2AD6770600C44C04 /* AppDelegate.swift */; };
 		894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664F2AD6770600C44C04 /* SceneDelegate.swift */; };
-		894266522AD6770600C44C04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266512AD6770600C44C04 /* ViewController.swift */; };
 		894266572AD6770700C44C04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 894266562AD6770700C44C04 /* Assets.xcassets */; };
 		8942665A2AD6770700C44C04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 894266582AD6770700C44C04 /* LaunchScreen.storyboard */; };
 		894266652AD6770700C44C04 /* CommuteFriendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266642AD6770700C44C04 /* CommuteFriendTests.swift */; };
@@ -117,6 +116,9 @@
 		898A58182ADEFB66000F040F /* BusRouteSearchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58172ADEFB66000F040F /* BusRouteSearchDetailViewController.swift */; };
 		898A581A2ADEFBAA000F040F /* BusRouteSearchDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58192ADEFBAA000F040F /* BusRouteSearchDetailCell.swift */; };
 		898A581C2ADEFCC4000F040F /* BusRouteSearchDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A581B2ADEFCC4000F040F /* BusRouteSearchDetailViewModel.swift */; };
+		898A58212ADFC4CA000F040F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58202ADFC4CA000F040F /* LocationManager.swift */; };
+		898A58242AE25122000F040F /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58232AE25122000F040F /* UserDefaultsManager.swift */; };
+		898A58262AE2514A000F040F /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58252AE2514A000F040F /* UserDefaultsWrapper.swift */; };
 		89EE858C2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */; };
 		89EE858E2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */; };
 		89EE85922ADD2E370095198D /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE85912ADD2E370095198D /* FavoriteViewModel.swift */; };
@@ -127,6 +129,8 @@
 		89EE85A02ADEAA4F0095198D /* BusStationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE859F2ADEAA4F0095198D /* BusStationStorage.swift */; };
 		89EE85A22ADEAAC60095198D /* FavoriteBusDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE85A12ADEAAC60095198D /* FavoriteBusDTO+Mapping.swift */; };
 		89EE85A42ADEAC5C0095198D /* RealmBusStationStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE85A32ADEAC5C0095198D /* RealmBusStationStorage.swift */; };
+		89F650AF2AE2AAFC001E23F7 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 89F650AE2AE2AAFC001E23F7 /* Lottie */; };
+		89F650B12AE2AC40001E23F7 /* refreshLottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 89F650B02AE2AC40001E23F7 /* refreshLottie.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,7 +217,6 @@
 		8942664A2AD6770600C44C04 /* CommuteFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommuteFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8942664D2AD6770600C44C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8942664F2AD6770600C44C04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		894266512AD6770600C44C04 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		894266562AD6770700C44C04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		894266592AD6770700C44C04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8942665B2AD6770700C44C04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -254,6 +257,9 @@
 		898A58172ADEFB66000F040F /* BusRouteSearchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRouteSearchDetailViewController.swift; sourceTree = "<group>"; };
 		898A58192ADEFBAA000F040F /* BusRouteSearchDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRouteSearchDetailCell.swift; sourceTree = "<group>"; };
 		898A581B2ADEFCC4000F040F /* BusRouteSearchDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusRouteSearchDetailViewModel.swift; sourceTree = "<group>"; };
+		898A58202ADFC4CA000F040F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		898A58232AE25122000F040F /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		898A58252AE2514A000F040F /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSubwaySearchSelectionViewModel.swift; sourceTree = "<group>"; };
 		89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteSubwayDTO+Mapping.swift"; sourceTree = "<group>"; };
 		89EE85912ADD2E370095198D /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
@@ -264,6 +270,7 @@
 		89EE859F2ADEAA4F0095198D /* BusStationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStationStorage.swift; sourceTree = "<group>"; };
 		89EE85A12ADEAAC60095198D /* FavoriteBusDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteBusDTO+Mapping.swift"; sourceTree = "<group>"; };
 		89EE85A32ADEAC5C0095198D /* RealmBusStationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmBusStationStorage.swift; sourceTree = "<group>"; };
+		89F650B02AE2AC40001E23F7 /* refreshLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = refreshLottie.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +285,7 @@
 				89023EDA2AD6F872009FFCBD /* RxSwift in Frameworks */,
 				89023ED82AD6F872009FFCBD /* RxRelay in Frameworks */,
 				89023EA42AD6C9CC009FFCBD /* Alamofire in Frameworks */,
+				89F650AF2AE2AAFC001E23F7 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +309,8 @@
 		89023EA92AD6CAF7009FFCBD /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				898A58222AE2510F000F040F /* UserDefaults */,
+				898A581F2ADFC4B7000F040F /* Location */,
 				89023ECB2AD6F4CD009FFCBD /* Repository */,
 				89023F0D2AD7D38C009FFCBD /* Resource */,
 				89023EC32AD6F39D009FFCBD /* PersistentStorage */,
@@ -423,6 +433,7 @@
 			children = (
 				89023F122AD7EB5C009FFCBD /* BusStationInformation.json */,
 				89023F082AD7CB28009FFCBD /* SubwayStationInformation.json */,
+				89F650B02AE2AC40001E23F7 /* refreshLottie.json */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -622,7 +633,6 @@
 				894266882AD67A8600C44C04 /* Presentation */,
 				89023EA92AD6CAF7009FFCBD /* Data */,
 				89023F0A2AD7D308009FFCBD /* Resource */,
-				894266512AD6770600C44C04 /* ViewController.swift */,
 				894266562AD6770700C44C04 /* Assets.xcassets */,
 				894266582AD6770700C44C04 /* LaunchScreen.storyboard */,
 				8942665B2AD6770700C44C04 /* Info.plist */,
@@ -779,6 +789,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		898A581F2ADFC4B7000F040F /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				898A58202ADFC4CA000F040F /* LocationManager.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		898A58222AE2510F000F040F /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				898A58232AE25122000F040F /* UserDefaultsManager.swift */,
+				898A58252AE2514A000F040F /* UserDefaultsWrapper.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
 		89EE858F2ADD2E190095198D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -854,6 +881,7 @@
 				89023ED92AD6F872009FFCBD /* RxSwift */,
 				89023F542ADB2459009FFCBD /* Realm */,
 				89023F562ADB2459009FFCBD /* RealmSwift */,
+				89F650AE2AE2AAFC001E23F7 /* Lottie */,
 			);
 			productName = CommuteFriend;
 			productReference = 8942664A2AD6770600C44C04 /* CommuteFriend.app */;
@@ -933,6 +961,7 @@
 				89023EA22AD6C9CC009FFCBD /* XCRemoteSwiftPackageReference "Alamofire" */,
 				89023ED42AD6F872009FFCBD /* XCRemoteSwiftPackageReference "RxSwift" */,
 				89023F532ADB2459009FFCBD /* XCRemoteSwiftPackageReference "realm-swift" */,
+				89F650AD2AE2AAFC001E23F7 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 8942664B2AD6770600C44C04 /* Products */;
 			projectDirPath = "";
@@ -950,6 +979,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89F650B12AE2AC40001E23F7 /* refreshLottie.json in Resources */,
 				894266832AD6785500C44C04 /* .gitignore in Resources */,
 				894266812AD677F500C44C04 /* .swiftlint.yml in Resources */,
 				8942665A2AD6770700C44C04 /* LaunchScreen.storyboard in Resources */,
@@ -988,7 +1018,6 @@
 				89023EA62AD6C9DB009FFCBD /* NetworkManager.swift in Sources */,
 				898A57FE2ADEC4C3000F040F /* BusResponseDTO+Mapping.swift in Sources */,
 				894266AE2AD6AAC100C44C04 /* ProgressingView.swift in Sources */,
-				894266522AD6770600C44C04 /* ViewController.swift in Sources */,
 				89023F362AD80F62009FFCBD /* LocalBusRepository.swift in Sources */,
 				89EE858E2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift in Sources */,
 				89023F1F2AD7EC82009FFCBD /* BusArrival.swift in Sources */,
@@ -997,6 +1026,7 @@
 				898A58162ADEF752000F040F /* BusSearchResultCell.swift in Sources */,
 				89EE858C2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift in Sources */,
 				894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */,
+				898A58212ADFC4CA000F040F /* LocationManager.swift in Sources */,
 				89023F6A2ADBFD7D009FFCBD /* Collection+.swift in Sources */,
 				89023F682ADBF648009FFCBD /* SubwayArrivalResponse.swift in Sources */,
 				898A58182ADEFB66000F040F /* BusRouteSearchDetailViewController.swift in Sources */,
@@ -1074,6 +1104,7 @@
 				898A58062ADEC5FC000F040F /* BusRepository.swift in Sources */,
 				89023EF22AD71C05009FFCBD /* UIColor+.swift in Sources */,
 				89023EC22AD6D29D009FFCBD /* SearchHistoryCell.swift in Sources */,
+				898A58262AE2514A000F040F /* UserDefaultsWrapper.swift in Sources */,
 				89023F0F2AD7D3A9009FFCBD /* SubwayStationList+DTO.swift in Sources */,
 				89023EBF2AD6D17E009FFCBD /* DateFormatter+.swift in Sources */,
 				894266B32AD6BAE300C44C04 /* SelectableView.swift in Sources */,
@@ -1081,6 +1112,7 @@
 				89023F642ADBF091009FFCBD /* SubwayStationArrivalRepository.swift in Sources */,
 				89EE85A42ADEAC5C0095198D /* RealmBusStationStorage.swift in Sources */,
 				89023F4E2ADB2344009FFCBD /* RealmMapping.swift in Sources */,
+				898A58242AE25122000F040F /* UserDefaultsManager.swift in Sources */,
 				898A58102ADEE8BF000F040F /* UIView+.swift in Sources */,
 				894266B02AD6ABA500C44C04 /* ArrivalInformationView.swift in Sources */,
 				89EE859D2ADEA9230095198D /* BusDTO+Mapping.swift in Sources */,
@@ -1469,6 +1501,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		89F650AD2AE2AAFC001E23F7 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1511,6 +1551,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 894266922AD67B2900C44C04 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		89F650AE2AE2AAFC001E23F7 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89F650AD2AE2AAFC001E23F7 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

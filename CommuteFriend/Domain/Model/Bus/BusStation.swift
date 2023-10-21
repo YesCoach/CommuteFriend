@@ -14,6 +14,8 @@ struct BusStation: BusSearchable {
     let arsID: String
     /// 정류장 방면(@@방면)
     let direction: String
+    let latPos: Double
+    let lonPos: Double
 
     var routeList: [String]?
 }

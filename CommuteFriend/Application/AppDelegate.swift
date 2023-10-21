@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import UserNotifications
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
-
+    let notificationCenter = UNUserNotificationCenter.current()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -20,6 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userStorage.createUserEntity()
         }
         RealmStorage.shared.checkSchemaVersion()
+
+        // MARK: - Location 관련 로직
+        LocationManager.shared.requestAuthorization()
+
+        // MARK: - Notification 관련 로직
+        setupUserNotificationCenter()
 
         return true
     }
@@ -41,3 +48,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+// MARK: - UNUserNotificationCenterDelegate
+
+extension AppDelegate {
+
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+    ) {
+        return completionHandler([.banner, .sound])
+    }
+
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        didReceive response: UNNotificationResponse,
+        withCompletionHandler completionHandler: @escaping () -> Void
+    ) {
+        let notificationIdentifier = response.notification.request.identifier
+        let notificationUserInfo = response.notification.request.content.userInfo
+
+        // 1. 노티피케이션을 포스트
+        // 2. 탭바에서 노티피케이션을 옵저빙 -> 지하철, 버스에 맞게 탭 이동
+        // 3. 이동했을때 해당 노티피케이션의 타깃 아이템을 홈 화면에 보여줘야함
+
+        UserDefaultsManager.notificationItemIdentifier = notificationIdentifier
+        if let value = notificationUserInfo["itemType"] as? String {
+            UserDefaultsManager.notificationItemType = value
+        }
+
+    }
+
+    func setupUserNotificationCenter() {
+        notificationCenter.delegate = self
+        notificationCenter.requestAuthorization(options: [.alert, .sound]) { granted, error in
+            if (error != nil) {
+                print("Notification Authorization Error: " + error!.localizedDescription)
+            } else {
+                print("Notification Authorization Granted: " + granted.description)
+            }
+        }
+    }
+}

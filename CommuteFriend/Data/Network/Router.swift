@@ -164,4 +164,3 @@ enum Router: URLRequestConvertible {
     }
 
 }
-

@@ -116,7 +116,18 @@ extension RealmSubwayStationStorage: SubwayStationStorage {
         }
     }
 
-    func readFavoriteSubway() -> [FavoriteSubwayDTO] {
+    func readFavoriteSubway(identifier: String) -> FavoriteSubwayDTO? {
+
+        do {
+            let item = try realmStorage.readData(FavoriteSubwayDTO.self, primaryKey: identifier)
+            return item
+        } catch {
+            print("🙅‍♂️", error)
+            return nil
+        }
+    }
+
+    func readFavoriteSubwayList() -> [FavoriteSubwayDTO] {
         do {
             let user = try realmStorage.readData(UserEntity.self).first
             return user?.favoriteSubwayList.map { $0 }.reversed() ?? []

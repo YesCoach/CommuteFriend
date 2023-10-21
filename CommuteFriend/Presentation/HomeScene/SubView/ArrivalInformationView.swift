@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 final class ArrivalInformationView: UIView {
 
@@ -24,7 +25,6 @@ final class ArrivalInformationView: UIView {
 
     private lazy var nextLabel: UILabel = {
         let label = UILabel()
-        label.text = "다음편"
         return label
     }()
 
@@ -57,9 +57,37 @@ final class ArrivalInformationView: UIView {
         return stackView
     }()
 
-    private var arrivalResponse: StationArrivalResponse?
+    private lazy var refreshButtonView: LottieAnimationView = {
+        let view = LottieAnimationView.init(name: "refreshLottie")
+        view.contentMode = .scaleAspectFit
+        view.loopMode = .playOnce
+        view.animationSpeed = 1.0
+        view.addGestureRecognizer(refreshTapGesture)
+        view.layer.cornerRadius = 15.0
+        view.layer.cornerCurve = .circular
+        view.backgroundColor = .systemMint
+        return view
+    }()
 
-    init() {
+    private lazy var refreshTapGesture: UITapGestureRecognizer = {
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(didRefreshButtonTouched)
+        )
+        return tapGesture
+    }()
+
+    @objc func didRefreshButtonTouched(_ sender: UITapGestureRecognizer) {
+        // todo: - refresh
+        refreshButtonView.play()
+        refreshButtonTouched()
+    }
+
+    private var arrivalResponse: StationArrivalResponse?
+    private var refreshButtonTouched: (() -> Void)
+
+    init(completion: @escaping (() -> Void)) {
+        refreshButtonTouched = completion
         super.init(frame: .zero)
         configureUI()
         configureLayout()
@@ -86,7 +114,7 @@ private extension ArrivalInformationView {
 
     func configureLayout() {
         [
-            currentStackView, nextStackView
+            currentStackView, nextStackView, refreshButtonView
         ].forEach { addSubview($0) }
 
         [
@@ -103,10 +131,17 @@ private extension ArrivalInformationView {
             $0.horizontalEdges.greaterThanOrEqualTo(10).priority(.low)
             $0.bottom.equalTo(self.snp.centerY)
         }
+
         nextStackView.snp.makeConstraints {
             $0.top.equalTo(currentStackView.snp.bottom)
             $0.bottom.centerX.equalToSuperview()
             $0.horizontalEdges.greaterThanOrEqualTo(10).priority(.low)
+        }
+
+        refreshButtonView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(10)
+            $0.trailing.equalToSuperview().inset(20)
+            $0.size.equalTo(30)
         }
     }
 
@@ -122,7 +157,7 @@ private extension ArrivalInformationView {
                     currentTimeLabel.text = arrivalMessage
                 }
             } else {
-                currentTimeLabel.text = arrival[safe: 0]?.conveniencedRemainTimeSecond ?? ""
+                currentTimeLabel.text = arrival[safe: 0]?.arrivalTimeDescription ?? ""
             }
 
             nextDestinationLabel.text = arrival[safe: 1]?.destination ?? "도착정보 없음"
@@ -133,12 +168,13 @@ private extension ArrivalInformationView {
                     nextTimeLabel.text = arrivalMessage
                 }
             } else {
-                nextTimeLabel.text = arrival[safe: 1]?.conveniencedRemainTimeSecond ?? ""
+                nextTimeLabel.text = arrival[safe: 1]?.arrivalTimeDescription ?? ""
             }
         case .bus(let arrival):
             currentDestinationLabel.isHidden = true
-            currentTimeLabel.text = arrival[safe: 0]?.firstArrivalTime
-            nextTimeLabel.text = arrival[safe: 0]?.secondArrivalTime
+            nextLabel.text = "다음편"
+            currentTimeLabel.text = arrival[safe: 0]?.firstArrivalTimeDescription ?? "도착정보 없음"
+            nextTimeLabel.text = arrival[safe: 0]?.secondArrivalTimeDescription ?? "도착정보 없음"
         }
     }
 

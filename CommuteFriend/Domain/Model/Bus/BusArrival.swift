@@ -18,77 +18,71 @@ struct BusArrival: Hashable {
     let nextStationName: String
     let firstArrivalMessage: String
     let secondArrivalMessage: String
+    let latPos: Double
+    let lonPos: Double
+    let firstArrivalSec: Int
+    let secondArrivalSec: Int
+    let dataCreationTime: Date
 }
 
 extension BusArrival {
 
-    /// 버스 도착 예정 메시지를 포맷합니다.
-    ///
-    /// - Returns:
-    ///     - "곧 도착", "출발예정" 등 텍스트일 경우 그대로 반환
-    ///     - "@@분 ##초후..." 형태일 경우 @@분만 따로 빼서 반환
-
-    var firstArrivalTime: String {
-        let message = self.firstArrivalMessage
-        if message.contains("후") {
-            let minute = message.components(separatedBy: "후").first!
-                .components(separatedBy: "분").first!
-            return "약 \(minute)분"
-        } else {
-            if message.contains("차고지") {
-                return "도착정보없음"
-            }
-            return message
-        }
+    var firstCaculatedeTime: Int {
+        let time = self.firstArrivalSec
+        let term = Int(Date.now.timeIntervalSince(dataCreationTime))
+        let calculatedTime = time - term
+        return calculatedTime
     }
 
-    /// 버스 도착 예정 메시지를 포맷합니다.
-    ///
-    /// - Returns:
-    ///     - "곧 도착", "출발예정" 등 텍스트일 경우 nil 반환
-    ///     - "@@분 ##초후..." 형태일 경우 "[$번째 전]" 반환
-    var firstArrivalMsg: String? {
-        let message = self.firstArrivalMessage
-        if message.contains("후") {
-            let msg = message.components(separatedBy: "후").last!
-            return msg
-        } else {
-            return nil
-        }
+    var secondCaculatedeTime: Int {
+        let time = self.secondArrivalSec
+        let term = Int(Date.now.timeIntervalSince(dataCreationTime))
+        let calculatedTime = time - term
+        return calculatedTime
     }
 
-    /// 버스 도착 예정 메시지를 포맷합니다.
+    /// 첫번째 버스 도착 예정 메시지를 포맷합니다.
     ///
     /// - Returns:
-    ///     - "곧 도착", "출발예정" 등 텍스트일 경우 그대로 반환
-    ///     - "@@분 ##초후..." 형태일 경우 @@분만 따로 빼서 반환
+    ///     - 남은 시간이 0일 경우 메세지 그대로 반환
+    ///     - 0이 아닐경우, API 생성 시간으로 부터 현재 시간을 뺀 값을 남은시간에 빼서 반환
+    var firstArrivalTimeDescription: String {
 
-    var secondArrivalTime: String {
-        let message = self.secondArrivalMessage
-        if message.contains("후") {
-            let minute = message.components(separatedBy: "후").first!
-                .components(separatedBy: "분").first!
-            return "약 \(minute)분"
-        } else {
-            if message.contains("차고지") {
-                return "도착정보없음"
-            }
-            return message
+        guard firstArrivalSec != 0 else {
+            return firstArrivalMessage
         }
+
+        if firstCaculatedeTime < 30 {
+            return "곧 도착"
+        }
+
+        if firstCaculatedeTime <= 0 {
+            return "도착"
+        }
+
+        return String(firstCaculatedeTime).toArrivalTimeFormString()
     }
 
-    /// 버스 도착 예정 메시지를 포맷합니다.
+    /// 두번째 버스 도착 예정 메시지를 포맷합니다.
     ///
     /// - Returns:
-    ///     - "곧 도착", "출발예정" 등 텍스트일 경우 nil 반환
-    ///     - "@@분 ##초후..." 형태일 경우 "[$번째 전]" 반환
-    var secondArrivalMsg: String? {
-        let message = self.secondArrivalMessage
-        if message.contains("후") {
-            let msg = message.components(separatedBy: "후").last!
-            return msg
-        } else {
-            return nil
+    ///     - 남은 시간이 0일 경우 메세지 그대로 반환
+    ///     - 0이 아닐경우, API 생성 시간으로 부터 현재 시간을 뺀 값을 남은시간에 빼서 반환
+    var secondArrivalTimeDescription: String {
+
+        guard secondArrivalSec != 0 else {
+            return secondArrivalMessage
         }
+
+        if secondCaculatedeTime < 30 {
+            return "곧 도착"
+        }
+
+        if secondCaculatedeTime <= 0 {
+            return "도착"
+        }
+
+        return String(secondCaculatedeTime).toArrivalTimeFormString()
     }
+
 }

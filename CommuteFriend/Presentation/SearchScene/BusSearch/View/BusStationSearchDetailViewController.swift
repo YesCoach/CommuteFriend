@@ -30,15 +30,9 @@ final class BusStationSearchDetailViewController: BaseViewController {
     }()
 
     private lazy var dataSource: DataSourceType = {
-        let cellRegistration = createCellRegistration()
         let dataSource = DataSourceType(
             collectionView: collectionView
         ) { collectionView, indexPath, itemIdentifier in
-            let cell = collectionView.dequeueConfiguredReusableCell(
-                using: cellRegistration,
-                for: indexPath,
-                item: itemIdentifier
-            )
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: BusStationSearchDetailCell.reuseIdentifier,
                 for: indexPath
@@ -66,7 +60,7 @@ final class BusStationSearchDetailViewController: BaseViewController {
     // MARK: - LifeCycle
 
     deinit {
-        print("🗑️ - \(String(describing: type(of: self)))")
+        deinitPrint()
     }
 
     override func viewDidLoad() {
@@ -115,33 +109,22 @@ private extension BusStationSearchDetailViewController {
     func createLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(1.0)
+            heightDimension: .estimated(100)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(
-            top: 10,
-            leading: 20,
-            bottom: 10,
-            trailing: 20
-        )
 
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(0.1)
+            heightDimension: .estimated(100)
         )
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 1)
+        group.contentInsets = .init(top: 20, leading: 10, bottom: 10, trailing: 10)
+
         let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 20.0
         let layout = UICollectionViewCompositionalLayout(section: section)
 
         return layout
-    }
-
-    func createCellRegistration() -> CellRegistrationType {
-        let cellRegistration = CellRegistrationType { cell, _, itemIdentifier in
-            cell.configure(with: itemIdentifier)
-        }
-
-        return cellRegistration
     }
 
     func updateSnapshot(data: [BusArrival]) {

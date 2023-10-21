@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import Lottie
 
 final class HomeViewController: BaseViewController {
 
@@ -35,7 +36,7 @@ final class HomeViewController: BaseViewController {
     }()
 
     private lazy var homeArrivalView: HomeArrivalView = {
-        let view = HomeArrivalView()
+        let view = HomeArrivalView(viewModel: viewModel)
         return view
     }()
 
@@ -273,6 +274,15 @@ extension HomeViewController: UITableViewDelegate {
             }
         )
         return UISwipeActionsConfiguration(actions: [action])
+    }
+
+}
+
+extension HomeViewController: NotificationTriggerDelegate {
+
+    func updatePriorityStationTarget(stationTargetID: String) {
+        // 뷰모델 로직 추가
+        viewModel.updatePriorityStationTarget(with: stationTargetID)
     }
 
 }

@@ -58,7 +58,24 @@ final class LocalBusRepository {
     }
 
     func readFavoriteStationList() -> [FavoriteItem] {
-        busStationStorage.readFavoriteBus().map { $0.toDomain() }
+        busStationStorage.readFavoriteBusList().map { $0.toDomain() }
+    }
+
+    func readFavoriteStationTarget(with identifier: String) -> BusTarget? {
+        if let item = busStationStorage.readFavoriteBus(identifier: identifier) {
+            return .init(
+                id: item.id,
+                stationID: item.stationID,
+                stationName: item.stationName,
+                direction: item.busDirection,
+                busRouteID: item.busRouteID,
+                busRouteName: item.busRouteName,
+                busType: BusType(rawValue: item.busType),
+                latPos: item.stationLat,
+                lonPos: item.stationLon
+            )
+        }
+        return nil
     }
 
     func deleteFavoriteStation(item: FavoriteItem) {

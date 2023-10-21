@@ -29,13 +29,23 @@ final class HomeArrivalView: UIView {
     }()
 
     private lazy var progressingView: ProgressingView = ProgressingView()
-    private lazy var arrivalInformationView: ArrivalInformationView = ArrivalInformationView()
+    private lazy var arrivalInformationView: ArrivalInformationView = {
+        let view = ArrivalInformationView { [weak self] in
+            guard let self else { return }
+            viewModel.refreshCurrentStationTarget()
+        }
+        return view
+    }()
 
+    private var viewModel: HomeArrivalViewModel
     private var stationArrivalResponse: StationArrivalResponse?
+    private var timer: Timer?
+    private var updateFlag: Bool = true
 
     // MARK: - Init
 
-    init() {
+    init(viewModel: HomeArrivalViewModel) {
+        self.viewModel = viewModel
         super.init(frame: .zero)
         configureUI()
         configureLayout()
@@ -43,6 +53,10 @@ final class HomeArrivalView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    deinit {
+        print("🗑️: \(String(describing: type(of: self))) deinit!")
     }
 
     func configure(with arrivalResponse: StationArrivalResponse) {
@@ -61,7 +75,7 @@ final class HomeArrivalView: UIView {
             // TODO: - Bus 상징색 적용하기
             routeIconButton.configuration = .filledCapsuleConfiguration(
                 foregroundColor: .white,
-                backgroundColor: .systemMint
+                backgroundColor: .busTypeColor(target.busType)
             )
             routeIconButton.configuration?.title = target.busRouteName
             stationLabel.text = target.stationName
@@ -70,6 +84,8 @@ final class HomeArrivalView: UIView {
 
         arrivalInformationView.configure(wtih: arrivalResponse)
         progressingView.configure(with: arrivalResponse)
+        removeTimer()
+        attachTimer()
     }
 
 }
@@ -123,5 +139,85 @@ private extension HomeArrivalView {
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
+    }
+}
+
+// MARK: - Timer
+
+private extension HomeArrivalView {
+
+    func attachTimer() {
+        if let stationArrivalResponse {
+            switch stationArrivalResponse.stationArrivalTarget {
+            case .subway(let target):
+                let lineList = [
+                    SubwayLine.airport, .central, .uiSinseol, .gyeongGang, .gyeongchun,
+                    .gyeonguiCentral, .seohae, .shinBundang, .suinBundang
+                ]
+                if lineList.contains(target.lineNumber) {
+                    timer = Timer.scheduledTimer(
+                        withTimeInterval: 10.0,
+                        repeats: true
+                    ) { [weak self] _ in
+                        guard let self else { return }
+                        updateStationArrivalDataByTerm()
+                    }
+                } else {
+                    timer = Timer.scheduledTimer(
+                        withTimeInterval: 1.0,
+                        repeats: true
+                    ) { [weak self] _ in
+                        guard let self else { return }
+                        updateStationArrivalDataBySecond()
+                    }
+                }
+            case .bus:
+                timer = Timer.scheduledTimer(
+                    withTimeInterval: 1.0,
+                    repeats: true
+                ) { [weak self] _ in
+                    guard let self else { return }
+                    updateStationArrivalDataBySecond()
+                }
+            }
+        }
+
+        timer?.fire()
+        print(#function)
+    }
+
+    func removeTimer() {
+        print(#function)
+        timer?.invalidate()
+        timer = nil
+    }
+
+    // 타이머 업데이트 전략
+    func updateStationArrivalDataBySecond( ) {
+        if let stationArrivalResponse {
+            switch stationArrivalResponse.stationArrival {
+            case .subway(let arrival):
+                // 지하철 다음 차량의 도착까지 남은시간이 0이면 새로 호출
+                if arrival[safe: 0]?.remainSecond ?? 0 <= 0 {
+                    if updateFlag {
+                        DispatchQueue.global().asyncAfter(deadline: .now() + 10.0) { [weak self] in
+                            guard let self else { return }
+                            viewModel.refreshCurrentStationTarget()
+                            updateFlag = true
+                        }
+                    }
+                    updateFlag = false
+                }
+                progressingView.configure(with: stationArrivalResponse)
+                arrivalInformationView.configure(wtih: stationArrivalResponse)
+            case .bus:
+                progressingView.configure(with: stationArrivalResponse)
+                arrivalInformationView.configure(wtih: stationArrivalResponse)
+            }
+        }
+    }
+
+    func updateStationArrivalDataByTerm() {
+        viewModel.refreshCurrentStationTarget()
     }
 }

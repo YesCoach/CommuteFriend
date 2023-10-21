@@ -13,15 +13,20 @@ protocol HomeViewModelInput {
     func viewWillAppear()
     func removeRecentSearchItem(with subwayTarget: SubwayTarget)
     func didSelectRowAt(subwayTarget: SubwayTarget)
+    func updatePriorityStationTarget(with subwaTargetID: String)
 }
 
 protocol HomeViewModelOutput {
     var recentSubwayStationList: BehaviorSubject<[SubwayTarget]> { get set }
-    var currentSubwayStationTarget: PublishSubject<SubwayTarget> { get set }
+    var currentSubwayStationTarget: BehaviorSubject<SubwayTarget?> { get set }
     var currentSubwayStationArrival: PublishSubject<StationArrivalResponse> { get set }
 }
 
-protocol HomeViewModel: HomeViewModelInput, HomeViewModelOutput { }
+protocol HomeArrivalViewModel {
+    func refreshCurrentStationTarget()
+}
+
+protocol HomeViewModel: HomeViewModelInput, HomeViewModelOutput, HomeArrivalViewModel { }
 
 final class DefaultHomeViewModel: HomeViewModel {
 
@@ -40,7 +45,7 @@ final class DefaultHomeViewModel: HomeViewModel {
     // MARK: - HomeViewModelOutput
 
     var recentSubwayStationList: BehaviorSubject<[SubwayTarget]> = BehaviorSubject(value: [])
-    var currentSubwayStationTarget: PublishSubject<SubwayTarget> = PublishSubject()
+    var currentSubwayStationTarget: BehaviorSubject<SubwayTarget?> = BehaviorSubject(value: nil)
     var currentSubwayStationArrival: PublishSubject<StationArrivalResponse> = PublishSubject()
 
 }
@@ -63,6 +68,18 @@ extension DefaultHomeViewModel {
         fetchSubwayStationList()
     }
 
+    func updatePriorityStationTarget(with subwaTargetID: String) {
+        if let item = localSubwayRepository.readFavoriteStationTarget(with: subwaTargetID) {
+            localSubwayRepository.enrollStation(subwayTarget: item)
+            fetchSubwayStationList()
+        }
+    }
+
+    func refreshCurrentStationTarget() {
+        if let subwayTarget = try? currentSubwayStationTarget.value() {
+            fetchStationArrivalData(with: subwayTarget)
+        }
+    }
 }
 
 private extension DefaultHomeViewModel {

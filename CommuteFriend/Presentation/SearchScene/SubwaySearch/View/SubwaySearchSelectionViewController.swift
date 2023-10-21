@@ -89,7 +89,7 @@ final class SubwaySearchSelectionViewController: BaseViewController {
     }
 
     deinit {
-        print("🗑️ - \(String(describing: type(of: self)))")
+        deinitPrint()
     }
 
     // MARK: - Methods

@@ -13,9 +13,7 @@ extension String {
         let timeData = Int(self) ?? 0
         let hourTime = timeData / 3600
         let minTime = timeData / 60
-        /*
         let secTime = timeData % 60
-         */
 
         var result = ""
         if hourTime != 0 {
@@ -25,16 +23,8 @@ extension String {
             result += "\(minTime)분 "
         }
 
-        /*
         if secTime != 0 {
-            result += "\(secTime)초 "
-        }
-         */
-
-        if timeData == 0 {
-            result = "도착"
-        } else {
-            result += "후"
+            result += "\(secTime)초"
         }
 
         return result
