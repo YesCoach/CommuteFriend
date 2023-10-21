@@ -70,6 +70,7 @@ final class LocalBusRepository {
                 direction: item.busDirection,
                 busRouteID: item.busRouteID,
                 busRouteName: item.busRouteName,
+                busType: BusType(rawValue: item.busType),
                 latPos: item.stationLat,
                 lonPos: item.stationLon
             )

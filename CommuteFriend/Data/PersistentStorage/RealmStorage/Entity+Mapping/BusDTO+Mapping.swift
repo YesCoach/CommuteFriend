@@ -18,6 +18,7 @@ class BusDTO: Object, RealmMapping {
     @Persisted var busDirection: String
     @Persisted var busRouteID: String
     @Persisted var busRouteName: String
+    @Persisted var busType: String
     @Persisted var stationLat: Double
     @Persisted var stationLon: Double
 
@@ -29,6 +30,7 @@ class BusDTO: Object, RealmMapping {
         self.busDirection = target.direction
         self.busRouteID = target.busRouteID ?? ""
         self.busRouteName = target.busRouteName ?? ""
+        self.busType = target.busType.rawValue
         self.stationLat = target.latPos
         self.stationLon = target.lonPos
     }
@@ -41,6 +43,7 @@ class BusDTO: Object, RealmMapping {
             direction: busDirection,
             busRouteID: busRouteID,
             busRouteName: busRouteName,
+            busType: BusType(rawValue: busType),
             latPos: stationLat,
             lonPos: stationLon
         )

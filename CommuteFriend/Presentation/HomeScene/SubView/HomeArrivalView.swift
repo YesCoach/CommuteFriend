@@ -75,7 +75,7 @@ final class HomeArrivalView: UIView {
             // TODO: - Bus 상징색 적용하기
             routeIconButton.configuration = .filledCapsuleConfiguration(
                 foregroundColor: .white,
-                backgroundColor: .systemMint
+                backgroundColor: .busTypeColor(target.busType)
             )
             routeIconButton.configuration?.title = target.busRouteName
             stationLabel.text = target.stationName

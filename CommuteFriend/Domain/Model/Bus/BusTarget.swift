@@ -14,6 +14,7 @@ struct BusTarget: StationTarget {
     let direction: String // @@방면
     let busRouteID: String
     let busRouteName: String
+    let busType: BusType
     let latPos: Double
     let lonPos: Double
 
@@ -24,6 +25,7 @@ struct BusTarget: StationTarget {
         direction: String,
         busRouteID: String?,
         busRouteName: String?,
+        busType: BusType?,
         latPos: Double,
         lonPos: Double
     ) {
@@ -33,6 +35,7 @@ struct BusTarget: StationTarget {
         self.direction = direction
         self.busRouteID = busRouteID ?? ""
         self.busRouteName = busRouteName ?? ""
+        self.busType = busType ?? .공용
         self.latPos = latPos
         self.lonPos = lonPos
     }

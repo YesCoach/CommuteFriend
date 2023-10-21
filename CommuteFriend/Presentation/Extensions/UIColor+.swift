@@ -13,6 +13,10 @@ extension UIColor {
         return UIColor(named: "\(line.rawValue)") ?? .cyan
     }
 
+    static func busTypeColor(_ busType: BusType) -> UIColor {
+        return UIColor(named: "\(busType.description)") ?? .cyan
+    }
+
     static var mainBackgroundColor: UIColor {
         return UIColor(named: "BackgroundColor") ?? .systemBackground
     }

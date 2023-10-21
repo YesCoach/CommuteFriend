@@ -54,6 +54,7 @@ class DefaultBusStationSearchDetailViewModel: BusStationSearchDetailViewModel {
             direction: item.nextStationName,
             busRouteID: item.busRouteID,
             busRouteName: item.busRouteName,
+            busType: BusType(rawValue: item.busRouteType),
             latPos: item.latPos,
             lonPos: item.lonPos
         )
@@ -97,6 +98,7 @@ private extension DefaultBusStationSearchDetailViewModel {
             direction: busStation.direction,
             busRouteID: nil,
             busRouteName: nil,
+            busType: nil,
             latPos: busStation.latPos,
             lonPos: busStation.lonPos
         )

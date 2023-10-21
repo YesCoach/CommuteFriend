@@ -18,6 +18,7 @@ class FavoriteBusDTO: Object, RealmMapping {
     @Persisted var busDirection: String
     @Persisted var busRouteID: String
     @Persisted var busRouteName: String
+    @Persisted var busType: String
     @Persisted var stationLat: Double
     @Persisted var stationLon: Double
 
@@ -34,6 +35,7 @@ class FavoriteBusDTO: Object, RealmMapping {
             self.busDirection = target.direction
             self.busRouteID = target.busRouteID ?? ""
             self.busRouteName = target.busRouteName ?? ""
+            self.busType = target.busType.rawValue
             self.stationLat = target.latPos
             self.stationLon = target.lonPos
         default:
@@ -53,6 +55,7 @@ class FavoriteBusDTO: Object, RealmMapping {
                     direction: busDirection,
                     busRouteID: busRouteID,
                     busRouteName: busRouteName,
+                    busType: BusType.init(rawValue: busType),
                     latPos: stationLat,
                     lonPos: stationLon
                 )

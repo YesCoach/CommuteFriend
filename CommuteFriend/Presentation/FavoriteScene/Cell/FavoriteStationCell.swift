@@ -90,10 +90,9 @@ final class FavoriteStationCell: BaseTableViewCell {
             nameLabel.text = target.name
             directionLabel.text = target.destinationName + " 방면"
         case .bus(let target):
-            // TODO: - 버스 상징색 추가하기
             lineIconButton.configuration = .filledCapsuleConfiguration(
                 foregroundColor: .white,
-                backgroundColor: .systemMint
+                backgroundColor: .busTypeColor(target.busType)
             )
             lineIconButton.configuration?.title = target.busRouteName
             nameLabel.text = target.stationName

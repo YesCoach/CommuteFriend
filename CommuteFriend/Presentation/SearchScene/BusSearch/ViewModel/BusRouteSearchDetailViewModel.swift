@@ -55,6 +55,7 @@ class DefaultBusRouteSearchDetailViewModel: BusRouteSearchDetailViewModel {
             direction: item.direction,
             busRouteID: bus.id,
             busRouteName: bus.name,
+            busType: bus.kind,
             latPos: item.latPos,
             lonPos: item.lonPos
         )
