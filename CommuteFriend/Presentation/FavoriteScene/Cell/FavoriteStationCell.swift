@@ -66,12 +66,15 @@ final class FavoriteStationCell: BaseTableViewCell {
         directionLabel.snp.makeConstraints {
             $0.leading.equalTo(nameLabel.snp.trailing).offset(5)
             $0.bottom.equalTo(nameLabel)
-            $0.trailing.lessThanOrEqualTo(contentView).inset(10)
+            $0.trailing.lessThanOrEqualTo(alarmButton.snp.leading).offset(-5)
         }
         alarmButton.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(10)
             $0.verticalEdges.equalToSuperview()
         }
+
+        lineIconButton.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        nameLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
     }
 
     func configure(with favoriteItem: FavoriteItem) {

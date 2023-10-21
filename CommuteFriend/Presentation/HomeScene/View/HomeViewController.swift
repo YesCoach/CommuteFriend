@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import Lottie
 
 final class HomeViewController: BaseViewController {
 

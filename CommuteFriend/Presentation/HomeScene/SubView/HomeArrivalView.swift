@@ -29,7 +29,13 @@ final class HomeArrivalView: UIView {
     }()
 
     private lazy var progressingView: ProgressingView = ProgressingView()
-    private lazy var arrivalInformationView: ArrivalInformationView = ArrivalInformationView()
+    private lazy var arrivalInformationView: ArrivalInformationView = {
+        let view = ArrivalInformationView { [weak self] in
+            guard let self else { return }
+            viewModel.refreshCurrentStationTarget()
+        }
+        return view
+    }()
 
     private var viewModel: HomeArrivalViewModel
     private var stationArrivalResponse: StationArrivalResponse?

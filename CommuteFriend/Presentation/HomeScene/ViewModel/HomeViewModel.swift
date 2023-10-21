@@ -80,7 +80,6 @@ extension DefaultHomeViewModel {
             fetchStationArrivalData(with: subwayTarget)
         }
     }
-
 }
 
 private extension DefaultHomeViewModel {

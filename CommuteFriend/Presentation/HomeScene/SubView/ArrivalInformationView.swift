@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Lottie
 
 final class ArrivalInformationView: UIView {
 
@@ -56,9 +57,37 @@ final class ArrivalInformationView: UIView {
         return stackView
     }()
 
-    private var arrivalResponse: StationArrivalResponse?
+    private lazy var refreshButtonView: LottieAnimationView = {
+        let view = LottieAnimationView.init(name: "refreshLottie")
+        view.contentMode = .scaleAspectFit
+        view.loopMode = .playOnce
+        view.animationSpeed = 1.0
+        view.addGestureRecognizer(refreshTapGesture)
+        view.layer.cornerRadius = 15.0
+        view.layer.cornerCurve = .circular
+        view.backgroundColor = .systemMint
+        return view
+    }()
 
-    init() {
+    private lazy var refreshTapGesture: UITapGestureRecognizer = {
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(didRefreshButtonTouched)
+        )
+        return tapGesture
+    }()
+
+    @objc func didRefreshButtonTouched(_ sender: UITapGestureRecognizer) {
+        // todo: - refresh
+        refreshButtonView.play()
+        refreshButtonTouched()
+    }
+
+    private var arrivalResponse: StationArrivalResponse?
+    private var refreshButtonTouched: (() -> Void)
+
+    init(completion: @escaping (() -> Void)) {
+        refreshButtonTouched = completion
         super.init(frame: .zero)
         configureUI()
         configureLayout()
@@ -85,7 +114,7 @@ private extension ArrivalInformationView {
 
     func configureLayout() {
         [
-            currentStackView, nextStackView
+            currentStackView, nextStackView, refreshButtonView
         ].forEach { addSubview($0) }
 
         [
@@ -102,10 +131,17 @@ private extension ArrivalInformationView {
             $0.horizontalEdges.greaterThanOrEqualTo(10).priority(.low)
             $0.bottom.equalTo(self.snp.centerY)
         }
+
         nextStackView.snp.makeConstraints {
             $0.top.equalTo(currentStackView.snp.bottom)
             $0.bottom.centerX.equalToSuperview()
             $0.horizontalEdges.greaterThanOrEqualTo(10).priority(.low)
+        }
+
+        refreshButtonView.snp.makeConstraints {
+            $0.bottom.equalToSuperview().inset(10)
+            $0.trailing.equalToSuperview().inset(20)
+            $0.size.equalTo(30)
         }
     }
 

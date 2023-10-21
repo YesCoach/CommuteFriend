@@ -34,8 +34,8 @@ final class ProgressingView: UIView {
         super.draw(rect)
 
         let path = UIBezierPath()
-        path.move(to: .init(x: rect.minX, y: rect.midY * 1.5))
-        path.addLine(to: .init(x: rect.maxX, y: rect.midY * 1.5))
+        path.move(to: .init(x: rect.minX, y: rect.midY * 1.3))
+        path.addLine(to: .init(x: rect.maxX, y: rect.midY * 1.3))
 
         UIColor.systemMint.setStroke()
 

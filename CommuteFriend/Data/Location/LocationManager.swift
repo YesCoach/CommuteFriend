@@ -89,8 +89,8 @@ extension LocationManager {
         region.notifyOnExit = false
 
         let content = configureNotificationContent(target: target)
-//        let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNLocationNotificationTrigger(region: region, repeats: true)
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(request, withCompletionHandler: { error in
