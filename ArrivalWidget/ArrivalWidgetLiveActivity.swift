@@ -32,22 +32,56 @@ struct ArrivalWidgetLiveActivity: Widget {
             DynamicIsland {
                 // Expanded UI goes here.  Compose the expanded UI through
                 // various regions, like leading/trailing/center/bottom
-                DynamicIslandExpandedRegion(.leading) {
-                    Text("Leading")
-                }
-                DynamicIslandExpandedRegion(.trailing) {
-                    Text("Trailing")
-                }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("Bottom")
-                    // more content
+                    VStack() {
+                        Spacer(minLength: 5)
+                        HStack(spacing: 5) {
+                            Spacer().frame(width: 10)
+                            Button("\(context.attributes.stationLine)") { }
+                                .buttonStyle(
+                                    InsetRoundButton(
+                                        labelColor: .white,
+                                        backgroundColor: .init(context.attributes.stationLineColorName)
+                                    )
+                                )
+                            Text("\(context.attributes.stationName)")
+                                .foregroundColor(.white)
+                                .font(.system(size: 24.0, weight: .bold))
+                            Text("\(context.attributes.nextStation) 방면")
+                                .foregroundColor(.white)
+                            Spacer()
+                        }
+                        HStack(spacing: 5.0) {
+                            Spacer()
+                            Text("도착까지 ")
+                                .font(.system(size: 30, weight: .semibold))
+                                .foregroundColor(.white)
+                            Text(timerInterval: context.state.timer, countsDown: true)
+                                .multilineTextAlignment(.center)
+                                .monospacedDigit()
+                                .font(.system(size: 44, weight: .semibold))
+                                .foregroundColor(Color(uiColor: .systemGreen) .opacity(0.8))
+                            Spacer()
+                        }
+                        Spacer(minLength: 5)
+                    }
+                    .background(.black.opacity(0.8))
+
                 }
             } compactLeading: {
-                Text("L")
+                Image(uiImage: .init(systemName: "tram.fill") ?? .add)
+                    .renderingMode(.template)
+                    .colorMultiply(Color("\(context.attributes.stationLineColorName)"))
             } compactTrailing: {
-                Text("T")
+                Text(timerInterval: context.state.timer, countsDown: true)
+                    .monospacedDigit()
+                    .frame(width: 50)
+                    .font(.system(size: 12.7, weight: .semibold))
+                    .foregroundColor(.mint)
             } minimal: {
-                Text("Min")
+                Image(uiImage: .init(systemName: "tram.fill") ?? .add)
+                    .renderingMode(.template)
+                    .colorMultiply(Color("\(context.attributes.stationLineColorName)"))
             }
             .widgetURL(URL(string: "http://www.apple.com"))
             .keylineTint(Color.red)
