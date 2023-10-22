@@ -16,7 +16,7 @@ struct StationArrivalResponse: Hashable {
         var stationName: String {
             switch self {
             case .subway(let target): return target.name
-            case .bus(let target): return target.stationID
+            case .bus(let target): return target.stationName
             }
         }
 

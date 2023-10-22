@@ -10,6 +10,12 @@ import WidgetKit
 import SwiftUI
 
 struct ArrivalWidgetAttributes: ActivityAttributes {
+
+    enum TransportType: String, Codable {
+        case subway
+        case bus
+    }
+
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
         var timer: ClosedRange<Date>
@@ -17,6 +23,7 @@ struct ArrivalWidgetAttributes: ActivityAttributes {
         var stationLine: String
         var stationLineColorName: String
         var nextStation: String
+        var type: TransportType
     }
 
     // Fixed non-changing properties about your activity go here!
@@ -68,9 +75,16 @@ struct ArrivalWidgetLiveActivity: Widget {
 
                 }
             } compactLeading: {
-                Image(uiImage: .init(systemName: "tram.fill") ?? .add)
-                    .renderingMode(.template)
-                    .colorMultiply(Color("\(context.state.stationLineColorName)"))
+                switch context.state.type {
+                case .subway:
+                    Image(uiImage: .init(systemName: "tram.fill") ?? .add)
+                        .renderingMode(.template)
+                        .colorMultiply(Color("\(context.state.stationLineColorName)"))
+                case .bus:
+                    Image(uiImage: .init(systemName: "bus.fill") ?? .add)
+                        .renderingMode(.template)
+                        .colorMultiply(Color("\(context.state.stationLineColorName)"))
+                }
             } compactTrailing: {
                 Text(timerInterval: context.state.timer, countsDown: true)
                     .monospacedDigit()

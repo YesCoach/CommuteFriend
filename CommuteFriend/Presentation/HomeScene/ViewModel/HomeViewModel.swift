@@ -63,6 +63,7 @@ final class DefaultHomeViewModel: HomeViewModel {
             .subscribe(with: self) { object, arrival in
 
             }
+            .disposed(by: disposeBag)
     }
 
 }
@@ -125,10 +126,10 @@ private extension DefaultHomeViewModel {
                     )
                     currentSubwayStationArrival.onNext(arrivalData)
                     if list.isEmpty == false {
-                        self.onLiveActivity(with: arrivalData)
+                        onLiveActivity(with: arrivalData)
                     } else {
-                        Task { [self] in
-                            self.endLiveActivity()
+                        Task { [weak self] in
+                            self?.endLiveActivity()
                         }
                     }
                 case .failure(let error):
@@ -139,7 +140,7 @@ private extension DefaultHomeViewModel {
 
 }
 
-// MARK: - StationArrivalResponse
+// MARK: - LiveAcitivity
 
 private extension DefaultHomeViewModel {
 
@@ -169,7 +170,8 @@ private extension DefaultHomeViewModel {
                 stationLine: data.stationArrivalTarget.stationLine,
                 stationLineColorName: data.stationArrivalTarget.lineColorName,
                 nextStation: data.stationArrivalTarget.directionType,
-                timer: arrivalTime
+                timer: arrivalTime,
+                type: .subway
             )
         } else {
             // 액티비티를 종료

@@ -20,7 +20,8 @@ final class ArrivalWidgetManager: ObservableObject {
         stationLine: String,
         stationLineColorName: String,
         nextStation: String,
-        timer: ClosedRange<Date>
+        timer: ClosedRange<Date>,
+        type: ArrivalWidgetAttributes.TransportType
     ) {
         guard ActivityAuthorizationInfo().areActivitiesEnabled else { return }
         // widget attribute, contentState 생성
@@ -30,7 +31,8 @@ final class ArrivalWidgetManager: ObservableObject {
             stationName: stationName,
             stationLine: stationLine,
             stationLineColorName: stationLineColorName,
-            nextStation: nextStation
+            nextStation: nextStation,
+            type: type
         )
 
         if activity != nil {
