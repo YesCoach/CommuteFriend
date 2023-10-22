@@ -28,7 +28,11 @@ final class HomeArrivalView: UIView {
         return label
     }()
 
-    private lazy var progressingView: ProgressingView = ProgressingView()
+    lazy var progressingView: ProgressingView = {
+        let view = ProgressingView(transportType: transportationType)
+        return view
+    }()
+
     private lazy var arrivalInformationView: ArrivalInformationView = {
         let view = ArrivalInformationView { [weak self] in
             guard let self else { return }
@@ -38,14 +42,16 @@ final class HomeArrivalView: UIView {
     }()
 
     private var viewModel: HomeArrivalViewModel
+    private var transportationType: TransportationType
     private var stationArrivalResponse: StationArrivalResponse?
     private var timer: Timer?
     private var updateFlag: Bool = true
 
     // MARK: - Init
 
-    init(viewModel: HomeArrivalViewModel) {
+    init(viewModel: HomeArrivalViewModel, type: TransportationType) {
         self.viewModel = viewModel
+        self.transportationType = type
         super.init(frame: .zero)
         configureUI()
         configureLayout()

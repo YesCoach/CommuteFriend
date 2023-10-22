@@ -36,7 +36,7 @@ final class BusHomeViewController: BaseViewController {
     }()
 
     private lazy var homeArrivalView: HomeArrivalView = {
-        let view = HomeArrivalView(viewModel: viewModel)
+        let view = HomeArrivalView(viewModel: viewModel, type: .bus)
         return view
     }()
 

@@ -11,17 +11,27 @@ final class ProgressingView: UIView {
 
     // MARK: - View
 
-    private lazy var imageView: UIImageView = {
+    private lazy var commuteImageView: UIImageView = {
         let imageView = UIImageView()
+        switch transportType {
+        case .subway:
+            imageView.image = .init(systemName: "train.side.front.car")
+        case .bus:
+            imageView.image = .init(named: "bus.png")
+        }
+        imageView.tintColor = .purple
         return imageView
     }()
 
+
     private var arrivalResponse: StationArrivalResponse?
+    private let transportType: TransportationType
 
     // MARK: - Init
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(transportType: TransportationType) {
+        self.transportType = transportType
+        super.init(frame: .zero)
         configureUI()
         configureLayout()
     }
@@ -43,6 +53,23 @@ final class ProgressingView: UIView {
         path.stroke()
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
+
+    func animationOn() {
+        layoutIfNeeded()
+        commuteImageView.frame = .init(x: -50, y: frame.midY * 1.3, width: 50, height: 25)
+        UIView.animate(
+            withDuration: 3.0,
+            delay: 0,
+            options: [.repeat, .curveLinear]
+        ) { [weak self] in
+            guard let self else { return }
+            commuteImageView.frame.origin.x = frame.size.width
+        }
+    }
+
     func configure(with: StationArrivalResponse) { }
 }
 
@@ -56,8 +83,7 @@ private extension ProgressingView {
 
     func configureLayout() {
         [
-            imageView
+            commuteImageView
         ].forEach { addSubview($0) }
     }
-
 }

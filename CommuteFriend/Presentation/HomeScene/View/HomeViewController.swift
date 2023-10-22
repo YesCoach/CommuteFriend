@@ -36,7 +36,7 @@ final class HomeViewController: BaseViewController {
     }()
 
     private lazy var homeArrivalView: HomeArrivalView = {
-        let view = HomeArrivalView(viewModel: viewModel)
+        let view = HomeArrivalView(viewModel: viewModel, type: .subway)
         return view
     }()
 
@@ -149,6 +149,11 @@ final class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.viewWillAppear()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        homeArrivalView.progressingView.animationOn()
     }
 
     // MARK: - Method
