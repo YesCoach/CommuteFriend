@@ -13,14 +13,13 @@ struct ArrivalWidgetAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
         var timer: ClosedRange<Date>
+        var stationName: String
+        var stationLine: String
+        var stationLineColorName: String
+        var nextStation: String
     }
 
     // Fixed non-changing properties about your activity go here!
-    // var stationTarget: StationArrivalResponse
-    var stationName: String
-    var stationLine: String
-    var stationLineColorName: String
-    var nextStation: String
 }
 
 struct ArrivalWidgetLiveActivity: Widget {
@@ -37,17 +36,17 @@ struct ArrivalWidgetLiveActivity: Widget {
                         Spacer(minLength: 5)
                         HStack(spacing: 5) {
                             Spacer().frame(width: 10)
-                            Button("\(context.attributes.stationLine)") { }
+                            Button("\(context.state.stationLine)") { }
                                 .buttonStyle(
                                     InsetRoundButton(
                                         labelColor: .white,
-                                        backgroundColor: .init(context.attributes.stationLineColorName)
+                                        backgroundColor: .init(context.state.stationLineColorName)
                                     )
                                 )
-                            Text("\(context.attributes.stationName)")
+                            Text("\(context.state.stationName)")
                                 .foregroundColor(.white)
                                 .font(.system(size: 24.0, weight: .bold))
-                            Text("\(context.attributes.nextStation) 방면")
+                            Text("\(context.state.nextStation) 방면")
                                 .foregroundColor(.white)
                             Spacer()
                         }
@@ -71,7 +70,7 @@ struct ArrivalWidgetLiveActivity: Widget {
             } compactLeading: {
                 Image(uiImage: .init(systemName: "tram.fill") ?? .add)
                     .renderingMode(.template)
-                    .colorMultiply(Color("\(context.attributes.stationLineColorName)"))
+                    .colorMultiply(Color("\(context.state.stationLineColorName)"))
             } compactTrailing: {
                 Text(timerInterval: context.state.timer, countsDown: true)
                     .monospacedDigit()
@@ -81,7 +80,7 @@ struct ArrivalWidgetLiveActivity: Widget {
             } minimal: {
                 Image(uiImage: .init(systemName: "tram.fill") ?? .add)
                     .renderingMode(.template)
-                    .colorMultiply(Color("\(context.attributes.stationLineColorName)"))
+                    .colorMultiply(Color("\(context.state.stationLineColorName)"))
             }
             .widgetURL(URL(string: "http://www.apple.com"))
             .keylineTint(Color.red)

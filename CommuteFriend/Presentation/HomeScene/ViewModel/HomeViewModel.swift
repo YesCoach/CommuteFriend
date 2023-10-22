@@ -125,9 +125,11 @@ private extension DefaultHomeViewModel {
                     )
                     currentSubwayStationArrival.onNext(arrivalData)
                     if list.isEmpty == false {
-                        onLiveActivity(with: arrivalData)
+                        self.onLiveActivity(with: arrivalData)
                     } else {
-                        endLiveActivity()
+                        Task { [self] in
+                            self.endLiveActivity()
+                        }
                     }
                 case .failure(let error):
                     debugPrint(error)

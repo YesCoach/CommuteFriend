@@ -20,18 +20,18 @@ struct ArrivalWidgetLiveActivityView: View {
                 Spacer(minLength: 5)
                 HStack(spacing: 5) {
                     Spacer().frame(width: 20)
-                    Button("\(context.attributes.stationLine)") { }
+                    Button("\(context.state.stationLine)") { }
                         .buttonStyle(
                             InsetRoundButton(
                                 labelColor: .white,
-                                backgroundColor: .init(context.attributes.stationLineColorName)
+                                backgroundColor: .init(context.state.stationLineColorName)
                             )
                         )
-                    Text("\(context.attributes.stationName)")
+                    Text("\(context.state.stationName)")
                         .foregroundColor(.white)
                         .font(.system(size: 24.0, weight: .bold))
                     Spacer(minLength: 5.0)
-                    Text("\(context.attributes.nextStation) 방면")
+                    Text("\(context.state.nextStation) 방면")
                         .foregroundColor(.white)
                     Spacer().frame(width: 20)
                 }
@@ -55,18 +55,18 @@ struct ArrivalWidgetLiveActivityView: View {
                 Spacer(minLength: 5)
                 HStack(spacing: 5) {
                     Spacer().frame(width: 20)
-                    Button("\(context.attributes.stationLine)") { }
+                    Button("\(context.state.stationLine)") { }
                         .buttonStyle(
                             InsetRoundButton(
                                 labelColor: .white,
-                                backgroundColor: .init(context.attributes.stationLineColorName)
+                                backgroundColor: .init(context.state.stationLineColorName)
                             )
                         )
-                    Text("\(context.attributes.stationName)")
+                    Text("\(context.state.stationName)")
                         .foregroundColor(.white)
                         .font(.system(size: 24.0, weight: .bold))
                     Spacer(minLength: 5.0)
-                    Text("\(context.attributes.nextStation) 방면")
+                    Text("\(context.state.nextStation) 방면")
                         .foregroundColor(.white)
                     Spacer().frame(width: 20)
                 }

@@ -23,28 +23,37 @@ final class ArrivalWidgetManager: ObservableObject {
         timer: ClosedRange<Date>
     ) {
         guard ActivityAuthorizationInfo().areActivitiesEnabled else { return }
-
-        let attributes = ArrivalWidgetAttributes(
+        // widget attribute, contentState 생성
+        let attributes = ArrivalWidgetAttributes()
+        let state = ArrivalWidgetAttributes.ContentState(
+            timer: timer,
             stationName: stationName,
             stationLine: stationLine,
             stationLineColorName: stationLineColorName,
             nextStation: nextStation
         )
-        let state = ArrivalWidgetAttributes.ContentState(timer: timer)
 
-        do {
-            // live activity 시작
-            self.activity = try Activity.request(attributes: attributes, contentState: state)
-        } catch {
-            print(error)
+        if activity != nil {
+            Task {
+                await activity?.update(using: state)
+            }
+        } else {
+            do {
+                // live activity 시작
+                self.activity = try Activity.request(
+                    attributes: attributes,
+                    content: .init(state: state, staleDate: nil)
+                )
+            } catch {
+                print(error)
+            }
         }
     }
 
     func stop() {
         Task {
-            for activity in Activity<ArrivalWidgetAttributes>.activities {
-                await activity.end(dismissalPolicy: .immediate)
-            }
+            await activity?.end(dismissalPolicy: .immediate)
+            activity = nil
         }
     }
 }
