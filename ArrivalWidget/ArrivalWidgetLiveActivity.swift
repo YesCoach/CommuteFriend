@@ -12,7 +12,7 @@ import SwiftUI
 struct ArrivalWidgetAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
-        var timer: Date
+        var timer: ClosedRange<Date>
     }
 
     // Fixed non-changing properties about your activity go here!

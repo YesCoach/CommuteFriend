@@ -143,18 +143,20 @@ private extension DefaultHomeViewModel {
 
     /// 라이브 액티비티 활성화
     func onLiveActivity(with data: StationArrivalResponse) {
-        var arrivalTime: Date? = nil
+        var arrivalTime: ClosedRange<Date>? = nil
 
         /// 도착정보 값으로 content 구성
         switch data.stationArrival {
         case .subway(let arrival):
             if let remainTime = arrival[safe: 0]?.remainSecond, remainTime != 0 {
-                arrivalTime = Date().addingTimeInterval(TimeInterval(remainTime))
+                if let future = Calendar.current.date(
+                    byAdding: .second,
+                    value: remainTime,
+                    to: Date()
+                ) {
+                    arrivalTime = Date.now...future
+                }
             }
-//        case .bus(let arrival):
-//            if let remainTime = arrival[safe: 0]?.firstCaculatedeTime, remainTime != 0 {
-//                arrivalTime = Date().addingTimeInterval(TimeInterval(remainTime))
-//            }
         default: break
         }
 

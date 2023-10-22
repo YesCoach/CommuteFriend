@@ -16,45 +16,87 @@ struct ArrivalWidgetLiveActivityView: View {
 
     var body: some View {
         if isLuminanceReduced {
-            VStack(spacing: 3) {
-                Spacer(minLength: 14)
+            VStack(spacing: 10) {
+                Spacer(minLength: 5)
                 HStack(spacing: 5) {
-                    Text("\(context.attributes.stationLine)")
-                        .foregroundColor(Color(context.attributes.stationLineColorName))
+                    Spacer().frame(width: 20)
+                    Button("\(context.attributes.stationLine)") { }
+                        .buttonStyle(
+                            InsetRoundButton(
+                                labelColor: .white,
+                                backgroundColor: .init(context.attributes.stationLineColorName)
+                            )
+                        )
                     Text("\(context.attributes.stationName)")
-                        .foregroundColor(.white.opacity(0.5))
-                    Spacer()
-                    Text("\(context.attributes.nextStation)")
-                        .foregroundColor(.gray.opacity(0.5))
+                        .foregroundColor(.white)
+                        .font(.system(size: 24.0, weight: .bold))
+                    Spacer(minLength: 5.0)
+                    Text("\(context.attributes.nextStation) 방면")
+                        .foregroundColor(.white)
+                    Spacer().frame(width: 20)
                 }
-                Text(context.state.timer, style: .timer)
-                    .multilineTextAlignment(.center)
-                    .monospacedDigit()
-                    .font(.system(size: 44, weight: .semibold))
-                    .foregroundColor(Color(uiColor: .systemMint) .opacity(0.5))
+                HStack(spacing: 5.0) {
+                    Spacer()
+                    Text("도착까지 ")
+                        .font(.system(size: 30, weight: .semibold))
+                        .foregroundColor(.white)
+                    Text(timerInterval: context.state.timer, countsDown: true)
+                        .multilineTextAlignment(.center)
+                        .monospacedDigit()
+                        .font(.system(size: 44, weight: .semibold))
+                        .foregroundColor(Color(uiColor: .systemGreen) .opacity(0.8))
+                    Spacer()
+                }
+                Spacer(minLength: 5)
             }
-            .background(.black.opacity(0.6))
+            .background(.black.opacity(0.8))
         } else {
-            VStack(spacing: -3) {
-                Spacer(minLength: 14)
+            VStack(spacing: 10) {
+                Spacer(minLength: 5)
                 HStack(spacing: 5) {
-                    Text("\(context.attributes.stationLine)")
-                        .foregroundColor(Color(context.attributes.stationLineColorName).opacity(0.6))
+                    Spacer().frame(width: 20)
+                    Button("\(context.attributes.stationLine)") { }
+                        .buttonStyle(
+                            InsetRoundButton(
+                                labelColor: .white,
+                                backgroundColor: .init(context.attributes.stationLineColorName)
+                            )
+                        )
                     Text("\(context.attributes.stationName)")
-                        .foregroundColor(.white.opacity(0.6))
-                    Spacer()
-                    Text("\(context.attributes.nextStation)")
-                        .foregroundColor(.gray.opacity(0.6))
+                        .foregroundColor(.white)
+                        .font(.system(size: 24.0, weight: .bold))
+                    Spacer(minLength: 5.0)
+                    Text("\(context.attributes.nextStation) 방면")
+                        .foregroundColor(.white)
+                    Spacer().frame(width: 20)
                 }
-                Text(context.state.timer, style: .timer)
-                    .multilineTextAlignment(.center)
-                    .monospacedDigit()
-                    .font(.system(size: 48, weight: .semibold))
-                    .foregroundColor(Color(uiColor: .systemGreen) .opacity(0.8))
-                Spacer()
+                HStack(spacing: 5.0) {
+                    Spacer()
+                    Text("도착까지 ")
+                        .font(.system(size: 30, weight: .semibold))
+                        .foregroundColor(.white)
+                    Text(timerInterval: context.state.timer, countsDown: true)
+                        .multilineTextAlignment(.center)
+                        .monospacedDigit()
+                        .font(.system(size: 44, weight: .semibold))
+                        .foregroundColor(Color(uiColor: .systemGreen) .opacity(0.8))
+                    Spacer()
+                }
+                Spacer(minLength: 5)
             }
-            .background(.black.opacity(0.6))
+            .background(.black.opacity(0.8))
         }
     }
 }
 
+struct InsetRoundButton: ButtonStyle {
+    var labelColor = Color.white
+    var backgroundColor = Color.blue
+
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .foregroundColor(labelColor)
+            .padding(.init(top: 4, leading: 8, bottom: 4, trailing: 8))
+            .background(Capsule().fill(backgroundColor)) // <-
+    }
+}

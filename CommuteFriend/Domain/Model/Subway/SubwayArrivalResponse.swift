@@ -22,7 +22,7 @@ struct StationArrivalResponse: Hashable {
 
         var stationLine: String {
             switch self {
-            case .subway(let target): return target.lineNumber.description
+            case .subway(let target): return target.lineNumber.lineNum
             case .bus(let target): return target.busRouteName
             }
         }

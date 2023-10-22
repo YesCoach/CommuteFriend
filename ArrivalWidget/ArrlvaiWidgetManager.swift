@@ -20,7 +20,7 @@ final class ArrivalWidgetManager: ObservableObject {
         stationLine: String,
         stationLineColorName: String,
         nextStation: String,
-        timer: Date
+        timer: ClosedRange<Date>
     ) {
         guard ActivityAuthorizationInfo().areActivitiesEnabled else { return }
 
