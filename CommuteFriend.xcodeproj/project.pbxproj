@@ -101,6 +101,21 @@
 		894266B32AD6BAE300C44C04 /* SelectableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266B22AD6BAE300C44C04 /* SelectableView.swift */; };
 		894266B52AD6BB1500C44C04 /* SelectableItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266B42AD6BB1500C44C04 /* SelectableItemType.swift */; };
 		894266B92AD6BC2600C44C04 /* TransportationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266B82AD6BC2600C44C04 /* TransportationType.swift */; };
+		8986318B2AE3F2FB00C3408A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F650BA2AE37700001E23F7 /* WidgetKit.framework */; };
+		8986318C2AE3F2FB00C3408A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F650BC2AE37701001E23F7 /* SwiftUI.framework */; };
+		8986318F2AE3F2FB00C3408A /* ArrivalWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986318E2AE3F2FB00C3408A /* ArrivalWidgetBundle.swift */; };
+		898631912AE3F2FB00C3408A /* ArrivalWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898631902AE3F2FB00C3408A /* ArrivalWidgetLiveActivity.swift */; };
+		898631932AE3F2FB00C3408A /* ArrivalWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898631922AE3F2FB00C3408A /* ArrivalWidget.swift */; };
+		898631962AE3F2FD00C3408A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 898631952AE3F2FD00C3408A /* Assets.xcassets */; };
+		898631982AE3F2FD00C3408A /* ArrivalWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 898631942AE3F2FB00C3408A /* ArrivalWidget.intentdefinition */; };
+		898631992AE3F2FD00C3408A /* ArrivalWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 898631942AE3F2FB00C3408A /* ArrivalWidget.intentdefinition */; };
+		8986319C2AE3F2FD00C3408A /* ArrivalWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8986318A2AE3F2FB00C3408A /* ArrivalWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		898631A22AE3F6ED00C3408A /* ArrivalWidgetLiveActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898631A02AE3F6A300C3408A /* ArrivalWidgetLiveActivityView.swift */; };
+		898631A42AE3F76800C3408A /* ArrlvaiWidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898631A32AE3F76800C3408A /* ArrlvaiWidgetManager.swift */; };
+		898631A52AE3F78900C3408A /* ArrlvaiWidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898631A32AE3F76800C3408A /* ArrlvaiWidgetManager.swift */; };
+		898631AA2AE4083F00C3408A /* ArrivalWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898631902AE3F2FB00C3408A /* ArrivalWidgetLiveActivity.swift */; };
+		898631AB2AE4084100C3408A /* ArrivalWidgetLiveActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898631A02AE3F6A300C3408A /* ArrivalWidgetLiveActivityView.swift */; };
+		898631AC2AE4084300C3408A /* ArrivalWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898631922AE3F2FB00C3408A /* ArrivalWidget.swift */; };
 		898A57FE2ADEC4C3000F040F /* BusResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A57FD2ADEC4C3000F040F /* BusResponseDTO+Mapping.swift */; };
 		898A58002ADEC50F000F040F /* BusStationByRouteResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A57FF2ADEC50F000F040F /* BusStationByRouteResponseDTO+Mapping.swift */; };
 		898A58022ADEC589000F040F /* BusRouteByStationResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58012ADEC589000F040F /* BusRouteByStationResponseDTO+Mapping.swift */; };
@@ -148,7 +163,28 @@
 			remoteGlobalIDString = 894266492AD6770600C44C04;
 			remoteInfo = CommuteFriend;
 		};
+		8986319A2AE3F2FD00C3408A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 894266422AD6770600C44C04 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 898631892AE3F2FB00C3408A;
+			remoteInfo = ArrivalWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		898631772AE3E95700C3408A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8986319C2AE3F2FD00C3408A /* ArrivalWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		89023EA52AD6C9DB009FFCBD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -242,6 +278,15 @@
 		894266B22AD6BAE300C44C04 /* SelectableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableView.swift; sourceTree = "<group>"; };
 		894266B42AD6BB1500C44C04 /* SelectableItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableItemType.swift; sourceTree = "<group>"; };
 		894266B82AD6BC2600C44C04 /* TransportationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationType.swift; sourceTree = "<group>"; };
+		8986318A2AE3F2FB00C3408A /* ArrivalWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ArrivalWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8986318E2AE3F2FB00C3408A /* ArrivalWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalWidgetBundle.swift; sourceTree = "<group>"; };
+		898631902AE3F2FB00C3408A /* ArrivalWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		898631922AE3F2FB00C3408A /* ArrivalWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalWidget.swift; sourceTree = "<group>"; };
+		898631942AE3F2FB00C3408A /* ArrivalWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = ArrivalWidget.intentdefinition; sourceTree = "<group>"; };
+		898631952AE3F2FD00C3408A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		898631972AE3F2FD00C3408A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		898631A02AE3F6A300C3408A /* ArrivalWidgetLiveActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalWidgetLiveActivityView.swift; sourceTree = "<group>"; };
+		898631A32AE3F76800C3408A /* ArrlvaiWidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrlvaiWidgetManager.swift; sourceTree = "<group>"; };
 		898A57FD2ADEC4C3000F040F /* BusResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BusResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		898A57FF2ADEC50F000F040F /* BusStationByRouteResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BusStationByRouteResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		898A58012ADEC589000F040F /* BusRouteByStationResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BusRouteByStationResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
@@ -271,6 +316,8 @@
 		89EE85A12ADEAAC60095198D /* FavoriteBusDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteBusDTO+Mapping.swift"; sourceTree = "<group>"; };
 		89EE85A32ADEAC5C0095198D /* RealmBusStationStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmBusStationStorage.swift; sourceTree = "<group>"; };
 		89F650B02AE2AC40001E23F7 /* refreshLottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = refreshLottie.json; sourceTree = "<group>"; };
+		89F650BA2AE37700001E23F7 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		89F650BC2AE37701001E23F7 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +347,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		898631872AE3F2FB00C3408A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8986318C2AE3F2FB00C3408A /* SwiftUI.framework in Frameworks */,
+				8986318B2AE3F2FB00C3408A /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,11 +661,13 @@
 		894266412AD6770600C44C04 = {
 			isa = PBXGroup;
 			children = (
-				894266802AD677F500C44C04 /* .swiftlint.yml */,
 				894266822AD6785500C44C04 /* .gitignore */,
+				894266802AD677F500C44C04 /* .swiftlint.yml */,
 				8942664C2AD6770600C44C04 /* CommuteFriend */,
 				894266632AD6770700C44C04 /* CommuteFriendTests */,
 				8942666D2AD6770700C44C04 /* CommuteFriendUITests */,
+				8986318D2AE3F2FB00C3408A /* ArrivalWidget */,
+				89F650B92AE37700001E23F7 /* Frameworks */,
 				8942664B2AD6770600C44C04 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -620,6 +678,7 @@
 				8942664A2AD6770600C44C04 /* CommuteFriend.app */,
 				894266602AD6770700C44C04 /* CommuteFriendTests.xctest */,
 				8942666A2AD6770700C44C04 /* CommuteFriendUITests.xctest */,
+				8986318A2AE3F2FB00C3408A /* ArrivalWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -789,6 +848,21 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		8986318D2AE3F2FB00C3408A /* ArrivalWidget */ = {
+			isa = PBXGroup;
+			children = (
+				898631A32AE3F76800C3408A /* ArrlvaiWidgetManager.swift */,
+				8986318E2AE3F2FB00C3408A /* ArrivalWidgetBundle.swift */,
+				898631902AE3F2FB00C3408A /* ArrivalWidgetLiveActivity.swift */,
+				898631A02AE3F6A300C3408A /* ArrivalWidgetLiveActivityView.swift */,
+				898631922AE3F2FB00C3408A /* ArrivalWidget.swift */,
+				898631942AE3F2FB00C3408A /* ArrivalWidget.intentdefinition */,
+				898631952AE3F2FD00C3408A /* Assets.xcassets */,
+				898631972AE3F2FD00C3408A /* Info.plist */,
+			);
+			path = ArrivalWidget;
+			sourceTree = "<group>";
+		};
 		898A581F2ADFC4B7000F040F /* Location */ = {
 			isa = PBXGroup;
 			children = (
@@ -856,6 +930,15 @@
 			path = BusStationStorage;
 			sourceTree = "<group>";
 		};
+		89F650B92AE37700001E23F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89F650BA2AE37700001E23F7 /* WidgetKit.framework */,
+				89F650BC2AE37701001E23F7 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -866,11 +949,12 @@
 				894266462AD6770600C44C04 /* Sources */,
 				894266472AD6770600C44C04 /* Frameworks */,
 				894266482AD6770600C44C04 /* Resources */,
+				898631772AE3E95700C3408A /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				8942667F2AD677CD00C44C04 /* PBXTargetDependency */,
+				8986319B2AE3F2FD00C3408A /* PBXTargetDependency */,
 			);
 			name = CommuteFriend;
 			packageProductDependencies = (
@@ -923,6 +1007,23 @@
 			productReference = 8942666A2AD6770700C44C04 /* CommuteFriendUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		898631892AE3F2FB00C3408A /* ArrivalWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8986319D2AE3F2FD00C3408A /* Build configuration list for PBXNativeTarget "ArrivalWidgetExtension" */;
+			buildPhases = (
+				898631862AE3F2FB00C3408A /* Sources */,
+				898631872AE3F2FB00C3408A /* Frameworks */,
+				898631882AE3F2FB00C3408A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ArrivalWidgetExtension;
+			productName = ArrivalWidgetExtension;
+			productReference = 8986318A2AE3F2FB00C3408A /* ArrivalWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -943,6 +1044,9 @@
 					894266692AD6770700C44C04 = {
 						CreatedOnToolsVersion = 14.3.1;
 						TestTargetID = 894266492AD6770600C44C04;
+					};
+					898631892AE3F2FB00C3408A = {
+						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
 			};
@@ -970,6 +1074,7 @@
 				894266492AD6770600C44C04 /* CommuteFriend */,
 				8942665F2AD6770700C44C04 /* CommuteFriendTests */,
 				894266692AD6770700C44C04 /* CommuteFriendUITests */,
+				898631892AE3F2FB00C3408A /* ArrivalWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -1003,6 +1108,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		898631882AE3F2FB00C3408A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				898631962AE3F2FD00C3408A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1023,9 +1136,12 @@
 				89023F1F2AD7EC82009FFCBD /* BusArrival.swift in Sources */,
 				89023F3C2ADB0DC9009FFCBD /* MenuSelectableView.swift in Sources */,
 				89023EEC2AD7163E009FFCBD /* DTOMapping.swift in Sources */,
+				898631A42AE3F76800C3408A /* ArrlvaiWidgetManager.swift in Sources */,
+				898631AC2AE4084300C3408A /* ArrivalWidget.swift in Sources */,
 				898A58162ADEF752000F040F /* BusSearchResultCell.swift in Sources */,
 				89EE858C2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift in Sources */,
 				894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */,
+				898631AB2AE4084100C3408A /* ArrivalWidgetLiveActivityView.swift in Sources */,
 				898A58212ADFC4CA000F040F /* LocationManager.swift in Sources */,
 				89023F6A2ADBFD7D009FFCBD /* Collection+.swift in Sources */,
 				89023F682ADBF648009FFCBD /* SubwayArrivalResponse.swift in Sources */,
@@ -1035,6 +1151,7 @@
 				898A580A2ADEC67F000F040F /* BusStationArrivalRepsitory.swift in Sources */,
 				8942669A2AD6809500C44C04 /* TabBarItems.swift in Sources */,
 				89EE85922ADD2E370095198D /* FavoriteViewModel.swift in Sources */,
+				898631992AE3F2FD00C3408A /* ArrivalWidget.intentdefinition in Sources */,
 				89023FAC2ADD0655009FFCBD /* FavoriteStationCell.swift in Sources */,
 				89023EDD2AD6F8CA009FFCBD /* DIContainer.swift in Sources */,
 				8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */,
@@ -1078,6 +1195,7 @@
 				89023F1D2AD7EC82009FFCBD /* BusStation.swift in Sources */,
 				89023F5D2ADBA8E4009FFCBD /* RealmSubwayStationStorage.swift in Sources */,
 				894266A92AD68C2D00C44C04 /* UIButton.Configuration+.swift in Sources */,
+				898631AA2AE4083F00C3408A /* ArrivalWidgetLiveActivity.swift in Sources */,
 				89023F262AD804D5009FFCBD /* BusSearchViewController.swift in Sources */,
 				89023F382AD93CAA009FFCBD /* SubwaySearchSelectionViewController.swift in Sources */,
 				89023F202AD7EC82009FFCBD /* BusType.swift in Sources */,
@@ -1136,6 +1254,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		898631862AE3F2FB00C3408A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				898631982AE3F2FD00C3408A /* ArrivalWidget.intentdefinition in Sources */,
+				898631A52AE3F78900C3408A /* ArrlvaiWidgetManager.swift in Sources */,
+				898631912AE3F2FB00C3408A /* ArrivalWidgetLiveActivity.swift in Sources */,
+				898631A22AE3F6ED00C3408A /* ArrivalWidgetLiveActivityView.swift in Sources */,
+				8986318F2AE3F2FB00C3408A /* ArrivalWidgetBundle.swift in Sources */,
+				898631932AE3F2FB00C3408A /* ArrivalWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1149,9 +1280,10 @@
 			target = 894266492AD6770600C44C04 /* CommuteFriend */;
 			targetProxy = 8942666B2AD6770700C44C04 /* PBXContainerItemProxy */;
 		};
-		8942667F2AD677CD00C44C04 /* PBXTargetDependency */ = {
+		8986319B2AE3F2FD00C3408A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			productRef = 8942667E2AD677CD00C44C04 /* SwiftLintPlugin */;
+			target = 898631892AE3F2FB00C3408A /* ArrivalWidgetExtension */;
+			targetProxy = 8986319A2AE3F2FD00C3408A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1217,7 +1349,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1271,7 +1403,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1284,6 +1416,7 @@
 		894266752AD6770700C44C04 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1291,11 +1424,13 @@
 				DEVELOPMENT_TEAM = 67D46DJNPH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CommuteFriend/Info.plist;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1315,6 +1450,7 @@
 		894266762AD6770700C44C04 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -1322,11 +1458,13 @@
 				DEVELOPMENT_TEAM = 67D46DJNPH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CommuteFriend/Info.plist;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1419,6 +1557,62 @@
 			};
 			name = Release;
 		};
+		8986319E2AE3F2FD00C3408A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 67D46DJNPH;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ArrivalWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ArrivalWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yescoachdev.CommuteFriend.ArrivalWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8986319F2AE3F2FD00C3408A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 67D46DJNPH;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ArrivalWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ArrivalWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yescoachdev.CommuteFriend.ArrivalWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1454,6 +1648,15 @@
 			buildConfigurations = (
 				8942667B2AD6770700C44C04 /* Debug */,
 				8942667C2AD6770700C44C04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8986319D2AE3F2FD00C3408A /* Build configuration list for PBXNativeTarget "ArrivalWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8986319E2AE3F2FD00C3408A /* Debug */,
+				8986319F2AE3F2FD00C3408A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1541,11 +1744,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 89023F532ADB2459009FFCBD /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
-		};
-		8942667E2AD677CD00C44C04 /* SwiftLintPlugin */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8942667D2AD677A200C44C04 /* XCRemoteSwiftPackageReference "SwiftLint" */;
-			productName = "plugin:SwiftLintPlugin";
 		};
 		894266932AD67B2900C44C04 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

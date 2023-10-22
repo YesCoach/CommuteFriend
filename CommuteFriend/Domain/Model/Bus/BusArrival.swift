@@ -31,14 +31,14 @@ extension BusArrival {
         let time = self.firstArrivalSec
         let term = Int(Date.now.timeIntervalSince(dataCreationTime))
         let calculatedTime = time - term
-        return calculatedTime
+        return calculatedTime > 0 ? calculatedTime : 0
     }
 
     var secondCaculatedeTime: Int {
         let time = self.secondArrivalSec
         let term = Int(Date.now.timeIntervalSince(dataCreationTime))
         let calculatedTime = time - term
-        return calculatedTime
+        return calculatedTime > 0 ? calculatedTime : 0
     }
 
     /// 첫번째 버스 도착 예정 메시지를 포맷합니다.

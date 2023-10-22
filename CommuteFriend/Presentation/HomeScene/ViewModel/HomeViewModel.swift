@@ -8,6 +8,7 @@
 import Foundation
 import RxSwift
 import RxRelay
+import ActivityKit
 
 protocol HomeViewModelInput {
     func viewWillAppear()
@@ -33,6 +34,7 @@ final class DefaultHomeViewModel: HomeViewModel {
     private let localSubwayRepository: LocalSubwayRepository
     private let subwayStationArrivalRepository: SubwayStationArrivalRepository
     private let disposeBag = DisposeBag()
+    private let liveActivityManager = ArrivalWidgetManager.shared
 
     init(
         localSubwayRepository: LocalSubwayRepository,
@@ -40,6 +42,7 @@ final class DefaultHomeViewModel: HomeViewModel {
     ) {
         self.localSubwayRepository = localSubwayRepository
         self.subwayStationArrivalRepository = subwayStationArrivalRepository
+        bindData()
     }
 
     // MARK: - HomeViewModelOutput
@@ -47,6 +50,20 @@ final class DefaultHomeViewModel: HomeViewModel {
     var recentSubwayStationList: BehaviorSubject<[SubwayTarget]> = BehaviorSubject(value: [])
     var currentSubwayStationTarget: BehaviorSubject<SubwayTarget?> = BehaviorSubject(value: nil)
     var currentSubwayStationArrival: PublishSubject<StationArrivalResponse> = PublishSubject()
+
+    private func bindData() {
+        currentSubwayStationTarget
+            .bind(with: self) { object, target in
+                if let target {
+                    object.fetchStationArrivalData(with: target)
+                }
+            }
+            .disposed(by: disposeBag)
+        currentSubwayStationArrival
+            .subscribe(with: self) { object, arrival in
+
+            }
+    }
 
 }
 
@@ -80,32 +97,83 @@ extension DefaultHomeViewModel {
             fetchStationArrivalData(with: subwayTarget)
         }
     }
+
 }
 
 private extension DefaultHomeViewModel {
 
+    /// 최근검색 목록 불러오기
     private func fetchSubwayStationList() {
         let stationList = localSubwayRepository.fetchEnrolledStationList()
         recentSubwayStationList.onNext(stationList)
+        /// 최근검색의 가장 최근역을 홈화면에 보여줌
         if let firstItem = stationList.first {
             currentSubwayStationTarget.onNext(firstItem)
-            fetchStationArrivalData(with: firstItem)
         }
     }
 
+    /// 역의 도착정보를 패칭
     func fetchStationArrivalData(with subwayTarget: SubwayTarget) {
-        subwayStationArrivalRepository.fetchSubwayStationArrival(with: subwayTarget) { result in
-            switch result {
-            case .success(let list):
-                let arrivalData = StationArrivalResponse(
-                    stationArrivalTarget: .subway(target: subwayTarget),
-                    stationArrival: .subway(arrival: list)
-                )
-                self.currentSubwayStationArrival.onNext(arrivalData)
-            case .failure(let error):
-                debugPrint(error)
+        subwayStationArrivalRepository
+            .fetchSubwayStationArrival(with: subwayTarget) { [weak self] result in
+                guard let self else { return }
+                switch result {
+                case .success(let list):
+                    let arrivalData = StationArrivalResponse(
+                        stationArrivalTarget: .subway(target: subwayTarget),
+                        stationArrival: .subway(arrival: list)
+                    )
+                    currentSubwayStationArrival.onNext(arrivalData)
+                    if list.isEmpty == false {
+                        onLiveActivity(with: arrivalData)
+                    } else {
+                        endLiveActivity()
+                    }
+                case .failure(let error):
+                    debugPrint(error)
+                }
             }
+    }
+
+}
+
+// MARK: - StationArrivalResponse
+
+private extension DefaultHomeViewModel {
+
+    /// 라이브 액티비티 활성화
+    func onLiveActivity(with data: StationArrivalResponse) {
+        var arrivalTime: Date? = nil
+
+        /// 도착정보 값으로 content 구성
+        switch data.stationArrival {
+        case .subway(let arrival):
+            if let remainTime = arrival[safe: 0]?.remainSecond, remainTime != 0 {
+                arrivalTime = Date().addingTimeInterval(TimeInterval(remainTime))
+            }
+//        case .bus(let arrival):
+//            if let remainTime = arrival[safe: 0]?.firstCaculatedeTime, remainTime != 0 {
+//                arrivalTime = Date().addingTimeInterval(TimeInterval(remainTime))
+//            }
+        default: break
+        }
+
+        // 남은 시간이 0이 아닐경우 액티비티 설정
+        if let arrivalTime {
+            liveActivityManager.start(
+                stationName: data.stationArrivalTarget.stationName,
+                stationLine: data.stationArrivalTarget.stationLine,
+                stationLineColorName: data.stationArrivalTarget.lineColorName,
+                nextStation: data.stationArrivalTarget.directionType,
+                timer: arrivalTime
+            )
+        } else {
+            // 액티비티를 종료
+            endLiveActivity()
         }
     }
 
+    func endLiveActivity() {
+        liveActivityManager.stop()
+    }
 }
