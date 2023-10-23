@@ -136,7 +136,7 @@ private extension DefaultBusHomeViewModel {
 
 }
 
-// MARK: - StationArrivalResponse
+// MARK: - LiveAcitivity
 
 private extension DefaultBusHomeViewModel {
 

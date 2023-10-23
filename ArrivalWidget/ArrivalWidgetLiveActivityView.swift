@@ -19,7 +19,7 @@ struct ArrivalWidgetLiveActivityView: View {
             VStack(spacing: 10) {
                 Spacer(minLength: 5)
                 HStack(spacing: 5) {
-                    Spacer().frame(width: 20)
+                    Spacer().frame(width: 10)
                     Button("\(context.state.stationLine)") { }
                         .buttonStyle(
                             InsetRoundButton(
@@ -33,12 +33,12 @@ struct ArrivalWidgetLiveActivityView: View {
                     Spacer(minLength: 5.0)
                     Text("\(context.state.nextStation) 방면")
                         .foregroundColor(.white)
-                    Spacer().frame(width: 20)
+                    Spacer().frame(width: 10)
                 }
                 HStack(spacing: 5.0) {
                     Spacer()
                     Text("도착까지 ")
-                        .font(.system(size: 30, weight: .semibold))
+                        .font(.system(size: 26.0, weight: .semibold))
                         .foregroundColor(.white)
                     Text(timerInterval: context.state.timer, countsDown: true)
                         .multilineTextAlignment(.center)
@@ -54,7 +54,7 @@ struct ArrivalWidgetLiveActivityView: View {
             VStack(spacing: 10) {
                 Spacer(minLength: 5)
                 HStack(spacing: 5) {
-                    Spacer().frame(width: 20)
+                    Spacer().frame(width: 10)
                     Button("\(context.state.stationLine)") { }
                         .buttonStyle(
                             InsetRoundButton(
@@ -68,12 +68,12 @@ struct ArrivalWidgetLiveActivityView: View {
                     Spacer(minLength: 5.0)
                     Text("\(context.state.nextStation) 방면")
                         .foregroundColor(.white)
-                    Spacer().frame(width: 20)
+                    Spacer().frame(width: 10)
                 }
                 HStack(spacing: 5.0) {
                     Spacer()
                     Text("도착까지 ")
-                        .font(.system(size: 30, weight: .semibold))
+                        .font(.system(size: 26.0, weight: .semibold))
                         .foregroundColor(.white)
                     Text(timerInterval: context.state.timer, countsDown: true)
                         .multilineTextAlignment(.center)
@@ -97,6 +97,7 @@ struct InsetRoundButton: ButtonStyle {
         configuration.label
             .foregroundColor(labelColor)
             .padding(.init(top: 4, leading: 8, bottom: 4, trailing: 8))
+            .fontWeight(.bold)
             .background(Capsule().fill(backgroundColor)) // <-
     }
 }

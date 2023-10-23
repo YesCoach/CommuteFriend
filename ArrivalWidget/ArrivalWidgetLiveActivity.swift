@@ -42,7 +42,7 @@ struct ArrivalWidgetLiveActivity: Widget {
                     VStack() {
                         Spacer(minLength: 5)
                         HStack(spacing: 5) {
-                            Spacer().frame(width: 10)
+                            Spacer().frame(width: 15)
                             Button("\(context.state.stationLine)") { }
                                 .buttonStyle(
                                     InsetRoundButton(

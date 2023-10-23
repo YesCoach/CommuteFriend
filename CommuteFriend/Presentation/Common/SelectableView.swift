@@ -75,7 +75,7 @@ private extension SelectableView {
 
     func configureUI() {
         layer.cornerRadius = 15.0
-        backgroundColor = .systemRed.withAlphaComponent(0.3)
+        backgroundColor = .systemMint
         self.addGestureRecognizer(tapGesture)
     }
 
@@ -85,7 +85,8 @@ private extension SelectableView {
         ].forEach { addSubview($0) }
 
         imageView.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
             $0.width.height.equalTo(40.0)
         }
 
