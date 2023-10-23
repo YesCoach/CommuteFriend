@@ -67,8 +67,8 @@ enum Router: URLRequestConvertible {
         case .subwayStationInfo(let query):
             return "\(apiKey)/json/SearchInfoBySubwayNameService/0/100/\(query)"
         case .subwayStationArrivalInfo(let query):
-//            return "\(apiKey)/json/realtimeStationArrival/0/100/\(query)"
-            return "sample/json/realtimeStationArrival/0/5/\(query)"
+            return "\(apiKey)/json/realtimeStationArrival/0/50/\(query)"
+//            return "sample/json/realtimeStationArrival/0/5/\(query)"
         case .busStationInfo:
             return "stationinfo/getStationByName"
         case .busStationArrivalInfo:
@@ -91,12 +91,16 @@ enum Router: URLRequestConvertible {
     private var apiKey: String {
         switch self {
         case .subwayStationInfo: return APIKey.Subway.stationNameService
-        case .subwayStationArrivalInfo: return APIKey.Subway.arrivalService
-        case .busInfo,
-                .busStationInfo,
-                .busStationByRoute,
-                .busRouteByStation,
-                .busStationArrivalInfo:
+        case .subwayStationArrivalInfo:
+            let apiKey =
+            [
+                APIKey.Subway.arrivalService, APIKey.Subway.arrivalServiceTemp1,
+                APIKey.Subway.arrivalServiceTemp2, APIKey.Subway.arrivalServiceTemp3,
+                APIKey.Subway.arrivalServiceTemp4, APIKey.Subway.arrivalServiceTemp5,
+                APIKey.Subway.arrivalServiceTemp6
+            ].randomElement()!
+            return apiKey
+        case .busRouteByStation, .busStationArrivalInfo:
             return APIKey.Bus.service
         default: return "sample"
         }

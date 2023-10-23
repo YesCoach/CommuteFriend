@@ -110,19 +110,6 @@ final class HomeViewController: BaseViewController {
         return barButtonItem
     }()
 
-    private lazy var alarmBarButtonItem: UIBarButtonItem = {
-        let button = UIButton()
-        button.setImage(.init(systemName: "bell.fill"), for: .normal)
-        button.setImage(.init(systemName: "bell.slash.fill"), for: .selected)
-        button.addTarget(
-            self,
-            action: #selector(didAlarmButtonTouched(_:)),
-            for: .touchUpInside
-        )
-        let buttonItem = UIBarButtonItem(customView: button)
-        return buttonItem
-    }()
-
     // MARK: - Property
 
     private let viewModel: HomeViewModel
@@ -200,7 +187,6 @@ final class HomeViewController: BaseViewController {
     override func configureNavigationItem() {
         super.configureNavigationItem()
         navigationItem.leftBarButtonItem = titleLeftBarButtonItem
-        navigationItem.rightBarButtonItem = alarmBarButtonItem
         navigationItem.backButtonTitle = ""
     }
 
@@ -242,13 +228,6 @@ private extension HomeViewController {
     @objc func updateCurrentStationArrival() {
         viewModel.viewWillAppear()
     }
-
-    @objc func didAlarmButtonTouched(_ sender: UIButton) {
-        sender.isSelected.toggle()
-        // TODO: - User Notification 기능 구현
-        print(#function)
-    }
-
 }
 
 // MARK: - RecentStationView TableViewDelegate
