@@ -37,6 +37,7 @@ final class HomeArrivalView: UIView {
         let view = ArrivalInformationView { [weak self] in
             guard let self else { return }
             viewModel.refreshCurrentStationTarget()
+            progressingView.animationOn()
         }
         return view
     }()

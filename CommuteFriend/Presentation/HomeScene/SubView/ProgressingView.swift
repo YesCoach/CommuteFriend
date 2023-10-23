@@ -60,13 +60,21 @@ final class ProgressingView: UIView {
     func animationOn() {
         layoutIfNeeded()
         commuteImageView.frame = .init(x: -50, y: frame.midY * 1.3, width: 50, height: 25)
+
+        layoutIfNeeded()
         UIView.animate(
-            withDuration: 3.0,
-            delay: 0,
+            withDuration: 2.0,
+            delay: 3,
             options: [.repeat, .curveLinear]
         ) { [weak self] in
             guard let self else { return }
+            print(Thread.isMainThread)
             commuteImageView.frame.origin.x = frame.size.width
+            layoutIfNeeded()
+            print("animation On")
+        } completion: { bool in
+            print("completion Block")
+            print(Thread.isMainThread)
         }
     }
 

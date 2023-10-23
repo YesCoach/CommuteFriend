@@ -136,11 +136,19 @@ final class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.viewWillAppear()
-    }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        homeArrivalView.progressingView.animationOn()
+        let subwayTrain = UIImageView(image: .init(systemName: "train.side.front.car"))
+        subwayTrain.frame = CGRect(x: 0, y: 195, width: 50, height: 25)
+        subwayTrain.tintColor = .systemMint
+
+        view.addSubview(subwayTrain)
+
+        UIView.animate(withDuration: 3.0, delay: 0, options: [.repeat, .curveLinear]) { [weak self] in
+            guard let self else { return }
+            subwayTrain.frame.origin.x = view.frame.size.width - 70
+        } completion: { _ in
+            subwayTrain.removeFromSuperview()
+        }
     }
 
     // MARK: - Method

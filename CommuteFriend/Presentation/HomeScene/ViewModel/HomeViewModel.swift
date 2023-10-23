@@ -59,11 +59,6 @@ final class DefaultHomeViewModel: HomeViewModel {
                 }
             }
             .disposed(by: disposeBag)
-        currentSubwayStationArrival
-            .subscribe(with: self) { object, arrival in
-
-            }
-            .disposed(by: disposeBag)
     }
 
 }

@@ -55,12 +55,8 @@ final class DefaultBusHomeViewModel: BusHomeViewModel {
                 }
             }
             .disposed(by: disposeBag)
-        currentBusStationArrival
-            .subscribe(with: self) { object, arrival in
-
-            }
-            .disposed(by: disposeBag)
     }
+
 }
 
 // MARK: - HomeViewModelInput
