@@ -167,23 +167,34 @@ final class FavoriteViewController: BaseViewController {
     }
 
     @objc func didEnrollButtonTouched(_ sender: UIButton) {
-        switch beginningFrom {
-        case .subway:
-            let searchViewController = DIContainer
-                .shared
-                .makeSubwaySearchViewController(beginningFrom: .favorite)
-            let navigationController = UINavigationController(
-                rootViewController: searchViewController
-            )
-            present(navigationController, animated: true)
-        case .bus:
-            let searchViewController = DIContainer
-                .shared
-                .makeBusSearchViewController(beginningFrom: .favorite)
-            let navigationController = UINavigationController(
-                rootViewController: searchViewController
-            )
-            present(navigationController, animated: true)
+        viewModel.didEnrollButtonTouched { [weak self] isEnrollable in
+            guard let self else { return }
+            if isEnrollable {
+                switch beginningFrom {
+                case .subway:
+                    let searchViewController = DIContainer
+                        .shared
+                        .makeSubwaySearchViewController(beginningFrom: .favorite)
+                    let navigationController = UINavigationController(
+                        rootViewController: searchViewController
+                    )
+                    present(navigationController, animated: true)
+                case .bus:
+                    let searchViewController = DIContainer
+                        .shared
+                        .makeBusSearchViewController(beginningFrom: .favorite)
+                    let navigationController = UINavigationController(
+                        rootViewController: searchViewController
+                    )
+                    present(navigationController, animated: true)
+                }
+            } else {
+                let alert = UIAlertController.simpleConfirmAlert(
+                    title: "",
+                    message: "즐겨찾기는 최대 10개까지 등록할 수 있어요!"
+                )
+                present(alert, animated: true)
+            }
         }
     }
 

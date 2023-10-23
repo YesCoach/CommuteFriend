@@ -135,6 +135,7 @@
 		898A58242AE25122000F040F /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58232AE25122000F040F /* UserDefaultsManager.swift */; };
 		898A58262AE2514A000F040F /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58252AE2514A000F040F /* UserDefaultsWrapper.swift */; };
 		89E4FE582AE542C100F66B9A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E4FE572AE542C100F66B9A /* SettingViewController.swift */; };
+		89E4FE5A2AE6068300F66B9A /* UIAlertController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E4FE592AE6068300F66B9A /* UIAlertController+.swift */; };
 		89EE858C2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */; };
 		89EE858E2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */; };
 		89EE85922ADD2E370095198D /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE85912ADD2E370095198D /* FavoriteViewModel.swift */; };
@@ -307,6 +308,7 @@
 		898A58232AE25122000F040F /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		898A58252AE2514A000F040F /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		89E4FE572AE542C100F66B9A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		89E4FE592AE6068300F66B9A /* UIAlertController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+.swift"; sourceTree = "<group>"; };
 		89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSubwaySearchSelectionViewModel.swift; sourceTree = "<group>"; };
 		89EE858D2ADD22D10095198D /* FavoriteSubwayDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteSubwayDTO+Mapping.swift"; sourceTree = "<group>"; };
 		89EE85912ADD2E370095198D /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
@@ -816,6 +818,7 @@
 				89023EBE2AD6D17E009FFCBD /* DateFormatter+.swift */,
 				89023F692ADBFD7D009FFCBD /* Collection+.swift */,
 				898A580F2ADEE8BF000F040F /* UIView+.swift */,
+				89E4FE592AE6068300F66B9A /* UIAlertController+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1186,6 +1189,7 @@
 				89EE85962ADE66AA0095198D /* BusHomeViewController.swift in Sources */,
 				89023EBA2AD6D109009FFCBD /* SubwayStation.swift in Sources */,
 				898A580C2ADEE5D6000F040F /* BusStationSearchDetailViewController.swift in Sources */,
+				89E4FE5A2AE6068300F66B9A /* UIAlertController+.swift in Sources */,
 				89023EEE2AD71882009FFCBD /* SubwaySearchResultViewController.swift in Sources */,
 				89023EB82AD6D109009FFCBD /* UpDownDirection.swift in Sources */,
 				89023F112AD7D5CA009FFCBD /* LocalSubwayRepository.swift in Sources */,

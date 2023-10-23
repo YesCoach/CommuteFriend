@@ -13,6 +13,7 @@ protocol FavoriteViewModelInput {
     func viewWillAppear()
     func deleteFavoriteItem(item: FavoriteItem)
     func didAlarmButtonTouched(item: FavoriteItem)
+    func didEnrollButtonTouched(completion: @escaping (Bool)-> Void)
 }
 
 protocol FavoriteViewModelOutput {
@@ -61,6 +62,13 @@ extension SubwayFavoriteViewModel {
         }
     }
 
+    func didEnrollButtonTouched(completion: @escaping (Bool) -> Void) {
+        if let count = try? favoriteStationItems.value().count {
+            if count < 10 { completion(true) }
+            else { completion(false) }
+        }
+        completion(false)
+    }
 }
 
 final class BusFavoriteViewModel: FavoriteViewModel {
@@ -102,6 +110,14 @@ extension BusFavoriteViewModel {
         } else {
             LocationManager.shared.removeLocation(target: newItem.stationTarget)
         }
+    }
+
+    func didEnrollButtonTouched(completion: @escaping (Bool) -> Void) {
+        if let count = try? favoriteStationItems.value().count {
+            if count < 10 { completion(true) }
+            else { completion(false) }
+        }
+        completion(false)
     }
 
 }
