@@ -80,6 +80,7 @@ struct ArrivalWidgetLiveActivity: Widget {
                     Image(uiImage: .init(systemName: "tram.fill") ?? .add)
                         .renderingMode(.template)
                         .colorMultiply(Color("\(context.state.stationLineColorName)"))
+                        .fixedSize()
                 case .bus:
                     Image(uiImage: .init(systemName: "bus.fill") ?? .add)
                         .renderingMode(.template)

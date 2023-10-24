@@ -67,8 +67,8 @@ enum Router: URLRequestConvertible {
         case .subwayStationInfo(let query):
             return "\(apiKey)/json/SearchInfoBySubwayNameService/0/100/\(query)"
         case .subwayStationArrivalInfo(let query):
-            //            return "\(apiKey)/json/realtimeStationArrival/0/50/\(query)"
-            return "sample/json/realtimeStationArrival/0/5/\(query)"
+            return "\(apiKey)/json/realtimeStationArrival/0/50/\(query)"
+//            return "sample/json/realtimeStationArrival/0/5/\(query)"
         case .busStationInfo:
             return "stationinfo/getStationByName"
         case .busStationArrivalInfo:

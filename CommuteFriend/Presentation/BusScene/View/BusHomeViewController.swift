@@ -143,18 +143,7 @@ final class BusHomeViewController: BaseViewController {
         super.viewWillAppear(animated)
         viewModel.viewWillAppear()
 
-        let subwayTrain = UIImageView(image: .init(systemName: "train.side.front.car"))
-        subwayTrain.frame = CGRect(x: 0, y: 195, width: 50, height: 25)
-        subwayTrain.tintColor = .systemMint
-
-        view.addSubview(subwayTrain)
-
-        UIView.animate(withDuration: 3.0, delay: 0, options: [.repeat, .curveLinear]) { [weak self] in
-            guard let self else { return }
-            subwayTrain.frame.origin.x = view.frame.size.width - 70
-        } completion: { _ in
-            subwayTrain.removeFromSuperview()
-        }
+        triggerAnimation()
     }
 
     // MARK: - Method
@@ -237,10 +226,36 @@ private extension BusHomeViewController {
             name: .busHomeUpdateNotification,
             object: nil
         )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
     }
 
     @objc func updateCurrentStationArrival() {
         viewModel.viewWillAppear()
+    }
+
+    @objc func willEnterForeground() {
+        triggerAnimation()
+    }
+
+    func triggerAnimation() {
+        let subwayTrain = UIImageView(image: .init(systemName: "train.side.front.car"))
+        subwayTrain.frame = CGRect(x: 0, y: 195, width: 50, height: 25)
+        subwayTrain.tintColor = .systemMint
+
+        view.addSubview(subwayTrain)
+
+        UIView.animate(withDuration: 3.0, delay: 0, options: [.repeat, .curveLinear]) { [weak self] in
+            guard let self else { return }
+            subwayTrain.frame.origin.x = view.frame.size.width - 70
+        } completion: { _ in
+            subwayTrain.removeFromSuperview()
+        }
     }
 
 }
