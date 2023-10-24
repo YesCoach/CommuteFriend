@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // MARK: - Notification 관련 로직
         setupUserNotificationCenter()
 
+        sleep(3)
+
         return true
     }
 
