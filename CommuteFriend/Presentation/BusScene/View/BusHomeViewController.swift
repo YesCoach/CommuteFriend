@@ -89,6 +89,12 @@ final class BusHomeViewController: BaseViewController {
             let favoriteViewController = DIContainer.shared.makeBusFavoriteViewController()
 
             favoriteViewController.hidesBottomBarWhenPushed = true
+            favoriteViewController.didCellSelected = { [weak self] favoriteItem in
+                guard let self else { return }
+                if case let StationTargetType.bus(target) = favoriteItem {
+                    viewModel.didSelectRowAt(busTarget: target)
+                }
+            }
             navigationController?.pushViewController(favoriteViewController, animated: true)
         }
         return view

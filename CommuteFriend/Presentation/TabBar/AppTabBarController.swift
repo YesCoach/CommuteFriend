@@ -18,7 +18,8 @@ final class AppTabBarController: UITabBarController {
 
     var homeViewController = DIContainer.shared.makeHomeViewController()
     var busHomeViewController = DIContainer.shared.makeBusHomeViewController()
-    var settingViewController = SettingViewController()
+    // TODO: - 설정 탭 추가
+//    var settingViewController = SettingViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +34,11 @@ final class AppTabBarController: UITabBarController {
         busHomeViewController.tabBarItem = TabBarItems.bus.tabBarItem
         busDelegate = busHomeViewController
 
-        settingViewController.tabBarItem = TabBarItems.setting.tabBarItem
-
         tabBar.tintColor = .black
 
         self.viewControllers = [
             UINavigationController(rootViewController: homeViewController),
-            UINavigationController(rootViewController: busHomeViewController),
-            UINavigationController(rootViewController: settingViewController)
+            UINavigationController(rootViewController: busHomeViewController)
         ]
     }
 

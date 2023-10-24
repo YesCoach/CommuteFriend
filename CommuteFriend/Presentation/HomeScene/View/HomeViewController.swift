@@ -89,6 +89,12 @@ final class HomeViewController: BaseViewController {
             let favoriteViewController = DIContainer.shared.makeSubwayFavoriteViewController()
 
             favoriteViewController.hidesBottomBarWhenPushed = true
+            favoriteViewController.didCellSelected = { [weak self] favoriteItem in
+                guard let self else { return }
+                if case let StationTargetType.subway(target) = favoriteItem {
+                    viewModel.didSelectRowAt(subwayTarget: target)
+                }
+            }
             navigationController?.pushViewController(favoriteViewController, animated: true)
         }
         return view

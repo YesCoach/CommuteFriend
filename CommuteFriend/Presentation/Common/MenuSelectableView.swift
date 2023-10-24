@@ -26,7 +26,7 @@ final class MenuSelectableView: UIView {
             switch self {
             case .subway: return "tram.fill"
             case .bus: return "bus.fill"
-            case .favorite: return "star.fill"
+            case .favorite: return "bookmark.fill"
             }
         }
     }
@@ -101,7 +101,7 @@ private extension MenuSelectableView {
 
         imageView.snp.makeConstraints {
             $0.top.leading.equalToSuperview().offset(15.0)
-            $0.width.height.equalTo(40.0)
+            $0.width.height.equalTo(30.0)
         }
 
         label.snp.makeConstraints {
