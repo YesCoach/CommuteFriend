@@ -110,6 +110,10 @@ final class BusSearchViewController: BaseViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         searchController.isActive = false
     }
 
@@ -212,7 +216,7 @@ private extension BusSearchViewController {
         snapshot.appendItems(data, toSection: 1)
 
         guard let dataSource else { return }
-        dataSource.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
 
 }

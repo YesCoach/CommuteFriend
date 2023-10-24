@@ -28,24 +28,35 @@ final class HomeArrivalView: UIView {
         return label
     }()
 
-    private lazy var progressingView: ProgressingView = ProgressingView()
+    lazy var progressingView: ProgressingView = {
+        let view = ProgressingView(transportType: transportationType)
+        return view
+    }()
+
     private lazy var arrivalInformationView: ArrivalInformationView = {
         let view = ArrivalInformationView { [weak self] in
             guard let self else { return }
             viewModel.refreshCurrentStationTarget()
+            progressingView.animationOn()
         }
         return view
     }()
 
     private var viewModel: HomeArrivalViewModel
+    private var transportationType: TransportationType
     private var stationArrivalResponse: StationArrivalResponse?
     private var timer: Timer?
     private var updateFlag: Bool = true
+    private lazy var dispatchWorkItem = DispatchWorkItem(block: { [weak self] in
+        guard let self else { return }
+        timer?.fire()
+    })
 
     // MARK: - Init
 
-    init(viewModel: HomeArrivalViewModel) {
+    init(viewModel: HomeArrivalViewModel, type: TransportationType) {
         self.viewModel = viewModel
+        self.transportationType = type
         super.init(frame: .zero)
         configureUI()
         configureLayout()
@@ -72,7 +83,6 @@ final class HomeArrivalView: UIView {
             stationLabel.text = target.name
             destinationLabel.text = "다음역: \(target.destinationName)"
         case .bus(let target):
-            // TODO: - Bus 상징색 적용하기
             routeIconButton.configuration = .filledCapsuleConfiguration(
                 foregroundColor: .white,
                 backgroundColor: .busTypeColor(target.busType)
@@ -84,7 +94,6 @@ final class HomeArrivalView: UIView {
 
         arrivalInformationView.configure(wtih: arrivalResponse)
         progressingView.configure(with: arrivalResponse)
-        removeTimer()
         attachTimer()
     }
 
@@ -147,6 +156,11 @@ private extension HomeArrivalView {
 private extension HomeArrivalView {
 
     func attachTimer() {
+        var second: DispatchTime = .now()
+        dispatchWorkItem.cancel()
+        timer?.invalidate()
+        timer = nil
+
         if let stationArrivalResponse {
             switch stationArrivalResponse.stationArrivalTarget {
             case .subway(let target):
@@ -155,14 +169,16 @@ private extension HomeArrivalView {
                     .gyeonguiCentral, .seohae, .shinBundang, .suinBundang
                 ]
                 if lineList.contains(target.lineNumber) {
-                    timer = Timer.scheduledTimer(
-                        withTimeInterval: 10.0,
-                        repeats: true
-                    ) { [weak self] _ in
-                        guard let self else { return }
-                        updateStationArrivalDataByTerm()
-                    }
+                        second = .now() + 10
+                        timer = Timer.scheduledTimer(
+                            withTimeInterval: 10.0,
+                            repeats: true
+                        ) { [weak self] _ in
+                            guard let self else { return }
+                            updateStationArrivalDataByTerm()
+                        }
                 } else {
+                    second = .now() + 1.0
                     timer = Timer.scheduledTimer(
                         withTimeInterval: 1.0,
                         repeats: true
@@ -172,6 +188,7 @@ private extension HomeArrivalView {
                     }
                 }
             case .bus:
+                second = .now() + 1.0
                 timer = Timer.scheduledTimer(
                     withTimeInterval: 1.0,
                     repeats: true
@@ -181,15 +198,9 @@ private extension HomeArrivalView {
                 }
             }
         }
+        DispatchQueue.main.asyncAfter(deadline: second, execute: dispatchWorkItem)
 
-        timer?.fire()
         print(#function)
-    }
-
-    func removeTimer() {
-        print(#function)
-        timer?.invalidate()
-        timer = nil
     }
 
     // 타이머 업데이트 전략
@@ -205,8 +216,8 @@ private extension HomeArrivalView {
                             viewModel.refreshCurrentStationTarget()
                             updateFlag = true
                         }
+                        updateFlag = false
                     }
-                    updateFlag = false
                 }
                 progressingView.configure(with: stationArrivalResponse)
                 arrivalInformationView.configure(wtih: stationArrivalResponse)

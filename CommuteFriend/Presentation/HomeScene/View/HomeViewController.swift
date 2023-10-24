@@ -36,7 +36,7 @@ final class HomeViewController: BaseViewController {
     }()
 
     private lazy var homeArrivalView: HomeArrivalView = {
-        let view = HomeArrivalView(viewModel: viewModel)
+        let view = HomeArrivalView(viewModel: viewModel, type: .subway)
         return view
     }()
 
@@ -89,6 +89,12 @@ final class HomeViewController: BaseViewController {
             let favoriteViewController = DIContainer.shared.makeSubwayFavoriteViewController()
 
             favoriteViewController.hidesBottomBarWhenPushed = true
+            favoriteViewController.didCellSelected = { [weak self] favoriteItem in
+                guard let self else { return }
+                if case let StationTargetType.subway(target) = favoriteItem {
+                    viewModel.didSelectRowAt(subwayTarget: target)
+                }
+            }
             navigationController?.pushViewController(favoriteViewController, animated: true)
         }
         return view
@@ -108,19 +114,6 @@ final class HomeViewController: BaseViewController {
 
         let barButtonItem = UIBarButtonItem(customView: label)
         return barButtonItem
-    }()
-
-    private lazy var alarmBarButtonItem: UIBarButtonItem = {
-        let button = UIButton()
-        button.setImage(.init(systemName: "bell.fill"), for: .normal)
-        button.setImage(.init(systemName: "bell.slash.fill"), for: .selected)
-        button.addTarget(
-            self,
-            action: #selector(didAlarmButtonTouched(_:)),
-            for: .touchUpInside
-        )
-        let buttonItem = UIBarButtonItem(customView: button)
-        return buttonItem
     }()
 
     // MARK: - Property
@@ -149,6 +142,8 @@ final class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.viewWillAppear()
+
+        triggerAnimation()
     }
 
     // MARK: - Method
@@ -195,7 +190,6 @@ final class HomeViewController: BaseViewController {
     override func configureNavigationItem() {
         super.configureNavigationItem()
         navigationItem.leftBarButtonItem = titleLeftBarButtonItem
-        navigationItem.rightBarButtonItem = alarmBarButtonItem
         navigationItem.backButtonTitle = ""
     }
 
@@ -232,18 +226,36 @@ private extension HomeViewController {
             name: .homeUpdateNotification,
             object: nil
         )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
     }
 
     @objc func updateCurrentStationArrival() {
         viewModel.viewWillAppear()
     }
 
-    @objc func didAlarmButtonTouched(_ sender: UIButton) {
-        sender.isSelected.toggle()
-        // TODO: - User Notification 기능 구현
-        print(#function)
+    @objc func willEnterForeground() {
+        triggerAnimation()
     }
 
+    func triggerAnimation() {
+        let subwayTrain = UIImageView(image: .init(systemName: "train.side.front.car"))
+        subwayTrain.frame = CGRect(x: 0, y: 195, width: 50, height: 25)
+        subwayTrain.tintColor = .systemMint
+
+        view.addSubview(subwayTrain)
+
+        UIView.animate(withDuration: 3.0, delay: 0, options: [.repeat, .curveLinear]) { [weak self] in
+            guard let self else { return }
+            subwayTrain.frame.origin.x = view.frame.size.width - 70
+        } completion: { _ in
+            subwayTrain.removeFromSuperview()
+        }
+    }
 }
 
 // MARK: - RecentStationView TableViewDelegate

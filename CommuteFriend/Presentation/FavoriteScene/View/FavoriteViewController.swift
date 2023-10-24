@@ -30,7 +30,7 @@ final class FavoriteViewController: BaseViewController {
     private lazy var titleView: UILabel = {
         let label = UILabel()
         label.text = "즐겨찾기"
-        label.font = .systemFont(ofSize: 24, weight: .bold)
+        label.font = .systemFont(ofSize: 20, weight: .bold)
         label.textColor = .white
         return label
     }()
@@ -94,6 +94,10 @@ final class FavoriteViewController: BaseViewController {
     private let disposeBag = DisposeBag()
     private let beginningFrom: BeginningFrom
 
+    var didCellSelected: ((StationTargetType) -> Void)?
+
+    // MARK: - Initializer
+
     init(viewModel: FavoriteViewModel, beginningFrom: BeginningFrom) {
         self.viewModel = viewModel
         self.beginningFrom = beginningFrom
@@ -103,6 +107,8 @@ final class FavoriteViewController: BaseViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - LifeCycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -167,23 +173,34 @@ final class FavoriteViewController: BaseViewController {
     }
 
     @objc func didEnrollButtonTouched(_ sender: UIButton) {
-        switch beginningFrom {
-        case .subway:
-            let searchViewController = DIContainer
-                .shared
-                .makeSubwaySearchViewController(beginningFrom: .favorite)
-            let navigationController = UINavigationController(
-                rootViewController: searchViewController
-            )
-            present(navigationController, animated: true)
-        case .bus:
-            let searchViewController = DIContainer
-                .shared
-                .makeBusSearchViewController(beginningFrom: .favorite)
-            let navigationController = UINavigationController(
-                rootViewController: searchViewController
-            )
-            present(navigationController, animated: true)
+        viewModel.didEnrollButtonTouched { [weak self] isEnrollable in
+            guard let self else { return }
+            if isEnrollable {
+                switch beginningFrom {
+                case .subway:
+                    let searchViewController = DIContainer
+                        .shared
+                        .makeSubwaySearchViewController(beginningFrom: .favorite)
+                    let navigationController = UINavigationController(
+                        rootViewController: searchViewController
+                    )
+                    present(navigationController, animated: true)
+                case .bus:
+                    let searchViewController = DIContainer
+                        .shared
+                        .makeBusSearchViewController(beginningFrom: .favorite)
+                    let navigationController = UINavigationController(
+                        rootViewController: searchViewController
+                    )
+                    present(navigationController, animated: true)
+                }
+            } else {
+                let alert = UIAlertController.simpleConfirmAlert(
+                    title: "",
+                    message: "즐겨찾기는 최대 10개까지 등록할 수 있어요!"
+                )
+                present(alert, animated: true)
+            }
         }
     }
 
@@ -191,6 +208,8 @@ final class FavoriteViewController: BaseViewController {
         viewModel.viewWillAppear()
     }
 }
+
+// MARK: - Private Methods
 
 private extension FavoriteViewController {
 
@@ -224,7 +243,17 @@ private extension FavoriteViewController {
 
 }
 
+// MARK: - TableViewDelegate
+
 extension FavoriteViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let dataSource = tableView.dataSource as? DataSourceType,
+              let item = dataSource.itemIdentifier(for: indexPath)
+        else { return }
+        didCellSelected?(item.stationTarget)
+        navigationController?.popViewController(animated: true)
+    }
 
     func tableView(
         _ tableView: UITableView,

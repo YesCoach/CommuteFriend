@@ -69,7 +69,7 @@ extension SubwayArrival {
         // 남은 시간(초) 에서 term을 빼서 대략적인 도착 시간 계산
         let calculatedTime = remainTimeForSecond - term
 
-        return calculatedTime
+        return calculatedTime > 0 ? calculatedTime : 0
     }
 
     /**

@@ -2,6 +2,7 @@ excluded:
 - CommuteFriend/*/AppDelegate.swift
 - CommuteFriend/*/SceneDelegate.swift
 - CommuteFriend/*/APIKey.swift
+- LiveActivity/*
 
 disabled_rules:
 - xctfail_message

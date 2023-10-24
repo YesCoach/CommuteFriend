@@ -56,7 +56,7 @@ final class SubwaySearchSelectionViewController: BaseViewController {
         let stackView = UIStackView()
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
-        stackView.spacing = 20
+        stackView.spacing = 10
         [
             horizontalStackView, splitDirectionView
         ].forEach { stackView.addArrangedSubview($0) }
@@ -67,7 +67,7 @@ final class SubwaySearchSelectionViewController: BaseViewController {
         let stackView = UIStackView()
         stackView.distribution = .fillEqually
         stackView.axis = .horizontal
-        stackView.spacing = 20
+        stackView.spacing = 10
         [
             upDirectionView, downDirectionView
         ].forEach { stackView.addArrangedSubview($0) }

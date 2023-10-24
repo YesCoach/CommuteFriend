@@ -12,6 +12,34 @@ struct StationArrivalResponse: Hashable {
     enum ArrivalTarget: Hashable {
         case subway(target: SubwayTarget)
         case bus(target: BusTarget)
+
+        var stationName: String {
+            switch self {
+            case .subway(let target): return target.name
+            case .bus(let target): return target.stationName
+            }
+        }
+
+        var stationLine: String {
+            switch self {
+            case .subway(let target): return target.lineNumber.lineNum
+            case .bus(let target): return target.busRouteName
+            }
+        }
+
+        var lineColorName: String {
+            switch self {
+            case .subway(let target): return target.lineNumber.rawValue
+            case .bus(let target): return target.busType.description
+            }
+        }
+
+        var directionType: String {
+            switch self {
+            case .subway(let target): return target.destinationName
+            case .bus(let target): return target.direction
+            }
+        }
     }
 
     enum Arrival: Hashable {
