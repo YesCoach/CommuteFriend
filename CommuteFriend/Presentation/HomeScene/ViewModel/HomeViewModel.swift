@@ -135,9 +135,7 @@ private extension DefaultHomeViewModel {
                     if list.isEmpty == false {
                         onLiveActivity(with: arrivalData)
                     } else {
-                        Task { [weak self] in
-                            self?.endLiveActivity()
-                        }
+                        endLiveActivity()
                     }
                 case .failure(let error):
                     debugPrint(error)
@@ -180,6 +178,8 @@ private extension DefaultHomeViewModel {
                 timer: arrivalTime,
                 type: .subway
             )
+        } else {
+            endLiveActivity()
         }
     }
 

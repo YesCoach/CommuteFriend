@@ -72,6 +72,7 @@ final class ArrivalWidgetManager: ObservableObject {
 
     func stop() {
         Task {
+            await activity?.end(dismissalPolicy: .immediate)
             for activity in Activity<ArrivalWidgetAttributes>.activities {
                 await activity.end(dismissalPolicy: .immediate)
             }

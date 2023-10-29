@@ -120,9 +120,7 @@ private extension DefaultBusHomeViewModel {
                     if specificList.first?.firstCalculatedeTime != 0 {
                         onLiveActivity(with: arrivalData)
                     } else {
-                        Task { [weak self] in
-                            self?.endLiveActivity()
-                        }
+                        endLiveActivity()
                     }
                 case .failure(let error):
                     debugPrint(error)
@@ -168,7 +166,6 @@ private extension DefaultBusHomeViewModel {
                 type: .bus
             )
         } else {
-            // 액티비티를 종료
             endLiveActivity()
         }
     }
