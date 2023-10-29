@@ -165,7 +165,7 @@ private extension HomeArrivalView {
             switch stationArrivalResponse.stationArrivalTarget {
             case .subway(let target):
                 let lineList = [
-                    SubwayLine.airport, .central, .uiSinseol, .gyeongGang, .gyeongchun,
+                    SubwayLine.airport, .central, .gyeongGang, .gyeongchun,
                     .gyeonguiCentral, .seohae, .shinBundang, .suinBundang
                 ]
                 if lineList.contains(target.lineNumber) {
