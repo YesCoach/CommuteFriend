@@ -250,7 +250,7 @@ private extension BusHomeViewController {
 
         view.addSubview(subwayTrain)
 
-        UIView.animate(withDuration: 3.0, delay: 0, options: [.repeat, .curveLinear]) { [weak self] in
+        UIView.animate(withDuration: 7.0, delay: 0, options: [.repeat, .curveLinear]) { [weak self] in
             guard let self else { return }
             subwayTrain.frame.origin.x = view.frame.size.width - 70
         } completion: { _ in

@@ -114,7 +114,7 @@ private extension ArrivalInformationView {
 
     func configureLayout() {
         [
-            currentStackView, nextStackView, refreshButtonView
+            currentStackView, nextStackView
         ].forEach { addSubview($0) }
 
         [
@@ -136,12 +136,6 @@ private extension ArrivalInformationView {
             $0.top.equalTo(currentStackView.snp.bottom)
             $0.bottom.centerX.equalToSuperview()
             $0.horizontalEdges.greaterThanOrEqualTo(10).priority(.low)
-        }
-
-        refreshButtonView.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(10)
-            $0.trailing.equalToSuperview().inset(20)
-            $0.size.equalTo(30)
         }
     }
 

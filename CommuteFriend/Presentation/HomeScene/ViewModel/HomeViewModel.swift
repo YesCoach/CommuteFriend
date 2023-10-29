@@ -10,12 +10,16 @@ import RxSwift
 import RxRelay
 import ActivityKit
 
+// MARK: - Input
+
 protocol HomeViewModelInput {
     func viewWillAppear()
     func removeRecentSearchItem(with subwayTarget: SubwayTarget)
     func didSelectRowAt(subwayTarget: SubwayTarget)
     func updatePriorityStationTarget(with subwaTargetID: String)
 }
+
+// MARK: - Output
 
 protocol HomeViewModelOutput {
     var recentSubwayStationList: BehaviorSubject<[SubwayTarget]> { get set }
@@ -36,6 +40,8 @@ final class DefaultHomeViewModel: HomeViewModel {
     private let disposeBag = DisposeBag()
     private let liveActivityManager = ArrivalWidgetManager.shared
 
+    // MARK: - DI
+
     init(
         localSubwayRepository: LocalSubwayRepository,
         subwayStationArrivalRepository: SubwayStationArrivalRepository
@@ -52,6 +58,7 @@ final class DefaultHomeViewModel: HomeViewModel {
     var currentSubwayStationArrival: PublishSubject<StationArrivalResponse> = PublishSubject()
 
     private func bindData() {
+        // 현재 역을 받아오면 도착정보를 패치
         currentSubwayStationTarget
             .bind(with: self) { object, target in
                 if let target {
@@ -88,6 +95,7 @@ extension DefaultHomeViewModel {
         }
     }
 
+    // 현재 역의 도착정보 새로고침
     func refreshCurrentStationTarget() {
         if let subwayTarget = try? currentSubwayStationTarget.value() {
             fetchStationArrivalData(with: subwayTarget)
@@ -168,9 +176,6 @@ private extension DefaultHomeViewModel {
                 timer: arrivalTime,
                 type: .subway
             )
-        } else {
-            // 액티비티를 종료
-            endLiveActivity()
         }
     }
 

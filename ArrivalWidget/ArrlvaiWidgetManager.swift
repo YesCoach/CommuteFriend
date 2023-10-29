@@ -35,19 +35,37 @@ final class ArrivalWidgetManager: ObservableObject {
             type: type
         )
 
-        if activity != nil {
-            Task {
-                await activity?.update(using: state)
-            }
-        } else {
+        // 사용자가 종료했거나 오래된 경우
+        if [ ActivityState.dismissed, .ended, .stale].contains(
+            activity?.activityState
+        ) {
             do {
                 // live activity 시작
+                print("액티비티 시작")
                 self.activity = try Activity.request(
                     attributes: attributes,
                     content: .init(state: state, staleDate: nil)
                 )
             } catch {
-                print(error)
+                debugPrint(error)
+            }
+        } else {
+            if activity != nil {
+                Task {
+                    print("액티비티 업데이트")
+                    await activity?.update(using: state)
+                }
+            } else {
+                do {
+                    // live activity 시작
+                    print("액티비티 시작")
+                    self.activity = try Activity.request(
+                        attributes: attributes,
+                        content: .init(state: state, staleDate: nil)
+                    )
+                } catch {
+                    debugPrint(error)
+                }
             }
         }
     }
@@ -55,7 +73,6 @@ final class ArrivalWidgetManager: ObservableObject {
     func stop() {
         Task {
             await activity?.end(dismissalPolicy: .immediate)
-            activity = nil
         }
     }
 }

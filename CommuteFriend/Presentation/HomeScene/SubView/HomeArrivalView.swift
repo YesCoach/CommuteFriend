@@ -213,6 +213,7 @@ private extension HomeArrivalView {
                     if updateFlag {
                         DispatchQueue.global().asyncAfter(deadline: .now() + 10.0) { [weak self] in
                             guard let self else { return }
+                            // 현재 타깃의 도착정보 받아오기
                             viewModel.refreshCurrentStationTarget()
                             updateFlag = true
                         }
