@@ -25,6 +25,8 @@ protocol HomeViewModelOutput {
     var recentSubwayStationList: BehaviorSubject<[SubwayTarget]> { get set }
     var currentSubwayStationTarget: BehaviorSubject<SubwayTarget?> { get set }
     var currentSubwayStationArrival: PublishSubject<StationArrivalResponse> { get set }
+
+    var isNowFetching: BehaviorRelay<Bool> { get set }
 }
 
 protocol HomeArrivalViewModel {
@@ -56,6 +58,8 @@ final class DefaultHomeViewModel: HomeViewModel {
     var recentSubwayStationList: BehaviorSubject<[SubwayTarget]> = BehaviorSubject(value: [])
     var currentSubwayStationTarget: BehaviorSubject<SubwayTarget?> = BehaviorSubject(value: nil)
     var currentSubwayStationArrival: PublishSubject<StationArrivalResponse> = PublishSubject()
+
+    var isNowFetching: BehaviorRelay<Bool> = BehaviorRelay(value: false)
 
     private func bindData() {
         // 현재 역을 받아오면 도착정보를 패치

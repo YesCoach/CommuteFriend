@@ -22,13 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         RealmStorage.shared.checkSchemaVersion()
 
-        // MARK: - Location 관련 로직
+        // MARK: Location 관련 로직
         LocationManager.shared.requestAuthorization()
 
-        // MARK: - Notification 관련 로직
+        // MARK: Notification 관련 로직
         setupUserNotificationCenter()
 
-        sleep(3)
+        // MARK: Dynamic Island 관련 로직
+        ArrivalWidgetManager.shared.stop()
+
+        sleep(2)
 
         return true
     }

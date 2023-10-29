@@ -13,6 +13,7 @@ final class ArrivalInformationView: UIView {
     private lazy var currentDestinationLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20.0, weight: .bold)
+        label.text = " "
         return label
     }()
 
@@ -20,16 +21,19 @@ final class ArrivalInformationView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 22.0, weight: .bold)
         label.textColor = .systemRed
+        label.text = " "
         return label
     }()
 
     private lazy var nextLabel: UILabel = {
         let label = UILabel()
+        label.text = " "
         return label
     }()
 
     private lazy var nextDestinationLabel: UILabel = {
         let label = UILabel()
+        label.text = " "
         return label
     }()
 
@@ -37,6 +41,7 @@ final class ArrivalInformationView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.textColor = .systemRed
+        label.text = " "
         return label
     }()
 
