@@ -117,10 +117,6 @@ final class BusSearchViewController: BaseViewController {
         searchController.isActive = false
     }
 
-    deinit {
-        deinitPrint()
-    }
-
     // MARK: - LifeCycle
 
     override func viewDidLoad() {

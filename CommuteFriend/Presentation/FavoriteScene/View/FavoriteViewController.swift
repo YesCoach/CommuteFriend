@@ -130,10 +130,6 @@ final class FavoriteViewController: BaseViewController {
         )
     }
 
-    deinit {
-        deinitPrint()
-    }
-
     override func configureUI() {
         super.configureUI()
         view.backgroundColor = .mainBackgroundColor

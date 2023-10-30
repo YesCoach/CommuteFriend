@@ -54,10 +54,6 @@ final class BusRouteSearchDetailViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    deinit {
-        deinitPrint()
-    }
-
     // MARK: - LifeCycle
 
     override func viewDidLoad() {

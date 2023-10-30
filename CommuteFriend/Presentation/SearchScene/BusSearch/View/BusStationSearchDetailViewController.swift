@@ -59,10 +59,6 @@ final class BusStationSearchDetailViewController: BaseViewController {
 
     // MARK: - LifeCycle
 
-    deinit {
-        deinitPrint()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()

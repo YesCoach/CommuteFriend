@@ -30,10 +30,6 @@ final class SubwaySearchResultViewController: BaseViewController {
 
     private var dataSource: DataSourceType?
 
-    deinit {
-        deinitPrint()
-    }
-
     // MARK: - LifeCycle
 
     override func viewDidLoad() {

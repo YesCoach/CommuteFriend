@@ -18,10 +18,6 @@ final class TestSearchVC: BaseViewController {
         navigationItem.searchController = searchController
     }
 
-    deinit {
-        deinitPrint()
-    }
-
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         searchController.isActive = false

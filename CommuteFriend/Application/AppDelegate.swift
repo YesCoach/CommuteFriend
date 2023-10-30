@@ -31,9 +31,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // MARK: Dynamic Island 관련 로직
         ArrivalWidgetManager.shared.stop()
 
+        // MARK: Network 체크
+        NetworkCheckManager.shared.startMonitoring()
+
         sleep(2)
 
         return true
+    }
+
+    func applicationWillTerminate(_ application: UIApplication) {
+        NetworkCheckManager.shared.stopMonitoring()
     }
 
     // MARK: UISceneSession Lifecycle

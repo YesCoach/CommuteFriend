@@ -88,10 +88,6 @@ final class SubwaySearchSelectionViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    deinit {
-        deinitPrint()
-    }
-
     // MARK: - Methods
 
     override func viewDidLoad() {
