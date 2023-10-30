@@ -37,9 +37,21 @@ final class HomeArrivalView: UIView {
         let view = ArrivalInformationView { [weak self] in
             guard let self else { return }
             viewModel.refreshCurrentStationTarget()
-            progressingView.animationOn()
+//            progressingView.animationOn()
         }
         return view
+    }()
+
+    private lazy var commuteImageView: UIImageView = {
+        let imageView = UIImageView()
+        switch transportationType {
+        case .subway:
+            imageView.image = .init(systemName: "train.side.front.car")
+        case .bus:
+            imageView.image = .init(systemName: "train.side.front.car")
+        }
+        imageView.tintColor = .purple
+        return imageView
     }()
 
     private var viewModel: HomeArrivalViewModel
@@ -94,7 +106,32 @@ final class HomeArrivalView: UIView {
 
         arrivalInformationView.configure(wtih: arrivalResponse)
         progressingView.configure(with: arrivalResponse)
+        commuteImageView.tintColor = UIColor(
+            named: arrivalResponse.stationArrivalTarget.lineColorName
+        )
         attachTimer()
+    }
+
+    func animationOn() {
+        layoutIfNeeded()
+        commuteImageView.frame = .init(
+            x: -50, y: progressingView.frame.midY - 25, width: 50, height: 25
+        )
+        UIView.animate(
+            withDuration: 7.0,
+            delay: 0,
+            options: [.repeat, .curveLinear]
+        ) { [weak self] in
+            guard let self else { return }
+            print(Thread.isMainThread)
+            commuteImageView.frame.origin.x = frame.size.width
+            print("animation On")
+        } completion: { bool in
+            print("completion Block")
+            print(Thread.isMainThread)
+            self.commuteImageView.removeFromSuperview()
+        }
+        addSubview(commuteImageView)
     }
 
 }
@@ -140,7 +177,7 @@ private extension HomeArrivalView {
         progressingView.snp.makeConstraints {
             $0.top.equalTo(routeIconButton.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(70)
+            $0.height.equalTo(60)
         }
 
         arrivalInformationView.snp.makeConstraints {

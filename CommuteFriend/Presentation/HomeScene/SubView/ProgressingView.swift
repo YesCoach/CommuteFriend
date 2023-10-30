@@ -9,21 +9,6 @@ import UIKit
 
 final class ProgressingView: UIView {
 
-    // MARK: - View
-
-    private lazy var commuteImageView: UIImageView = {
-        let imageView = UIImageView()
-        switch transportType {
-        case .subway:
-            imageView.image = .init(systemName: "train.side.front.car")
-        case .bus:
-            imageView.image = .init(named: "bus.png")
-        }
-        imageView.tintColor = .purple
-        return imageView
-    }()
-
-
     private var arrivalResponse: StationArrivalResponse?
     private let transportType: TransportationType
 
@@ -42,43 +27,34 @@ final class ProgressingView: UIView {
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-
-        let path = UIBezierPath()
-        path.move(to: .init(x: rect.minX, y: rect.midY * 1.3))
-        path.addLine(to: .init(x: rect.maxX, y: rect.midY * 1.3))
-
-        UIColor.systemMint.setStroke()
-
-        path.lineWidth = 3
-        path.stroke()
+        if let arrivalResponse,
+           let lineColor = UIColor(named: arrivalResponse.stationArrivalTarget.lineColorName)
+        {
+            drawLine(rect, with: lineColor)
+        } else {
+            drawLine(rect, with: .systemMint)
+        }
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
     }
 
-    func animationOn() {
-        layoutIfNeeded()
-        commuteImageView.frame = .init(x: -50, y: frame.midY * 1.3, width: 50, height: 25)
-
-        layoutIfNeeded()
-        UIView.animate(
-            withDuration: 2.0,
-            delay: 3,
-            options: [.repeat, .curveLinear]
-        ) { [weak self] in
-            guard let self else { return }
-            print(Thread.isMainThread)
-            commuteImageView.frame.origin.x = frame.size.width
-            layoutIfNeeded()
-            print("animation On")
-        } completion: { bool in
-            print("completion Block")
-            print(Thread.isMainThread)
-        }
+    func configure(with response: StationArrivalResponse) {
+        self.arrivalResponse = response
+        setNeedsDisplay()
     }
 
-    func configure(with: StationArrivalResponse) { }
+    func drawLine(_ rect: CGRect, with lineColor: UIColor) {
+        let path = UIBezierPath()
+        path.move(to: .init(x: rect.minX, y: rect.midY))
+        path.addLine(to: .init(x: rect.maxX, y: rect.midY))
+
+        lineColor.setStroke()
+
+        path.lineWidth = 3
+        path.stroke()
+    }
 }
 
 // MARK: - Private Method
@@ -89,9 +65,5 @@ private extension ProgressingView {
         backgroundColor = .white
     }
 
-    func configureLayout() {
-        [
-            commuteImageView
-        ].forEach { addSubview($0) }
-    }
+    func configureLayout() { }
 }

@@ -142,7 +142,10 @@ final class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.viewWillAppear()
+    }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         triggerAnimation()
     }
 
@@ -211,7 +214,6 @@ private extension HomeViewController {
                 owner.recentStationView.updateSnapShot(data: stationList)
             }
             .disposed(by: disposeBag)
-        // 현재 받아온 도착정보로 뷰 구성
         viewModel
             .currentSubwayStationArrival
             .bind(with: self) { owner, stationArrivalResponse in
@@ -244,18 +246,8 @@ private extension HomeViewController {
     }
 
     func triggerAnimation() {
-        let subwayTrain = UIImageView(image: .init(systemName: "train.side.front.car"))
-        subwayTrain.frame = CGRect(x: 0, y: 195, width: 50, height: 25)
-        subwayTrain.tintColor = .systemMint
-
-        view.addSubview(subwayTrain)
-
-        UIView.animate(withDuration: 7.0, delay: 0, options: [.repeat, .curveLinear]) { [weak self] in
-            guard let self else { return }
-            subwayTrain.frame.origin.x = view.frame.size.width - 70
-        } completion: { _ in
-            subwayTrain.removeFromSuperview()
-        }
+        view.layoutIfNeeded()
+        homeArrivalView.animationOn()
     }
 }
 
