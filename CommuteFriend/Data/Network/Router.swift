@@ -91,15 +91,7 @@ enum Router: URLRequestConvertible {
     private var apiKey: String {
         switch self {
         case .subwayStationInfo: return APIKey.Subway.stationNameService
-        case .subwayStationArrivalInfo:
-            let apiKey =
-            [
-                APIKey.Subway.arrivalService, APIKey.Subway.arrivalServiceTemp1,
-                APIKey.Subway.arrivalServiceTemp2, APIKey.Subway.arrivalServiceTemp3,
-                APIKey.Subway.arrivalServiceTemp4, APIKey.Subway.arrivalServiceTemp5,
-                APIKey.Subway.arrivalServiceTemp6
-            ].randomElement()!
-            return apiKey
+        case .subwayStationArrivalInfo: return APIKey.Subway.arrivalService
         case .busInfo,
                 .busStationInfo,
                 .busStationByRoute,
