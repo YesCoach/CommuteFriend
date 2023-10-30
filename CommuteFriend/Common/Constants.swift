@@ -24,7 +24,7 @@ enum Constants {
 
     enum Policy {
 
-        static let maximumStation: Int = 8
+        static let maximumStation: Int = 15
         static let favoriteMaximum: Int = 20
 
     }

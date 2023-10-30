@@ -65,7 +65,11 @@ final class RecentStationView<T: StationTarget>: UIView {
 
         emptyLabel.isHidden = !data.isEmpty
 
-        dataSource.apply(snapshot, animatingDifferences: true)
+        dataSource.apply(snapshot, animatingDifferences: false) { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [self] in
+                self?.tableView.setContentOffset(.init(x: 0, y: 0), animated: true)
+            }
+        }
     }
 }
 

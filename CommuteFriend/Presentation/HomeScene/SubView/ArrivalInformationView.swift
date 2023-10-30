@@ -19,7 +19,7 @@ final class ArrivalInformationView: UIView {
 
     private lazy var currentTimeLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 22.0, weight: .bold)
+        label.font = .systemFont(ofSize: 20.0, weight: .bold)
         label.textColor = .systemRed
         label.text = " "
         return label
