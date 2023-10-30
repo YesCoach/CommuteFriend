@@ -29,9 +29,9 @@ struct ArrivalWidgetLiveActivityView: View {
                         )
                     Text("\(context.state.stationName)")
                         .foregroundColor(.white)
-                        .font(.system(size: 24.0, weight: .semibold))
+                        .font(.system(size: 22.0, weight: .semibold))
                         .lineLimit(1)
-                    Spacer(minLength: 5.0)
+                    Spacer(minLength: 2.0)
                     Text("\(context.state.nextStation) 방면")
                         .foregroundColor(.white)
                     Spacer().frame(width: 10)
@@ -39,19 +39,19 @@ struct ArrivalWidgetLiveActivityView: View {
                 HStack {
                     Spacer()
                     Text("도착까지 ")
-                        .font(.system(size: 26.0, weight: .semibold))
+                        .font(.system(size: 22.0, weight: .semibold))
                         .foregroundColor(.white)
                     Text(timerInterval: context.state.timer, countsDown: true)
-                        .multilineTextAlignment(.leading)
+                        .multilineTextAlignment(.center)
                         .monospacedDigit()
-                        .font(.system(size: 40, weight: .semibold))
+                        .font(.system(size: 30, weight: .semibold))
                         .foregroundColor(Color(uiColor: .systemGreen) .opacity(0.8))
-                        .frame(width: 130)
+                        .frame(width: 100)
                     Spacer()
                 }
                 Spacer(minLength: 5)
             }
-            .background(.black.opacity(0.8))
+            .background(.black.opacity(0.6))
         } else {
             VStack(spacing: 10) {
                 Spacer(minLength: 5)
@@ -66,9 +66,9 @@ struct ArrivalWidgetLiveActivityView: View {
                         )
                     Text("\(context.state.stationName)")
                         .foregroundColor(.white)
-                        .font(.system(size: 24.0, weight: .semibold))
+                        .font(.system(size: 22.0, weight: .semibold))
                         .lineLimit(1)
-                    Spacer(minLength: 5.0)
+                    Spacer(minLength: 2.0)
                     Text("\(context.state.nextStation) 방면")
                         .foregroundColor(.white)
                     Spacer().frame(width: 10)
@@ -76,19 +76,19 @@ struct ArrivalWidgetLiveActivityView: View {
                 HStack {
                     Spacer()
                     Text("도착까지 ")
-                        .font(.system(size: 26.0, weight: .semibold))
+                        .font(.system(size: 22.0, weight: .semibold))
                         .foregroundColor(.white)
                     Text(timerInterval: context.state.timer, countsDown: true)
-                        .multilineTextAlignment(.leading)
+                        .multilineTextAlignment(.center)
                         .monospacedDigit()
-                        .font(.system(size: 40, weight: .semibold))
+                        .font(.system(size: 30, weight: .semibold))
                         .foregroundColor(Color(uiColor: .systemGreen) .opacity(0.8))
-                        .frame(width: 120)
+                        .frame(width: 100)
                     Spacer()
                 }
                 Spacer(minLength: 5)
             }
-            .background(.black.opacity(0.8))
+            .background(.black.opacity(0.4))
         }
     }
 }
