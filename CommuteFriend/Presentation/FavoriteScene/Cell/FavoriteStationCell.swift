@@ -35,6 +35,7 @@ final class FavoriteStationCell: BaseTableViewCell {
             action: #selector(didAlarmButtonTouched(_:)),
             for: .touchUpInside
         )
+        button.tintColor = .label
         return button
     }()
 

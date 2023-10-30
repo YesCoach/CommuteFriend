@@ -16,12 +16,14 @@ final class SearchHistoryHeaderView: UITableViewHeaderFooterView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "최근 검색"
+        label.font = .systemFont(ofSize: 15.0, weight: .semibold)
         return label
     }()
 
     private lazy var deleteButton: UIButton = {
         let button = UIButton()
         button.setTitle("전체 삭제", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
         button.setTitleColor(.systemGray, for: .normal)
         button.addTarget(self, action: #selector(didDeleteButtonTouched), for: .touchUpInside)
         return button
@@ -50,7 +52,8 @@ private extension SearchHistoryHeaderView {
         }
 
         titleLabel.snp.makeConstraints {
-            $0.top.leading.bottom.equalToSuperview().inset(10)
+            $0.top.equalToSuperview()
+            $0.leading.bottom.equalToSuperview().inset(10)
         }
         deleteButton.snp.makeConstraints {
             $0.centerY.equalTo(titleLabel)

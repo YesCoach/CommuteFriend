@@ -19,12 +19,14 @@ final class HomeArrivalView: UIView {
     private lazy var stationLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16.0, weight: .bold)
+        label.text = " "
         return label
     }()
 
     private lazy var destinationLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14.0, weight: .bold)
+        label.text = " "
         return label
     }()
 
@@ -37,7 +39,6 @@ final class HomeArrivalView: UIView {
         let view = ArrivalInformationView { [weak self] in
             guard let self else { return }
             viewModel.refreshCurrentStationTarget()
-//            progressingView.animationOn()
         }
         return view
     }()
@@ -50,7 +51,7 @@ final class HomeArrivalView: UIView {
         case .bus:
             imageView.image = .init(systemName: "train.side.front.car")
         }
-        imageView.tintColor = .purple
+        imageView.tintColor = .systemMint
         return imageView
     }()
 

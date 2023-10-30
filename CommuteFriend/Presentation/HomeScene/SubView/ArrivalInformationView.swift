@@ -27,12 +27,14 @@ final class ArrivalInformationView: UIView {
 
     private lazy var nextLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 18.0, weight: .semibold)
         label.text = " "
         return label
     }()
 
     private lazy var nextDestinationLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 18.0, weight: .semibold)
         label.text = " "
         return label
     }()
@@ -62,6 +64,7 @@ final class ArrivalInformationView: UIView {
         return stackView
     }()
 
+    // TODO: 개선필요, 미사용
     private lazy var refreshButtonView: LottieAnimationView = {
         let view = LottieAnimationView.init(name: "refreshLottie")
         view.contentMode = .scaleAspectFit
@@ -83,7 +86,6 @@ final class ArrivalInformationView: UIView {
     }()
 
     @objc func didRefreshButtonTouched(_ sender: UITapGestureRecognizer) {
-        // todo: - refresh
         refreshButtonView.play()
         refreshButtonTouched()
     }
