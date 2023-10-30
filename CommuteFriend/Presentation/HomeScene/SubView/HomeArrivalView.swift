@@ -19,12 +19,14 @@ final class HomeArrivalView: UIView {
     private lazy var stationLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16.0, weight: .bold)
+        label.text = " "
         return label
     }()
 
     private lazy var destinationLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14.0, weight: .bold)
+        label.text = " "
         return label
     }()
 
@@ -37,9 +39,20 @@ final class HomeArrivalView: UIView {
         let view = ArrivalInformationView { [weak self] in
             guard let self else { return }
             viewModel.refreshCurrentStationTarget()
-            progressingView.animationOn()
         }
         return view
+    }()
+
+    private lazy var commuteImageView: UIImageView = {
+        let imageView = UIImageView()
+        switch transportationType {
+        case .subway:
+            imageView.image = .init(systemName: "train.side.front.car")
+        case .bus:
+            imageView.image = .init(systemName: "train.side.front.car")
+        }
+        imageView.tintColor = .systemMint
+        return imageView
     }()
 
     private var viewModel: HomeArrivalViewModel
@@ -94,7 +107,32 @@ final class HomeArrivalView: UIView {
 
         arrivalInformationView.configure(wtih: arrivalResponse)
         progressingView.configure(with: arrivalResponse)
+        commuteImageView.tintColor = UIColor(
+            named: arrivalResponse.stationArrivalTarget.lineColorName
+        )
         attachTimer()
+    }
+
+    func animationOn() {
+        layoutIfNeeded()
+        commuteImageView.frame = .init(
+            x: -50, y: progressingView.frame.midY - 25, width: 50, height: 25
+        )
+        UIView.animate(
+            withDuration: 7.0,
+            delay: 0,
+            options: [.repeat, .curveLinear]
+        ) { [weak self] in
+            guard let self else { return }
+            print(Thread.isMainThread)
+            commuteImageView.frame.origin.x = frame.size.width
+            print("animation On")
+        } completion: { bool in
+            print("completion Block")
+            print(Thread.isMainThread)
+            self.commuteImageView.removeFromSuperview()
+        }
+        addSubview(commuteImageView)
     }
 
 }
@@ -140,7 +178,7 @@ private extension HomeArrivalView {
         progressingView.snp.makeConstraints {
             $0.top.equalTo(routeIconButton.snp.bottom).offset(10)
             $0.horizontalEdges.equalToSuperview()
-            $0.height.equalTo(70)
+            $0.height.equalTo(60)
         }
 
         arrivalInformationView.snp.makeConstraints {
@@ -165,7 +203,7 @@ private extension HomeArrivalView {
             switch stationArrivalResponse.stationArrivalTarget {
             case .subway(let target):
                 let lineList = [
-                    SubwayLine.airport, .central, .uiSinseol, .gyeongGang, .gyeongchun,
+                    SubwayLine.airport, .central, .gyeongGang, .gyeongchun,
                     .gyeonguiCentral, .seohae, .shinBundang, .suinBundang
                 ]
                 if lineList.contains(target.lineNumber) {
@@ -213,6 +251,7 @@ private extension HomeArrivalView {
                     if updateFlag {
                         DispatchQueue.global().asyncAfter(deadline: .now() + 10.0) { [weak self] in
                             guard let self else { return }
+                            // 현재 타깃의 도착정보 받아오기
                             viewModel.refreshCurrentStationTarget()
                             updateFlag = true
                         }

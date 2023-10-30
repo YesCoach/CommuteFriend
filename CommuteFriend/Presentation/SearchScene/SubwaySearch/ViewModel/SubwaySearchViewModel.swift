@@ -42,10 +42,6 @@ final class DefaultSubwaySearchViewModel: SubwaySearchViewModel {
         self.subwayRepository = subwayRepository
     }
 
-    deinit {
-        print("🗑️: \(String(describing: type(of: self))) deinit!")
-    }
-
     // MARK: - SubwaySearchViewModelOutput
 
     let searchResult: BehaviorSubject<[SubwayStation]> = BehaviorSubject(value: [])

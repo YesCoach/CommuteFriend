@@ -41,8 +41,8 @@ struct ArrivalWidgetLiveActivity: Widget {
                 DynamicIslandExpandedRegion(.bottom) {
                     VStack() {
                         Spacer(minLength: 5)
-                        HStack(spacing: 5) {
-                            Spacer().frame(width: 15)
+                        HStack(alignment: .bottom, spacing: 5) {
+                            Spacer().frame(width: 5)
                             Button("\(context.state.stationLine)") { }
                                 .buttonStyle(
                                     InsetRoundButton(
@@ -52,26 +52,28 @@ struct ArrivalWidgetLiveActivity: Widget {
                                 )
                             Text("\(context.state.stationName)")
                                 .foregroundColor(.white)
-                                .font(.system(size: 24.0, weight: .bold))
+                                .font(.system(size: 22.0, weight: .bold))
+                            Spacer(minLength: 2.0)
                             Text("\(context.state.nextStation) 방면")
                                 .foregroundColor(.white)
-                            Spacer()
+                            Spacer().frame(width: 5)
                         }
                         HStack(spacing: 5.0) {
                             Spacer()
                             Text("도착까지 ")
-                                .font(.system(size: 30, weight: .semibold))
+                                .font(.system(size: 22.0, weight: .semibold))
                                 .foregroundColor(.white)
                             Text(timerInterval: context.state.timer, countsDown: true)
                                 .multilineTextAlignment(.center)
                                 .monospacedDigit()
-                                .font(.system(size: 44, weight: .semibold))
+                                .font(.system(size: 30, weight: .semibold))
                                 .foregroundColor(Color(uiColor: .systemGreen) .opacity(0.8))
+                                .frame(width: 100)
                             Spacer()
                         }
                         Spacer(minLength: 5)
                     }
-                    .background(.black.opacity(0.8))
+                    .background(.black.opacity(0.4))
 
                 }
             } compactLeading: {
@@ -90,7 +92,7 @@ struct ArrivalWidgetLiveActivity: Widget {
                 Text(timerInterval: context.state.timer, countsDown: true)
                     .monospacedDigit()
                     .frame(width: 50)
-                    .font(.system(size: 12.7, weight: .semibold))
+                    .font(.system(size: 12.0, weight: .semibold))
                     .foregroundColor(.mint)
             } minimal: {
                 Image(uiImage: .init(systemName: "tram.fill") ?? .add)

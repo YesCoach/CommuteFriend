@@ -38,8 +38,9 @@ extension SubwayStationArrivalRepository {
                     .sorted { $0.ordkey < $1.ordkey }
                 if arrivalList.count >= 2 {
                     completion(.success(Array(arrivalList[0..<2])))
+                } else {
+                    completion(.success(arrivalList))
                 }
-                completion(.success(arrivalList))
             case .failure(let error):
                 debugPrint(error)
                 completion(.failure(error))

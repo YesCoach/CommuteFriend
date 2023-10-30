@@ -16,6 +16,7 @@ final class SubwaySearchResultCell: BaseTableViewCell {
 
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 14.0, weight: .semibold)
         return label
     }()
 

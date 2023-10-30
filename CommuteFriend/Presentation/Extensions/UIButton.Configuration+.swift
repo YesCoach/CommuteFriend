@@ -17,7 +17,7 @@ extension UIButton.Configuration {
         configuration.baseForegroundColor = .white
         configuration.baseBackgroundColor = backgroundColor
         configuration.cornerStyle = .capsule
-//        configuration.contentInsets = .init(top: 5, leading: 10, bottom: 5, trailing: 10)
+        configuration.buttonSize = .mini
 
         return configuration
     }

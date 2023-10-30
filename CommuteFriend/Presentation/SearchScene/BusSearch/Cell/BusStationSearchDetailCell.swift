@@ -9,9 +9,23 @@ import UIKit
 
 final class BusStationSearchDetailCell: BaseCollectionViewCell {
 
-    private lazy var nameLabel = UILabel()
-    private lazy var routeLabel = UILabel()
-    private lazy var backView = UIView()
+    private lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14.0, weight: .semibold)
+        return label
+    }()
+
+    private lazy var routeLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14.0, weight: .semibold)
+        return label
+    }()
+    
+    private lazy var backView: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14.0, weight: .semibold)
+        return label
+    }()
 
     private var busStationArrival: BusArrival? {
         didSet {

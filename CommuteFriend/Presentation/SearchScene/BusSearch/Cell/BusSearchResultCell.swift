@@ -9,9 +9,23 @@ import UIKit
 
 final class BusSearchResultCell: BaseTableViewCell {
 
-    private lazy var typeLabel = UILabel()
-    private lazy var nameLabel = UILabel()
-    private lazy var routeLabel = UILabel()
+    private lazy var typeLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14.0, weight: .semibold)
+        return label
+    }()
+
+    private lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14.0, weight: .semibold)
+        return label
+    }()
+    
+    private lazy var routeLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14.0, weight: .semibold)
+        return label
+    }()
 
     override func prepareForReuse() {
         super.prepareForReuse()

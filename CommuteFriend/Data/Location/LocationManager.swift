@@ -152,7 +152,7 @@ extension LocationManager: CLLocationManagerDelegate {
         case .notDetermined:
             manager.requestAlwaysAuthorization()
         case .authorizedWhenInUse, .authorizedAlways:
-            manager.startUpdatingLocation()
+            print("권한허용")
         case .denied, .restricted:
             print("권한없음")
             manager.stopUpdatingLocation()

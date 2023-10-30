@@ -36,10 +36,6 @@ final class BusSearchResultViewController: BaseViewController {
 
     private var dataSource: DataSourceType?
 
-    deinit {
-        deinitPrint()
-    }
-
     // MARK: - LifeCycle
 
     override func viewDidLoad() {

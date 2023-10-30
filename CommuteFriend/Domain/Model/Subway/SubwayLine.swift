@@ -53,7 +53,7 @@ enum SubwayLine: String {
         case .gyeongGang:
             return "경강선"
         case .uiSinseol:
-            return "우이신설경전철"
+            return "우이신설"
         case .seohae:
             return "서해선"
 

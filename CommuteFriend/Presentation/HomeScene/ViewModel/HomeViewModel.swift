@@ -10,6 +10,8 @@ import RxSwift
 import RxRelay
 import ActivityKit
 
+// MARK: - Input
+
 protocol HomeViewModelInput {
     func viewWillAppear()
     func removeRecentSearchItem(with subwayTarget: SubwayTarget)
@@ -17,10 +19,14 @@ protocol HomeViewModelInput {
     func updatePriorityStationTarget(with subwaTargetID: String)
 }
 
+// MARK: - Output
+
 protocol HomeViewModelOutput {
     var recentSubwayStationList: BehaviorSubject<[SubwayTarget]> { get set }
     var currentSubwayStationTarget: BehaviorSubject<SubwayTarget?> { get set }
     var currentSubwayStationArrival: PublishSubject<StationArrivalResponse> { get set }
+
+    var isNowFetching: BehaviorRelay<Bool> { get set }
 }
 
 protocol HomeArrivalViewModel {
@@ -35,6 +41,8 @@ final class DefaultHomeViewModel: HomeViewModel {
     private let subwayStationArrivalRepository: SubwayStationArrivalRepository
     private let disposeBag = DisposeBag()
     private let liveActivityManager = ArrivalWidgetManager.shared
+
+    // MARK: - DI
 
     init(
         localSubwayRepository: LocalSubwayRepository,
@@ -51,7 +59,10 @@ final class DefaultHomeViewModel: HomeViewModel {
     var currentSubwayStationTarget: BehaviorSubject<SubwayTarget?> = BehaviorSubject(value: nil)
     var currentSubwayStationArrival: PublishSubject<StationArrivalResponse> = PublishSubject()
 
+    var isNowFetching: BehaviorRelay<Bool> = BehaviorRelay(value: false)
+
     private func bindData() {
+        // 현재 역을 받아오면 도착정보를 패치
         currentSubwayStationTarget
             .bind(with: self) { object, target in
                 if let target {
@@ -88,6 +99,7 @@ extension DefaultHomeViewModel {
         }
     }
 
+    // 현재 역의 도착정보 새로고침
     func refreshCurrentStationTarget() {
         if let subwayTarget = try? currentSubwayStationTarget.value() {
             fetchStationArrivalData(with: subwayTarget)
@@ -123,9 +135,7 @@ private extension DefaultHomeViewModel {
                     if list.isEmpty == false {
                         onLiveActivity(with: arrivalData)
                     } else {
-                        Task { [weak self] in
-                            self?.endLiveActivity()
-                        }
+                        endLiveActivity()
                     }
                 case .failure(let error):
                     debugPrint(error)
@@ -169,7 +179,6 @@ private extension DefaultHomeViewModel {
                 type: .subway
             )
         } else {
-            // 액티비티를 종료
             endLiveActivity()
         }
     }

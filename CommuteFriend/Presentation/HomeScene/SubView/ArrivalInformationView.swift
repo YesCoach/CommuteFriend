@@ -13,6 +13,7 @@ final class ArrivalInformationView: UIView {
     private lazy var currentDestinationLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20.0, weight: .bold)
+        label.text = " "
         return label
     }()
 
@@ -20,16 +21,21 @@ final class ArrivalInformationView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 22.0, weight: .bold)
         label.textColor = .systemRed
+        label.text = " "
         return label
     }()
 
     private lazy var nextLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 18.0, weight: .semibold)
+        label.text = " "
         return label
     }()
 
     private lazy var nextDestinationLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 18.0, weight: .semibold)
+        label.text = " "
         return label
     }()
 
@@ -37,6 +43,7 @@ final class ArrivalInformationView: UIView {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.textColor = .systemRed
+        label.text = " "
         return label
     }()
 
@@ -57,6 +64,7 @@ final class ArrivalInformationView: UIView {
         return stackView
     }()
 
+    // TODO: 개선필요, 미사용
     private lazy var refreshButtonView: LottieAnimationView = {
         let view = LottieAnimationView.init(name: "refreshLottie")
         view.contentMode = .scaleAspectFit
@@ -78,7 +86,6 @@ final class ArrivalInformationView: UIView {
     }()
 
     @objc func didRefreshButtonTouched(_ sender: UITapGestureRecognizer) {
-        // todo: - refresh
         refreshButtonView.play()
         refreshButtonTouched()
     }
@@ -114,7 +121,7 @@ private extension ArrivalInformationView {
 
     func configureLayout() {
         [
-            currentStackView, nextStackView, refreshButtonView
+            currentStackView, nextStackView
         ].forEach { addSubview($0) }
 
         [
@@ -136,12 +143,6 @@ private extension ArrivalInformationView {
             $0.top.equalTo(currentStackView.snp.bottom)
             $0.bottom.centerX.equalToSuperview()
             $0.horizontalEdges.greaterThanOrEqualTo(10).priority(.low)
-        }
-
-        refreshButtonView.snp.makeConstraints {
-            $0.bottom.equalToSuperview().inset(10)
-            $0.trailing.equalToSuperview().inset(20)
-            $0.size.equalTo(30)
         }
     }
 

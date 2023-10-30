@@ -116,6 +116,7 @@
 		898631AA2AE4083F00C3408A /* ArrivalWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898631902AE3F2FB00C3408A /* ArrivalWidgetLiveActivity.swift */; };
 		898631AB2AE4084100C3408A /* ArrivalWidgetLiveActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898631A02AE3F6A300C3408A /* ArrivalWidgetLiveActivityView.swift */; };
 		898631AC2AE4084300C3408A /* ArrivalWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898631922AE3F2FB00C3408A /* ArrivalWidget.swift */; };
+		8989D0C02AEFC27F00C5AA41 /* NetworkCheckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8989D0BF2AEFC27F00C5AA41 /* NetworkCheckManager.swift */; };
 		898A57FE2ADEC4C3000F040F /* BusResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A57FD2ADEC4C3000F040F /* BusResponseDTO+Mapping.swift */; };
 		898A58002ADEC50F000F040F /* BusStationByRouteResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A57FF2ADEC50F000F040F /* BusStationByRouteResponseDTO+Mapping.swift */; };
 		898A58022ADEC589000F040F /* BusRouteByStationResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58012ADEC589000F040F /* BusRouteByStationResponseDTO+Mapping.swift */; };
@@ -289,6 +290,7 @@
 		898631972AE3F2FD00C3408A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		898631A02AE3F6A300C3408A /* ArrivalWidgetLiveActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalWidgetLiveActivityView.swift; sourceTree = "<group>"; };
 		898631A32AE3F76800C3408A /* ArrlvaiWidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrlvaiWidgetManager.swift; sourceTree = "<group>"; };
+		8989D0BF2AEFC27F00C5AA41 /* NetworkCheckManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCheckManager.swift; sourceTree = "<group>"; };
 		898A57FD2ADEC4C3000F040F /* BusResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BusResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		898A57FF2ADEC50F000F040F /* BusStationByRouteResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BusStationByRouteResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		898A58012ADEC589000F040F /* BusRouteByStationResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BusRouteByStationResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
@@ -695,6 +697,7 @@
 				894266B62AD6BC0900C44C04 /* Domain */,
 				894266882AD67A8600C44C04 /* Presentation */,
 				89023EA92AD6CAF7009FFCBD /* Data */,
+				8989D0BC2AEFC25B00C5AA41 /* InfraStructure */,
 				89023F0A2AD7D308009FFCBD /* Resource */,
 				894266562AD6770700C44C04 /* Assets.xcassets */,
 				894266582AD6770700C44C04 /* LaunchScreen.storyboard */,
@@ -867,6 +870,22 @@
 				898631972AE3F2FD00C3408A /* Info.plist */,
 			);
 			path = ArrivalWidget;
+			sourceTree = "<group>";
+		};
+		8989D0BC2AEFC25B00C5AA41 /* InfraStructure */ = {
+			isa = PBXGroup;
+			children = (
+				8989D0BD2AEFC26A00C5AA41 /* NetworkCheck */,
+			);
+			path = InfraStructure;
+			sourceTree = "<group>";
+		};
+		8989D0BD2AEFC26A00C5AA41 /* NetworkCheck */ = {
+			isa = PBXGroup;
+			children = (
+				8989D0BF2AEFC27F00C5AA41 /* NetworkCheckManager.swift */,
+			);
+			path = NetworkCheck;
 			sourceTree = "<group>";
 		};
 		898A581F2ADFC4B7000F040F /* Location */ = {
@@ -1190,6 +1209,7 @@
 				89023EBA2AD6D109009FFCBD /* SubwayStation.swift in Sources */,
 				898A580C2ADEE5D6000F040F /* BusStationSearchDetailViewController.swift in Sources */,
 				89E4FE5A2AE6068300F66B9A /* UIAlertController+.swift in Sources */,
+				8989D0C02AEFC27F00C5AA41 /* NetworkCheckManager.swift in Sources */,
 				89023EEE2AD71882009FFCBD /* SubwaySearchResultViewController.swift in Sources */,
 				89023EB82AD6D109009FFCBD /* UpDownDirection.swift in Sources */,
 				89023F112AD7D5CA009FFCBD /* LocalSubwayRepository.swift in Sources */,
@@ -1436,7 +1456,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 67D46DJNPH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CommuteFriend/Info.plist;
@@ -1471,7 +1491,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 67D46DJNPH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CommuteFriend/Info.plist;
