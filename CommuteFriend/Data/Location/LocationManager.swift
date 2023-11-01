@@ -25,7 +25,7 @@ final class LocationManager: NSObject {
         locationManager.delegate = self
 
         // 백그라운드에서 위치 업데이트를 위한 설정
-        locationManager.allowsBackgroundLocationUpdates = true
+//        locationManager.allowsBackgroundLocationUpdates = true
         // 백그라운드에서 위치 서비스를 사용중임을 나타내기 위한 설정
         locationManager.showsBackgroundLocationIndicator = true
         locationManager.pausesLocationUpdatesAutomatically = false
