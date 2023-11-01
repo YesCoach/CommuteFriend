@@ -2,6 +2,9 @@
 
 ![출퇴근메이트 001](https://github.com/YesCoach/CommuteFriend/assets/59643667/7df899ce-4c9f-40f0-88d8-2f294168c6c4)
 
+### 서비스 이력
+- 앱스토어 출시(23.11.01) [제품 링크 바로가기](https://apps.apple.com/kr/app/%EC%B6%9C%ED%87%B4%EA%B7%BC%EB%A9%94%EC%9D%B4%ED%8A%B8-%EB%B9%A0%EB%A5%B4%EA%B2%8C-%ED%99%95%EC%9D%B8%ED%95%98%EB%8A%94-%EB%8C%80%EC%A4%91%EA%B5%90%ED%86%B5-%EB%8F%84%EC%B0%A9%EC%A0%95%EB%B3%B4/id6470272313)
+
 ### 한 줄 소개
 
 서울시 지하철과 버스의 실시간 도착 정보를 확인 할 수 있는 서비스
