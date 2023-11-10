@@ -11,6 +11,7 @@ import RxDataSources
 protocol SettingItem {
     var description: String { get }
     var accessory: String { get }
+    var url: String? { get }
 }
 
 enum Setting: SectionModelType, CaseIterable {
@@ -71,6 +72,20 @@ enum Setting: SectionModelType, CaseIterable {
             case .dataSourceInfo: return "📈"
             }
         }
+
+        var url: String? {
+            switch self {
+            case .appVersion: return nil
+            case .appInfo:
+                return "https://yescoach.notion.site/8dafb60f0f4548d6bff3f4405409091f?pvs=4"
+            case .privacyInfo:
+                return "https://yescoach.notion.site/f8f9250a0eb14a86a9ee513c7ee84692?pvs=4"
+            case .openSourceLicense:
+                return "https://yescoach.notion.site/03f094b7dada422a851bea3821f5524f?pvs=4"
+            case .dataSourceInfo:
+                return "https://yescoach.notion.site/92987d2042504a76b4688812faee9d00?pvs=4"
+            }
+        }
     }
 
     // MARK: - 기타
@@ -91,6 +106,10 @@ enum Setting: SectionModelType, CaseIterable {
             case .inquiry: return "📨"
             case .share: return "🧸"
             }
+        }
+
+        var url: String? {
+            return nil
         }
     }
 

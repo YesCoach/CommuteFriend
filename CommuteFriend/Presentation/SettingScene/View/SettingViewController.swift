@@ -96,8 +96,15 @@ final class SettingViewController: BaseViewController {
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         output.selectedItem
+            .observe(on: MainScheduler.instance)
             .bind(with: self) { owner, item in
                 print(item.description)
+                if let _ = item.url {
+                    let viewController = SettingModalWebViewController(
+                        viewModel: .init(settingItem: item)
+                    )
+                    owner.present(viewController, animated: true)
+                }
             }
             .disposed(by: disposeBag)
     }
