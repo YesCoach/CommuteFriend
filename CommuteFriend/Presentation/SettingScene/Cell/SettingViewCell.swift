@@ -32,6 +32,11 @@ final class SettingViewCell: BaseTableViewCell {
 
     // MARK: - Methods
 
+    override func configureUI() {
+        super.configureUI()
+        selectionStyle = .none
+    }
+
     override func configureLayout() {
         super.configureLayout()
 

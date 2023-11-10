@@ -13,7 +13,7 @@ import RxDataSources
 final class SettingViewController: BaseViewController {
 
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .grouped)
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
         tableView.register(
             SettingViewCell.self,
             forCellReuseIdentifier: SettingViewCell.reuseIdentifier
@@ -57,23 +57,9 @@ final class SettingViewController: BaseViewController {
         bind()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let subwayTrain = UIImageView(image: .init(systemName: "train.side.front.car"))
-        subwayTrain.frame = CGRect(x: -100, y: 100, width: 50, height: 25)
-        subwayTrain.tintColor = .systemRed
-        view.addSubview(subwayTrain)
-
-        UIView.animate(withDuration: 3.0, delay: 0, options: .repeat) {
-            subwayTrain.frame.origin.x = self.view.frame.size.width
-        } completion: { bool in
-            print("Ani Complet")
-        }
-    }
-
     override func configureUI() {
         super.configureUI()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .mainBackgroundColor
     }
 
     override func configureLayout() {
@@ -85,6 +71,13 @@ final class SettingViewController: BaseViewController {
         tableView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+    }
+
+    override func configureNavigationItem() {
+        super.configureNavigationItem()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .automatic
+        navigationItem.title = "설정"
     }
 
     // MARK: - Methods

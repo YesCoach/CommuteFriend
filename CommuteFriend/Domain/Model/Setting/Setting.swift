@@ -54,7 +54,7 @@ enum Setting: SectionModelType, CaseIterable {
 
         var description: String {
             switch self {
-            case .appVersion: return "버전 \(Setting.currentBuildNumber())"
+            case .appVersion: return "버전 \(Setting.currentAppVersion())"
             case .appInfo: return "공지사항"
             case .privacyInfo: return "개인정보 처리방침"
             case .openSourceLicense: return "오픈소스 라이선스"
@@ -98,13 +98,12 @@ enum Setting: SectionModelType, CaseIterable {
 
 extension Setting {
 
-    static func currentBuildNumber() -> String {
-      if let info: [String: Any] = Bundle.main.infoDictionary,
-          let buildNumber: String
-            = info["CFBundleVersion"] as? String {
-            return buildNumber
-      }
-      return "nil"
+    static func currentAppVersion() -> String {
+        if let info: [String: Any] = Bundle.main.infoDictionary,
+           let currentVersion: String = info["CFBundleShortVersionString"] as? String {
+            return currentVersion
+        }
+        return "nil"
     }
 
 }
