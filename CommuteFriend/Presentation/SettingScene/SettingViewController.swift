@@ -25,25 +25,6 @@ final class SettingViewController: BaseViewController {
         } completion: { bool in
             print("Ani Complet")
         }
-
-//        let subwayTrain = CALayer()
-//        let animation = CABasicAnimation(keyPath: "position.x")
-//        animation.fromValue = -100
-//        animation.toValue = view.frame.size.width + 100
-//        animation.duration = 10.0
-//        animation.timingFunction = CAMediaTimingFunction(name: .linear)
-//        animation.isRemovedOnCompletion = false
-//        animation.repeatCount = 10
-//        animation.fillMode = .forwards
-
-//        UIView.animate(withDuration: 5.0, ,animations: {
-//            subwayTrain.frame.origin.x = self.view.frame.size.width
-//        }) { (_) in
-//            subwayTrain.removeFromSuperview() // Remove the train when the animation is complete
-//        }
-
-//        subwayTrain.add(animation, forKey: "subwayAnimation")
-
     }
 
     override func configureUI() {
