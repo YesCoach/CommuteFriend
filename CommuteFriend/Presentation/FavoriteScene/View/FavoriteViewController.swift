@@ -203,6 +203,7 @@ final class FavoriteViewController: BaseViewController {
     @objc func updateFavoriteItemList(_ sender: NSNotification) {
         viewModel.viewWillAppear()
     }
+
 }
 
 // MARK: - Private Methods
@@ -270,4 +271,5 @@ extension FavoriteViewController: UITableViewDelegate {
         )
         return UISwipeActionsConfiguration(actions: [action])
     }
+
 }
