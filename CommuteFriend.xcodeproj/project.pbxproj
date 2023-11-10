@@ -103,6 +103,10 @@
 		894266B92AD6BC2600C44C04 /* TransportationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266B82AD6BC2600C44C04 /* TransportationType.swift */; };
 		89835A1B2AFE1456004BD2A8 /* SettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89835A1A2AFE1456004BD2A8 /* SettingViewCell.swift */; };
 		89835A1E2AFE1634004BD2A8 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89835A1D2AFE1634004BD2A8 /* Setting.swift */; };
+		89835A212AFE1BAA004BD2A8 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89835A202AFE1BAA004BD2A8 /* SettingViewModel.swift */; };
+		89835A232AFE1BCF004BD2A8 /* BaseInOutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89835A222AFE1BCF004BD2A8 /* BaseInOutViewModel.swift */; };
+		89835A262AFE3B1F004BD2A8 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = 89835A252AFE3B1F004BD2A8 /* Differentiator */; };
+		89835A282AFE3B1F004BD2A8 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 89835A272AFE3B1F004BD2A8 /* RxDataSources */; };
 		8986318B2AE3F2FB00C3408A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F650BA2AE37700001E23F7 /* WidgetKit.framework */; };
 		8986318C2AE3F2FB00C3408A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F650BC2AE37701001E23F7 /* SwiftUI.framework */; };
 		8986318F2AE3F2FB00C3408A /* ArrivalWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8986318E2AE3F2FB00C3408A /* ArrivalWidgetBundle.swift */; };
@@ -285,6 +289,8 @@
 		894266B82AD6BC2600C44C04 /* TransportationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationType.swift; sourceTree = "<group>"; };
 		89835A1A2AFE1456004BD2A8 /* SettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewCell.swift; sourceTree = "<group>"; };
 		89835A1D2AFE1634004BD2A8 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		89835A202AFE1BAA004BD2A8 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		89835A222AFE1BCF004BD2A8 /* BaseInOutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInOutViewModel.swift; sourceTree = "<group>"; };
 		8986318A2AE3F2FB00C3408A /* ArrivalWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ArrivalWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8986318E2AE3F2FB00C3408A /* ArrivalWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalWidgetBundle.swift; sourceTree = "<group>"; };
 		898631902AE3F2FB00C3408A /* ArrivalWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalWidgetLiveActivity.swift; sourceTree = "<group>"; };
@@ -338,10 +344,12 @@
 				89023F552ADB2459009FFCBD /* Realm in Frameworks */,
 				89023ED62AD6F872009FFCBD /* RxCocoa in Frameworks */,
 				89023F572ADB2459009FFCBD /* RealmSwift in Frameworks */,
+				89835A282AFE3B1F004BD2A8 /* RxDataSources in Frameworks */,
 				894266942AD67B2900C44C04 /* SnapKit in Frameworks */,
 				89023EDA2AD6F872009FFCBD /* RxSwift in Frameworks */,
 				89023ED82AD6F872009FFCBD /* RxRelay in Frameworks */,
 				89023EA42AD6C9CC009FFCBD /* Alamofire in Frameworks */,
+				89835A262AFE3B1F004BD2A8 /* Differentiator in Frameworks */,
 				89F650AF2AE2AAFC001E23F7 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -770,6 +778,7 @@
 				8942668D2AD67AC600C44C04 /* BaseCollectionViewCell.swift */,
 				8942668C2AD67AC600C44C04 /* BaseTableViewCell.swift */,
 				8942668B2AD67AC600C44C04 /* BaseViewController.swift */,
+				89835A222AFE1BCF004BD2A8 /* BaseInOutViewModel.swift */,
 				8942668A2AD67AC600C44C04 /* ReusableProtocol.swift */,
 			);
 			path = Base;
@@ -886,6 +895,14 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		89835A1F2AFE1B96004BD2A8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				89835A202AFE1BAA004BD2A8 /* SettingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		8986318D2AE3F2FB00C3408A /* ArrivalWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -938,6 +955,7 @@
 			isa = PBXGroup;
 			children = (
 				89835A182AFE1434004BD2A8 /* View */,
+				89835A1F2AFE1B96004BD2A8 /* ViewModel */,
 				89835A192AFE143E004BD2A8 /* Cell */,
 			);
 			path = SettingScene;
@@ -1029,6 +1047,8 @@
 				89023F542ADB2459009FFCBD /* Realm */,
 				89023F562ADB2459009FFCBD /* RealmSwift */,
 				89F650AE2AE2AAFC001E23F7 /* Lottie */,
+				89835A252AFE3B1F004BD2A8 /* Differentiator */,
+				89835A272AFE3B1F004BD2A8 /* RxDataSources */,
 			);
 			productName = CommuteFriend;
 			productReference = 8942664A2AD6770600C44C04 /* CommuteFriend.app */;
@@ -1129,6 +1149,7 @@
 				89023ED42AD6F872009FFCBD /* XCRemoteSwiftPackageReference "RxSwift" */,
 				89023F532ADB2459009FFCBD /* XCRemoteSwiftPackageReference "realm-swift" */,
 				89F650AD2AE2AAFC001E23F7 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				89835A242AFE3B1F004BD2A8 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = 8942664B2AD6770600C44C04 /* Products */;
 			projectDirPath = "";
@@ -1202,6 +1223,7 @@
 				898631A42AE3F76800C3408A /* ArrlvaiWidgetManager.swift in Sources */,
 				898631AC2AE4084300C3408A /* ArrivalWidget.swift in Sources */,
 				898A58162ADEF752000F040F /* BusSearchResultCell.swift in Sources */,
+				89835A212AFE1BAA004BD2A8 /* SettingViewModel.swift in Sources */,
 				89EE858C2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift in Sources */,
 				894266912AD67AC600C44C04 /* BaseCollectionViewCell.swift in Sources */,
 				898631AB2AE4084100C3408A /* ArrivalWidgetLiveActivityView.swift in Sources */,
@@ -1238,6 +1260,7 @@
 				89EE85962ADE66AA0095198D /* BusHomeViewController.swift in Sources */,
 				89023EBA2AD6D109009FFCBD /* SubwayStation.swift in Sources */,
 				898A580C2ADEE5D6000F040F /* BusStationSearchDetailViewController.swift in Sources */,
+				89835A232AFE1BCF004BD2A8 /* BaseInOutViewModel.swift in Sources */,
 				89E4FE5A2AE6068300F66B9A /* UIAlertController+.swift in Sources */,
 				8989D0C02AEFC27F00C5AA41 /* NetworkCheckManager.swift in Sources */,
 				89835A1E2AFE1634004BD2A8 /* Setting.swift in Sources */,
@@ -1782,6 +1805,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		89835A242AFE3B1F004BD2A8 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 		89F650AD2AE2AAFC001E23F7 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -1827,6 +1858,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 894266922AD67B2900C44C04 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		89835A252AFE3B1F004BD2A8 /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89835A242AFE3B1F004BD2A8 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		89835A272AFE3B1F004BD2A8 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 89835A242AFE3B1F004BD2A8 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 		89F650AE2AE2AAFC001E23F7 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;

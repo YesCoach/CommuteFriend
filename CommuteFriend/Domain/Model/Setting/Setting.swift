@@ -6,43 +6,105 @@
 //
 
 import Foundation
+import RxDataSources
 
-enum Setting: CaseIterable {
+protocol SettingItem {
+    var description: String { get }
+    var accessory: String { get }
+}
+
+enum Setting: SectionModelType, CaseIterable {
+
+    init(original: Setting, items: [SettingItem]) {
+        self = original
+    }
+
+    case info
+    case others
+
+    var header: String {
+        switch self {
+        case .info: return "앱 정보"
+        case .others: return "기타"
+        }
+    }
+
+    var itemsCount: Int {
+        switch self {
+        case .info: return InfoSection.allCases.count
+        case .others: return Others.allCases.count
+        }
+    }
+
+    var items: [SettingItem] {
+        switch self {
+        case .info: return InfoSection.allCases
+        case .others: return Others.allCases
+        }
+    }
 
     // MARK: - 앱 정보
 
-    case appVersion
-    case appInfo
-    case privacyInfo
-    case openSourceLicense
-    case dataSourceInfo
+    enum InfoSection: SettingItem, CaseIterable {
+        case appVersion
+        case appInfo
+        case privacyInfo
+        case openSourceLicense
+        case dataSourceInfo
+
+        var description: String {
+            switch self {
+            case .appVersion: return "버전 \(Setting.currentBuildNumber())"
+            case .appInfo: return "공지사항"
+            case .privacyInfo: return "개인정보 처리방침"
+            case .openSourceLicense: return "오픈소스 라이선스"
+            case .dataSourceInfo: return "데이터 출처"
+            }
+        }
+
+        var accessory: String {
+            switch self {
+            case .appVersion: return ""
+            case .appInfo: return "📣"
+            case .privacyInfo: return "📝"
+            case .openSourceLicense: return "🪪"
+            case .dataSourceInfo: return "📈"
+            }
+        }
+    }
 
     // MARK: - 기타
 
-    case inquiry
-    case share
+    enum Others: SettingItem, CaseIterable {
+        case inquiry
+        case share
 
-    var description: String {
-        switch self {
-        case .appVersion: return "버전"
-        case .appInfo: return "공지사항"
-        case .privacyInfo: return "개인정보 처리방침"
-        case .openSourceLicense: return "오픈소스 라이선스"
-        case .dataSourceInfo: return "데이터 출처"
-        case .inquiry: return "문의하기"
-        case .share: return "공유하기"
+        var description: String {
+            switch self {
+            case .inquiry: return "문의하기"
+            case .share: return "공유하기"
+            }
+        }
+
+        var accessory: String {
+            switch self {
+            case .inquiry: return "📨"
+            case .share: return "🧸"
+            }
         }
     }
 
-    var accessory: String {
-        switch self {
-        case .appVersion: return ""
-        case .appInfo: return "📣"
-        case .privacyInfo: return "📝"
-        case .openSourceLicense: return "🪪"
-        case .dataSourceInfo: return "📈"
-        case .inquiry: return "📨"
-        case .share: return "🧸"
-        }
+}
+
+extension Setting {
+
+    static func currentBuildNumber() -> String {
+      if let info: [String: Any] = Bundle.main.infoDictionary,
+          let buildNumber: String
+            = info["CFBundleVersion"] as? String {
+            return buildNumber
+      }
+      return "nil"
     }
+
 }

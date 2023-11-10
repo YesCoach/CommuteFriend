@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class SettingViewCell: BaseTableViewCell {
+
+    // MARK: - View
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -26,6 +30,8 @@ final class SettingViewCell: BaseTableViewCell {
         return label
     }()
 
+    // MARK: - Methods
+
     override func configureLayout() {
         super.configureLayout()
 
@@ -42,5 +48,10 @@ final class SettingViewCell: BaseTableViewCell {
             $0.verticalEdges.equalToSuperview().inset(10.0)
             $0.trailing.equalToSuperview().inset(10.0)
         }
+    }
+
+    func configure(with item: SettingItem) {
+        titleLabel.text = item.description
+        accessoryLabel.text = item.accessory
     }
 }

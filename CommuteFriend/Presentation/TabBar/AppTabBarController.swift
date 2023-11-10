@@ -18,7 +18,7 @@ final class AppTabBarController: UITabBarController {
 
     var homeViewController = DIContainer.shared.makeHomeViewController()
     var busHomeViewController = DIContainer.shared.makeBusHomeViewController()
-    var settingViewController = SettingViewController()
+    var settingViewController = DIContainer.shared.makeSettingViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
