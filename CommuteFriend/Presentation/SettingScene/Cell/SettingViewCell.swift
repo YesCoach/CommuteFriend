@@ -20,11 +20,17 @@ final class SettingViewCell: BaseTableViewCell {
         return imageView
     }()
 
+    private lazy var accessoryLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15.0, weight: .semibold)
+        return label
+    }()
+
     override func configureLayout() {
         super.configureLayout()
 
         [
-            titleLabel, accessoryImageView
+            titleLabel, accessoryLabel
         ].forEach { contentView.addSubview($0) }
 
         titleLabel.snp.makeConstraints {
@@ -32,10 +38,9 @@ final class SettingViewCell: BaseTableViewCell {
             $0.leading.equalToSuperview().inset(10.0)
         }
 
-        accessoryImageView.snp.makeConstraints {
+        accessoryLabel.snp.makeConstraints {
             $0.verticalEdges.equalToSuperview().inset(10.0)
             $0.trailing.equalToSuperview().inset(10.0)
-            $0.width.equalTo(accessoryImageView.snp.height)
         }
     }
 }
