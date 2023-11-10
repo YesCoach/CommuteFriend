@@ -33,6 +33,11 @@ final class SettingViewController: BaseViewController {
             cell.configure(with: item)
             return cell
         }
+
+        dataSource.titleForHeaderInSection = { dataSource, index in
+          return dataSource.sectionModels[index].header
+        }
+
         return dataSource
     }()
 
