@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import MessageUI
 
 final class SettingViewController: BaseViewController {
 
@@ -99,14 +100,73 @@ final class SettingViewController: BaseViewController {
             .observe(on: MainScheduler.instance)
             .bind(with: self) { owner, item in
                 print(item.description)
-                if let _ = item.url {
+                switch item.kind {
+                case .appstore: return
+                case .webView:
                     let viewController = SettingModalWebViewController(
                         viewModel: .init(settingItem: item)
                     )
                     owner.present(viewController, animated: true)
+                case .mail: owner.presentEmail()
+                case .share: return
                 }
             }
             .disposed(by: disposeBag)
     }
 
+}
+
+// MARK: - Mail 문의하기
+
+extension SettingViewController: MFMailComposeViewControllerDelegate {
+
+    func mailComposeController(
+        _ controller: MFMailComposeViewController,
+        didFinishWith result: MFMailComposeResult,
+        error: Error?
+    ) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
+    private func presentEmail() {
+        if MFMailComposeViewController.canSendMail() {
+            let composeViewController = MFMailComposeViewController()
+            composeViewController.mailComposeDelegate = self
+
+            let bodyString = """
+                             문의하시려는 내용을 아래에 작성해주세요.
+
+                             -------------------
+
+                             Device Model : \(Setting.currentDeviceModel())
+                             Device OS : \(UIDevice.current.systemVersion)
+                             App Version : \(Setting.currentAppVersion())
+
+                             -------------------
+                             """
+
+            composeViewController.setToRecipients(["yescoach1020@gmail.com"])
+            composeViewController.setSubject("<출퇴근메이트> 문의")
+            composeViewController.setMessageBody(bodyString, isHTML: false)
+
+            self.present(composeViewController, animated: true, completion: nil)
+        } else {
+            let sendMailErrorAlert = UIAlertController(
+                title: "메일 전송 실패",
+                message: "문의를 보내려면 메일 앱이 필요해요. 앱스토에서 해당 앱을 다운로드받거나 이메일 설정을 확인하고 다시 시도해주세요.",
+                preferredStyle: .alert
+            )
+            let goAppStoreAction = UIAlertAction(title: "App Store로 이동하기", style: .default) { _ in
+                if let url = URL(string: "https://apps.apple.com/kr/app/mail/id1108187098"),
+                   UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.openURL(url)
+                }
+            }
+            let cancleAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+
+            sendMailErrorAlert.addAction(goAppStoreAction)
+            sendMailErrorAlert.addAction(cancleAction)
+            self.present(sendMailErrorAlert, animated: true, completion: nil)
+        }
+    }
 }

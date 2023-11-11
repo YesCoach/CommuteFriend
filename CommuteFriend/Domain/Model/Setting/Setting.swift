@@ -8,7 +8,15 @@
 import Foundation
 import RxDataSources
 
+enum SettingItemKind {
+    case appstore
+    case webView
+    case mail
+    case share
+}
+
 protocol SettingItem {
+    var kind: SettingItemKind { get }
     var description: String { get }
     var accessory: String { get }
     var url: String? { get }
@@ -53,6 +61,13 @@ enum Setting: SectionModelType, CaseIterable {
         case openSourceLicense
         case dataSourceInfo
 
+        var kind: SettingItemKind {
+            switch self {
+            case .appVersion: return .appstore
+            case .appInfo, .privacyInfo, .openSourceLicense, .dataSourceInfo: return .webView
+            }
+        }
+
         var description: String {
             switch self {
             case .appVersion: return "버전 \(Setting.currentAppVersion())"
@@ -94,6 +109,13 @@ enum Setting: SectionModelType, CaseIterable {
         case inquiry
         case share
 
+        var kind: SettingItemKind {
+            switch self {
+            case .inquiry: return .mail
+            case .share: return .share
+            }
+        }
+
         var description: String {
             switch self {
             case .inquiry: return "문의하기"
@@ -123,6 +145,18 @@ extension Setting {
             return currentVersion
         }
         return "nil"
+    }
+
+    static func currentDeviceModel() -> String {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let machineMirror = Mirror(reflecting: systemInfo.machine)
+        let identifier = machineMirror.children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+
+        return identifier
     }
 
 }
