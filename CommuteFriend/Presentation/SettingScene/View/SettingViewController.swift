@@ -108,7 +108,7 @@ final class SettingViewController: BaseViewController {
                     )
                     owner.present(viewController, animated: true)
                 case .mail: owner.presentEmail()
-                case .share: return
+                case .share: owner.shareAppURL()
                 }
             }
             .disposed(by: disposeBag)
@@ -168,5 +168,23 @@ extension SettingViewController: MFMailComposeViewControllerDelegate {
             sendMailErrorAlert.addAction(cancleAction)
             self.present(sendMailErrorAlert, animated: true, completion: nil)
         }
+    }
+
+}
+
+// MARK: - 앱 공유하기
+
+private extension SettingViewController {
+
+    func shareAppURL() {
+
+        let objectToShare = [NSURL(string: "http://bit.ly/commutemate")]
+
+        let activityVC = UIActivityViewController(activityItems : objectToShare, applicationActivities: nil)
+
+        // 공유하기 기능 중 제외할 기능이 있을 때 사용
+        //activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
+        activityVC.popoverPresentationController?.sourceView = self.view
+        self.present(activityVC, animated: true, completion: nil)
     }
 }
