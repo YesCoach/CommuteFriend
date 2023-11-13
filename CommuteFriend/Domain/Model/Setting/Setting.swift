@@ -55,7 +55,15 @@ enum Setting: SectionModelType, CaseIterable {
     // MARK: - 앱 정보
 
     enum InfoSection: SettingItem, CaseIterable {
-        case appVersion
+        static var allCases: [Setting.InfoSection] = [
+            .appVersion(isUpToDate: UserDefaultsManager.isAppUpToDate),
+            .appInfo,
+            .privacyInfo,
+            .openSourceLicense,
+            .dataSourceInfo
+        ]
+
+        case appVersion(isUpToDate: Bool)
         case appInfo
         case privacyInfo
         case openSourceLicense
@@ -80,7 +88,8 @@ enum Setting: SectionModelType, CaseIterable {
 
         var accessory: String {
             switch self {
-            case .appVersion: return ""
+            case .appVersion(let isUpToDate):
+                return isUpToDate ? "최신버전" : "최신버전으로 업데이트하기"
             case .appInfo: return "📣"
             case .privacyInfo: return "📝"
             case .openSourceLicense: return "🪪"
@@ -144,7 +153,15 @@ extension Setting {
            let currentVersion: String = info["CFBundleShortVersionString"] as? String {
             return currentVersion
         }
-        return "nil"
+        return ""
+    }
+
+    static func currentAppBundleID() -> String {
+        if let info: [String: Any] = Bundle.main.infoDictionary,
+           let currentBundleID: String = info["CFBundleIdentifier"] as? String {
+            return currentBundleID
+        }
+        return ""
     }
 
     static func currentDeviceModel() -> String {

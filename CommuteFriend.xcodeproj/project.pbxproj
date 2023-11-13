@@ -143,6 +143,7 @@
 		898A58212ADFC4CA000F040F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58202ADFC4CA000F040F /* LocationManager.swift */; };
 		898A58242AE25122000F040F /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58232AE25122000F040F /* UserDefaultsManager.swift */; };
 		898A58262AE2514A000F040F /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58252AE2514A000F040F /* UserDefaultsWrapper.swift */; };
+		89BFEA4D2AFF71110097D833 /* VersionCheckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFEA4C2AFF71110097D833 /* VersionCheckManager.swift */; };
 		89E4FE582AE542C100F66B9A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E4FE572AE542C100F66B9A /* SettingViewController.swift */; };
 		89E4FE5A2AE6068300F66B9A /* UIAlertController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E4FE592AE6068300F66B9A /* UIAlertController+.swift */; };
 		89EE858C2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */; };
@@ -323,6 +324,7 @@
 		898A58202ADFC4CA000F040F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		898A58232AE25122000F040F /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		898A58252AE2514A000F040F /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
+		89BFEA4C2AFF71110097D833 /* VersionCheckManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionCheckManager.swift; sourceTree = "<group>"; };
 		89E4FE572AE542C100F66B9A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		89E4FE592AE6068300F66B9A /* UIAlertController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+.swift"; sourceTree = "<group>"; };
 		89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSubwaySearchSelectionViewModel.swift; sourceTree = "<group>"; };
@@ -927,6 +929,7 @@
 		8989D0BC2AEFC25B00C5AA41 /* InfraStructure */ = {
 			isa = PBXGroup;
 			children = (
+				89BFEA4B2AFF70FE0097D833 /* VersionCheck */,
 				8989D0BD2AEFC26A00C5AA41 /* NetworkCheck */,
 			);
 			path = InfraStructure;
@@ -955,6 +958,14 @@
 				898A58252AE2514A000F040F /* UserDefaultsWrapper.swift */,
 			);
 			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		89BFEA4B2AFF70FE0097D833 /* VersionCheck */ = {
+			isa = PBXGroup;
+			children = (
+				89BFEA4C2AFF71110097D833 /* VersionCheckManager.swift */,
+			);
+			path = VersionCheck;
 			sourceTree = "<group>";
 		};
 		89E4FE562AE542AB00F66B9A /* SettingScene */ = {
@@ -1228,6 +1239,7 @@
 				89023F3C2ADB0DC9009FFCBD /* MenuSelectableView.swift in Sources */,
 				89023EEC2AD7163E009FFCBD /* DTOMapping.swift in Sources */,
 				898631A42AE3F76800C3408A /* ArrlvaiWidgetManager.swift in Sources */,
+				89BFEA4D2AFF71110097D833 /* VersionCheckManager.swift in Sources */,
 				898631AC2AE4084300C3408A /* ArrivalWidget.swift in Sources */,
 				898A58162ADEF752000F040F /* BusSearchResultCell.swift in Sources */,
 				89835A212AFE1BAA004BD2A8 /* SettingViewModel.swift in Sources */,

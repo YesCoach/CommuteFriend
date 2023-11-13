@@ -11,6 +11,7 @@ enum UserDefaultsKey: String, CaseIterable {
 
     case notificationItemType
     case notificationItemIdentifier
+    case isAppUpToDate
 
 }
 
@@ -21,6 +22,9 @@ final class UserDefaultsManager {
 
     @UserDefault(key: UserDefaultsKey.notificationItemIdentifier.rawValue, defaultValue: nil)
     static var notificationItemIdentifier: String?
+
+    @UserDefault(key: UserDefaultsKey.isAppUpToDate.rawValue, defaultValue: true)
+    static var isAppUpToDate: Bool
 
     static func removeAllValue() {
         UserDefaultsKey.allCases.forEach {

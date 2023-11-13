@@ -36,7 +36,7 @@ final class SettingViewController: BaseViewController {
         }
 
         dataSource.titleForHeaderInSection = { dataSource, index in
-          return dataSource.sectionModels[index].header
+            return dataSource.sectionModels[index].header
         }
 
         return dataSource
@@ -51,11 +51,11 @@ final class SettingViewController: BaseViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - LifeCycle
 
     override func viewDidLoad() {
@@ -101,7 +101,7 @@ final class SettingViewController: BaseViewController {
             .bind(with: self) { owner, item in
                 print(item.description)
                 switch item.kind {
-                case .appstore: return
+                case .appstore: owner.appUpdate()
                 case .webView:
                     let viewController = SettingModalWebViewController(
                         viewModel: .init(settingItem: item)
@@ -112,6 +112,23 @@ final class SettingViewController: BaseViewController {
                 }
             }
             .disposed(by: disposeBag)
+    }
+
+}
+
+// MARK: - 앱스토어 이동하기
+
+extension SettingViewController {
+
+    func appUpdate() {
+        guard UserDefaultsManager.isAppUpToDate == false else { return }
+
+        DispatchQueue.main.async {
+            if let url = URL(string: "itms-apps://itunes.apple.com/app/6470272313"),
+               UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
     }
 
 }
@@ -159,7 +176,7 @@ extension SettingViewController: MFMailComposeViewControllerDelegate {
             let goAppStoreAction = UIAlertAction(title: "App Store로 이동하기", style: .default) { _ in
                 if let url = URL(string: "https://apps.apple.com/kr/app/mail/id1108187098"),
                    UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.openURL(url)
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
             }
             let cancleAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
@@ -180,11 +197,15 @@ private extension SettingViewController {
 
         let objectToShare = [NSURL(string: "http://bit.ly/commutemate")]
 
-        let activityVC = UIActivityViewController(activityItems : objectToShare, applicationActivities: nil)
+        let activityVC = UIActivityViewController(
+            activityItems: objectToShare,
+            applicationActivities: nil
+        )
 
         // 공유하기 기능 중 제외할 기능이 있을 때 사용
         //activityVC.excludedActivityTypes = [UIActivity.ActivityType.airDrop, UIActivity.ActivityType.addToReadingList]
         activityVC.popoverPresentationController?.sourceView = self.view
         self.present(activityVC, animated: true, completion: nil)
     }
+
 }

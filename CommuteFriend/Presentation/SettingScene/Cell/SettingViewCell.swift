@@ -26,7 +26,8 @@ final class SettingViewCell: BaseTableViewCell {
 
     private lazy var accessoryLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14.0, weight: .semibold)
+        label.font = .systemFont(ofSize: 14.0, weight: .regular)
+        label.textColor = .link
         return label
     }()
 
