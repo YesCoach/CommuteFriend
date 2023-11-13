@@ -243,6 +243,7 @@ private extension BusHomeViewController {
     }
 
     @objc func willEnterForeground() {
+        viewModel.viewWillAppear()
         triggerAnimation()
     }
 

@@ -92,8 +92,8 @@ extension DefaultHomeViewModel {
         fetchSubwayStationList()
     }
 
-    func updatePriorityStationTarget(with subwaTargetID: String) {
-        if let item = localSubwayRepository.readFavoriteStationTarget(with: subwaTargetID) {
+    func updatePriorityStationTarget(with subwayTargetID: String) {
+        if let item = localSubwayRepository.readFavoriteStationTarget(with: subwayTargetID) {
             localSubwayRepository.enrollStation(subwayTarget: item)
             fetchSubwayStationList()
         }
