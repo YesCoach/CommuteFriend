@@ -76,7 +76,7 @@
 		89023FAC2ADD0655009FFCBD /* FavoriteStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023FAB2ADD0655009FFCBD /* FavoriteStationCell.swift */; };
 		89023FAE2ADD0884009FFCBD /* StationTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023FAD2ADD0884009FFCBD /* StationTarget.swift */; };
 		89023FB12ADD097C009FFCBD /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023FB02ADD097C009FFCBD /* FavoriteItem.swift */; };
-		891A9DC42B130C3F004F420D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 891A9DC32B130C3F004F420D /* GoogleService-Info.plist */; };
+		890DBE072B1331C200693A7D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 891A9DC32B130C3F004F420D /* GoogleService-Info.plist */; };
 		891A9DC72B130F24004F420D /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 891A9DC62B130F24004F420D /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		891A9DC92B130F24004F420D /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 891A9DC82B130F24004F420D /* FirebaseCrashlytics */; };
 		891A9DCD2B13164A004F420D /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891A9DCC2B13164A004F420D /* AnalyticsManager.swift */; };
@@ -1153,7 +1153,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					894266492AD6770600C44C04 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -1208,7 +1208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89F650B12AE2AC40001E23F7 /* refreshLottie.json in Resources */,
-				891A9DC42B130C3F004F420D /* GoogleService-Info.plist in Resources */,
+				890DBE072B1331C200693A7D /* GoogleService-Info.plist in Resources */,
 				894266832AD6785500C44C04 /* .gitignore in Resources */,
 				894266812AD677F500C44C04 /* .swiftlint.yml in Resources */,
 				8942665A2AD6770700C44C04 /* LaunchScreen.storyboard in Resources */,
@@ -1252,9 +1252,10 @@
 			);
 			inputPaths = (
 				"\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
 				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
 				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
 			);
 			outputFileListPaths = (
@@ -1463,6 +1464,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1495,6 +1497,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1523,6 +1526,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1555,6 +1559,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
