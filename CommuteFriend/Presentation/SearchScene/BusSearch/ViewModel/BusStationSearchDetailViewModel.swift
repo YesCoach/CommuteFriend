@@ -62,6 +62,13 @@ class DefaultBusStationSearchDetailViewModel: BusStationSearchDetailViewModel {
         switch beginningFrom {
         case .home:
             localBusRepository.enrollStation(busTarget: target)
+            AnalyticsManager.shared.log(
+                event: .busSearch(
+                    station: item.stationName,
+                    line: item.busRouteName,
+                    destination: item.nextStationName
+                )
+            )
             NotificationCenter.default.post(name: .busHomeUpdateNotification, object: nil)
         case .favorite:
             do {

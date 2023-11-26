@@ -61,6 +61,15 @@ extension DefaultSubwaySearchSelectionViewModel {
             lonPos: station.lonPos
         )
         localSubwayRepository.enrollStation(subwayTarget: subwayTarget)
+
+        AnalyticsManager.shared.log(
+            event: .subwaySearch(
+                station: station.name,
+                line: station.lineNumber.description,
+                destination: stationName
+            )
+        )
+
         NotificationCenter.default.post(name: .homeUpdateNotification, object: nil)
     }
 

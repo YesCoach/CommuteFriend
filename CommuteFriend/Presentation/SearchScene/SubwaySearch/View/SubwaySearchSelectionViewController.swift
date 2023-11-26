@@ -158,6 +158,7 @@ private extension SubwaySearchSelectionViewController {
         guard let direction = selectableType as? UpDownDirection,
               let stationName
         else { return }
+
         viewModel.didSelectDirection(direction: direction, stationName: stationName)
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }
