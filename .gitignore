@@ -6,6 +6,9 @@
 # APIKey
 APIKey.swift
 
+# Firebase
+GoogleService-Info.plist
+
 # SwiftLint
 .swiftlint.yml
 
