@@ -8,14 +8,22 @@
 import Foundation
 import FirebaseAnalytics
 
-enum AnalyliticsEvent {
+enum AnalyticsEvent {
+
+    // MARK: - Subway Analytics
+
     case subwaySearch(station: String, line: String, destination: String)
+    case subwayFavoriteEnroll(station: String, line: String, destination: String)
+
     case busSearch(station: String, line: String, destination: String)
+    case busFavoriteEnroll(station: String, line: String, destination: String)
 
     var name: String {
         switch self {
         case .subwaySearch: return "subwaySearch"
+        case .subwayFavoriteEnroll: return "subwayFavoriteEnroll"
         case .busSearch: return "busSearch"
+        case .busFavoriteEnroll: return "busFavoriteEnroll"
         }
     }
 
@@ -27,13 +35,24 @@ enum AnalyliticsEvent {
                 "line" : line,
                 "destination" : destination
             ]
+        case .subwayFavoriteEnroll(let station, let line, let destination):
+            return [
+                "station" : station,
+                "line" : line,
+                "destination" : destination
+            ]
         case .busSearch(let station, let line, let destination):
             return [
                 "station" : station,
                 "line" : line,
                 "destination" : destination
             ]
-
+        case .busFavoriteEnroll(let station, let line, let destination):
+            return [
+                "station" : station,
+                "line" : line,
+                "destination" : destination
+            ]
         }
     }
 
@@ -45,7 +64,7 @@ final class AnalyticsManager {
 
     private init() { }
 
-    func log(event: AnalyliticsEvent) {
+    func log(event: AnalyticsEvent) {
         Analytics.logEvent(event.name, parameters: event.parameters)
     }
 

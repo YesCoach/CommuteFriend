@@ -76,6 +76,13 @@ class DefaultBusRouteSearchDetailViewModel: BusRouteSearchDetailViewModel {
                 try localBusRepository.enrollFavoriteStation(
                     item: .init(stationTarget: .bus(target: target), isAlarm: true)
                 )
+                AnalyticsManager.shared.log(
+                    event: .busFavoriteEnroll(
+                        station: item.name,
+                        line: bus.name,
+                        destination: item.direction
+                    )
+                )
                 LocationManager.shared.registLocation(target: .bus(target: target))
             } catch {
                 debugPrint(error)
