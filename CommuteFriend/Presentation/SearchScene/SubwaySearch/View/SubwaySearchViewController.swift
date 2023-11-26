@@ -26,8 +26,6 @@ final class SubwaySearchViewController: BaseViewController {
         let searchController = UISearchController(
             searchResultsController: searchResultViewController
         )
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
         searchController.searchBar.autocapitalizationType = .none
         searchController.searchBar.searchTextField.placeholder = "역 이름을 검색하세요."
         searchController.searchBar.returnKeyType = .search
@@ -169,6 +167,21 @@ final class SubwaySearchViewController: BaseViewController {
 private extension SubwaySearchViewController {
 
     func bindViewModel() {
+
+        searchController.searchBar.searchTextField.rx.text.orEmpty
+            .map { $0.trimmingCharacters(in: .whitespaces) }
+            .bind(with: self) { owner, text in
+                owner.viewModel.updateSearchResults(with: text)
+            }
+            .disposed(by: disposeBag)
+
+        searchController.searchBar.rx.searchButtonClicked
+            .bind(with: self) { owner, _ in
+                owner.viewModel.searchButtonClicked(with: owner.searchController.searchBar.text!)
+                owner.searchController.searchBar.resignFirstResponder()
+            }
+            .disposed(by: disposeBag)
+
         viewModel.searchResult
             .subscribe(with: self) { owner, list in
                 owner.searchResultViewController.updateSnapshot(data: list)
@@ -259,25 +272,6 @@ extension SubwaySearchViewController: UITableViewDelegate {
         )
 
         return UISwipeActionsConfiguration(actions: [action])
-    }
-
-}
-
-// MARK: - SearchController Delegate
-
-extension SubwaySearchViewController: UISearchResultsUpdating {
-
-    func updateSearchResults(for searchController: UISearchController) {
-        viewModel.updateSearchResults(with: searchController.searchBar.text!)
-    }
-
-}
-
-extension SubwaySearchViewController: UISearchBarDelegate {
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.searchButtonClicked(with: searchBar.text!)
-        searchBar.resignFirstResponder()
     }
 
 }

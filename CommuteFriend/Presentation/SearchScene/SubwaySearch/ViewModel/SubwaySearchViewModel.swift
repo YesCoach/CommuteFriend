@@ -48,6 +48,10 @@ final class DefaultSubwaySearchViewModel: SubwaySearchViewModel {
     let searchHistoryList: BehaviorSubject<[String]> = BehaviorSubject(value: [])
     let searchKeyword: BehaviorRelay<String> = BehaviorRelay(value: "")
 
+    deinit {
+        print("🗑️ - \(String(describing: type(of: self)))")
+    }
+
 }
 
 // MARK: - SubwaySearchViewModelInput
@@ -59,8 +63,9 @@ extension DefaultSubwaySearchViewModel {
     }
 
     func updateSearchResults(with keyword: String) {
-        if keyword.trimmingCharacters(in: [" "]).isEmpty { return }
-
+        guard keyword.isEmpty == false else {
+            return searchResult.onNext([])
+        }
         guard let result = subwayRepository.fetchStationByName(name: keyword) else { return }
         searchResult.onNext(result)
     }
@@ -81,7 +86,7 @@ extension DefaultSubwaySearchViewModel {
 
     /// 검색 기록을 추가합니다.
     func addSearchHistory(text: String) {
-        let trimmedText = text.trimmingCharacters(in: [" "])
+        let trimmedText = text.trimmingCharacters(in: .whitespaces)
 
         guard var searchHistoryListValue = try? searchHistoryList.value() else { return }
         guard trimmedText.isEmpty == false else { return }
