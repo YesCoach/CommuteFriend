@@ -59,7 +59,9 @@ final class SubwaySearchViewController: BaseViewController {
                 sheet.detents = [
                     .custom(
                         identifier: UISheetPresentationController.Detent.Identifier("oneHeigth")
-                    ) { $0.maximumDetentValue * 0.4 },
+                    ) {
+                        item.isSplit ? $0.maximumDetentValue * 0.5 : $0.maximumDetentValue * 0.35
+                    }
                 ]
                 sheet.prefersScrollingExpandsWhenScrolledToEdge = false
                 sheet.prefersEdgeAttachedInCompactHeight = true

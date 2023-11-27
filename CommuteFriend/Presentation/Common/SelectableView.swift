@@ -21,7 +21,7 @@ final class SelectableView: UIView {
 
     private lazy var label: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14, weight: .bold)
+        label.font = .systemFont(ofSize: 15, weight: .bold)
         return label
     }()
 
@@ -75,7 +75,8 @@ private extension SelectableView {
 
     func configureUI() {
         layer.cornerRadius = 15.0
-        backgroundColor = .systemMint
+        layer.cornerCurve = .continuous
+        backgroundColor = .selectionColor
         self.addGestureRecognizer(tapGesture)
     }
 
@@ -92,6 +93,7 @@ private extension SelectableView {
 
         label.snp.makeConstraints {
             $0.centerX.equalToSuperview()
+            $0.top.greaterThanOrEqualTo(imageView.snp.bottom).offset(10)
             $0.bottom.equalToSuperview().inset(10)
         }
     }
