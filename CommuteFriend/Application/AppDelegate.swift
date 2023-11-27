@@ -26,16 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         RealmStorage.shared.checkSchemaVersion()
 
-        // MARK: App 버전 체크
-        VersionCheckManager.shared.isAppVersionUpToDate { result in
-            switch result {
-            case .success(let isAppUpToDate):
-                UserDefaultsManager.isAppUpToDate = isAppUpToDate
-            case .failure(let error):
-                debugPrint(error)
-            }
-        }
-
         // MARK: Location 관련 로직
         LocationManager.shared.requestAuthorization()
 

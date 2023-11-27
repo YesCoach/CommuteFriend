@@ -24,6 +24,10 @@ final class SettingViewModel: BaseInOutViewModel {
 
     private let disposeBag = DisposeBag()
 
+    init() {
+        versionCheck()
+    }
+
     func transform(from input: Input) -> Output {
         let selectedItem = PublishRelay<SettingItem>()
 
@@ -36,4 +40,18 @@ final class SettingViewModel: BaseInOutViewModel {
 
         return Output(selectedItem: selectedItem)
     }
+
+    private func versionCheck() {
+        // MARK: App 버전 체크
+
+        VersionCheckManager.shared.isAppVersionUpToDate { result in
+            switch result {
+            case .success(let isAppUpToDate):
+                UserDefaultsManager.isAppUpToDate = isAppUpToDate
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+    }
+
 }
