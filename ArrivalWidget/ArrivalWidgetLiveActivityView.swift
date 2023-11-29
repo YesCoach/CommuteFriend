@@ -5,20 +5,21 @@
 //  Created by 박태현 on 2023/10/21.
 //
 
-import SwiftUI
 import ActivityKit
+import SwiftUI
 import WidgetKit
 
 struct ArrivalWidgetLiveActivityView: View {
 
     let context: ActivityViewContext<ArrivalWidgetAttributes>
     @Environment(\.isLuminanceReduced) var isLuminanceReduced
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         if isLuminanceReduced {
-            VStack(spacing: 10) {
+            VStack(spacing: 5) {
                 Spacer(minLength: 5)
-                HStack(spacing: 5) {
+                HStack(alignment: .bottom) {
                     Spacer().frame(width: 10)
                     Button("\(context.state.stationLine)") { }
                         .buttonStyle(
@@ -27,35 +28,34 @@ struct ArrivalWidgetLiveActivityView: View {
                                 backgroundColor: .init(context.state.stationLineColorName)
                             )
                         )
+                    Spacer().frame(width: 10)
                     Text("\(context.state.stationName)")
-                        .foregroundColor(.white)
+                        .foregroundStyle(.primary)
                         .font(.system(size: 22.0, weight: .semibold))
                         .lineLimit(1)
                     Spacer(minLength: 2.0)
                     Text("\(context.state.nextStation) 방면")
-                        .foregroundColor(.white)
+                        .foregroundStyle(.primary)
+                        .font(.system(size: 16.0, weight: .semibold))
                     Spacer().frame(width: 10)
                 }
-                HStack {
-                    Spacer()
-                    Text("도착까지 ")
-                        .font(.system(size: 22.0, weight: .semibold))
-                        .foregroundColor(.white)
-                    Text(timerInterval: context.state.timer, countsDown: true)
-                        .multilineTextAlignment(.center)
-                        .monospacedDigit()
-                        .font(.system(size: 30, weight: .semibold))
-                        .foregroundColor(Color(uiColor: .systemGreen) .opacity(0.8))
-                        .frame(width: 100)
-                    Spacer()
-                }
+                Text(timerInterval: context.state.timer, countsDown: true)
+                    .multilineTextAlignment(.center)
+                    .monospacedDigit()
+                    .font(.system(size: 44, weight: .semibold))
+                    .foregroundStyle(.activityText)
+                Text("도착까지")
+                    .font(.system(size: 14.0, weight: .semibold))
+                    .foregroundStyle(.primary)
                 Spacer(minLength: 5)
             }
-            .background(.black.opacity(0.6))
+            .activityBackgroundTint(
+                colorScheme == .dark ? .init(uiColor: .black).opacity(0.5) : .init(uiColor: .white).opacity(0.5)
+            )
         } else {
-            VStack(spacing: 10) {
+            VStack(spacing: 5) {
                 Spacer(minLength: 5)
-                HStack(spacing: 5) {
+                HStack(alignment: .bottom) {
                     Spacer().frame(width: 10)
                     Button("\(context.state.stationLine)") { }
                         .buttonStyle(
@@ -64,31 +64,28 @@ struct ArrivalWidgetLiveActivityView: View {
                                 backgroundColor: .init(context.state.stationLineColorName)
                             )
                         )
+                    Spacer().frame(width: 10)
                     Text("\(context.state.stationName)")
-                        .foregroundColor(.white)
+                        .foregroundStyle(.activityText)
                         .font(.system(size: 22.0, weight: .semibold))
                         .lineLimit(1)
                     Spacer(minLength: 2.0)
                     Text("\(context.state.nextStation) 방면")
-                        .foregroundColor(.white)
+                        .foregroundStyle(.activityText)
+                        .font(.system(size: 16.0, weight: .semibold))
                     Spacer().frame(width: 10)
                 }
-                HStack {
-                    Spacer()
-                    Text("도착까지 ")
-                        .font(.system(size: 22.0, weight: .semibold))
-                        .foregroundColor(.white)
-                    Text(timerInterval: context.state.timer, countsDown: true)
-                        .multilineTextAlignment(.center)
-                        .monospacedDigit()
-                        .font(.system(size: 30, weight: .semibold))
-                        .foregroundColor(Color(uiColor: .systemGreen) .opacity(0.8))
-                        .frame(width: 100)
-                    Spacer()
-                }
+                Text(timerInterval: context.state.timer, countsDown: true)
+                    .multilineTextAlignment(.center)
+                    .monospacedDigit()
+                    .font(.system(size: 44, weight: .semibold))
+                    .foregroundStyle(.activityText)
+                Text("도착까지")
+                    .font(.system(size: 14.0, weight: .semibold))
+                    .foregroundStyle(.activityText)
                 Spacer(minLength: 5)
             }
-            .background(.black.opacity(0.4))
+            .activityBackgroundTint(Color.background)
         }
     }
 }
@@ -102,6 +99,6 @@ struct InsetRoundButton: ButtonStyle {
             .foregroundColor(labelColor)
             .padding(.init(top: 4, leading: 8, bottom: 4, trailing: 8))
             .fontWeight(.bold)
-            .background(Capsule().fill(backgroundColor)) // <-
+            .background(Capsule().fill(backgroundColor))
     }
 }

@@ -108,13 +108,13 @@ final class SubwaySearchSelectionViewController: BaseViewController {
         ].forEach { view.addSubview($0) }
 
         descriptionLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(40)
+            $0.top.equalToSuperview().inset(30)
             $0.leading.equalToSuperview().inset(16)
         }
         verticalStackView.snp.makeConstraints {
-            $0.top.equalTo(descriptionLabel.snp.bottom).offset(40)
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(30)
             $0.leading.trailing.equalToSuperview().inset(16)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(10)
         }
         splitDirectionView.snp.makeConstraints {
             $0.width.equalTo(verticalStackView)
@@ -158,6 +158,7 @@ private extension SubwaySearchSelectionViewController {
         guard let direction = selectableType as? UpDownDirection,
               let stationName
         else { return }
+
         viewModel.didSelectDirection(direction: direction, stationName: stationName)
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
     }

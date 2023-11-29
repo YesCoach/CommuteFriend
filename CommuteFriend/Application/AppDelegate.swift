@@ -7,6 +7,7 @@
 
 import UIKit
 import UserNotifications
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -16,21 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
+        // MARK: Firebase 관련 설정
+        FirebaseApp.configure()
+
         let userStorage = DIContainer.shared.userStorage
         if userStorage.isUserEntityExist() == false {
             userStorage.createUserEntity()
         }
         RealmStorage.shared.checkSchemaVersion()
-
-        // MARK: App 버전 체크
-        VersionCheckManager.shared.isAppVersionUpToDate { result in
-            switch result {
-            case .success(let isAppUpToDate):
-                UserDefaultsManager.isAppUpToDate = isAppUpToDate
-            case .failure(let error):
-                debugPrint(error)
-            }
-        }
 
         // MARK: Location 관련 로직
         LocationManager.shared.requestAuthorization()

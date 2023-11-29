@@ -7,7 +7,6 @@
 
 import UIKit
 import RxSwift
-import RxRelay
 import RxCocoa
 
 final class BusSearchViewController: BaseViewController {
@@ -26,8 +25,6 @@ final class BusSearchViewController: BaseViewController {
         let searchController = UISearchController(
             searchResultsController: searchResultViewController
         )
-        searchController.searchResultsUpdater = self
-        searchController.searchBar.delegate = self
         searchController.searchBar.autocapitalizationType = .none
         searchController.searchBar.searchTextField.placeholder = "버스 노선을 검색하세요."
         searchController.searchBar.returnKeyType = .search
@@ -161,6 +158,33 @@ final class BusSearchViewController: BaseViewController {
 private extension BusSearchViewController {
 
     func bindViewModel() {
+
+        searchController.searchBar.searchTextField.rx.text.orEmpty
+            .map { $0.trimmingCharacters(in: .whitespaces) }
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
+            .bind(with: self) { owner, text in
+                owner.viewModel.updateSearchResults(with: text)
+            }
+            .disposed(by: disposeBag)
+
+        searchController.searchBar.rx.searchButtonClicked
+            .bind(with: self) { owner, _ in
+                owner.viewModel.searchButtonClicked(with: owner.searchController.searchBar.text!)
+                owner.searchController.searchBar.resignFirstResponder()
+            }
+            .disposed(by: disposeBag)
+
+        searchController.searchBar.rx.selectedScopeButtonIndex
+            .bind(with: self) { owner, index in
+                owner.viewModel.didSegmentControlValueChanged(
+                    index: index,
+                    keyword: owner.searchController.searchBar.text
+                )
+                let placeholderText = (index == 0 ? "버스 노선을 검색하세요." : "정류장 이름을 검색하세요.")
+                owner.searchController.searchBar.placeholder = placeholderText
+            }
+            .disposed(by: disposeBag)
+
         viewModel.searchBusStationResult
             .subscribe(with: self) { owner, list in
                 owner.searchResultViewController.updateSnapshot(data: list)
@@ -257,33 +281,6 @@ extension BusSearchViewController: UITableViewDelegate {
         )
 
         return UISwipeActionsConfiguration(actions: [action])
-    }
-
-}
-
-// MARK: - SearchController Delegate
-
-extension BusSearchViewController: UISearchResultsUpdating {
-
-    func updateSearchResults(for searchController: UISearchController) {
-        viewModel.updateSearchResults(with: searchController.searchBar.text!)
-    }
-
-}
-
-extension BusSearchViewController: UISearchBarDelegate {
-
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.searchButtonClicked(with: searchBar.text!)
-        searchBar.resignFirstResponder()
-    }
-
-    func searchBar(
-        _ searchBar: UISearchBar,
-        selectedScopeButtonIndexDidChange selectedScope: Int
-    ) {
-        viewModel.didSegmentControlValueChanged(index: selectedScope)
-        searchBar.placeholder = selectedScope == 0 ? "버스 노선을 검색하세요.": "정류장 이름을 검색하세요."
     }
 
 }

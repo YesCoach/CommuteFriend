@@ -21,6 +21,10 @@ extension UIColor {
         return UIColor(named: "BackgroundColor") ?? .systemBackground
     }
 
+    static var selectionColor: UIColor {
+        return UIColor(named: "SelectionColor") ?? .systemBackground
+    }
+
     static var buttonColor: UIColor {
         return UIColor(named: "ButtonColor") ?? .systemBlue
     }
