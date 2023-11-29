@@ -242,6 +242,7 @@ private extension HomeViewController {
     }
 
     @objc func willEnterForeground() {
+        viewModel.viewWillAppear()
         triggerAnimation()
     }
 

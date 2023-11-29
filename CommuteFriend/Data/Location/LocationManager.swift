@@ -104,7 +104,6 @@ extension LocationManager {
 
         print("====================")
         print("")
-        debugPrint(trigger)
         debugPrint(request)
         print("region regist: \(region)")
         print("")

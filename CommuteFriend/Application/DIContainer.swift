@@ -112,6 +112,12 @@ final class DIContainer {
         )
     }
 
+    // MARK: Setting
+
+    func makeSettingViewController() -> SettingViewController {
+        return SettingViewController(viewModel: makeSettingViewModel())
+    }
+
 }
 
 extension DIContainer {
@@ -198,6 +204,10 @@ extension DIContainer {
 
     private func makeBusFavoriteViewModel() -> FavoriteViewModel {
         return BusFavoriteViewModel(localBusRepository: makeLocalBusRepository())
+    }
+
+    private func makeSettingViewModel() -> SettingViewModel {
+        return SettingViewModel()
     }
 
     // MARK: - Repository
