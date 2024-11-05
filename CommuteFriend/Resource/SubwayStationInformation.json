@@ -5876,6 +5876,58 @@
         "SPLIT_CODE": ""
     },
     {
+        "SUBWAY_ID": 1032,
+        "STATN_ID": 1032000353,
+        "STATN_NM": "수서",
+        "SUBWAY_NAME": "GTX-A",
+        "STATN_CODE": "X108",
+        "STATN_X": 127.10161,
+        "STATN_Y": 37.48637,
+        "IS_SPLIT": "false",
+        "UP_CODE": "",
+        "DOWN_CODE": "X109",
+        "SPLIT_CODE": ""
+    },
+    {
+        "SUBWAY_ID": 1032,
+        "STATN_ID": 1032000354,
+        "STATN_NM": "성남",
+        "SUBWAY_NAME": "GTX-A",
+        "STATN_CODE": "X109",
+        "STATN_X": 127.12058,
+        "STATN_Y": 37.39467,
+        "IS_SPLIT": "false",
+        "UP_CODE": "X108",
+        "DOWN_CODE": "X110",
+        "SPLIT_CODE": ""
+    },
+    {
+        "SUBWAY_ID": 1032,
+        "STATN_ID": 1032000355,
+        "STATN_NM": "구성",
+        "SUBWAY_NAME": "GTX-A",
+        "STATN_CODE": "X110",
+        "STATN_X": 127.10389,
+        "STATN_Y": 37.29913,
+        "IS_SPLIT": "false",
+        "UP_CODE": "X109",
+        "DOWN_CODE": "X111",
+        "SPLIT_CODE": ""
+    },
+    {
+        "SUBWAY_ID": 1032,
+        "STATN_ID": 1032000356,
+        "STATN_NM": "동탄",
+        "SUBWAY_NAME": "GTX-A",
+        "STATN_CODE": "X111",
+        "STATN_X": 127.09569,
+        "STATN_Y": 37.20034,
+        "IS_SPLIT": "false",
+        "UP_CODE": "X110",
+        "DOWN_CODE": "",
+        "SPLIT_CODE": ""
+    },
+    {
         "SUBWAY_ID": 1063,
         "STATN_ID": 1063075110,
         "STATN_NM": "용산",
