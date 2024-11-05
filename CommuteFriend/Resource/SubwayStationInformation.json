@@ -6599,8 +6599,34 @@
         "STATN_X": 126.788047,
         "STATN_Y": 37.854619,
         "IS_SPLIT": "false",
-        "UP_CODE": " ",
+        "UP_CODE": "K336",
         "DOWN_CODE": "K334",
+        "SPLIT_CODE": ""
+    },
+    {
+        "SUBWAY_ID": 1063,
+        "STATN_ID": 1063075336,
+        "STATN_NM": "운천",
+        "SUBWAY_NAME": "경의중앙선",
+        "STATN_CODE": "K336",
+        "STATN_X": 126.769999,
+        "STATN_Y": 37.879942,
+        "IS_SPLIT": "false",
+        "UP_CODE": "K337",
+        "DOWN_CODE": "K335",
+        "SPLIT_CODE": ""
+    },
+    {
+        "SUBWAY_ID": 1063,
+        "STATN_ID": 1063075337,
+        "STATN_NM": "임진강",
+        "SUBWAY_NAME": "경의중앙선",
+        "STATN_CODE": "K337",
+        "STATN_X": 126.746765,
+        "STATN_Y": 37.888421,
+        "IS_SPLIT": "false",
+        "UP_CODE": "",
+        "DOWN_CODE": "K336",
         "SPLIT_CODE": ""
     },
     {
