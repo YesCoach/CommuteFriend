@@ -41,7 +41,7 @@ struct ArrivalWidgetLiveActivity: Widget {
                 DynamicIslandExpandedRegion(.bottom) {
                     VStack() {
                         Spacer(minLength: 5)
-                        HStack(alignment: .bottom, spacing: 5) {
+                        HStack(alignment: .bottom, spacing: 10.0) {
                             Spacer().frame(width: 5)
                             Button("\(context.state.stationLine)") { }
                                 .buttonStyle(
@@ -56,6 +56,7 @@ struct ArrivalWidgetLiveActivity: Widget {
                             Spacer(minLength: 2.0)
                             Text("\(context.state.nextStation) 방면")
                                 .foregroundColor(.white)
+                                .font(.system(size: 14.0, weight: .bold))
                             Spacer().frame(width: 5)
                         }
                         HStack(spacing: 5.0) {
@@ -67,14 +68,12 @@ struct ArrivalWidgetLiveActivity: Widget {
                                 .multilineTextAlignment(.center)
                                 .monospacedDigit()
                                 .font(.system(size: 30, weight: .semibold))
-                                .foregroundColor(Color(uiColor: .systemGreen) .opacity(0.8))
+                                .foregroundStyle(Color.activityText)
                                 .frame(width: 100)
                             Spacer()
                         }
                         Spacer(minLength: 5)
                     }
-                    .background(.black.opacity(0.4))
-
                 }
             } compactLeading: {
                 switch context.state.type {
@@ -87,20 +86,29 @@ struct ArrivalWidgetLiveActivity: Widget {
                     Image(uiImage: .init(systemName: "bus.fill") ?? .add)
                         .renderingMode(.template)
                         .colorMultiply(Color("\(context.state.stationLineColorName)"))
+                        .fixedSize()
                 }
             } compactTrailing: {
                 Text(timerInterval: context.state.timer, countsDown: true)
                     .monospacedDigit()
-                    .frame(width: 50)
-                    .font(.system(size: 12.0, weight: .semibold))
-                    .foregroundColor(.mint)
+                    .frame(width: 52)
+                    .font(.system(size: 13.0, weight: .semibold))
+                    .foregroundColor(.white)
             } minimal: {
-                Image(uiImage: .init(systemName: "tram.fill") ?? .add)
-                    .renderingMode(.template)
-                    .colorMultiply(Color("\(context.state.stationLineColorName)"))
+                switch context.state.type {
+                case .subway:
+                    Image(uiImage: .init(systemName: "tram.fill") ?? .add)
+                        .renderingMode(.template)
+                        .colorMultiply(Color("\(context.state.stationLineColorName)"))
+                        .fixedSize()
+                case .bus:
+                    Image(uiImage: .init(systemName: "bus.fill") ?? .add)
+                        .renderingMode(.template)
+                        .colorMultiply(Color("\(context.state.stationLineColorName)"))
+                        .fixedSize()
+                }
             }
-            .widgetURL(URL(string: "http://www.apple.com"))
-            .keylineTint(Color.red)
         }
     }
+
 }

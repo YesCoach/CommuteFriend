@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class BusSearchResultViewController: BaseViewController {
 
@@ -28,13 +30,21 @@ final class BusSearchResultViewController: BaseViewController {
         )
         tableView.estimatedRowHeight = 40.0
         tableView.keyboardDismissMode = .onDrag
-        tableView.delegate = self
+
+        tableView.rx.itemSelected
+            .bind(with: self) { owner, indexPath in
+                guard let item = owner.dataSource?.itemIdentifier(for: indexPath) else { return }
+                owner.itemSelectHandler?(item)
+            }
+            .disposed(by: disposeBag)
+
         return tableView
     }()
 
     var itemSelectHandler: ((AnyHashable) -> Void)?
 
     private var dataSource: DataSourceType?
+    private let disposeBag = DisposeBag()
 
     // MARK: - LifeCycle
 
@@ -61,17 +71,6 @@ final class BusSearchResultViewController: BaseViewController {
 
         guard let dataSource else { return }
         dataSource.applySnapshotUsingReloadData(snapshot)
-    }
-
-}
-
-extension BusSearchResultViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let dataSource,
-              let item = dataSource.itemIdentifier(for: indexPath)
-        else { return }
-        itemSelectHandler?(item)
     }
 
 }

@@ -76,6 +76,10 @@
 		89023FAC2ADD0655009FFCBD /* FavoriteStationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023FAB2ADD0655009FFCBD /* FavoriteStationCell.swift */; };
 		89023FAE2ADD0884009FFCBD /* StationTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023FAD2ADD0884009FFCBD /* StationTarget.swift */; };
 		89023FB12ADD097C009FFCBD /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023FB02ADD097C009FFCBD /* FavoriteItem.swift */; };
+		890DBE072B1331C200693A7D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 891A9DC32B130C3F004F420D /* GoogleService-Info.plist */; };
+		891A9DC72B130F24004F420D /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 891A9DC62B130F24004F420D /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		891A9DC92B130F24004F420D /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 891A9DC82B130F24004F420D /* FirebaseCrashlytics */; };
+		891A9DCD2B13164A004F420D /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891A9DCC2B13164A004F420D /* AnalyticsManager.swift */; };
 		8942664E2AD6770600C44C04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664D2AD6770600C44C04 /* AppDelegate.swift */; };
 		894266502AD6770600C44C04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8942664F2AD6770600C44C04 /* SceneDelegate.swift */; };
 		894266572AD6770700C44C04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 894266562AD6770700C44C04 /* Assets.xcassets */; };
@@ -262,6 +266,8 @@
 		89023FAB2ADD0655009FFCBD /* FavoriteStationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStationCell.swift; sourceTree = "<group>"; };
 		89023FAD2ADD0884009FFCBD /* StationTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTarget.swift; sourceTree = "<group>"; };
 		89023FB02ADD097C009FFCBD /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
+		891A9DC32B130C3F004F420D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		891A9DCC2B13164A004F420D /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		8942664A2AD6770600C44C04 /* CommuteFriend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommuteFriend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8942664D2AD6770600C44C04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8942664F2AD6770600C44C04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -351,10 +357,12 @@
 				89023ED62AD6F872009FFCBD /* RxCocoa in Frameworks */,
 				89023F572ADB2459009FFCBD /* RealmSwift in Frameworks */,
 				89835A282AFE3B1F004BD2A8 /* RxDataSources in Frameworks */,
+				891A9DC72B130F24004F420D /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				894266942AD67B2900C44C04 /* SnapKit in Frameworks */,
 				89023EDA2AD6F872009FFCBD /* RxSwift in Frameworks */,
 				89023ED82AD6F872009FFCBD /* RxRelay in Frameworks */,
 				89023EA42AD6C9CC009FFCBD /* Alamofire in Frameworks */,
+				891A9DC92B130F24004F420D /* FirebaseCrashlytics in Frameworks */,
 				89835A262AFE3B1F004BD2A8 /* Differentiator in Frameworks */,
 				89F650AF2AE2AAFC001E23F7 /* Lottie in Frameworks */,
 			);
@@ -682,6 +690,14 @@
 			path = Favorite;
 			sourceTree = "<group>";
 		};
+		891A9DCB2B131627004F420D /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				891A9DCC2B13164A004F420D /* AnalyticsManager.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
 		894266412AD6770600C44C04 = {
 			isa = PBXGroup;
 			children = (
@@ -720,6 +736,7 @@
 				894266562AD6770700C44C04 /* Assets.xcassets */,
 				894266582AD6770700C44C04 /* LaunchScreen.storyboard */,
 				8942665B2AD6770700C44C04 /* Info.plist */,
+				891A9DC32B130C3F004F420D /* GoogleService-Info.plist */,
 			);
 			path = CommuteFriend;
 			sourceTree = "<group>";
@@ -929,6 +946,7 @@
 		8989D0BC2AEFC25B00C5AA41 /* InfraStructure */ = {
 			isa = PBXGroup;
 			children = (
+				891A9DCB2B131627004F420D /* Analytics */,
 				89BFEA4B2AFF70FE0097D833 /* VersionCheck */,
 				8989D0BD2AEFC26A00C5AA41 /* NetworkCheck */,
 			);
@@ -1048,6 +1066,7 @@
 				894266472AD6770600C44C04 /* Frameworks */,
 				894266482AD6770600C44C04 /* Resources */,
 				898631772AE3E95700C3408A /* Embed Foundation Extensions */,
+				891A9DCA2B13102E004F420D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1066,6 +1085,8 @@
 				89F650AE2AE2AAFC001E23F7 /* Lottie */,
 				89835A252AFE3B1F004BD2A8 /* Differentiator */,
 				89835A272AFE3B1F004BD2A8 /* RxDataSources */,
+				891A9DC62B130F24004F420D /* FirebaseAnalyticsWithoutAdIdSupport */,
+				891A9DC82B130F24004F420D /* FirebaseCrashlytics */,
 			);
 			productName = CommuteFriend;
 			productReference = 8942664A2AD6770600C44C04 /* CommuteFriend.app */;
@@ -1132,7 +1153,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					894266492AD6770600C44C04 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -1167,6 +1188,7 @@
 				89023F532ADB2459009FFCBD /* XCRemoteSwiftPackageReference "realm-swift" */,
 				89F650AD2AE2AAFC001E23F7 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				89835A242AFE3B1F004BD2A8 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				891A9DC52B130F24004F420D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 8942664B2AD6770600C44C04 /* Products */;
 			projectDirPath = "";
@@ -1186,6 +1208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89F650B12AE2AC40001E23F7 /* refreshLottie.json in Resources */,
+				890DBE072B1331C200693A7D /* GoogleService-Info.plist in Resources */,
 				894266832AD6785500C44C04 /* .gitignore in Resources */,
 				894266812AD677F500C44C04 /* .swiftlint.yml in Resources */,
 				8942665A2AD6770700C44C04 /* LaunchScreen.storyboard in Resources */,
@@ -1218,6 +1241,32 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		891A9DCA2B13102E004F420D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		894266462AD6770600C44C04 /* Sources */ = {
@@ -1330,6 +1379,7 @@
 				89023EE12AD70E47009FFCBD /* SearchHistoryHeaderView.swift in Sources */,
 				8942668F2AD67AC600C44C04 /* BaseViewController.swift in Sources */,
 				89023F422ADB1AEC009FFCBD /* SubwayTarget.swift in Sources */,
+				891A9DCD2B13164A004F420D /* AnalyticsManager.swift in Sources */,
 				898A58062ADEC5FC000F040F /* BusRepository.swift in Sources */,
 				89023EF22AD71C05009FFCBD /* UIColor+.swift in Sources */,
 				89023EC22AD6D29D009FFCBD /* SearchHistoryCell.swift in Sources */,
@@ -1414,6 +1464,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1446,6 +1497,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1474,6 +1526,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1506,6 +1559,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1531,11 +1585,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 67D46DJNPH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CommuteFriend/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "출퇴근메이트";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자가 정류장 근처에 있는지 확인하기 위해 권한이 필요해요";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자가 정류장 근처에 있는지 확인하기 위해 권한이 필요해요";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자가 정류장 근처에 있는지 확인하기 위해 권한이 필요해요";
@@ -1551,7 +1607,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yescoachdev.CommuteFriend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1570,11 +1626,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 67D46DJNPH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CommuteFriend/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "출퇴근메이트";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자가 정류장 근처에 있는지 확인하기 위해 권한이 필요해요";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자가 정류장 근처에 있는지 확인하기 위해 권한이 필요해요";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자가 정류장 근처에 있는지 확인하기 위해 권한이 필요해요";
@@ -1590,7 +1647,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yescoachdev.CommuteFriend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1809,6 +1866,14 @@
 				minimumVersion = 10.43.0;
 			};
 		};
+		891A9DC52B130F24004F420D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.18.0;
+			};
+		};
 		8942667D2AD677A200C44C04 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/SwiftLint";
@@ -1873,6 +1938,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 89023F532ADB2459009FFCBD /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		891A9DC62B130F24004F420D /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 891A9DC52B130F24004F420D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		891A9DC82B130F24004F420D /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 891A9DC52B130F24004F420D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
 		};
 		894266932AD67B2900C44C04 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

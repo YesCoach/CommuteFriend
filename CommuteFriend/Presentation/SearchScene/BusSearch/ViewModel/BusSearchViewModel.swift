@@ -15,7 +15,7 @@ protocol BusSearchViewModelInput {
     func updateSearchResults(with keyword: String)
     func searchButtonClicked(with text: String)
     func didSelectItem(of item: any BusSearchable)
-    func didSegmentControlValueChanged(index: Int)
+    func didSegmentControlValueChanged(index: Int, keyword: String?)
     func didSelectSearchHistoryItem(of item: String)
     func addSearchHistory(text: String)
     func removeSearchHistory(text: String)
@@ -71,6 +71,14 @@ extension DefaultBusSearchViewModel {
     }
 
     func updateSearchResults(with keyword: String) {
+        guard keyword.isEmpty == false else {
+            if segmentIndex == 0 {
+                searchBusResult.onNext([])
+            } else {
+                searchBusStationResult.onNext([])
+            }
+            return
+        }
         if segmentIndex == 0 {
             busRepository.fetch(
                 keyword: keyword
@@ -80,14 +88,12 @@ extension DefaultBusSearchViewModel {
                 case .success(let list):
                     searchBusResult.onNext(list)
                 case .failure(let error):
-                    debugPrint(error)
+                    print(error)
                 }
             }
         }
         if segmentIndex == 1 {
-            guard let data = localBusRepository.fetchStationByName(name: keyword)
-            else { return }
-
+            guard let data = localBusRepository.fetchStationByName(name: keyword) else { return }
             searchBusStationResult.onNext(data)
         }
     }
@@ -100,11 +106,13 @@ extension DefaultBusSearchViewModel {
         addSearchHistory(text: item.name)
     }
 
-    func didSegmentControlValueChanged(index: Int) {
+    func didSegmentControlValueChanged(index: Int, keyword: String? = nil) {
         self.segmentIndex = index
         searchBusResult.onNext([])
         searchBusStationResult.onNext([])
         loadSearchHistory()
+
+        if let keyword { updateSearchResults(with: keyword) }
     }
 
     func didSelectSearchHistoryItem(of text: String) {
