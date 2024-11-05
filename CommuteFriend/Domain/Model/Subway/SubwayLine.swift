@@ -26,6 +26,7 @@ enum SubwayLine: String {
     case gyeongGang = "1081"
     case uiSinseol = "1092"
     case seohae = "1093"
+    case gtxA = "1032"
 
     var lineNum: String {
         switch self {
@@ -56,7 +57,8 @@ enum SubwayLine: String {
             return "우이신설"
         case .seohae:
             return "서해선"
-
+        case .gtxA:
+            return "GTX-A"
         }
     }
 
@@ -89,6 +91,8 @@ enum SubwayLine: String {
             return "우이신설경전철"
         case .seohae:
             return "서해선"
+        case .gtxA:
+            return "GTX-A"
         }
     }
 }
