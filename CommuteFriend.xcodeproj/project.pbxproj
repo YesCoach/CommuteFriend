@@ -148,6 +148,7 @@
 		898A58242AE25122000F040F /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58232AE25122000F040F /* UserDefaultsManager.swift */; };
 		898A58262AE2514A000F040F /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58252AE2514A000F040F /* UserDefaultsWrapper.swift */; };
 		89BFEA4D2AFF71110097D833 /* VersionCheckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFEA4C2AFF71110097D833 /* VersionCheckManager.swift */; };
+		89DF025B2CDF750D008221AA /* Task+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DF025A2CDF750B008221AA /* Task+.swift */; };
 		89E4FE582AE542C100F66B9A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E4FE572AE542C100F66B9A /* SettingViewController.swift */; };
 		89E4FE5A2AE6068300F66B9A /* UIAlertController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E4FE592AE6068300F66B9A /* UIAlertController+.swift */; };
 		89EE858C2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */; };
@@ -331,6 +332,7 @@
 		898A58232AE25122000F040F /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		898A58252AE2514A000F040F /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		89BFEA4C2AFF71110097D833 /* VersionCheckManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionCheckManager.swift; sourceTree = "<group>"; };
+		89DF025A2CDF750B008221AA /* Task+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+.swift"; sourceTree = "<group>"; };
 		89E4FE572AE542C100F66B9A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		89E4FE592AE6068300F66B9A /* UIAlertController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+.swift"; sourceTree = "<group>"; };
 		89EE858B2ADD1EDC0095198D /* FavoriteSubwaySearchSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSubwaySearchSelectionViewModel.swift; sourceTree = "<group>"; };
@@ -858,6 +860,7 @@
 				89023F692ADBFD7D009FFCBD /* Collection+.swift */,
 				898A580F2ADEE8BF000F040F /* UIView+.swift */,
 				89E4FE592AE6068300F66B9A /* UIAlertController+.swift */,
+				89DF025A2CDF750B008221AA /* Task+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -946,6 +949,7 @@
 		8989D0BC2AEFC25B00C5AA41 /* InfraStructure */ = {
 			isa = PBXGroup;
 			children = (
+				89DF02572CDF748D008221AA /* Utils */,
 				891A9DCB2B131627004F420D /* Analytics */,
 				89BFEA4B2AFF70FE0097D833 /* VersionCheck */,
 				8989D0BD2AEFC26A00C5AA41 /* NetworkCheck */,
@@ -984,6 +988,13 @@
 				89BFEA4C2AFF71110097D833 /* VersionCheckManager.swift */,
 			);
 			path = VersionCheck;
+			sourceTree = "<group>";
+		};
+		89DF02572CDF748D008221AA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		89E4FE562AE542AB00F66B9A /* SettingScene */ = {
@@ -1300,6 +1311,7 @@
 				89023F6A2ADBFD7D009FFCBD /* Collection+.swift in Sources */,
 				89023F682ADBF648009FFCBD /* SubwayArrivalResponse.swift in Sources */,
 				898A58182ADEFB66000F040F /* BusRouteSearchDetailViewController.swift in Sources */,
+				89DF025B2CDF750D008221AA /* Task+.swift in Sources */,
 				89023F072AD7A063009FFCBD /* TestSearchVC.swift in Sources */,
 				89023F6E2ADC477E009FFCBD /* FavoriteViewController.swift in Sources */,
 				898A580A2ADEC67F000F040F /* BusStationArrivalRepsitory.swift in Sources */,

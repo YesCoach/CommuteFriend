@@ -9,11 +9,17 @@ import Foundation
 import Alamofire
 
 protocol NetworkService {
+
     func request<T: Decodable>(
         type: T.Type,
         api: Router,
         completion: @escaping (Result<T, NetworkError>) -> Void
     )
+
+    func request<T: Decodable>(
+        type: T.Type,
+        api: Router
+    ) async throws -> T
 }
 
 final class NetworkManager: NetworkService {
@@ -44,6 +50,23 @@ extension NetworkManager {
                     completion(.failure(networkError ?? .unknownError))
                 }
             }
+    }
+
+    func request<T: Decodable>(
+        type: T.Type,
+        api: Router
+    ) async throws -> T {
+        let response = await AF.request(api)
+            .serializingDecodable(T.self, automaticallyCancelling: true)
+            .response
+
+        switch response.result {
+        case .success(let data):
+            return data
+        case .failure(let error):
+            let networkError = NetworkError(rawValue: response.response?.statusCode ?? 0)
+            throw networkError ?? error
+        }
     }
 
 }

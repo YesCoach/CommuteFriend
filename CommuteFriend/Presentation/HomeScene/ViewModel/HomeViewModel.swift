@@ -23,9 +23,7 @@ protocol HomeViewModelInput {
 
 protocol HomeViewModelOutput {
     var recentSubwayStationList: BehaviorSubject<[SubwayTarget]> { get set }
-    var currentSubwayStationTarget: BehaviorSubject<SubwayTarget?> { get set }
-    var currentSubwayStationArrival: PublishSubject<StationArrivalResponse> { get set }
-
+    var currentSubwayStationArrival: BehaviorSubject<StationArrivalResponse?> { get set }
     var isNowFetching: BehaviorRelay<Bool> { get set }
 }
 
@@ -39,8 +37,11 @@ final class DefaultHomeViewModel: HomeViewModel {
 
     private let localSubwayRepository: LocalSubwayRepository
     private let subwayStationArrivalRepository: SubwayStationArrivalRepository
-    private let disposeBag = DisposeBag()
+
     private let liveActivityManager = ArrivalWidgetManager.shared
+
+    private let disposeBag = DisposeBag()
+    private let cancelBag = TaskCancelBag()
 
     // MARK: - DI
 
@@ -57,16 +58,19 @@ final class DefaultHomeViewModel: HomeViewModel {
 
     var recentSubwayStationList: BehaviorSubject<[SubwayTarget]> = BehaviorSubject(value: [])
     var currentSubwayStationTarget: BehaviorSubject<SubwayTarget?> = BehaviorSubject(value: nil)
-    var currentSubwayStationArrival: PublishSubject<StationArrivalResponse> = PublishSubject()
+    var currentSubwayStationArrival: BehaviorSubject<StationArrivalResponse?> = BehaviorSubject(value: nil)
 
     var isNowFetching: BehaviorRelay<Bool> = BehaviorRelay(value: false)
 
     private func bindData() {
         // 현재 역을 받아오면 도착정보를 패치
         currentSubwayStationTarget
-            .bind(with: self) { object, target in
+            .bind(with: self) { owner, target in
                 if let target {
-                    object.fetchStationArrivalData(with: target)
+                    Task { [weak owner] in
+                        await owner?.fetchStationArrivalData(with: target)
+                    }
+                    .store(in: owner.cancelBag)
                 }
             }
             .disposed(by: disposeBag)
@@ -101,9 +105,14 @@ extension DefaultHomeViewModel {
 
     // 현재 역의 도착정보 새로고침
     func refreshCurrentStationTarget() {
-        if let subwayTarget = try? currentSubwayStationTarget.value() {
-            fetchStationArrivalData(with: subwayTarget)
-        }
+
+        Task { [weak self] in
+            guard let self else { return }
+            if let subwayTarget = try? currentSubwayStationTarget.value() {
+                await fetchStationArrivalData(with: subwayTarget)
+            }
+        }.store(in: cancelBag)
+
     }
 
 }
@@ -114,6 +123,7 @@ private extension DefaultHomeViewModel {
     private func fetchSubwayStationList() {
         let stationList = localSubwayRepository.fetchEnrolledStationList()
         recentSubwayStationList.onNext(stationList)
+
         /// 최근검색의 가장 최근역을 홈화면에 보여줌
         if let firstItem = stationList.first {
             currentSubwayStationTarget.onNext(firstItem)
@@ -121,26 +131,26 @@ private extension DefaultHomeViewModel {
     }
 
     /// 역의 도착정보를 패칭
-    func fetchStationArrivalData(with subwayTarget: SubwayTarget) {
-        subwayStationArrivalRepository
-            .fetchSubwayStationArrival(with: subwayTarget) { [weak self] result in
-                guard let self else { return }
-                switch result {
-                case .success(let list):
-                    let arrivalData = StationArrivalResponse(
-                        stationArrivalTarget: .subway(target: subwayTarget),
-                        stationArrival: .subway(arrival: list)
-                    )
-                    currentSubwayStationArrival.onNext(arrivalData)
-                    if list.isEmpty == false {
-                        onLiveActivity(with: arrivalData)
-                    } else {
-                        endLiveActivity()
-                    }
-                case .failure(let error):
-                    debugPrint(error)
-                }
+    func fetchStationArrivalData(with subwayTarget: SubwayTarget) async {
+        do {
+            let data = try await subwayStationArrivalRepository
+                .fetchSubwayStationArrival(with: subwayTarget)
+
+            let arrivalData = StationArrivalResponse(
+                stationArrivalTarget: .subway(target: subwayTarget),
+                stationArrival: .subway(arrival: data)
+            )
+
+            currentSubwayStationArrival.onNext(arrivalData)
+
+            if data.isEmpty == false {
+                onLiveActivity(with: arrivalData)
+            } else {
+                endLiveActivity()
             }
+        } catch {
+            debugPrint(error)
+        }
     }
 
 }
