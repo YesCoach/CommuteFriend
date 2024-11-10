@@ -214,10 +214,14 @@ private extension HomeViewController {
                 owner.recentStationView.updateSnapShot(data: stationList)
             }
             .disposed(by: disposeBag)
+
         viewModel
             .currentSubwayStationArrival
-            .bind(with: self) { owner, stationArrivalResponse in
-                owner.homeArrivalView.configure(with: stationArrivalResponse)
+            .asDriver(onErrorJustReturn: nil)
+            .drive(with: self) { owner, stationArrivalResponse in
+                if let stationArrivalResponse {
+                    owner.homeArrivalView.configure(with: stationArrivalResponse)
+                }
             }
             .disposed(by: disposeBag)
     }

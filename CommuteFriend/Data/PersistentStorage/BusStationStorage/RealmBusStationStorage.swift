@@ -80,7 +80,7 @@ extension RealmBusStationStorage: BusStationStorage {
         }
 
         // 최대 갯수 초과시 에러 throw
-        if user.recentSubwayList.count >= Constants.Policy.maximumStation {
+        if user.favoriteBusList.count >= Constants.Policy.maximumStation {
             throw RealmCRUDError.createLimitError
         }
 

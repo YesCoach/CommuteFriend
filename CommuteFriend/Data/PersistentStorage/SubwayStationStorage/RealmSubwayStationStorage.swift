@@ -96,7 +96,7 @@ extension RealmSubwayStationStorage: SubwayStationStorage {
         }
 
         // 최대 갯수 초과시 에러 throw
-        if user.recentSubwayList.count >= Constants.Policy.maximumStation {
+        if user.favoriteSubwayList.count >= Constants.Policy.maximumStation {
             throw RealmCRUDError.createLimitError
         }
 

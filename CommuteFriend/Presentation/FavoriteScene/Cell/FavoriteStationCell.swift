@@ -16,13 +16,16 @@ final class FavoriteStationCell: BaseTableViewCell {
 
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15.0, weight: .bold)
+        label.font = .preferredFont(forTextStyle: .headline)
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
 
     private lazy var directionLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 13.0, weight: .bold)
+        label.font = .preferredFont(forTextStyle: .subheadline)
+        label.adjustsFontForContentSizeCategory = true
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
 

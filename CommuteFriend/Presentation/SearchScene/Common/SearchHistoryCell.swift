@@ -16,7 +16,7 @@ final class SearchHistoryCell: BaseTableViewCell {
 
     private lazy var historyLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14.0, weight: .regular)
+        label.font = .preferredFont(forTextStyle: .body)
         return label
     }()
 
@@ -38,12 +38,12 @@ final class SearchHistoryCell: BaseTableViewCell {
         ].forEach { contentView.addSubview($0) }
 
         iconImageView.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview().inset(10.0)
+            $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().inset(20.0)
         }
 
         historyLabel.snp.makeConstraints {
-            $0.verticalEdges.equalTo(iconImageView)
+            $0.verticalEdges.equalToSuperview().inset(10.0)
             $0.leading.equalTo(iconImageView.snp.trailing).offset(10.0)
             $0.trailing.lessThanOrEqualToSuperview().inset(20.0)
         }

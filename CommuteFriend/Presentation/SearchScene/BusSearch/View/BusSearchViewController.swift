@@ -31,6 +31,10 @@ final class BusSearchViewController: BaseViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.scopeButtonTitles = ["버스", "정류장"]
         searchController.searchBar.showsScopeBar = true
+        searchController.searchBar.searchTextField.adjustsFontSizeToFitWidth = true
+        searchController.searchBar.setScopeBarButtonTitleTextAttributes([
+            .font: UIFont.preferredFont(forTextStyle: .headline)
+        ], for: .normal)
         return searchController
     }()
 
