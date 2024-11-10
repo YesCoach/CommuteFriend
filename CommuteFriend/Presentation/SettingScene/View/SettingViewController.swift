@@ -19,7 +19,8 @@ final class SettingViewController: BaseViewController {
             SettingViewCell.self,
             forCellReuseIdentifier: SettingViewCell.reuseIdentifier
         )
-        tableView.estimatedRowHeight = .zero
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 60.0
         tableView.showsVerticalScrollIndicator = false
         return tableView
     }()

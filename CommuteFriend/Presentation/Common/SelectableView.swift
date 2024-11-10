@@ -21,7 +21,10 @@ final class SelectableView: UIView {
 
     private lazy var label: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15, weight: .bold)
+        label.textAlignment = .center
+        label.font = .preferredFont(forTextStyle: .headline)
+        label.adjustsFontForContentSizeCategory = true
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
 
@@ -95,6 +98,7 @@ private extension SelectableView {
             $0.centerX.equalToSuperview()
             $0.top.greaterThanOrEqualTo(imageView.snp.bottom).offset(10)
             $0.bottom.equalToSuperview().inset(10)
+            $0.horizontalEdges.equalToSuperview().inset(10)
         }
     }
 

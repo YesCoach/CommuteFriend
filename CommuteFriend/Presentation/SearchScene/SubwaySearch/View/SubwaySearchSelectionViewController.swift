@@ -15,7 +15,8 @@ final class SubwaySearchSelectionViewController: BaseViewController {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "방향을 선택하세요"
-        label.font = .systemFont(ofSize: 20, weight: .bold)
+        label.font = .preferredFont(forTextStyle: .title2)
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
 
@@ -108,7 +109,7 @@ final class SubwaySearchSelectionViewController: BaseViewController {
         ].forEach { view.addSubview($0) }
 
         descriptionLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(30)
+            $0.top.equalToSuperview().inset(20)
             $0.leading.equalToSuperview().inset(16)
         }
         verticalStackView.snp.makeConstraints {

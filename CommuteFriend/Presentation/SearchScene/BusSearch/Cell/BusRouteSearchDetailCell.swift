@@ -11,13 +11,15 @@ final class BusRouteSearchDetailCell: BaseCollectionViewCell {
 
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14.0, weight: .semibold)
+        label.font = .preferredFont(forTextStyle: .headline)
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
 
     private lazy var routeLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14.0, weight: .semibold)
+        label.font = .preferredFont(forTextStyle: .headline)
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
 

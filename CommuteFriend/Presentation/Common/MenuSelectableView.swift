@@ -43,7 +43,8 @@ final class MenuSelectableView: UIView {
 
     private lazy var label: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 18.0, weight: .bold)
+        label.font = .preferredFont(forTextStyle: .title3)
+        label.adjustsFontForContentSizeCategory = true
         label.text = menuType.description
         return label
     }()

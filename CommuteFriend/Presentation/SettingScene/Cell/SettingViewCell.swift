@@ -15,7 +15,8 @@ final class SettingViewCell: BaseTableViewCell {
 
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14.0, weight: .semibold)
+        label.font = .preferredFont(forTextStyle: .headline)
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
 
@@ -26,7 +27,8 @@ final class SettingViewCell: BaseTableViewCell {
 
     private lazy var accessoryLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14.0, weight: .regular)
+        label.font = .preferredFont(forTextStyle: .body)
+        label.adjustsFontForContentSizeCategory = true
         label.textColor = .link
         return label
     }()
@@ -46,12 +48,12 @@ final class SettingViewCell: BaseTableViewCell {
         ].forEach { contentView.addSubview($0) }
 
         titleLabel.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview().inset(10.0)
+            $0.verticalEdges.equalToSuperview().inset(14.0)
             $0.leading.equalToSuperview().inset(20.0)
         }
 
         accessoryLabel.snp.makeConstraints {
-            $0.verticalEdges.equalToSuperview().inset(10.0)
+            $0.centerY.equalToSuperview()
             $0.trailing.equalToSuperview().inset(20.0)
         }
     }

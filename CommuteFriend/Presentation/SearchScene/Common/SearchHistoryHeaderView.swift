@@ -16,14 +16,16 @@ final class SearchHistoryHeaderView: UITableViewHeaderFooterView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "최근 검색"
-        label.font = .systemFont(ofSize: 15.0, weight: .semibold)
+        label.font = .preferredFont(forTextStyle: .headline)
+        label.adjustsFontForContentSizeCategory = true
         return label
     }()
 
     private lazy var deleteButton: UIButton = {
         let button = UIButton()
         button.setTitle("전체 삭제", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
+        button.titleLabel?.font = .preferredFont(forTextStyle: .headline)
+        button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.setTitleColor(.systemGray, for: .normal)
         button.addTarget(self, action: #selector(didDeleteButtonTouched), for: .touchUpInside)
         return button
