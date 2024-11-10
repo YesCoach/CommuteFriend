@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Testing
 @testable import CommuteFriend
 
 final class CommuteFriendTests: XCTestCase {

@@ -6,6 +6,10 @@
 # APIKey
 APIKey.swift
 
+# Resource
+BusStationInformation.json
+SubwayStationInformation.json
+
 # Firebase
 GoogleService-Info.plist
 

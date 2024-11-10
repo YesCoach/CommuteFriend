@@ -27,14 +27,6 @@ final class FavoriteViewController: BaseViewController {
         return view
     }()
 
-    private lazy var titleView: UILabel = {
-        let label = UILabel()
-        label.text = "즐겨찾기"
-        label.font = .systemFont(ofSize: 20, weight: .bold)
-        label.textColor = .white
-        return label
-    }()
-
     private lazy var favoriteTableView: UITableView = {
         let tableView = UITableView()
         tableView.estimatedRowHeight = 40.0
@@ -50,18 +42,23 @@ final class FavoriteViewController: BaseViewController {
     private lazy var emptyLabel: UILabel = {
         let label = UILabel()
         label.text = "등록된 즐겨찾기가 없어요."
+        label.font = .preferredFont(forTextStyle: .headline)
+        label.adjustsFontForContentSizeCategory = true
         label.isHidden = true
         return label
     }()
 
     private lazy var enrollButton: UIButton = {
+        var attributedTitle = AttributedString("추가하기")
+        attributedTitle.font = .init(.title3) // UIFont.systemFont(ofSize: 17.0, weight: .bold)
+
         var configuration = UIButton.Configuration
             .enrollButtonConfiguration(
                 foregroundColor: .white,
                 backgroundColor: .buttonColor
             )
-
-        configuration.title = "추가하기"
+        configuration.attributedTitle = attributedTitle
+        configuration.contentInsets = .init(top: 12.0, leading: 10, bottom: 12.0, trailing: 10.0)
 
         let button = UIButton()
         button.configuration = configuration
@@ -165,7 +162,7 @@ final class FavoriteViewController: BaseViewController {
 
     override func configureNavigationItem() {
         super.configureNavigationItem()
-        navigationItem.titleView = titleView
+        navigationItem.title = "즐겨찾기"
     }
 
     @objc func didEnrollButtonTouched(_ sender: UIButton) {
