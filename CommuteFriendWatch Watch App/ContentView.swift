@@ -16,7 +16,7 @@ struct ContentView: View {
             List {
                 Section {
                     NavigationLink {
-
+                        WatchArrivalView()
                     } label: {
                         HStack {
                             Image(systemName: "tram.fill")
@@ -24,7 +24,7 @@ struct ContentView: View {
                         }
                     }
                     NavigationLink {
-
+                        WatchArrivalView()
                     } label: {
                         HStack {
                             Image(systemName: "bus.fill")
