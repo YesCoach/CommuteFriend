@@ -11,19 +11,36 @@ struct ContentView: View {
 
 //    @Environment(StationArrivalResponse.self) var modelData
     var body: some View {
-        VStack {
-            HStack {
-                Text("출퇴근메이트")
-                    .font(.headline)
-                    .foregroundStyle(.tint)
-                Spacer()
+        NavigationStack {
+            Spacer()
+            List {
+                Section {
+                    NavigationLink {
+
+                    } label: {
+                        HStack {
+                            Image(systemName: "tram.fill")
+                            Text("지하철도착정보")
+                        }
+                    }
+                    NavigationLink {
+
+                    } label: {
+                        HStack {
+                            Image(systemName: "bus.fill")
+                            Text("버스도착정보")
+                        }
+                    }
+                } header: {
+                    Text("즐겨찾기")
+                        .font(.headline)
+                        .padding(.leading, -15)
+                        .padding(.bottom, 4)
+                }
             }
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            .navigationTitle("출퇴근메이트")
+            .toolbarForegroundStyle(.purple, for: .navigationBar)
         }
-        .padding()
     }
 }
 
