@@ -162,6 +162,16 @@
 		89CB33832CE0F2260034F695 /* TransportationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894266B82AD6BC2600C44C04 /* TransportationType.swift */; };
 		89CB33842CE0F2530034F695 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EBC2AD6D165009FFCBD /* String+.swift */; };
 		89CB33852CE0F26D0034F695 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023EBE2AD6D17E009FFCBD /* DateFormatter+.swift */; };
+		89CB33E12CEF7C1F0034F695 /* WatchSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB33E02CEF7C0E0034F695 /* WatchSyncManager.swift */; };
+		89CB33E92CEF85660034F695 /* FavoriteSubway+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB33E82CEF85590034F695 /* FavoriteSubway+Codable.swift */; };
+		89CB33EA2CEF85C90034F695 /* FavoriteSubway+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB33E82CEF85590034F695 /* FavoriteSubway+Codable.swift */; };
+		89CB33EC2CEF870A0034F695 /* FavoriteBus+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB33EB2CEF87050034F695 /* FavoriteBus+Codable.swift */; };
+		89CB33ED2CEF870A0034F695 /* FavoriteBus+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB33EB2CEF87050034F695 /* FavoriteBus+Codable.swift */; };
+		89CB33EE2CEF8CC10034F695 /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89023FB02ADD097C009FFCBD /* FavoriteItem.swift */; };
+		89CB33F02CEF8F7B0034F695 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB33EF2CEF8F720034F695 /* Encodable+.swift */; };
+		89CB33F32CEF91360034F695 /* WatchConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB33F22CEF91360034F695 /* WatchConstants.swift */; };
+		89CB33F42CEF91360034F695 /* WatchConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB33F22CEF91360034F695 /* WatchConstants.swift */; };
+		89CB33F72CEF92AE0034F695 /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89CB33EF2CEF8F720034F695 /* Encodable+.swift */; };
 		89DF025B2CDF750D008221AA /* Task+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DF025A2CDF750B008221AA /* Task+.swift */; };
 		89DF02862CE0E1DE008221AA /* CommuteFriendWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 89DF02632CE0E1DA008221AA /* CommuteFriendWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		89E4FE582AE542C100F66B9A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E4FE572AE542C100F66B9A /* SettingViewController.swift */; };
@@ -379,6 +389,11 @@
 		898A58232AE25122000F040F /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		898A58252AE2514A000F040F /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		89BFEA4C2AFF71110097D833 /* VersionCheckManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionCheckManager.swift; sourceTree = "<group>"; };
+		89CB33E02CEF7C0E0034F695 /* WatchSyncManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncManager.swift; sourceTree = "<group>"; };
+		89CB33E82CEF85590034F695 /* FavoriteSubway+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteSubway+Codable.swift"; sourceTree = "<group>"; };
+		89CB33EB2CEF87050034F695 /* FavoriteBus+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteBus+Codable.swift"; sourceTree = "<group>"; };
+		89CB33EF2CEF8F720034F695 /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
+		89CB33F22CEF91360034F695 /* WatchConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchConstants.swift; sourceTree = "<group>"; };
 		89DF025A2CDF750B008221AA /* Task+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+.swift"; sourceTree = "<group>"; };
 		89DF02632CE0E1DA008221AA /* CommuteFriendWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CommuteFriendWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		89DF02722CE0E1DE008221AA /* CommuteFriendWatch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CommuteFriendWatch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1032,6 +1047,7 @@
 		8989D0BC2AEFC25B00C5AA41 /* InfraStructure */ = {
 			isa = PBXGroup;
 			children = (
+				89CB33DF2CEF7BFC0034F695 /* WatchConnectivity */,
 				89DF02572CDF748D008221AA /* Utils */,
 				891A9DCB2B131627004F420D /* Analytics */,
 				89BFEA4B2AFF70FE0097D833 /* VersionCheck */,
@@ -1073,9 +1089,29 @@
 			path = VersionCheck;
 			sourceTree = "<group>";
 		};
+		89CB33DF2CEF7BFC0034F695 /* WatchConnectivity */ = {
+			isa = PBXGroup;
+			children = (
+				89CB33E02CEF7C0E0034F695 /* WatchSyncManager.swift */,
+				89CB33E72CEF852E0034F695 /* Utils */,
+			);
+			path = WatchConnectivity;
+			sourceTree = "<group>";
+		};
+		89CB33E72CEF852E0034F695 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				89CB33E82CEF85590034F695 /* FavoriteSubway+Codable.swift */,
+				89CB33EB2CEF87050034F695 /* FavoriteBus+Codable.swift */,
+				89CB33F22CEF91360034F695 /* WatchConstants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		89DF02572CDF748D008221AA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				89CB33EF2CEF8F720034F695 /* Encodable+.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1499,10 +1535,12 @@
 				89023F6A2ADBFD7D009FFCBD /* Collection+.swift in Sources */,
 				89023F682ADBF648009FFCBD /* SubwayArrivalResponse.swift in Sources */,
 				898A58182ADEFB66000F040F /* BusRouteSearchDetailViewController.swift in Sources */,
+				89CB33EC2CEF870A0034F695 /* FavoriteBus+Codable.swift in Sources */,
 				89DF025B2CDF750D008221AA /* Task+.swift in Sources */,
 				89023F072AD7A063009FFCBD /* TestSearchVC.swift in Sources */,
 				89023F6E2ADC477E009FFCBD /* FavoriteViewController.swift in Sources */,
 				898A580A2ADEC67F000F040F /* BusStationArrivalRepsitory.swift in Sources */,
+				89CB33F02CEF8F7B0034F695 /* Encodable+.swift in Sources */,
 				8942669A2AD6809500C44C04 /* TabBarItems.swift in Sources */,
 				89EE85922ADD2E370095198D /* FavoriteViewModel.swift in Sources */,
 				898631992AE3F2FD00C3408A /* ArrivalWidget.intentdefinition in Sources */,
@@ -1532,6 +1570,7 @@
 				89E4FE5A2AE6068300F66B9A /* UIAlertController+.swift in Sources */,
 				8989D0C02AEFC27F00C5AA41 /* NetworkCheckManager.swift in Sources */,
 				89835A1E2AFE1634004BD2A8 /* Setting.swift in Sources */,
+				89CB33E12CEF7C1F0034F695 /* WatchSyncManager.swift in Sources */,
 				89023EEE2AD71882009FFCBD /* SubwaySearchResultViewController.swift in Sources */,
 				89023EB82AD6D109009FFCBD /* UpDownDirection.swift in Sources */,
 				89023F112AD7D5CA009FFCBD /* LocalSubwayRepository.swift in Sources */,
@@ -1561,6 +1600,7 @@
 				89835A1B2AFE1456004BD2A8 /* SettingViewCell.swift in Sources */,
 				89023EA82AD6CA19009FFCBD /* Router.swift in Sources */,
 				89023F1C2AD7EC82009FFCBD /* Bus.swift in Sources */,
+				89CB33F32CEF91360034F695 /* WatchConstants.swift in Sources */,
 				894266A02AD68AE700C44C04 /* HomeViewController.swift in Sources */,
 				89023F342AD80EDC009FFCBD /* BusSearchViewModel.swift in Sources */,
 				89023EDF2AD6FDB5009FFCBD /* UIViewController+.swift in Sources */,
@@ -1592,6 +1632,7 @@
 				89EE85A42ADEAC5C0095198D /* RealmBusStationStorage.swift in Sources */,
 				89023F4E2ADB2344009FFCBD /* RealmMapping.swift in Sources */,
 				898A58242AE25122000F040F /* UserDefaultsManager.swift in Sources */,
+				89CB33E92CEF85660034F695 /* FavoriteSubway+Codable.swift in Sources */,
 				898A58102ADEE8BF000F040F /* UIView+.swift in Sources */,
 				894266B02AD6ABA500C44C04 /* ArrivalInformationView.swift in Sources */,
 				89EE859D2ADEA9230095198D /* BusDTO+Mapping.swift in Sources */,
@@ -1634,13 +1675,18 @@
 			files = (
 				89CB337F2CE0F0F40034F695 /* BusArrival.swift in Sources */,
 				89CB337C2CE0F0D00034F695 /* SubwayLine.swift in Sources */,
+				89CB33F42CEF91360034F695 /* WatchConstants.swift in Sources */,
+				89CB33EE2CEF8CC10034F695 /* FavoriteItem.swift in Sources */,
 				89CB337D2CE0F0D70034F695 /* SubwayArrivalCode.swift in Sources */,
 				89CB337B2CE0F09B0034F695 /* BusTarget.swift in Sources */,
+				89CB33ED2CEF870A0034F695 /* FavoriteBus+Codable.swift in Sources */,
 				89CB33822CE0F1260034F695 /* BusType.swift in Sources */,
 				89CB33782CE0E5B80034F695 /* SubwayArrivalResponse.swift in Sources */,
 				89CB33792CE0E5C20034F695 /* SubwayArrival.swift in Sources */,
 				89CB337E2CE0F0DD0034F695 /* UpDownDirection.swift in Sources */,
+				89CB33EA2CEF85C90034F695 /* FavoriteSubway+Codable.swift in Sources */,
 				89CB33852CE0F26D0034F695 /* DateFormatter+.swift in Sources */,
+				89CB33F72CEF92AE0034F695 /* Encodable+.swift in Sources */,
 				89CB33832CE0F2260034F695 /* TransportationType.swift in Sources */,
 				89CB337A2CE0F0930034F695 /* SubwayTarget.swift in Sources */,
 				89CB33812CE0F1110034F695 /* SelectableItemType.swift in Sources */,

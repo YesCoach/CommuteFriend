@@ -34,7 +34,6 @@ struct ContentView: View {
                 } header: {
                     Text("즐겨찾기")
                         .font(.headline)
-                        .padding(.leading, -15)
                         .padding(.bottom, 4)
                 }
             }
