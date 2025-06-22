@@ -29,7 +29,8 @@ extension SubwayStationArrivalRepository {
         .toDomain()
         .filter {
             $0.subwayLine == stationTarget.lineNumber &&
-            $0.nextStation == stationTarget.destinationName
+            stationTarget.destinationName.contains($0.nextStation)
+//            $0.nextStation == stationTarget.destinationName
         }
         .sorted { $0.ordkey < $1.ordkey }
 
