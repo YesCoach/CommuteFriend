@@ -147,6 +147,9 @@
 		898A58212ADFC4CA000F040F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58202ADFC4CA000F040F /* LocationManager.swift */; };
 		898A58242AE25122000F040F /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58232AE25122000F040F /* UserDefaultsManager.swift */; };
 		898A58262AE2514A000F040F /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 898A58252AE2514A000F040F /* UserDefaultsWrapper.swift */; };
+		898D88B72E9509E10002D94E /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 898D88B62E9509E10002D94E /* FirebaseMessaging */; };
+		898D88B92E9509E10002D94E /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 898D88B82E9509E10002D94E /* FirebaseRemoteConfig */; };
+		898D88BB2E9509E10002D94E /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 898D88BA2E9509E10002D94E /* FirebaseRemoteConfigSwift */; };
 		89BFEA4D2AFF71110097D833 /* VersionCheckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89BFEA4C2AFF71110097D833 /* VersionCheckManager.swift */; };
 		89DF025B2CDF750D008221AA /* Task+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DF025A2CDF750B008221AA /* Task+.swift */; };
 		89E4FE582AE542C100F66B9A /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89E4FE572AE542C100F66B9A /* SettingViewController.swift */; };
@@ -342,6 +345,7 @@
 		898A58202ADFC4CA000F040F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		898A58232AE25122000F040F /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		898A58252AE2514A000F040F /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
+		898D88B52E9504E70002D94E /* CommuteFriend.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CommuteFriend.entitlements; sourceTree = "<group>"; };
 		89BFEA4C2AFF71110097D833 /* VersionCheckManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionCheckManager.swift; sourceTree = "<group>"; };
 		89DF025A2CDF750B008221AA /* Task+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+.swift"; sourceTree = "<group>"; };
 		89E4FE572AE542C100F66B9A /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -366,8 +370,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				898D88B72E9509E10002D94E /* FirebaseMessaging in Frameworks */,
 				89023ED62AD6F872009FFCBD /* RxCocoa in Frameworks */,
 				89835A282AFE3B1F004BD2A8 /* RxDataSources in Frameworks */,
+				898D88BB2E9509E10002D94E /* FirebaseRemoteConfigSwift in Frameworks */,
 				891A9DC72B130F24004F420D /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				894266942AD67B2900C44C04 /* SnapKit in Frameworks */,
 				89023EDA2AD6F872009FFCBD /* RxSwift in Frameworks */,
@@ -375,6 +381,7 @@
 				89023EA42AD6C9CC009FFCBD /* Alamofire in Frameworks */,
 				891A9DC92B130F24004F420D /* FirebaseCrashlytics in Frameworks */,
 				89387C972E083C250031B470 /* RealmSwift in Frameworks */,
+				898D88B92E9509E10002D94E /* FirebaseRemoteConfig in Frameworks */,
 				89835A262AFE3B1F004BD2A8 /* Differentiator in Frameworks */,
 				89F650AF2AE2AAFC001E23F7 /* Lottie in Frameworks */,
 			);
@@ -738,6 +745,7 @@
 		8942664C2AD6770600C44C04 /* CommuteFriend */ = {
 			isa = PBXGroup;
 			children = (
+				898D88B52E9504E70002D94E /* CommuteFriend.entitlements */,
 				89023F582ADB2801009FFCBD /* Common */,
 				894266872AD679B400C44C04 /* Application */,
 				894266B62AD6BC0900C44C04 /* Domain */,
@@ -1108,6 +1116,9 @@
 				891A9DC62B130F24004F420D /* FirebaseAnalyticsWithoutAdIdSupport */,
 				891A9DC82B130F24004F420D /* FirebaseCrashlytics */,
 				89387C962E083C250031B470 /* RealmSwift */,
+				898D88B62E9509E10002D94E /* FirebaseMessaging */,
+				898D88B82E9509E10002D94E /* FirebaseRemoteConfig */,
+				898D88BA2E9509E10002D94E /* FirebaseRemoteConfigSwift */,
 			);
 			productName = CommuteFriend;
 			productReference = 8942664A2AD6770600C44C04 /* CommuteFriend.app */;
@@ -1606,6 +1617,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CommuteFriend/CommuteFriend.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1647,6 +1659,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CommuteFriend/CommuteFriend.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_TEAM = 67D46DJNPH;
@@ -1980,6 +1993,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 89835A242AFE3B1F004BD2A8 /* XCRemoteSwiftPackageReference "RxDataSources" */;
 			productName = RxDataSources;
+		};
+		898D88B62E9509E10002D94E /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 891A9DC52B130F24004F420D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+		898D88B82E9509E10002D94E /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 891A9DC52B130F24004F420D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		898D88BA2E9509E10002D94E /* FirebaseRemoteConfigSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 891A9DC52B130F24004F420D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfigSwift;
 		};
 		89F650AE2AE2AAFC001E23F7 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -8,6 +8,7 @@
 import UIKit
 import UserNotifications
 import FirebaseCore
+import FirebaseMessaging
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -30,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         LocationManager.shared.requestAuthorization()
 
         // MARK: Notification 관련 로직
-        setupUserNotificationCenter()
+        setupUserNotificationCenter(application)
 
         // MARK: Dynamic Island 관련 로직
         ArrivalWidgetManager.shared.stop()
@@ -95,7 +96,7 @@ extension AppDelegate {
 
     }
 
-    func setupUserNotificationCenter() {
+    func setupUserNotificationCenter(_ application: UIApplication) {
         notificationCenter.delegate = self
         notificationCenter.requestAuthorization(options: [.alert, .sound]) { granted, error in
             if (error != nil) {
@@ -104,5 +105,30 @@ extension AppDelegate {
                 print("Notification Authorization Granted: " + granted.description)
             }
         }
+
+        // register remote notification
+        application.registerForRemoteNotifications()
+
+        Messaging.messaging().delegate = self
+        Messaging.messaging().token { token, error in
+          if let error = error {
+            print("Error fetching FCM registration token: \(error)")
+          } else if let token = token {
+            print("FCM registration token: \(token)")
+          }
+        }
+    }
+}
+
+extension AppDelegate: MessagingDelegate {
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+      print("Firebase registration token: \(String(describing: fcmToken))")
+
+      let dataDict: [String: String] = ["token": fcmToken ?? ""]
+      NotificationCenter.default.post(
+        name: Notification.Name("FCMToken"),
+        object: nil,
+        userInfo: dataDict
+      )
     }
 }
