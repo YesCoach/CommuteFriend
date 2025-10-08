@@ -57,7 +57,7 @@ enum Setting: SectionModelType, CaseIterable {
     enum InfoSection: SettingItem, CaseIterable {
         static var allCases: [Setting.InfoSection] = [
             .appVersion(isUpToDate: UserDefaultsManager.isAppUpToDate),
-            .appInfo,
+//            .appInfo, (공지사항 제거|25.10.07)
             .privacyInfo,
             .openSourceLicense,
             .dataSourceInfo

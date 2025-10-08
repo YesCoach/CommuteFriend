@@ -46,13 +46,17 @@ struct SubwayStationArrivalDTO: DTOMapping {
 
     func toDomain() -> DomainType {
         /// @@ 행
-        let trimmedline = line.components(separatedBy: " ").first
+        let trimmedline = line
+            .components(separatedBy: "-").first?
+            .trimmingCharacters(in: .whitespaces)
         /// @@ 방면
-        let destination = line.components(separatedBy: " ")[safe: 2]?
+        let destination = line
+            .components(separatedBy: "-").last?
+            .trimmingCharacters(in: .whitespaces)
             .components(separatedBy: "방면").first
 
         // 남은 시간을 제공하지 않는 수도권 노선에 활용할 도착 메시지 구성
-        var arrivalMessageFixed = arrivalMessage
+        let arrivalMessageFixed = arrivalMessage
             .replacingOccurrences(of: "[\\[\\]]", with: "", options: .regularExpression)
             .components(separatedBy: "(").first?
             .trimmingCharacters(in: .whitespaces)

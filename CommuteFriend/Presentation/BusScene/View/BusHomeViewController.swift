@@ -137,6 +137,7 @@ final class BusHomeViewController: BaseViewController {
         configureNavigationBar()
         bindViewModel()
         enrollNotification()
+        AnalyticsManager.shared.log(event: .busTab)
     }
 
     override func viewWillAppear(_ animated: Bool) {

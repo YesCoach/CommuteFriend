@@ -10,16 +10,25 @@ import FirebaseAnalytics
 
 enum AnalyticsEvent {
 
+    // MARK: - Common Analytics
+
+    case subwayTab
+    case busTab
+
     // MARK: - Subway Analytics
 
     case subwaySearch(station: String, line: String, destination: String)
     case subwayFavoriteEnroll(station: String, line: String, destination: String)
+
+    // MARK: - Bus Analytics
 
     case busSearch(station: String, line: String, destination: String)
     case busFavoriteEnroll(station: String, line: String, destination: String)
 
     var name: String {
         switch self {
+        case .subwayTab: return "subwayTab"
+        case .busTab: return "busTab"
         case .subwaySearch: return "subwaySearch"
         case .subwayFavoriteEnroll: return "subwayFavoriteEnroll"
         case .busSearch: return "busSearch"
@@ -53,6 +62,7 @@ enum AnalyticsEvent {
                 "line" : line,
                 "destination" : destination
             ]
+        default: return nil
         }
     }
 
