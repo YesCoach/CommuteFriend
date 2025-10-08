@@ -137,6 +137,7 @@ final class HomeViewController: BaseViewController {
         configureNavigationBar()
         bindViewModel()
         enrollNotification()
+        AnalyticsManager.shared.log(event: .subwayTab)
     }
 
     override func viewWillAppear(_ animated: Bool) {
